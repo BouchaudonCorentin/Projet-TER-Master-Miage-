@@ -34,7 +34,8 @@ create table CompoClient (
 create table CompoFilm (
 	idFilm integer references Film (idFilm),
 	idCategorieFilm integer references CategorieFilm,
-	PRIMARY KEY (idFilm,idCategorieFilm)
+	nbepisode integer null,
+	PRIMARY KEY (idFilm,idCategorieFilm)		
 );
 
 create table MotClef (
