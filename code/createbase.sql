@@ -9,10 +9,10 @@ create table Client (
 create table Film(
 	idFilm integer Primary Key,
 	nomFilm varchar(20) not null,
-	nbvue integer not null,
-	nbtelechargement integer not null,
-	prixAchat double not null,
-	prixLocation double not null
+	nbvue integer not null check (nbvue>=0),
+	nbtelechargement integer not null check (nbtelechargement>=0),
+	prixAchat double not null check (prixAchat > 0),
+	prixLocation double not null check (prixLocation > 0)
 );
 
 create table CategorieClient (
@@ -34,7 +34,7 @@ create table CompoClient (
 create table CompoFilm (
 	idFilm integer references Film (idFilm),
 	idCategorieFilm integer references CategorieFilm,
-	nbepisode integer null,
+	nbepisode integer null check (nbepisode >= 0),
 	PRIMARY KEY (idFilm,idCategorieFilm)		
 );
 
@@ -62,7 +62,7 @@ create table Achat (
 create table ChiffreAffaire(
 	idCA integer,
 	dateCA date ,
-	valeurCA integer not null,
+	valeurCA integer not null check (valeurCA >=0),
 	PRIMARY KEY (idCA,dateCA)
 );
 
