@@ -3,12 +3,16 @@ create table Client (
 	idClient integer Primary Key,
 	nomCLient varchar(20) not null,
 	prenomCLient varchar(20) not null,
+    pseudo varchar(20)not null,
+    mdp varchar(20)not null,
 	email varchar(20) not null
 );
 
 create table Video(
 	idVideo integer Primary Key,
 	nomVideo varchar(20) not null,
+    groupeVideo varchar(20),
+    numEpisode integer,
 	nbvue integer not null check (nbvue>=0),
 	nbtelechargement integer not null check (nbtelechargement>=0),
 	prixAchat double not null check (prixAchat > 0),
@@ -34,7 +38,6 @@ create table CompoClient (
 create table CompoVideo (
 	idVideo integer references Video (idVideo),
 	idCategorieVideo integer references CategorieVideo,
-	nbepisode integer null check (nbepisode >= 0),
 	PRIMARY KEY (idVideo,idCategorieVideo)		
 );
 
