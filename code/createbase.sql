@@ -1,4 +1,4 @@
-drop table if exists ChiffreAffaire,Achat,Location,MotClefFilm,MotClef, CompoFilm,CompoClient,CategorieFilm,CategorieClient, Film,Client CASCADE;
+drop table if exists ChiffreAffaire,Achat,Location,MotClefVideo,MotClef, CompoVideo,CompoClient,CategorieVideo,CategorieClient, Video,Client CASCADE;
 create table Client (
 	idClient integer Primary Key,
 	nomCLient varchar(20) not null,
@@ -6,9 +6,9 @@ create table Client (
 	email varchar(20) not null
 );
 
-create table Film(
-	idFilm integer Primary Key,
-	nomFilm varchar(20) not null,
+create table Video(
+	idVideo integer Primary Key,
+	nomVideo varchar(20) not null,
 	nbvue integer not null check (nbvue>=0),
 	nbtelechargement integer not null check (nbtelechargement>=0),
 	prixAchat double not null check (prixAchat > 0),
@@ -20,9 +20,9 @@ create table CategorieClient (
 	nomCategorieClient varchar(20)	not null
 );
 
-create table CategorieFilm(
-	idCategorieFilm integer primary key,
-	nomCategorieFilm varchar(20) not null
+create table CategorieVideo(
+	idCategorieVideo integer primary key,
+	nomCategorieVideo varchar(20) not null
 );
 
 create table CompoClient (
@@ -31,11 +31,11 @@ create table CompoClient (
 	PRIMARY KEY (idClient,idCategorieClient)
 );
 
-create table CompoFilm (
-	idFilm integer references Film (idFilm),
-	idCategorieFilm integer references CategorieFilm,
+create table CompoVideo (
+	idVideo integer references Video (idVideo),
+	idCategorieVideo integer references CategorieVideo,
 	nbepisode integer null check (nbepisode >= 0),
-	PRIMARY KEY (idFilm,idCategorieFilm)		
+	PRIMARY KEY (idVideo,idCategorieVideo)		
 );
 
 create table MotClef (
@@ -43,20 +43,20 @@ create table MotClef (
 	valeurMotClef varchar(20) not null
 );
 
-create table MotClefFilm (
-	idFilm integer references Film,
+create table MotClefVideo (
+	idVideo integer references Video,
 	idMotClef integer references MotClef
 );
 
 create table Location (
 	idClient integer references Client,
-	idFilm integer references Film,
+	idVideo integer references Video,
 	datedebut date not null,
 	datefin date not null
 );
 create table Achat (
 	idClient integer references Client,
-	idFilm integer references Film
+	idVideo integer references Video
 );
 
 create table ChiffreAffaire(
