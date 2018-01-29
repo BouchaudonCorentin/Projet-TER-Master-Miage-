@@ -90,13 +90,6 @@ public class DataBase {
 					res.getDouble("prixAchat"), res.getDouble("prixLocation"));
 			videos.add(video);
 		}
-		res = s.executeQuery("select idVideo,nomVideo,groupeVideo,numEpisode,nbVue,nbTelechargement,prixAchat,prixLocation from Video where nomVideo ='"+v.getNomVideo()+"', and groupVideo = '"+v.getGroupeVideo()+"', and numEpisode > "+v.getNbepisode());
-		while (res.next()) {
-			video = new Video(res.getInt("idVideo"), res.getString("nomVideo"), res.getString("groupeVideo"),
-					res.getInt("numEpisode"), res.getInt("nbvue"), res.getInt("nbTelechargement"),
-					res.getDouble("prixAchat"), res.getDouble("prixLocation"));
-			videos.add(video);
-		}
 
 		return videos;
 	}
