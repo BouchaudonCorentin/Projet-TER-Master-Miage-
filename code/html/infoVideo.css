@@ -1,0 +1,68 @@
+#prezImg {
+  height: 550px;
+}
+
+#btnscol {
+  margin-top: -10%;
+  margin-bottom: 10px;
+  margin-left: 50%;
+
+}
+
+
+
+
+.pulse-button {
+
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border: none;
+  box-shadow: 0 0 0 0 rgb(255, 217, 179);
+  border-radius: 50%;
+  background-color:#ff9933;
+
+  /*background-image: url();*/
+  background-size:cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  animation: pulse 3.25s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+.pulse-button:hover
+{
+  -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
+}
+
+@-webkit-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@-moz-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@-ms-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+
+
+body, html {
+   height: 100%;
+}
+
+.bg {
+   background-image: url("image/fond3.jpg");
+   height: 100%;
+   background-position: center;
+   background-repeat:repeat;
+   background-size: cover;
+}
+
+
+#text {
+  font-size: 20px;
+  margin-left: 50%;
+
+}
+
+#nom {
+  margin-bottom: 80px;
+  font-size: 21px;
+
+}
