@@ -18,7 +18,11 @@ public class InscriptionServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		Client client = (Client) request.getAttribute("client");
+		String nom = request.getParameter("nom");
+		String prenom = request.getParameter("prenom");
+		String pseudo = request.getParameter("pseudo");
+		String mdp = request.getParameter("mdp");
+		String email = request.getParameter("email");
 		
 		try {
 		
@@ -27,8 +31,13 @@ public class InscriptionServlet extends HttpServlet {
 				          dbi = new DataBase();
 				request.getSession().setAttribute("dbi", dbi);
 				}
-			request.setAttribute("client", dbi.connection(client));
-			RequestDispatcher rd = request.getRequestDispatcher("/Connection.jsp");
+			if (dbi.verifpseudo(pseudo) == false){
+				RequestDispatcher rd = request.getRequestDispatcher("/Inscription.jsp");
+				rd.forward(request, response);
+			}
+			Client client = new Client(nom,prenom,pseudo,mdp,email);
+			request.setAttribute("client", dbi.inscription(client));
+			RequestDispatcher rd = request.getRequestDispatcher("/Inscription.jsp");
 			rd.forward(request, response);
 			
 			

@@ -37,10 +37,10 @@ public class DataBase {
 		return client;
 	}
 
-	public Boolean verifpseudo(String mdp) throws SQLException {
+	public Boolean verifpseudo(String pseudo) throws SQLException {
 		Boolean ok = true;
 		Statement s = conn.createStatement();
-		ResultSet res = s.executeQuery("select count(*) as num from Client where pseudoClient ='" + mdp + "'");
+		ResultSet res = s.executeQuery("select count(*) as num from Client where pseudoClient ='" + pseudo + "'");
 		res.next();
 		if (res.getInt("num") != 0) {
 			ok = false;
