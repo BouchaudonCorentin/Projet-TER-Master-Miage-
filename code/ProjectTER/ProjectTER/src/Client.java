@@ -9,6 +9,12 @@ public class Client {
 	
 	public Client(){};
 	
+	public Client(String pseudo, String mdp){
+		super();
+		this.pseudo = pseudo;
+		this.mdp = mdp;
+	}
+	
 	public Client(int id, String nom, String prenon, String pseudo, String mdp, String email) {
 		super();
 		this.id = id;

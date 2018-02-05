@@ -22,7 +22,9 @@ public class ConnectionServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		Client client = (Client) request.getAttribute("client");
+		String pseudo = request.getParameter("pseudo");
+		String mdp = request.getParameter("mdp");
+		
 		try {
 		
 		DataBase dbi = (DataBase) request.getSession().getAttribute("dbi");
@@ -30,6 +32,7 @@ public class ConnectionServlet extends HttpServlet {
 				          dbi = new DataBase();
 				request.getSession().setAttribute("dbi", dbi);
 				}
+			Client client = new Client(pseudo, mdp);
 			request.setAttribute("client", dbi.connection(client));
 			RequestDispatcher rd = request.getRequestDispatcher("/Connection.jsp");
 			rd.forward(request, response);
