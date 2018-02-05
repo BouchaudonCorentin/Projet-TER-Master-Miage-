@@ -1,22 +1,23 @@
 drop table if exists ChiffreAffaire,Achat,Location,MotClefVideo,MotClef, CompoVideo,CompoClient,CategorieVideo,CategorieClient, Video,Client CASCADE;
 create table Client (
 	idClient integer Primary Key,
-	nomCLient varchar(20) not null,
-	prenomCLient varchar(20) not null,
-    pseudo varchar(20)not null,
-    mdp varchar(20)not null,
-	email varchar(20) not null
+	nomCLient varchar(50) not null,
+	prenomCLient varchar(50) not null,
+    pseudo varchar(50)not null,
+    mdp varchar(50)not null,
+	email varchar(50) not null
 );
 
 create table Video(
 	idVideo integer Primary Key,
-	nomVideo varchar(20) not null,
-    groupeVideo varchar(20),
+	nomVideo varchar(50) not null,
+    groupeVideo varchar(50),
     numEpisode integer,
+    resume varchar (1000),
 	nbvue integer not null check (nbvue>=0),
 	nbtelechargement integer not null check (nbtelechargement>=0),
-	prixAchat double not null check (prixAchat > 0),
-	prixLocation double not null check (prixLocation > 0)
+	prixAchat real not null check (prixAchat > 0),
+	prixLocation real not null check (prixLocation > 0)
 );
 
 create table CategorieClient (
