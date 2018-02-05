@@ -6,6 +6,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class DataBase {
 
 	private Connection conn;
@@ -100,5 +102,14 @@ public class DataBase {
 
 		return videos;
 	}
-
+	
+	
+	public void BecomePremium (Client client) throws SQLException, ClassNotFoundException{
+		try{
+			String query = "UPDATE CompoClient SET idCategorieClient = 2 WHERE idClient =" + client.getId();
+			Statement s = conn.createStatement();
+			s.executeUpdate(query);
+		} catch (Exception e) {}
+}
+	
 }

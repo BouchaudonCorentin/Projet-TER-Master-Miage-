@@ -22,19 +22,19 @@ public class ConnectionServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String pseudo = request.getParameter("pseudo");
+		String pseudo = request.getParameter("pseudo"); // On récupère les parametres utile pour créer un client
 		String mdp = request.getParameter("mdp");
 		
 		try {
 		
-		DataBase dbi = (DataBase) request.getSession().getAttribute("dbi");
+		DataBase dbi = (DataBase) request.getSession().getAttribute("dbi");  // Stock du modèle de DB
 				if (dbi == null) {
 				          dbi = new DataBase();
 				request.getSession().setAttribute("dbi", dbi);
 				}
 			Client client = new Client(pseudo, mdp);
 			request.setAttribute("client", dbi.connection(client));
-			RequestDispatcher rd = request.getRequestDispatcher("/Connection.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/Connection.jsp"); //Charge un JSP
 			rd.forward(request, response);
 			
 			

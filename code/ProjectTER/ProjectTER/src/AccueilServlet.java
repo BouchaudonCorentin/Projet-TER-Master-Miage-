@@ -18,18 +18,17 @@ public class AccueilServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		
 		try {
 		
-			DataBase dbi = (DataBase) request.getSession().getAttribute("dbi");
+			DataBase dbi = (DataBase) request.getSession().getAttribute("dbi"); // Stock du modèle de DB
 			if (dbi == null) 
 			{
 	          dbi = new DataBase();
 	          request.getSession().setAttribute("dbi", dbi);
 			}
 			
-			request.setAttribute("Video", dbi.afficheVideo());
-			RequestDispatcher rd = request.getRequestDispatcher("/Accueil.jsp");
+			request.setAttribute("Video", dbi.afficheVideo());	// request permet de stocker les attributs de requete
+			RequestDispatcher rd = request.getRequestDispatcher("/Accueil.jsp"); //Charge un JSP
 			rd.forward(request, response);
 			
 		} catch (Exception e) {
