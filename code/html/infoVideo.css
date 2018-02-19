@@ -73,7 +73,7 @@
 .rate-area {
     float:left;
     border-style: none;
-    margin-bottom:20%;
+    margin-bottom:15%;
     margin-left:5%;
     width:55%;
 }
@@ -98,7 +98,7 @@
 }
 
 .rate-area:not(:checked) > label:before {
-    content: '★';
+    content: '★ ';
 }
 
 .rate-area > input:checked ~ label {
@@ -148,12 +148,14 @@ body, html {
 }
 
 
+
 #text {
    color: #FFFF;
    margin-left: 45%;
-   margin-top: 10%;
-   font-size:21px;
-   width:45%;
+   margin-top: 5%;
+   font-size:18px;
+   width:40%;
+   margin-bottom: 5%;
 }
 
 #nom {
@@ -161,11 +163,12 @@ body, html {
   margin-bottom: 80px;
   font-size: 30px;
   margin-left: 45%;
-  margin-top: -43%;
+  margin-top: -50%;
 }
 
 
 #prezImg {
-  margin-top: 5%;
+  margin-top: 10%;
+  margin-right: 60%;
   width: 35%;
 }

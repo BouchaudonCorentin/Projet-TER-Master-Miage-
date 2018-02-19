@@ -11,6 +11,10 @@ html {
 }
 body {
   margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
 }
 article,
 aside,
@@ -1086,7 +1090,8 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #0000;
+
+
 }
 
 input,
