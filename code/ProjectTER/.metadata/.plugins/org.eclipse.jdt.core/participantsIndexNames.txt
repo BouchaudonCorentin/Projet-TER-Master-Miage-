@@ -1,0 +1,3 @@
+INDEX VERSION 1.130
+/home/tp-home005/cbouch3/Documents/TER/Projet-TER-Master-Miage-/code/ProjectTER/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1049079569.index
+/ProjectTER/src

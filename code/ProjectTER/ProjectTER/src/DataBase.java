@@ -14,7 +14,7 @@ public class DataBase {
 
 	public DataBase() throws ClassNotFoundException, SQLException {
 		Class.forName("org.postgresql.Driver");
-		conn = DriverManager.getConnection("jdbc:postgresql://tp-postgres:5432/knguye10_a", "cbouch3_a", "cbouch3_a");
+		conn = DriverManager.getConnection("jdbc:postgresql://tp-postgres:5432/cbouch3_a", "cbouch3_a", "cbouch3_a");
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class DataBase {
 	public Client connection(Client client) throws SQLException {
 		Statement s = conn.createStatement();
 		ResultSet res = s
-				.executeQuery("select idClient, nomClient, prenomClien, email from Client where pseudoClient ='"
+				.executeQuery("select idClient, nomClient, prenomClien, email from Client where pseudo ='"
 						+ client.getPseudo() + "' and mdpClient = '" + client.getMdp() + "'");
 		res.next();
 		client.setEmail(res.getString("email"));
@@ -42,7 +42,7 @@ public class DataBase {
 	public Boolean verifpseudo(String pseudo) throws SQLException {
 		Boolean ok = true;
 		Statement s = conn.createStatement();
-		ResultSet res = s.executeQuery("select count(*) as num from Client where pseudoClient ='" + pseudo + "'");
+		ResultSet res = s.executeQuery("select count(*) as num from Client where pseudo ='" + pseudo + "'");
 		res.next();
 		if (res.getInt("num") != 0) {
 			ok = false;
@@ -110,6 +110,14 @@ public class DataBase {
 			Statement s = conn.createStatement();
 			s.executeUpdate(query);
 		} catch (Exception e) {}
-}
-	
+	}
+	public static void main (String[]argv) throws ClassNotFoundException, SQLException{
+		DataBase db = new DataBase();
+		
+		if(db.verifpseudo("Kikoudu93")){
+			System.out.println("ok");
+		}else{
+			System.out.println("ok");
+		}
+	}
 }
