@@ -31,7 +31,7 @@
 #dwl
 {
     background-color:#fdca32;
-    background-image: url("image/download2.png");
+    background-image: url("../image/download2.png");
     box-shadow: 0 0 0 0 rgb(246,212,42);
     margin-left: 5%;
 
@@ -42,7 +42,7 @@
 #rent
 {
     background-color:#cd3a3a;
-    background-image: url("image/video.png");
+    background-image: url("../image/video.png");
     box-shadow: 0 0 0 0  rgb(205,92,92);
     margin-left: 5%;
 
@@ -51,7 +51,7 @@
 #Premium
 {
     background-color:#77b3d4;
-    background-image: url("image/unlocked.png");
+    background-image: url("../image/unlocked.png");
     box-shadow: 0 0 0 0 rgb(135,206,235);
 
     margin-left: 5%;
@@ -140,7 +140,7 @@ body, html {
 }
 
 .bg {
-   background-image: url("image/fond3.jpg");
+   background-image: url("../image/fond3.jpg");
    height: 100%;
    background-position: center;
    background-repeat:repeat;

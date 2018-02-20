@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -11,11 +13,11 @@
     <title>Netflox</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="standard.css" rel="stylesheet">
-    <link href="index.css" rel="stylesheet">
+    <link href="../resources/css/standard.css" rel="stylesheet">
+    <link href="../resources/css/index.css" rel="stylesheet">
   </head>
 
 <!-- NAVBAR
@@ -49,7 +51,6 @@
                   <li><a href="#">Documentaires</a></li>
                   <li><a href="#">Films</a></li>
                   <li><a href="#">Séries</a></li>
-
                 </ul>
               </li>
             </ul>
@@ -86,6 +87,26 @@
         <li data-target="#myCarousel" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
+
+        <c:forEach var="film" items="${page.content}">
+          <div class="item active">
+            <img class="first-slide" src="****IDAFFICHE****" alt="First slide">
+            <div class="container">
+
+              <div class="carousel-caption">
+                  <h2 id="#C_nom">${film.nom}</h2>
+                  <article id="#C_article">${film.description}</article>
+                <p><a class="btn btn-primary btn-lg round" href="infoVideo.html" role="button">Lire plus</a></p>
+              </div>
+            </div>
+          </div>
+        </c:forEach>
+
+
+
+
+
+
         <div class="item active">
           <img class="first-slide" src="../Affiche/1.jpg" alt="First slide">
           <div class="container">
@@ -126,13 +147,14 @@
     <div class="container marketing">
 
       <div class="col-sm-12">
-        <div class="card card-1" ></div>
-        <div class="card card-1"></div>
-        <div class="card card-1"></div>
-        <div class="card card-1"></div>
-        <div class="card card-1"></div>
-        <div class="card card-1"></div>
+        <c:forEach >
+          <div class="card card-1">
+            <img class="first-slide" src="Affiche"+i+".jpg">
+          </div>
+        </c:forEach>
       </div>
+
+
 
 
       <div class="modal fade" id="signModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -215,8 +237,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="index.js"></script>
+    <script>window.jQuery || document.write('<script src="../resources/bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../resources/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../resources/js/index.js"></script>
   </body>
 </html>

@@ -470,7 +470,7 @@ body, html {
 }
 
 .bg {
-   background-image: url("image/fond3.jpg");
+   background-image: url("../image/fond3.jpg");
    height: 100%;
    background-position: center;
    background-repeat:repeat;
