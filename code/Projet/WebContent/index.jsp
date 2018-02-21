@@ -12,12 +12,9 @@
 
     <title>Netflox</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="../resources/css/standard.css" rel="stylesheet">
-    <link href="../resources/css/index.css" rel="stylesheet">
+    <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/css/standard.css" rel="stylesheet">
+    <link href="resources/css/index.css" rel="stylesheet">
   </head>
 
 <!-- NAVBAR
@@ -186,13 +183,13 @@
 
                   <div class="cont_back_info">
                      <div class="cont_img_back_grey">
-                       <img src="image/image_Film.jpg" alt="" />
+                       <img src="resources/image/image_Film.jpg" alt="" />
                      </div>
                   </div>
 
                   <div class="cont_forms" >
                     <div class="cont_img_back_">
-                      <img src="image/image_Film.jpg" alt="" />
+                      <img src="resources/image/image_Film.jpg" alt="" />
                     </div>
 
                     <div class="cont_form_login">
@@ -238,7 +235,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../resources/bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../resources/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../resources/js/index.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+    <script src="resources/js/index.js"></script>
   </body>
 </html>

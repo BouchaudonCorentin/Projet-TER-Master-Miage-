@@ -10,9 +10,9 @@
 
     <title>Netflox</title>
 
-    <link href="../resources/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="../ressources/css/payement.css" rel="stylesheet">
-    <link href="payement.js" rel="stylesheet">
+    <link href="resources/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="ressources/css/payement.css" rel="stylesheet">
+    <link href="resources/js/payement.js" rel="stylesheet">
 
 
 

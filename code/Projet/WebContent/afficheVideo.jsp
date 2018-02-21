@@ -10,8 +10,8 @@
 		<!-- favicon
 		============================================ -->
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="../ressources/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../ressources/css/affiche_video.css">
+        <link rel="stylesheet" href="ressources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="ressources/css/affiche_video.css">
 
     </head>
 	<body class="bg">
@@ -47,8 +47,8 @@
     		<!-- video-section-end -->
      <div class="col-md-2" id="detailMovie" >
           <p id="name"> Titre : Mon voisin totoro</p>
-          <p id="realisateur">Réalisateurs : studio Ghibli</p>
-          <p>  Résumé :</p>
+          <p id="realisateur">Rï¿½alisateurs : studio Ghibli</p>
+          <p>  Rï¿½sumï¿½ :</p>
           <p id="resume">
 
               c est le meilleur film du monde bla bla bla bla
@@ -62,6 +62,6 @@
 
 
 
-        <script src="../ressources/js/affiche_video.js"></script>
+        <script src="ressources/js/affiche_video.js"></script>
     </body>
 </html>
