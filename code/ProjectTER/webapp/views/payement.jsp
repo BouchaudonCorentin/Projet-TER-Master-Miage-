@@ -10,8 +10,8 @@
 
     <title>Netflox</title>
 
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="payement.css" rel="stylesheet">
+    <link href="../resources/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../ressources/css/payement.css" rel="stylesheet">
     <link href="payement.js" rel="stylesheet">
 
 
@@ -111,4 +111,4 @@
   	<!-- If you're using Stripe for payments -->
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 </body>
-        </html>
+</html>

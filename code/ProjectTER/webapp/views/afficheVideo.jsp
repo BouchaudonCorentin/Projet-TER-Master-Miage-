@@ -10,10 +10,9 @@
 		<!-- favicon
 		============================================ -->
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="affiche_video.css">
-        <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="../ressources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../ressources/css/affiche_video.css">
+
     </head>
 	<body class="bg">
     <h1 class="page-header"> Mon voisin Totoro </h1>
@@ -63,6 +62,6 @@
 
 
 
-        <script src="affiche_video.js"></script>
+        <script src="../ressources/js/affiche_video.js"></script>
     </body>
 </html>
