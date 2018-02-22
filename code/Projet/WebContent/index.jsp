@@ -85,27 +85,8 @@
       </ol>
       <div class="carousel-inner" role="listbox">
 
-        <c:forEach var="film" items="${page.content}">
-          <div class="item active">
-            <img class="first-slide" src="****IDAFFICHE****" alt="First slide">
-            <div class="container">
-
-              <div class="carousel-caption">
-                  <h2 id="#C_nom">${film.nom}</h2>
-                  <article id="#C_article">${film.description}</article>
-                <p><a class="btn btn-primary btn-lg round" href="infoVideo.html" role="button">Lire plus</a></p>
-              </div>
-            </div>
-          </div>
-        </c:forEach>
-
-
-
-
-
-
         <div class="item active">
-          <img class="first-slide" src="../Affiche/1.jpg" alt="First slide">
+          <img class="first-slide" src="Affiche/1.jpg" alt="First slide">
           <div class="container">
 
             <div class="carousel-caption">
@@ -117,7 +98,7 @@
           </div>
         </div>
         <div class="item">
-          <img class="second-slide" src="image/harry-potter-affiche.jpg" alt="Second slide">
+          <img class="second-slide" src="/Affiche/2.jpg" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
               <p><a class="btn btn-primary btn-lg round" href="infoVideo.html" role="button">Lire plus</a></p>
@@ -139,21 +120,21 @@
 
 
   <!--  ================================================== -->
-    <!--Video contenaer -->
+    <!--Video contener -->
 
     <div class="container marketing">
 
       <div class="col-sm-12">
-        <c:forEach >
+        <c:forEach> 
           <div class="card card-1">
-            <img class="first-slide" src="Affiche"+i+".jpg">
+          <img class="card card-1" src="Affiche/8.jpg">
           </div>
         </c:forEach>
       </div>
 
 
 
-
+<!----------------------------inscription connection--------------------------------------------------------->
       <div class="modal fade" id="signModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">

@@ -1,5 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!doctype html>
-<html class="no-js" lang="">
+<html>
     <head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -10,8 +12,8 @@
 		<!-- favicon
 		============================================ -->
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="ressources/css/bootstrap.min.css">
-        <link rel="stylesheet" href="ressources/css/affiche_video.css">
+        <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="resources/css/affiche_video.css">
 
     </head>
 	<body class="bg">
@@ -23,7 +25,7 @@
 					<div id="wrapper">
 						<div class="videoContainer">
 							<video id="myVideo" controls preload="auto"  >
-								<source src="../../Video/totoro.mp4" type="video/mp4" />
+								<source src="mp4" type="video/mp4" />
 							</video>
 							<div class="caption">Video Caption</div>
 							<div class="control">
@@ -47,8 +49,8 @@
     		<!-- video-section-end -->
      <div class="col-md-2" id="detailMovie" >
           <p id="name"> Titre : Mon voisin totoro</p>
-          <p id="realisateur">R�alisateurs : studio Ghibli</p>
-          <p>  R�sum� :</p>
+          <p id="realisateur">Realisateurs : studio Ghibli</p>
+          <p>  Resume :</p>
           <p id="resume">
 
               c est le meilleur film du monde bla bla bla bla
@@ -59,9 +61,6 @@
           </p>
       </div>
 
-
-
-
-        <script src="ressources/js/affiche_video.js"></script>
+        <script src="resources/js/affiche_video.js"></script>
     </body>
 </html>

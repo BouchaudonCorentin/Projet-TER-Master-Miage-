@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -76,8 +78,8 @@
         <div>
           <img id="prezImg" src="../../Affiche/1.jpg" alt="First slide">
           <h2 id="nom">Star Wars - Les Derniers Jedi </h2>
-          <article id="text"> Synopsis : Les héros du Réveil de la force rejoignent les figures légendaires de la galaxie dans
-            une aventure épique qui révèle des secrets ancestraux sur la Force et entraîne de surpren...</article>
+          <article id="text"> Synopsis : Les hÃ©ros du RÃ©veil de la force rejoignent les figures lÃ©gendaires de la galaxie dans
+            une aventure Ã©pique qui rÃ©vÃ¨le des secrets ancestraux sur la Force et entraÃ®ne de surpren...</article>
 
 
             <ul class="rate-area">
