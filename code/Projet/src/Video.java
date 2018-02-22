@@ -4,9 +4,8 @@ public class Video {
 	private int id;
 	private String nomVideo;
 	private String groupeVideo;
-	private int nbepisode;
+	private int numepisode;
 	private int nbvue;
-	private int nbddl;
 	private double prixAchat;
 	private double prixLocation;
 	
@@ -15,29 +14,29 @@ public class Video {
 	
 	
 	
-	public Video(String nomVideo, String groupeVideo, int nbepisode, int nbvue, int nbddl, double prixAchat,
+	public Video(String nomVideo, String groupeVideo, int numepisode, int nbvue, double prixAchat,
 			double prixLocation) {
 
 		this.nomVideo = nomVideo;
 		this.groupeVideo = groupeVideo;
-		this.nbepisode = nbepisode;
+		this.numepisode = numepisode;
 		this.nbvue = nbvue;
-		this.nbddl = nbddl;
 		this.prixAchat = prixAchat;
 		this.prixLocation = prixLocation;
 	}
-	public Video(int id, String nomVideo, String groupeVideo, int nbepisode, int nbvue, int nbddl, double prixAchat,
+	public Video(int id, String nomVideo, String groupeVideo, int numepisode, int nbvue,  double prixAchat,
 			double prixLocation) {
 		super();
 		this.id = id;
 		this.nomVideo = nomVideo;
 		this.groupeVideo = groupeVideo;
-		this.nbepisode = nbepisode;
+		this.numepisode = numepisode;
 		this.nbvue = nbvue;
-		this.nbddl = nbddl;
 		this.prixAchat = prixAchat;
 		this.prixLocation = prixLocation;
 	}
+	public Video () {}
+	
 	public int getId() {
 		return id;
 	}
@@ -56,11 +55,11 @@ public class Video {
 	public void setGroupeVideo(String groupeVideo) {
 		this.groupeVideo = groupeVideo;
 	}
-	public int getNbepisode() {
-		return nbepisode;
+	public int getnumepisode() {
+		return numepisode;
 	}
-	public void setNbepisode(int nbepisode) {
-		this.nbepisode = nbepisode;
+	public void setnumepisode(int numepisode) {
+		this.numepisode = numepisode;
 	}
 	public int getNbvue() {
 		return nbvue;
@@ -68,12 +67,7 @@ public class Video {
 	public void setNbvue(int nbvue) {
 		this.nbvue = nbvue;
 	}
-	public int getNbddl() {
-		return nbddl;
-	}
-	public void setNbddl(int nbddl) {
-		this.nbddl = nbddl;
-	}
+
 	public double getPrixAchat() {
 		return prixAchat;
 	}
