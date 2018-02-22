@@ -15,7 +15,6 @@ create table Video(
     numEpisode integer,
     resume varchar (1000),
 	nbvue integer not null check (nbvue>=0),
-	nbtelechargement integer not null check (nbtelechargement>=0),
 	prixAchat real not null check (prixAchat > 0),
 	prixLocation real not null check (prixLocation > 0)
 );
@@ -66,7 +65,7 @@ create table Achat (
 create table ChiffreAffaire(
 	idCA integer,
 	dateCA date ,
-	valeurCA integer not null check (valeurCA >=0),
+	valeurCA real not null check (valeurCA >=0),
 	PRIMARY KEY (idCA,dateCA)
 );
 
