@@ -18,9 +18,15 @@ public class AccueilServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		try {
 		
+		String recherche = request.getParameter("recherche");
+		String pseudo = request.getParameter("pseudo"); // On récupère les parametres utile pour créer un client
+		String mdp = request.getParameter("mdp");
+		Client client = null;
+		
+		
+		try {
+			
 			DataBase dbi = (DataBase) request.getSession().getAttribute("dbi"); // Stock du modèle de DB
 			if (dbi == null) 
 			{
@@ -28,8 +34,18 @@ public class AccueilServlet extends HttpServlet {
 	          request.getSession().setAttribute("dbi", dbi);
 			}
 			
+			request.setAttribute("carroussel", dbi.RecupDernierID())
+			request.setAttribute("recherche", dbi.RechercheVideo(recherche))
 			request.setAttribute("Video", dbi.afficheVideo());	// request permet de stocker les attributs de requete
-			RequestDispatcher rd = request.getRequestDispatcher("/AccueilServlet.jsp"); //Charge un JSP
+			
+			if (client == null) {
+				RequestDispatcher rd = request.getRequestDispatcher("/Connection.jsp"); //Charge un JSP
+			}
+			
+			else {
+				RequestDispatcher rd = request.getRequestDispatcher("/detailsfilm.jsp"); //Charge un JSP
+			}
+			
 			rd.forward(request, response);
 			
 		} catch (Exception e) {
