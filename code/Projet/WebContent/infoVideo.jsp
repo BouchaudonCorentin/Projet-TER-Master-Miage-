@@ -77,7 +77,7 @@
 
 
         <div>
-          <img id="prezImg" src="../../Affiche/1.jpg" alt="First slide">
+          <img id="prezImg" src="../Affiche/1.jpg">
           <h2 id="nom">Star Wars - Les Derniers Jedi </h2>
           <article id="text"> Synopsis : Les hÃ©ros du RÃ©veil de la force rejoignent les figures lÃ©gendaires de la galaxie dans
             une aventure Ã©pique qui rÃ©vÃ¨le des secrets ancestraux sur la Force et entraÃ®ne de surpren...</article>
