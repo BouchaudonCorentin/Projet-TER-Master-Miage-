@@ -13,8 +13,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/Users/Corentin/Mon bureau/ECS_TP08/WebContent/WEB-INF/lib/javax.servlet.jsp.jstl-1.2.1.jar"/>
-	<classpathentry kind="lib" path="D:/Users/Corentin/Mon bureau/ECS_TP08/WebContent/WEB-INF/lib/javax.servlet.jsp.jstl-api-1.2.1.jar"/>
-	<classpathentry kind="lib" path="D:/Users/Corentin/Mon bureau/ECS_TP08/WebContent/WEB-INF/lib/postgresql-9.4-1206-jdbc42.jar"/>
+	<classpathentry kind="lib" path="D:/Users/Corentin/Mon bureau/Projet/Projet-TER-Master-Miage-/code/javax.servlet.jsp.jstl-1.2.1.jar"/>
+	<classpathentry kind="lib" path="D:/Users/Corentin/Mon bureau/Projet/Projet-TER-Master-Miage-/code/javax.servlet.jsp.jstl-api-1.2.1.jar"/>
+	<classpathentry kind="lib" path="D:/Users/Corentin/Mon bureau/Projet/Projet-TER-Master-Miage-/code/postgresql-9.4-1206-jdbc42.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
