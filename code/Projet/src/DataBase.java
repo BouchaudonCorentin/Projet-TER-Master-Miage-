@@ -104,6 +104,21 @@ public class DataBase {
 		return videos;
 	}
 	
+	public Video RecupDernierID () throws SQLException {
+		try{
+			String query = "SELECT * FROM Video WHERE idVideo = MAX(idVideo)";
+			Statement s = conn.createStatement();
+			s.executeUpdate(query);
+		} catch (Exception e) {}
+	}
+
+	
+	public List<Video> RechercheVideo(String recherche) throws SQLException {
+		
+		
+		
+	}
+	
 	
 	public void BecomePremium (Client client) throws SQLException, ClassNotFoundException{
 		try{
