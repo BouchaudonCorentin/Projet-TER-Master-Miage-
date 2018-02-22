@@ -8,22 +8,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/AccueilServlet")
+@WebServlet("/home")
 public class AccueilServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
     public AccueilServlet() {
         super();
+        
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		/*
 		String recherche = request.getParameter("recherche");
 		String pseudo = request.getParameter("pseudo"); // On récupère les parametres utile pour créer un client
 		String mdp = request.getParameter("mdp");
 		Client client = null;
-		
+		*/
 		
 		try {
 			
@@ -33,7 +34,7 @@ public class AccueilServlet extends HttpServlet {
 	          dbi = new DataBase();
 	          request.getSession().setAttribute("dbi", dbi);
 			}
-			
+			/*
 			request.setAttribute("carroussel", dbi.RecupDernierID())
 			request.setAttribute("recherche", dbi.RechercheVideo(recherche))
 			request.setAttribute("Video", dbi.afficheVideo());	// request permet de stocker les attributs de requete
@@ -45,6 +46,13 @@ public class AccueilServlet extends HttpServlet {
 			else {
 				RequestDispatcher rd = request.getRequestDispatcher("/detailsfilm.jsp"); //Charge un JSP
 			}
+			
+			rd.forward(request, response);
+			*/
+			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+			
+			request.setAttribute("carroussel", dbi.recupDernierID());
+			request.setAttribute("videos", dbi.afficheVideo());
 			
 			rd.forward(request, response);
 			

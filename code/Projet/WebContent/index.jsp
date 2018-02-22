@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -125,11 +126,11 @@
     <div class="container marketing">
 
       <div class="col-sm-12">
-        <c:forEach> 
-          <div class="card card-1">
-          <img class="card card-1" src="Affiche/8.jpg">
+      	<c:forEach var="v" items="${videos}">
+      	  <div class="card card-1">
+          	<img class="card card-1" src="Affiche/${v.id}.jpg">
           </div>
-        </c:forEach>
+		</c:forEach>
       </div>
 
 
@@ -180,7 +181,7 @@
                       <input type="password" placeholder="Password" />
                       <button class="btn_login" onclick="change_login()">LOGIN</button>
                     </div>
-
+<!-- verification si le client est co ( pas de bouton ou deco) -->
                     <div class="cont_form_sign_up">
                       <a href="#" onclick="hide_login_sign_up()"><i class="material-icons">X</i></a>
                       <h2>SIGN UP</h2>

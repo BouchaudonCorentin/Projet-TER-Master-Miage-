@@ -33,12 +33,13 @@ public class InscriptionServlet extends HttpServlet {
 				request.getSession().setAttribute("dbi", dbi); // request permet de stocker les attributs de requete
 				}
 			if (dbi.verifpseudo(pseudo) == false){
-				RequestDispatcher rd = request.getRequestDispatcher("/Inscription.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 				rd.forward(request, response);
 			}
 			Client client = new Client(nom,prenom,pseudo,mdp,email);
 			request.setAttribute("client", dbi.inscription(client));
-			RequestDispatcher rd = request.getRequestDispatcher("/Inscription.jsp"); //Charge un JSP
+			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp"); //Charge un JSP 
+			//MODIFICATION APPORTE : index.jsp inscription est sur index c est un modal
 			rd.forward(request, response);
 			
 			
