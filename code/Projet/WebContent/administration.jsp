@@ -12,15 +12,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Netflox</title>
-
-    <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="resources/css/standard.css" rel="stylesheet">
-    <link href="resources/css/administrateur.css" rel="stylesheet">
-  </head>
-   <body class="bg">
+      <title>Netflox</title>
+     <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link href="resources/css/standard.css" rel="stylesheet">
+      <link href="resources/css/administrateur.css" rel="stylesheet">
+    </head>
+  <body class="bg">
      <div class="navbar-wrapper">
-       <div class="container">
+       
 
          <nav class="navbar navbar-inverse" role="navigation">
            <!-- Brand and toggle get grouped for better mobile display -->
@@ -61,12 +60,16 @@
            </div><!-- /.navbar-collapse -->
          </nav>
 
-       </div>
+
+       
+     </div>
 
 <!-- administeur view-->
 
 <!-- Main content -->
-<section class="content">
+
+
+
   <!-- Small boxes (Stat box) -->
   <div class="row" id="smalpanel">
     <div class="col-xs-2 col-xs-2">
@@ -116,80 +119,33 @@
     <!-- ./col -->
   </div>
   <!-- /.row -->
-  <!-- Main row -->
-<div class="row" >
-  <div class="col-xs-2 col-xs-2" id="client">
-              <div class="col-md-offset-5 col-md-3">
-                  <div id="DeleteClient">
-                  <h3 style="color:#ffff">Supprimer un client </h3>
-                  <input type="text" id="d_id" class="form-control input-sm chat-input" placeholder="id" />
-                  </br>
-                    <input type="text" id="d_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" />
-                  </br>
-                  <div class="wrapper">
-                  <span class="group-btn">
-                      <a href="#" class="btn btn-primary btn-md">Delete <i class="fa fa-sign-in"></i></a>
-                  </span>
-                  </div>
-                  </div>
+  <!-- Main row-->
 
-                  <div id="DeleteClient">
-                      <h3 style="color:#ffff">Supprimer un client </h3>
-                      <input type="text" id="d_id" class="form-control input-sm chat-input" placeholder="id" />
-                      </br>
-                        <input type="text" id="d_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" />
-                      </br>
-                      <div class="wrapper">
-                      <span class="group-btn">
-                          <a href="#" class="btn btn-primary btn-md">Delete <i class="fa fa-sign-in"></i></a>
-                      </span>
+  <div class="container">
+   
+      <div class="row">
+      	<div class="col-md-6">
+              <div class="panel with-nav-tabs panel-default">
+                  <div class="panel-body">
+                      <div class="tab-content">
+                          <div class="tab-pane fade in active" id="tab1default">Default 1</div>
+                          <div class="tab-pane fade" id="tab2default">Default 2</div>
+                          <div class="tab-pane fade" id="tab3default">Default 3</div>
+                          <div class="tab-pane fade" id="tab4default">Default 4</div>
+                          <div class="tab-pane fade" id="tab5default">Default 5</div>
                       </div>
                   </div>
+                  <div class="panel-heading">
+                          <ul class="nav nav-tabs">
+                              <li class="active"><a href="#tab1default" data-toggle="tab">Default 1</a></li>
+                              <li><a href="#tab2default" data-toggle="tab">Default 2</a></li>
+                              <li><a href="#tab3default" data-toggle="tab">Default 3</a></li>
+                          </ul>
+                  </div>
               </div>
-        </div>
-  </div>
-
-<div class="row" >
-          <div class="col-xs-2 col-xs-2" id="video">
-            <div class="col-md-offset-5 col-md-3">
-                <div id="AddVideo">
-                <h3 style="color:#ffff"> Ajouter video  </h3>
-                <input type="text" id="d_id" class="form-control input-sm chat-input" placeholder="id" />
-                </br>
-                  <input type="text" id="d_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" />
-                </br>
-                <input type="text" id="d_id" class="form-control input-sm chat-input" placeholder="id" />
-                </br>
-                  <input type="text" id="d_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" />
-                </br>
-                <div class="wrapper">
-                <span class="group-btn">
-                    <a href="#" class="btn btn-primary btn-md">Delete <i class="fa fa-sign-in"></i></a>
-                </span>
-                </div>
-                </div>
-
-                <div id="DeleteVideo">
-                    <h3 style="color:#ffff">Supprimer Video</h3>
-                    <input type="text" id="d_id" class="form-control input-sm chat-input" placeholder="id" />
-                    </br>
-                    <div class="wrapper">
-                    <span class="group-btn">
-                        <a href="#" class="btn btn-primary btn-md">Delete <i class="fa fa-sign-in"></i></a>
-                    </span>
-                    </div>
-                </div>
-            </div>
-      </div>
-    </div>
-   </div>
-    <!-- ./col -->
-
-
-
-  <!-- /.row -->
-  <!-- VIDEO  -->
-  <!-- CLIENT -->
+          </div>
+  	</div>
+ </div>
 
 
 
