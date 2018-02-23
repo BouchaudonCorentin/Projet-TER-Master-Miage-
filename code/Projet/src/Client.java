@@ -34,6 +34,11 @@ public class Client {
 		this.mdp = mdp;
 		this.email = email;
 	}
+	
+
+	public Client(String pseudo) {
+		this.pseudo = pseudo;
+	}
 
 	public int getId() {
 		return id;

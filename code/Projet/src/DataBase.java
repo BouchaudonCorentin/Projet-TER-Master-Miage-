@@ -48,7 +48,6 @@ public class DataBase {
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery("select count(idClient) from Client where pseudo ='" + pseudo + "'");
 		res.next();
-		System.out.println(res.getInt(1));
 		if (res.getInt(1) != 0) {
 			return false;
 		}else {					
@@ -65,11 +64,11 @@ public class DataBase {
 		}else {
 			client.setId(1);
 		}
-		int resultat = s
-				.executeUpdate("insert into Client (idClient,nomClient, prenomClient, pseudo, mdp, email) values ("+
-						 client.getId()+","+client.getNom() + "," + client.getPrenon() + "," + client.getPseudo() + "," + client.getMdp()
-						+ "," + client.getEmail()+")");
+		int resultat = s.executeUpdate("insert into Client (idClient,nomClient, prenomClient, pseudo, mdp, email) values ("+
+						 client.getId()+",'"+client.getNom() + "','" + client.getPrenon() + "','" + client.getPseudo() + "','" + client.getMdp()
+						+ "','" + client.getEmail()+"')");
 		if (resultat == 1) {
+			s.executeUpdate("insert into CompoClient values("+client.getId()+", 1)");
 			return client;
 		}
 		return new Client();
@@ -192,32 +191,78 @@ public class DataBase {
 			String query = "UPDATE CompoClient SET idCategorieClient = 2 WHERE idClient =" + client.getId();
 			Statement s = conn.createStatement();
 			s.executeUpdate(query);
-			Date actuelle= new Date();
-			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-			String date = df.format(actuelle);
-			query = "select idCA from ChiffreAffaire where dateCA ="+actuelle;
+			query = "select idCA from ChiffreAffaire where dateCA =CURRENT_DATE";
 			Statement s2 = conn.createStatement();
 			ResultSet res = s2.executeQuery(query);
+			System.out.println("ici");
 			if(res.next()) {
+				System.out.println("la");
 				query = "Update ChiffreAffaire SET valeurCA = valeurCA+100";
 				s2.executeUpdate(query);
 			}else {
+				System.out.println("ba");
 				query = "select max(idCA) from ChiffreAffaire";
 				res = s.executeQuery(query);
 				if(res.next()) {
-					query = "insert into ChiffreAffaire ("+res.getInt(1)+1+",'"+date+"',100";
+					System.out.println(res.getInt(1));
+					query = "insert into ChiffreAffaire values ("+(res.getInt(1)+1)+",CURRENT_DATE,100)";
 				}else {
-					query = "insert into ChiffreAffaire ("+1+",'"+date+"',100)";
+					System.out.println("nnard");
+					query = "insert into ChiffreAffaire values ("+1+",'CURRENT_DATE',100)";
 				}
-				s.executeUpdate(query);
+				int boobs =s.executeUpdate(query);
+				System.out.println("boobs");
 			}
 		} catch (Exception e) {
 		}
 	}
+	public CategorieClient categorieclient(Client c)throws SQLException{//retourn la categorie d'un client
+		CategorieClient cc= new CategorieClient();
+		String query = "select * from CategorieClient cc, CompoCLient ccl where cc.idCategorieClient= ccl.idCategorieClient and ccl.idClient ="+c.getId();
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		res.next();
+		cc.setCategorie(res.getString(2));
+		cc.setIdcategorie(res.getInt(1));
+		return cc;
+		
+	}
+	public List<Client> listpseudoclients()throws SQLException{//retourne la totalité des pseudo
+		List<Client> clients = new ArrayList();
+		String query = "select pseudo from CLient";
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		while (res.next()) {
+			Client c = new Client(res.getString(1));
+			clients.add(c);
+		}		
+		return clients;
+	}
+	public List<CategorieClient> liststatus()throws SQLException{//retourne les categorie de tout les user
+		List<CategorieClient> cate = new ArrayList();
+		String query = "select nomCategorieClient from CategorieClient cc,CompoClient ccl where cc.idCategorieClient = ccl.idCategorieClient";
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		while (res.next()) {
+			CategorieClient c = new CategorieClient(res.getString(1));
+			cate.add(c);
+		}		
+		return cate;
+	}
+	public double afficheCA(Date date)throws SQLException{//java fait de la merde alors il faudrait recupere
+		double ca;
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		String datestring = df.format(date);
+		System.out.println(datestring);
+		String query = "select SUM(valeurCA) from ChiffreAffaire where dateCA >='"+datestring+"'";
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		res.next();
+		ca=res.getDouble(1);
+		return ca;
+	}
 
-	public static void main(String[] argv) throws ClassNotFoundException, SQLException {
-		DataBase db = new DataBase();
-		Client c = new Client(1);
-		db.becomePremium(c);
+	public static void main(String[] argv) throws ClassNotFoundException, SQLException {//permet de test fonction de la bd
+
 	}
 }

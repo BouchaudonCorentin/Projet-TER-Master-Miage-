@@ -26,6 +26,18 @@ public class Video {
 		this.prixAchat = prixAchat;
 		this.prixLocation = prixLocation;
 	}
+	public String getResume() {
+		return resume;
+	}
+	public void setResume(String resume) {
+		this.resume = resume;
+	}
+	public int getNumepisode() {
+		return numepisode;
+	}
+	public void setNumepisode(int numepisode) {
+		this.numepisode = numepisode;
+	}
 	public Video(int id, String nomVideo, String groupeVideo, int numepisode, String resume, int nbvue,  double prixAchat,
 			double prixLocation) {
 		super();
