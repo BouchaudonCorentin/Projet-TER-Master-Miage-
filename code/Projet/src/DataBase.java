@@ -4,9 +4,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
+//Classe réalisé par Corentin Bouchaudon
 public class DataBase {
 
 	private Connection conn;
@@ -29,10 +32,10 @@ public class DataBase {
 		}
 	}
 
-	public Client connection(Client client) throws SQLException {
+	public Client connection(Client client) throws SQLException {//connecte le client grace a pseudo et mdp
 		Statement s = conn.createStatement();
-		ResultSet res = s.executeQuery("select idClient, nomClient, prenomClien, email from Client where pseudo ='"
-				+ client.getPseudo() + "' and mdpClient = '" + client.getMdp() + "'");
+		ResultSet res = s.executeQuery("select idClient, nomClient, prenomClient,email from Client where pseudo ='"
+				+ client.getPseudo() + "' and mdp = '" + client.getMdp() + "'");
 		res.next();
 		client.setEmail(res.getString("email"));
 		client.setId(res.getInt("idClient"));
@@ -41,40 +44,47 @@ public class DataBase {
 		return client;
 	}
 
-	public Boolean verifpseudo(String pseudo) throws SQLException {
-		Boolean ok = true;
+	public Boolean verifpseudo(String pseudo) throws SQLException {//verifie si pseudo disponible
 		Statement s = conn.createStatement();
-		ResultSet res = s.executeQuery("select count(*) as num from Client where pseudo ='" + pseudo + "'");
+		ResultSet res = s.executeQuery("select count(idClient) from Client where pseudo ='" + pseudo + "'");
 		res.next();
-		if (res.getInt("num") != 0) {
-			ok = false;
+		System.out.println(res.getInt(1));
+		if (res.getInt(1) != 0) {
+			return false;
+		}else {					
+			return true;
 		}
-		return ok;
 	}
 
-	public Client inscription(Client client) throws SQLException {
+	public Client inscription(Client client) throws SQLException {//inscrit et connecte le client
 
 		Statement s = conn.createStatement();
-		int res = s
-				.executeUpdate("insert into Client (nomClient, prenomClient, pseudoCLient, mdpClient, email) values ("
-						+ client.getNom() + "," + client.getPrenon() + "," + client.getPseudo() + "," + client.getMdp()
-						+ "," + client.getEmail());
-		if (res == 1) {
-			client = connection(client);
+		ResultSet res = s.executeQuery("select max(idClient) from Client");
+		if(res.next()) {
+			client.setId(res.getInt(1)+1);
+		}else {
+			client.setId(1);
 		}
-		return client;
+		int resultat = s
+				.executeUpdate("insert into Client (idClient,nomClient, prenomClient, pseudo, mdp, email) values ("+
+						 client.getId()+","+client.getNom() + "," + client.getPrenon() + "," + client.getPseudo() + "," + client.getMdp()
+						+ "," + client.getEmail()+")");
+		if (resultat == 1) {
+			return client;
+		}
+		return new Client();
 	}
 
-	public List<Video> afficheVideo() throws SQLException {
+	public List<Video> afficheVideos() throws SQLException {//affiche les films du plus recent au plus ancien (dans la bd)
 		List<Video> videos = new ArrayList<>();
 		Video video;
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(
-				"select idVideo,nomVideo,groupeVideo,numEpisode,nbVue,prixAchat,prixLocation from Video order by idVideo DESC");
+				"select idVideo,nomVideo,groupeVideo,numEpisode,resume,nbVue,prixAchat,prixLocation from Video order by idVideo DESC");
 
 		while (res.next()) {
 			video = new Video(res.getInt("idVideo"), res.getString("nomVideo"), res.getString("groupeVideo"),
-					res.getInt("numEpisode"), res.getInt("nbvue"), res.getDouble("prixAchat"),
+					res.getInt("numEpisode"), res.getString("resume"),res.getInt("nbvue"), res.getDouble("prixAchat"),
 					res.getDouble("prixLocation"));
 			videos.add(video);
 		}
@@ -82,28 +92,28 @@ public class DataBase {
 		return videos;
 	}
 
-	public List<Video> suggestions(Video v) throws SQLException {
+	public List<Video> suggestions(Video v) throws SQLException {////////////a modifier pour plus de sugg
 		List<Video> videos = new ArrayList();
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(
-				"select idVideo,nomVideo,groupeVideo,numEpisode,nbVue,prixAchat,prixLocation from Video where nomVideo ='"
+				"select idVideo,nomVideo,groupeVideo,numEpisode,resume, nbVue,prixAchat,prixLocation from Video where nomVideo ='"
 						+ v.getNomVideo() + "', and groupVideo = '" + v.getGroupeVideo() + "', and numEpisode > "
 						+ v.getnumepisode());
 		Video video;
 
 		while (res.next()) {
 			video = new Video(res.getInt("idVideo"), res.getString("nomVideo"), res.getString("groupeVideo"),
-					res.getInt("numEpisode"), res.getInt("nbvue"), res.getDouble("prixAchat"),
+					res.getInt("numEpisode"),res.getString("resume"), res.getInt("nbvue"), res.getDouble("prixAchat"),
 					res.getDouble("prixLocation"));
 			videos.add(video);
 		}
 		res = s.executeQuery(
-				"select idVideo,nomVideo,groupeVideo,numEpisode,nbVue,prixAchat,prixLocation from Video where nomVideo ='"
+				"select idVideo,nomVideo,groupeVideo,numEpisode,resume,nbVue,prixAchat,prixLocation from Video where nomVideo ='"
 						+ v.getNomVideo() + "', and groupVideo = '" + v.getGroupeVideo() + "', and numEpisode > "
 						+ v.getnumepisode());
 		while (res.next()) {
 			video = new Video(res.getInt("idVideo"), res.getString("nomVideo"), res.getString("groupeVideo"),
-					res.getInt("numEpisode"), res.getInt("nbvue"), res.getDouble("prixAchat"),
+					res.getInt("numEpisode"),res.getString("resume"), res.getInt("nbvue"), res.getDouble("prixAchat"),
 					res.getDouble("prixLocation"));
 			videos.add(video);
 		}
@@ -111,7 +121,7 @@ public class DataBase {
 		return videos;
 	}
 
-	public Video recupDernierID() throws SQLException {
+	public Video recupDernierID() throws SQLException {//recupere l'id de la derniere video
 		String query = "SELECT max(idVideo) as idmax FROM Video";
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
@@ -121,10 +131,10 @@ public class DataBase {
 		return v;
 	}
 
-	public List<Video> rechercheVideo(List<MotClef> mc) throws SQLException {
+	public List<Video> rechercheVideo(List<MotClef> mc) throws SQLException {//retourne les videos qui correspondent aux mots clefs
 		List<Video> videos = new ArrayList();
 		List<Video> videosreturn = new ArrayList();
-		String query = "select  idVideo,nomVideo,groupeVideo,numEpisode,nbVue,prixAchat,prixLocation from Video where idVideo in (select idVideo from MotClefVideo where idMotClef =";
+		String query = "select  idVideo,nomVideo,groupeVideo,numEpisode,resume,nbVue,prixAchat,prixLocation from Video where idVideo in (select idVideo from MotClefVideo where idMotClef =";
 		Statement s = conn.createStatement();
 		ResultSet res;
 		Video video;
@@ -133,7 +143,7 @@ public class DataBase {
 			res = s.executeQuery(query + mc.get(i).getId() + ")");
 			while (res.next()) {
 				video = new Video(res.getInt("idVideo"), res.getString("nomVideo"), res.getString("groupeVideo"),
-						res.getInt("numEpisode"), res.getInt("nbvue"), res.getDouble("prixAchat"),
+						res.getInt("numEpisode"),res.getString("resume"), res.getInt("nbvue"), res.getDouble("prixAchat"),
 						res.getDouble("prixLocation"));				
 				videos.add(video);
 			}
@@ -153,7 +163,7 @@ public class DataBase {
 		return videosreturn;
 	}
 
-	public List<MotClef> listMotClef() throws SQLException {
+	public List<MotClef> listMotClef() throws SQLException {//retourne les mots clef
 		String query = "select * from MotClef";
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
@@ -166,35 +176,48 @@ public class DataBase {
 		return motclefs;
 	}
 
-	public void incrementevue(Video v) throws SQLException {
+	public Video incrementevue(Video v) throws SQLException {//increment les vues sur la video
 		String query = "Update Video Set nbvue = nbvue+1 where idVideo =" + v.getId();
 		Statement s = conn.createStatement();
-		s.executeUpdate(query);
+		int res =s.executeUpdate(query);
+		if (res==1) {
+			v.setNbvue(v.getNbvue()+1);
+		}		
+		return v;
+		
 	}
 
-	public void BecomePremium(Client client) throws SQLException, ClassNotFoundException {
+	public void becomePremium(Client client) throws SQLException, ClassNotFoundException {//transforme un inscrit en premium
 		try {
 			String query = "UPDATE CompoClient SET idCategorieClient = 2 WHERE idClient =" + client.getId();
 			Statement s = conn.createStatement();
 			s.executeUpdate(query);
+			Date actuelle= new Date();
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			String date = df.format(actuelle);
+			query = "select idCA from ChiffreAffaire where dateCA ="+actuelle;
+			Statement s2 = conn.createStatement();
+			ResultSet res = s2.executeQuery(query);
+			if(res.next()) {
+				query = "Update ChiffreAffaire SET valeurCA = valeurCA+100";
+				s2.executeUpdate(query);
+			}else {
+				query = "select max(idCA) from ChiffreAffaire";
+				res = s.executeQuery(query);
+				if(res.next()) {
+					query = "insert into ChiffreAffaire ("+res.getInt(1)+1+",'"+date+"',100";
+				}else {
+					query = "insert into ChiffreAffaire ("+1+",'"+date+"',100)";
+				}
+				s.executeUpdate(query);
+			}
 		} catch (Exception e) {
 		}
 	}
 
 	public static void main(String[] argv) throws ClassNotFoundException, SQLException {
 		DataBase db = new DataBase();
-		List<MotClef> test = new ArrayList();
-		test.add(new MotClef(3));
-		test.add(new MotClef(7));
-		test.add(new MotClef(11));
-		List<Video> v = db.rechercheVideo(test);
-		System.out.println(v.size());
-		if (v.size() < 0) {
-			System.out.println("erreur");
-		} else {
-			for (int i = 0; i < v.size(); i++) {
-				System.out.println(v.get(i).getNomVideo());
-			}
-		}
+		Client c = new Client(1);
+		db.becomePremium(c);
 	}
 }
