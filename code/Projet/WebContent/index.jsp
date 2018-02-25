@@ -17,6 +17,12 @@
     <link href="resources/css/standard.css" rel="stylesheet">
     <link href="resources/css/index.css" rel="stylesheet">
   </head>
+  
+  <c:if test = "${echec_connection == true}">
+    <script>
+    	alert("Erreur : Utilisateur ou mot de passe inconnue !");
+    </script>
+  </c:if>
 
 <!-- NAVBAR
 ================================================== -->
@@ -58,9 +64,18 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <button id="signbtn" type="button" class="btn btn-primary btn-lg round"data-toggle="modal" data-target="#signModal">
-                  Sign in / Sign up
-                </button></li>
+                <c:choose>
+				    <c:when test="${!empty sessionScope.client}">
+				        <li><a href="/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a></li>
+				    </c:when>
+				    <c:otherwise>
+				         <button id="signbtn" type="button" class="btn btn-primary btn-lg round"data-toggle="modal" data-target="#signModal">
+	                  		Sign in / Sign up
+	                	</button></li>
+				    </c:otherwise>
+				</c:choose>
+                
+                
             </ul>
           </div><!-- /.navbar-collapse -->
         </nav>
@@ -171,19 +186,25 @@
                     <div class="cont_form_login">
                       <a href="#" onclick="hide_login_sign_up()" ><i class="material-icons">X</i></a>
                       <h2>LOGIN</h2>
-                      <input type="text" placeholder="Email" />
-                      <input type="password" placeholder="Password" />
-                      <button class="btn_login" onclick="change_login()">LOGIN</button>
+                      <form method="post" action="Connection">
+	                      <input name="pseudo" type="text" placeholder="Pseudo" />
+	                      <input name="mdp" type="password" placeholder="Password" />
+	                      <button type="submit" class="btn_login">LOGIN</button>
+                      </form>
                     </div>
 <!-- verification si le client est co ( pas de bouton ou deco) -->
                     <div class="cont_form_sign_up">
                       <a href="#" onclick="hide_login_sign_up()"><i class="material-icons">X</i></a>
                       <h2>SIGN UP</h2>
-                      <input type="text" placeholder="Email" />
-                      <input type="text" placeholder="User" />
-                      <input type="password" placeholder="Password" />
-                      <input type="password" placeholder="Confirm Password" />
-                      <button class="btn_sign_up" onclick="change_sign_up()">SIGN UP</button>
+                      <form method="post" action="Inscription">
+	                      <input name="nom" type="text" placeholder="First Name" />
+	                      <input name="prenom" type="text" placeholder="Last Name" />
+	                      <input name="pseudo" type="text" placeholder="Nickname" />
+	                      <input name="email" type="text" placeholder="Email" />
+	                      <input name="mdp"type="password" placeholder="Password" />
+	                      <input name="verimdp" type="password" placeholder="Confirm Password" />
+	                      <button type="submit" class="btn_sign_up">SIGN UP</button>
+                      </form>
                     </div>
 
                   </div>

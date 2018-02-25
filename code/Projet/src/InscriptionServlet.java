@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/InscriptionServlet")
+@WebServlet("/Inscription")
 public class InscriptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -19,7 +19,7 @@ public class InscriptionServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String nom = request.getParameter("nom"); // On récupère les parametres utile pour créer un client
+		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
 		String pseudo = request.getParameter("pseudo");
 		String mdp = request.getParameter("mdp");
@@ -27,19 +27,26 @@ public class InscriptionServlet extends HttpServlet {
 		
 		try {
 		
-		DataBase dbi = (DataBase) request.getSession().getAttribute("dbi"); // Stock du modèle de DB
-				if (dbi == null) {
-				          dbi = new DataBase();
-				request.getSession().setAttribute("dbi", dbi); // request permet de stocker les attributs de requete
-				}
-			if (dbi.verifpseudo(pseudo) == false){
-				RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
-				rd.forward(request, response);
+			DataBase dbi = (DataBase) request.getSession().getAttribute("dbi");
+			
+			if (dbi == null) {
+				dbi = new DataBase();
+				request.getSession().setAttribute("dbi", dbi);
 			}
-			Client client = new Client(nom,prenom,pseudo,mdp,email);
-			request.setAttribute("client", dbi.inscription(client));
-			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp"); //Charge un JSP 
-			//MODIFICATION APPORTE : index.jsp inscription est sur index c est un modal
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+			
+			request.setAttribute("carroussel", dbi.recupDernierID());
+			request.setAttribute("videos", dbi.afficheVideos());
+			
+			Client client = null;
+			
+			if (dbi.verifpseudo(pseudo) == false){
+				//request.setAttribute("echec_inscription", true); // � modifier pour nouvelle erreur dans JSP !!
+			}else {
+				client = dbi.inscription(new Client(nom,prenom,pseudo,mdp,email));
+			}
+			request.setAttribute("client", client);
 			rd.forward(request, response);
 			
 			

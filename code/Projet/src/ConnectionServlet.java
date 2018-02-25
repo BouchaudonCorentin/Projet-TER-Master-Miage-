@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-@WebServlet("/ConnectionServlet")
+@WebServlet("/Connection")
 public class ConnectionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -23,21 +23,27 @@ public class ConnectionServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String pseudo = request.getParameter("pseudo"); // On r√©cup√®re les parametres utile pour cr√©er un client
+		String pseudo = request.getParameter("pseudo");
 		String mdp = request.getParameter("mdp");
 		
 		try {
 		
-		DataBase dbi = (DataBase) request.getSession().getAttribute("dbi");  // Stock du mod√®le de DB
-				if (dbi == null) {
-				          dbi = new DataBase();
+			DataBase dbi = (DataBase) request.getSession().getAttribute("dbi");
+			if (dbi == null) {
+				dbi = new DataBase();
 				request.getSession().setAttribute("dbi", dbi);
-				}
-			Client client = new Client(pseudo, mdp);
-			request.setAttribute("client", dbi.connection(client));
-			RequestDispatcher rd = request.getRequestDispatcher("/Connection.jsp"); //Charge un JSP
-			rd.forward(request, response);
+			}
 			
+			request.setAttribute("carroussel", dbi.recupDernierID());
+			request.setAttribute("videos", dbi.afficheVideos());
+
+			Client client = dbi.connection(new Client(pseudo, mdp));
+			
+			request.getSession().setAttribute("client", client); // Si le client donnÈ n'existe pas, le client retournÈ est ‡ null
+			if(client == null) request.setAttribute("echec_connection", true);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp"); //Charge un JSP
+			rd.forward(request, response);
 			
 		} catch (Exception e) {
 			throw new ServletException (e);
