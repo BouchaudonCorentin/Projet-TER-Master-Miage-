@@ -38,8 +38,6 @@
             <a class="navbar-brand" href="#">Netflox</a>
           </div>
 
-              </li>
-            </ul>
             <div class="col-sm-3 col-md-3">
                 <form class="navbar-form" role="search">
                 <div class="input-group">
@@ -53,7 +51,6 @@
           </div>
 
       </div>
-    </div>
 
 
 
