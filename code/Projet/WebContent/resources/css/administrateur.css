@@ -152,10 +152,20 @@
 
 #audit
 {
-	 margin-left: 5%;
+	 margin-left: 75%;
+	 margin-top: -13%;
 }
 #Ca
 
 {
-	 margin-right: 35%;
+	 margin-left: 13%;
+	  display: inline;
 }
+
+#date{
+	
+	width:20%; 
+	 display: inline;
+}
+
+

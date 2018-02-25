@@ -127,23 +127,22 @@
           <div class="row">
           	<div class="col-md-12">
 				<div class="panel with-nav-tabs" id="fct">
-
+<!-- tabbed head panel start -->
 					<div class="panel-heading">
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#tab1default" data-toggle="tab">Ajouter
-									video</a></li>
-							<li><a href="#tab2default" data-toggle="tab">Supprimer
-									video </a></li>
-							<li><a href="#tab3default" data-toggle="tab">Ajouter
-									User</a></li>
-							<li><a href="#tab4default" data-toggle="tab">Supprimer
-									User</a></li>
+							<li class="active"><a href="#tab1default" data-toggle="tab">Ajouter video</a></li>
+							<li><a href="#tab2default" data-toggle="tab">Supprimer video </a></li>
+							<li><a href="#tab3default" data-toggle="tab">Ajouter User</a></li>
+							<li><a href="#tab4default" data-toggle="tab">Supprimer User</a></li>
+							<li><a href="#tab5default" data-toggle="tab">PDF</a></li>
 
 						</ul>
-					</div>
-
+					</div><!-- tabbed head panel end -->
+					
+<!-- tabbed body panel start -->
 					<div class="panel-body">
 						<div class="tab-content">
+		  <!-- Panel ajouter video -->
 							<div class="tab-pane fade in active" id="tab1default">
 								<div id="AddVideo">
 									<input type="text" id="d_nom"
@@ -164,6 +163,7 @@
 								</div>
 
 							</div>
+			<!-- Panel Suppression video -->
 							<div class="tab-pane fade" id="tab2default">
 								<div id="DeleteVideo">
 
@@ -178,6 +178,8 @@
 									</div>
 								</div>
 							</div>
+							
+			<!-- Panel ajout client  -->				
 							<div class="tab-pane fade" id="tab3default">
 								<div id="AddClient">
 									<input type="text" id="a_pseudo"
@@ -195,6 +197,7 @@
 
 
 							</div>
+			<!-- Panel Supprime client  -->
 							<div class="tab-pane fade" id="tab4default">
 								<div id="DeleteClient">
 									<input type="text" id="d_id"
@@ -204,23 +207,40 @@
 									</br>
 									<div class="wrapper">
 										<span class="group-btn"> <a href="#"
-											class="btn btn-danger btn-md">Supprimer<i
-												class="fa fa-sign-in"></i></a>
+											class="btn btn-danger btn-md">Supprimer</a>
 										</span>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
+							
+			<!-- Panel PDF -->
+								<div class="tab-pane fade" id="tab5default">
+									<div id="pdf">
+									  <h3> Télécharger la liste des films du site </h3>
+										  <a id="audit" class="btn btn-danger btn-md">Audit</a>
+											<form action="">
+												<input type="text" id="date"
+														class="form-control" placeholder="Day" />
+												<input type="text" id="date"
+														class="form-control" placeholder="Month" />
+												<input type="text" id="date"
+														class="form-control" placeholder="Year" />
+											
+                         						<a id="Ca" class="btn btn-danger btn-md">Chiffre d'affaire </a>
+                   						  		
+											</form>
+										
+									</div>
+								</div>
+						</div> <!-- fin tab-content-->
+					</div><!-- fin body panel -->
 				</div>
 			</div>
 					<span class="group-btn">
-                         <a id="audit" class="btn btn-primary btn-md">AUDIT <i class="fa fa-sign-in"></i></a>
+                       
                      </span>
                      
-                     	<span class="group-btn">
-                         <a id="Ca" class="btn btn-primary btn-md">Chiffre d'affaire <i class="fa fa-sign-in"></i></a>
-                     </span>
+                     	
       	</div>
       </div>
       
