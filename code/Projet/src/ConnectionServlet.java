@@ -41,7 +41,7 @@ public class ConnectionServlet extends HttpServlet {
 			
 			request.getSession().setAttribute("client", client); // Si le client donné n'existe pas, le client retourné est à null
 			if(client == null) request.setAttribute("echec_connection", true);
-			
+			request.setAttribute("status", dbi.categorieclient(client));
 			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp"); //Charge un JSP
 			rd.forward(request, response);
 			

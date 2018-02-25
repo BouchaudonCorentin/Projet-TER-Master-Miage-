@@ -62,21 +62,31 @@
                 </div>
                 </form>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <c:choose>
+           
+       <!-- bouton de la navbar -->
+               <c:choose>
 				    <c:when test="${!empty sessionScope.client}">
-				        <li><a href="/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a></li>
-				    </c:when>
-				    <c:otherwise>
-				         <button id="signbtn" type="button" class="btn btn-primary btn-lg round"data-toggle="modal" data-target="#signModal">
-	                  		Sign in / Sign up
-	                	</button></li>
-				    </c:otherwise>
+			
+					     <ul class="nav navbar-nav"> 
+					     	<li> <a  href="/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a>
+					    </c:when>
+					    <c:otherwise>
+						         <button id="signbtn" type="button" class="btn btn-primary btn-lg round"data-toggle="modal" data-target="#signModal">
+			                  		Sign in / Sign up
+			                	</button>
+				       </c:otherwise>
+					      <c:when test="${status eq 'inscrit')}">	
+					       <!-- TESTER SI PREM PAS DE BOUTON -->
+					     	 <button type="button" class="btn btn-primary"> Premium</button>
+				   			 </c:when>	
+					     	
+					       	 <button type="button" class="btn btn-danger "> Deconnection</button> </li>
+					      </ul>  
+					
+				
+				    
 				</c:choose>
                 
-                
-            </ul>
           </div><!-- /.navbar-collapse -->
         </nav>
 
@@ -194,7 +204,7 @@
                     </div>
 <!-- verification si le client est co ( pas de bouton ou deco) -->
                     <div class="cont_form_sign_up">
-                      <a href="#" onclick="hide_login_sign_up()"><i class="material-icons">X</i></a>
+                      <a  onclick="hide_login_sign_up()"><i class="material-icons">X</i></a>
                       <h2>SIGN UP</h2>
                       <form method="post" action="Inscription">
 	                      <input name="nom" type="text" placeholder="First Name" />

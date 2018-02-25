@@ -52,6 +52,7 @@ public class AccueilServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 			
 			request.setAttribute("carroussel", dbi.recupDernierID());
+	
 			request.setAttribute("videos", dbi.afficheVideos());
 			
 			rd.forward(request, response);

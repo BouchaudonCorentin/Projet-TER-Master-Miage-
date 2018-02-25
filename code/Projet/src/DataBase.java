@@ -216,7 +216,7 @@ public class DataBase {
 		} catch (Exception e) {
 		}
 	}
-	/*
+	
 	public CategorieClient categorieclient(Client c) throws SQLException{ //retourn la categorie d'un client
 		CategorieClient cc= new CategorieClient();
 		String query = "select * from CategorieClient cc, CompoCLient ccl where cc.idCategorieClient= ccl.idCategorieClient and ccl.idClient ="+c.getId();
@@ -228,7 +228,7 @@ public class DataBase {
 		return cc;
 		
 	}
-	*/
+	
 	public List<Client> listpseudoclients()throws SQLException{//retourne la totalité des pseudo
 		List<Client> clients = new ArrayList();
 		String query = "select pseudo from CLient";
@@ -240,7 +240,7 @@ public class DataBase {
 		}		
 		return clients;
 	}
-/*	public List<CategorieClient> liststatus() throws SQLException{//retourne les categorie de tout les user
+	public List<CategorieClient> liststatus() throws SQLException{//retourne les categorie de tout les user
 		List<CategorieClient> cate = new ArrayList();
 		String query = "select nomCategorieClient from CategorieClient cc,CompoClient ccl where cc.idCategorieClient = ccl.idCategorieClient";
 		Statement s = conn.createStatement();
@@ -251,7 +251,7 @@ public class DataBase {
 		}		
 		return cate;
 	}
-*/
+
 	public double afficheCA(Date date)throws SQLException{//java fait de la merde alors il faudrait recupere
 		double ca;
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
