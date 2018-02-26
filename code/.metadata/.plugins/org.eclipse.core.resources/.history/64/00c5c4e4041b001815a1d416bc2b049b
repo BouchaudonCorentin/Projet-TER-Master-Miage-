@@ -261,10 +261,7 @@ public class DataBase {
 		return cate;
 	}
 
-	public double afficheCA(Date date) throws SQLException {// affiche le CA apres date passer en param 
-		///////////WARNING////////////
-		/////////// Pour avoir 2018 il faut passer en parametre 2018-1900
-		/////////// Pour avoir Fevrier il faut passer en parametre 02-1
+	public double afficheCA(Date date) throws SQLException {// java fait de la merde alors il faudrait recupere
 		double ca;
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		String datestring = df.format(date);
