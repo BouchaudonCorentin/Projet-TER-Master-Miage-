@@ -8,11 +8,16 @@ public class Video {
 	private int numepisode;
 	private int nbvue;
 	private double prixAchat;
+
 	private double prixLocation;
 	
 	
 	
-	
+	public Video(String nomVideo, String groupeVideo, int numepisode) {
+		this.nomVideo = nomVideo;
+		this.groupeVideo = groupeVideo;
+		this.numepisode = numepisode;
+	}
 	
 	
 	public Video(String nomVideo, String groupeVideo, int numepisode, String resume, int nbvue, double prixAchat,
@@ -40,7 +45,6 @@ public class Video {
 	}
 	public Video(int id, String nomVideo, String groupeVideo, int numepisode, String resume, int nbvue,  double prixAchat,
 			double prixLocation) {
-		super();
 		this.id = id;
 		this.nomVideo = nomVideo;
 		this.groupeVideo = groupeVideo;
@@ -50,6 +54,11 @@ public class Video {
 		this.prixAchat = prixAchat;
 		this.prixLocation = prixLocation;
 	}
+	public Video(String nomVideo) {
+		this.nomVideo = nomVideo;
+	}
+
+
 	public Video () {}
 	public Video (int id) {
 		this.id=id;
@@ -72,12 +81,6 @@ public class Video {
 	}
 	public void setGroupeVideo(String groupeVideo) {
 		this.groupeVideo = groupeVideo;
-	}
-	public int getnumepisode() {
-		return numepisode;
-	}
-	public void setnumepisode(int numepisode) {
-		this.numepisode = numepisode;
 	}
 	public int getNbvue() {
 		return nbvue;
