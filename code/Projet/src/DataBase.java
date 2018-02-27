@@ -451,7 +451,17 @@ public class DataBase {
 		}else {};//video pas dans bd
 		return v;
 	}
-
+	
+	
+	public int listMembrepremium()throws SQLException{
+		List<CategorieClient> list = new ArrayList();
+		String query = "select count(*) from CompoClient where idCategorieClient = 2";
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		res.next();
+		return res.getInt(1);
+	}
+	
 	public static void main(String[] argv) throws ClassNotFoundException, SQLException {// permet de test fonction de la
 																						// bd
 		DataBase db = new DataBase();
@@ -460,4 +470,6 @@ public class DataBase {
 		System.out.println(v.getId());
 
 	}
+
+	 
 }
