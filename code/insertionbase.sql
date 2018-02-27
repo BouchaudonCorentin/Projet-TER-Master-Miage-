@@ -1,3 +1,5 @@
+--createby Bouchaudon Corentin
+
 Insert into Client values (1,'Lenormand','Brian','Link91','kikou91','brian.lenormand@u-psud.fr');
 Insert into Client values (2,'Pechdimaldjian','Mathilde','Totoro','123456789','mathilde.pechdimaldjian@u-psud.fr');
 Insert into Client values (3,'Bouchaudon','Corentin','Kevindu93','djudjull','corentin.bouchaudon@u-psud.fr');

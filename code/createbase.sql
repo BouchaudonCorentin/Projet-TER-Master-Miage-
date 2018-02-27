@@ -1,3 +1,4 @@
+--create by Bouchaudon Corentin
 drop table if exists ChiffreAffaire,Achat,Location,MotClefVideo,MotClef, CompoVideo,CompoClient,CategorieVideo,CategorieClient, Video,Client CASCADE;
 create table Client (
 	idClient integer Primary Key,
