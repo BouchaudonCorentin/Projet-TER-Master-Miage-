@@ -42,9 +42,9 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Documentaires</a></li>
-                  <li><a href="#">Films</a></li>
-                  <li><a href="#">Séries</a></li>
+                  <li><a id="Documentaires">Documentaires</a></li>
+                  <li><a id="Films">Films</a></li>
+                  <li><a id="Series">Séries</a></li>
                 </ul>
               </li>
             </ul>

@@ -14,11 +14,11 @@
     <title>Netflox</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="ressources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="ressources/css/standard.css" rel="stylesheet">
-    <link href="ressources/css/infoVideo.css" rel="stylesheet">
+    <link href="resources/css/standard.css" rel="stylesheet">
+    <link href="resources/css/infoVideo.css" rel="stylesheet">
   </head>
 <!-- NAVBAR
 ================================================== -->
@@ -58,7 +58,7 @@
 
 
         <div>
-          <img id="prezImg" src="../Affiche/1.jpg">
+          <img id="prezImg" src="Affiche/1.jpg">
           <h2 id="nom">Star Wars - Les Derniers Jedi </h2>
           <article id="text"> Synopsis : Les hÃ©ros du RÃ©veil de la force rejoignent les figures lÃ©gendaires de la galaxie dans
             une aventure Ã©pique qui rÃ©vÃ¨le des secrets ancestraux sur la Force et entraÃ®ne de surpren...</article>
@@ -91,7 +91,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="ressources/bootstrap/js/bootstrap.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.min.js"></script>
     <script src="ressources/js/infoVideo.js"></script>
   </body>
 </html>

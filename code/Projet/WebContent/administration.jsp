@@ -145,15 +145,14 @@
 		  <!-- Panel ajouter video -->
 							<div class="tab-pane fade in active" id="tab1default">
 								<div id="AddVideo">
-									<input type="text" id="d_nom"
-										class="form-control input-sm chat-input" placeholder="nom" />
-									</br> <input type="text" id="d_catégorie"
-										class="form-control input-sm chat-input"
-										placeholder="catégorie" /> </br> <input type="text" id="d_motclef"
-										class="form-control input-sm chat-input"
-										placeholder="mots clefs" /> </br> <input type="text" id="d_resumé"
-										class="form-control input-sm chat-input" placeholder="résumé" />
-									</br>
+									<input type="text" id="d_nom" class="form-control input-sm chat-input" placeholder="nom" />
+										</br> 
+										<input type="text" id="d_catégorie" class="form-control input-sm chat-input"placeholder="catégorie" /> 
+										</br> 
+										<input type="text" id="d_motclef" class="form-control input-sm chat-input"placeholder="mots clefs" /> 
+										</br> 
+										<input type="text" id="d_resumé" class="form-control input-sm chat-input" placeholder="résumé" />
+										</br>
 									<div class="wrapper">
 										<span class="group-btn"> <a href="#"
 											class="btn btn-danger btn-md">ajouter<i
@@ -167,13 +166,15 @@
 							<div class="tab-pane fade" id="tab2default">
 								<div id="DeleteVideo">
 
-									<input type="text" id="d_id_V"
-										class="form-control input-sm chat-input" placeholder="id" />
+									<input type="text" id="d_titre_V" class="form-control input-sm chat-input" placeholder="titre" />
+									</br>
+									<input type="text" id="d_episode_V"class="form-control input-sm chat-input" placeholder="numéro d'épisode" />
+									</br>
+									<input type="text" id="d_cat_V"class="form-control input-sm chat-input" placeholder="catégorie" />
 									</br>
 									<div class="wrapper">
-										<span class="group-btn"> <a href="#"
-											class="btn btn-danger btn-md">supprimer <i
-												class="fa fa-sign-in"></i></a>
+										<span class="group-btn"> 
+											<a href="#" class="btn btn-danger btn-md">supprimer <i class="fa fa-sign-in"></i></a>
 										</span>
 									</div>
 								</div>
@@ -182,15 +183,11 @@
 			<!-- Panel ajout client  -->				
 							<div class="tab-pane fade" id="tab3default">
 								<div id="AddClient">
-									<input type="text" id="a_pseudo"
-										class="form-control input-sm chat-input" placeholder="pseudo" />
-									</br> <input type="text" id="a_pw"
-										class="form-control input-sm chat-input"
-										placeholder="password" /> </br>
+									<input type="text" id="a_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" />
+									</br> <input type="text" id="a_pw" class="form-control input-sm chat-input" placeholder="password" /> </br>
 									<div class="wrapper">
 										<span class="group-btn"> <a href="#"
-											class="btn btn-danger btn-md">ajouter<i
-												class="fa fa-sign-in"></i></a>
+											class="btn btn-danger btn-md">ajouter<i class="fa fa-sign-in"></i></a>
 										</span>
 									</div>
 								</div>

@@ -15,7 +15,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
         <link rel="stylesheet" href="resources/css/bootstrap.min.css">
         <link rel="stylesheet" href="resources/css/affiche_video.css">
-
+		  <link rel="stylesheet" href="resources/css/standard.css">
     </head>
 	<body class="bg">
     <h1 class="page-header"> Mon voisin Totoro </h1>
@@ -60,6 +60,19 @@
               c est le meilleur film du monde bla bla bla bla
               c est le meilleur film du monde bla bla bla bla
           </p>
+      </div>
+      <div id="suggestion" class="">
+       <div class="container marketing">
+
+      <div class="col-sm-12">
+      	<c:forEach var="v" items="${videos}">
+      	  <div class="card card-1">
+          	<img class="card card-1" src="Affiche/${v.id}.jpg">
+          </div>
+		</c:forEach>
+      </div>
+      
+      
       </div>
 
         <script src="resources/js/affiche_video.js"></script>

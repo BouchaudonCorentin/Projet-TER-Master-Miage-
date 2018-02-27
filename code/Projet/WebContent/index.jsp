@@ -64,28 +64,20 @@
             </div>
            
        <!-- bouton de la navbar -->
-               <c:choose>
-				    <c:when test="${!empty sessionScope.client}">
 			
-					     <ul class="nav navbar-nav"> 
-					     	<li> <a  href="/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a>
-					    </c:when>
-					    <c:otherwise>
-						         <button id="signbtn" type="button" class="btn btn-primary btn-lg round"data-toggle="modal" data-target="#signModal">
-			                  		Sign in / Sign up
-			                	</button>
-				       </c:otherwise>
-					      <c:when test="${status eq 'inscrit')}">	
-					       <!-- TESTER SI PREM PAS DE BOUTON -->
-					     	 <button type="button" class="btn btn-primary"> Premium</button>
-				   			 </c:when>	
-					     	
-					       	 <button type="button" class="btn btn-danger "> Deconnection</button> </li>
-					      </ul>  
-					
-				
-				    
-				</c:choose>
+               <ul class="nav navbar-nav"> 
+				    <c:if test="${!empty sessionScope.client}">
+					   <li> <a href="/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
+					   
+					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
+					   		<button type="button" class="btn btn-primary">Premium</button>
+				   	   </c:if>	
+					   <button type="button" class="btn btn-danger">Deconnection</button>     	
+					</c:if>
+					<c:if test="${empty sessionScope.client}">
+						<button id="signbtn" type="button" class="btn btn-primary btn-lg round" data-toggle="modal" data-target="#signModal">Sign in / Sign up</button>
+				    </c:if>
+				</ul> 
                 
           </div><!-- /.navbar-collapse -->
         </nav>
@@ -197,8 +189,10 @@
                       <a href="#" onclick="hide_login_sign_up()" ><i class="material-icons">X</i></a>
                       <h2>LOGIN</h2>
                       <form method="post" action="Connection">
-	                      <input name="pseudo" type="text" placeholder="Pseudo" />
-	                      <input name="mdp" type="password" placeholder="Password" />
+	                      <input  class="form-control input-sm chat-input" name="pseudo" type="text" placeholder="Pseudo" />
+	                      </br>
+	                      <input class="form-control input-sm chat-input" name="mdp" type="password" placeholder="Password" />
+	                        </br>
 	                      <button type="submit" class="btn_login">LOGIN</button>
                       </form>
                     </div>
@@ -206,14 +200,20 @@
                     <div class="cont_form_sign_up">
                       <a  onclick="hide_login_sign_up()"><i class="material-icons">X</i></a>
                       <h2>SIGN UP</h2>
-                      <form method="post" action="Inscription">
-	                      <input name="nom" type="text" placeholder="First Name" />
-	                      <input name="prenom" type="text" placeholder="Last Name" />
-	                      <input name="pseudo" type="text" placeholder="Nickname" />
-	                      <input name="email" type="text" placeholder="Email" />
-	                      <input name="mdp"type="password" placeholder="Password" />
-	                      <input name="verimdp" type="password" placeholder="Confirm Password" />
-	                      <button type="submit" class="btn_sign_up">SIGN UP</button>
+                      <form method="post" action="Inscription" >
+	                      <input class="form-control input-sm chat-input" name="nom" type="text" placeholder="First Name" />
+	                      </br>
+	                      <input class="form-control input-sm chat-input" name="prenom" type="text" placeholder="Last Name" />
+	                      </br>
+	                      <input class="form-control input-sm chat-input"  name="pseudo" type="text" placeholder="Nickname" />
+	                      </br>
+	                      <input class="form-control input-sm chat-input"  name="email" type="text" placeholder="Email" />
+	                      </br> 
+	                      <input class="form-control input-sm chat-input" name="mdp"type="password" placeholder="Password" />
+	                      </br>  
+	                      <input class="form-control input-sm chat-input" name="verimdp" type="password" placeholder="Confirm Password" />
+	                      </br>  
+	                      <button  type="submit" class="btn_sign_up">SIGN UP</button>
                       </form>
                     </div>
 
