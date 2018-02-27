@@ -70,9 +70,12 @@
 					   <li> <a href="/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
 					   
 					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
-					   		<button type="button" class="btn btn-primary">Premium</button>
+					    <a href="/Subscribe"><button type="button" class="btn btn-primary">Premium</button></a>
+				   	   </c:if>
+				   	    <c:if test = "${sessionScope.status.categorie == 'administrateur'}">
+					   	 <a href="/Administration"><button type="button" class="btn btn-primary">administration</button></a>
 				   	   </c:if>	
-					   <button type="button" class="btn btn-danger">Deconnection</button>     	
+					   <a><button type="button" class="btn btn-danger">Deconnection</button></a>	
 					</c:if>
 					<c:if test="${empty sessionScope.client}">
 						<button id="signbtn" type="button" class="btn btn-primary btn-lg round" data-toggle="modal" data-target="#signModal">Sign in / Sign up</button>
@@ -97,26 +100,20 @@
       </ol>
       <div class="carousel-inner" role="listbox">
 
-        <div class="item active">
-          <img class="first-slide" src="Affiche/1.jpg" alt="First slide">
+
+      	<c:forEach var="c" items="${carroussel}" varStatus="s">
+        <div class="item <c:if test = "${carsl_supp[s.index] == 'first'}"> <c:out value='active' /></c:if>">
+          <img class="${carsl_supp[s.index]}-slide" src="Affiche/${c.id}.jpg" alt="slide">
           <div class="container">
 
             <div class="carousel-caption">
-                <h2 id="#C_nom">Star Wars - Les Derniers Jedi </h2>
-                <article id="#C_article"> Synopsis : Les héros du Réveil de la force rejoignent les figures légendaires de la galaxie dans
-                  une aventure épique qui révèle des secrets ancestraux sur la Force et entraîne de surpren...</article>
-              <p><a class="btn btn-primary btn-lg round" href="infoVideo.html" role="button">Lire plus</a></p>
+                <h2>${c.nomVideo}</h2>
+                <article> Synopsis : ${c.resume}</article>
+              <p><a class="btn btn-primary btn-lg round" href="/infoVideo?id=${c.id}" role="button">Lire plus</a></p>
             </div>
           </div>
         </div>
-        <div class="item">
-          <img class="second-slide" src="/Affiche/2.jpg" alt="Second slide">
-          <div class="container">
-            <div class="carousel-caption">
-              <p><a class="btn btn-primary btn-lg round" href="infoVideo.html" role="button">Lire plus</a></p>
-            </div>
-          </div>
-        </div>
+		</c:forEach>
 
       </div>
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">

@@ -2,6 +2,8 @@
 
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,8 +36,11 @@ public class ConnectionServlet extends HttpServlet {
 				request.getSession().setAttribute("dbi", dbi);
 			}
 			
-			request.setAttribute("carroussel", dbi.recupDernierID());
-			request.setAttribute("videos", dbi.afficheVideos());
+			List<Video> lv = dbi.afficheVideosansDoublon();
+			request.setAttribute("carroussel", lv.subList(0, 3));
+			// request.setAttribute("carroussel", lv.subList(lv.size()-3, lv.size())); quand il y aura des affiches pour les derniers fils -- bonne version
+			request.setAttribute("carsl_supp", Arrays.asList("first", "second", "third"));
+			request.setAttribute("videos", lv);
 
 			Client client = dbi.connection(new Client(pseudo, mdp));
 			request.getSession().setAttribute("status", dbi.categorieclient(client));

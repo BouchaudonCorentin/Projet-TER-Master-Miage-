@@ -1,4 +1,3 @@
-
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -9,9 +8,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <meta name="description" content="">
-        <meta name="author" content="">
+       
+        <meta name="administration" content="">
 
           <title>Netflox</title>
          <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -19,11 +17,12 @@
           <link href="resources/css/administrateur.css" rel="stylesheet">
         </head>
       <body class="bg">
+      
          <div class="navbar-wrapper">
            <div class="container">
 
              <nav class="navbar navbar-inverse" role="navigation">
-               <!-- Brand and toggle get grouped for better mobile display -->
+         
                <div class="navbar-header">
                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                    <span class="sr-only">Toggle navigation</span>
@@ -31,10 +30,9 @@
                    <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
                  </button>
-                 <a class="navbar-brand" href="#">Netflox</a>
+                 <a class="navbar-brand" href="/index">Netflox</a>
                </div>
 
-               <!-- Collect the nav links, forms, and other content for toggling -->
                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                  <ul class="nav navbar-nav">
                    <li class="active"><a href="#">Link</a></li>
@@ -42,9 +40,9 @@
                    <li class="dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                      <ul class="dropdown-menu">
-                       <li><a href="#">Documentaires</a></li>
-                       <li><a href="#">Films</a></li>
-                       <li><a href="#">Séries</a></li>
+                       <li><a href="/recherche?Documentaire">Documentaires</a></li>
+                       <li><a href="recherche?Film">Films</a></li>
+                       <li><a href="recherche?serie">Séries</a></li>
                      </ul>
                    </li>
                  </ul>
