@@ -96,32 +96,49 @@ public class DataBase {
 		return videos;
 	}
 
-	public List<Video> suggestions(Video v) throws SQLException {//////////// a modifier pour plus de sugg
+	public List<Video> suggestions(Video v, List<MotClef> mc) throws SQLException {//////////// a modifier pour plus de sugg
 		List<Video> videos = new ArrayList();
 		Statement s = conn.createStatement();
-		ResultSet res = s.executeQuery(
-				"select idVideo,nomVideo,groupeVideo,numEpisode,resume, nbVue,prixAchat,prixLocation from Video where nomVideo ='"
-						+ v.getNomVideo() + "', and groupVideo = '" + v.getGroupeVideo() + "', and numEpisode > "
-						+ v.getNumepisode());
 		Video video;
-
-		while (res.next()) {
-			video = new Video(res.getInt("idVideo"), res.getString("nomVideo"), res.getString("groupeVideo"),
-					res.getInt("numEpisode"), res.getString("resume"), res.getInt("nbvue"), res.getDouble("prixAchat"),
-					res.getDouble("prixLocation"));
-			videos.add(video);
+		Boolean ok = false;
+		ResultSet res = s.executeQuery("select idVideo,nomVideo,groupeVideo,numEpisode,resume, nbVue,prixAchat,prixLocation from Video where nomVideo ='"+v.getNomVideo()+"' and groupeVideo = '" +v.getGroupeVideo() + "' and numEpisode = "	+ (v.getNumepisode()+1));		
+		if(res.next()) {
+			video = new Video(res.getInt("idVideo"), res.getString("nomVideo"), res.getString("groupeVideo"),res.getInt("numEpisode"), res.getString("resume"), res.getInt("nbvue"), res.getDouble("prixAchat"),res.getDouble("prixLocation"));
+			videos.add(video);	
+			ok =true;
 		}
-		res = s.executeQuery(
-				"select idVideo,nomVideo,groupeVideo,numEpisode,resume,nbVue,prixAchat,prixLocation from Video where nomVideo ='"
-						+ v.getNomVideo() + "', and groupVideo = '" + v.getGroupeVideo() + "', and numEpisode > "
-						+ v.getNumepisode());
-		while (res.next()) {
-			video = new Video(res.getInt("idVideo"), res.getString("nomVideo"), res.getString("groupeVideo"),
-					res.getInt("numEpisode"), res.getString("resume"), res.getInt("nbvue"), res.getDouble("prixAchat"),
-					res.getDouble("prixLocation"));
-			videos.add(video);
+		List<Video> videosautres = new ArrayList();
+		for (int i = 0 ; i<mc.size();i++) {
+			String query;
+			if(ok==true) {
+				query ="select * from Video where idVideo in (select distinct (idVideo) from MotClefVideo where idMotClef="+mc.get(i).getId()+") and idVideo !="+videos.get(0).getId()+" and idVideo !="+v.getId();
+			}else {
+				query ="select * from Video where idVideo in (select distinct (idVideo) from MotClefVideo where idMotClef="+mc.get(i).getId()+")"+" and idVideo !="+v.getId();
+			}
+			System.out.println(query);
+			res = s.executeQuery(query);
+			while (res.next()) {
+				video = new Video(res.getInt("idVideo"), res.getString("nomVideo"), res.getString("groupeVideo"),
+						res.getInt("numEpisode"), res.getString("resume"), res.getInt("nbvue"), res.getDouble("prixAchat"),
+						res.getDouble("prixLocation"));
+				
+				videosautres.add(video);
+			}
 		}
-
+		for (int j =0;j<videosautres.size();j++) {
+			int compteur = 0;
+			for (int k=j;k<videosautres.size();k++) {
+				if(videosautres.get(j).getId()==videosautres.get(k).getId()) {
+					compteur ++;
+					System.out.println(videosautres.get(j).getNomVideo()+":"+compteur);
+				}
+			}
+			if (compteur==mc.size()) {
+				System.out.println("la");
+				videos.add(videosautres.get(j));
+			}
+		
+		}
 		return videos;
 	}
 
@@ -201,24 +218,18 @@ public class DataBase {
 			query = "select idCA from ChiffreAffaire where dateCA =CURRENT_DATE";
 			Statement s2 = conn.createStatement();
 			ResultSet res = s2.executeQuery(query);
-			System.out.println("ici");
 			if (res.next()) {
-				System.out.println("la");
 				query = "Update ChiffreAffaire SET valeurCA = valeurCA+100";
 				s2.executeUpdate(query);
 			} else {
-				System.out.println("ba");
 				query = "select max(idCA) from ChiffreAffaire";
 				res = s.executeQuery(query);
 				if (res.next()) {
-					System.out.println(res.getInt(1));
 					query = "insert into ChiffreAffaire values (" + (res.getInt(1) + 1) + ",CURRENT_DATE,100)";
 				} else {
-					System.out.println("nnard");
 					query = "insert into ChiffreAffaire values (" + 1 + ",'CURRENT_DATE',100)";
 				}
 				int boobs = s.executeUpdate(query);
-				System.out.println("boobs");
 			}
 		} catch (Exception e) {
 		}
@@ -268,7 +279,6 @@ public class DataBase {
 		double ca;
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		String datestring = df.format(date);
-		System.out.println(datestring);
 		String query = "select SUM(valeurCA) from ChiffreAffaire where dateCA >='" + datestring + "'";
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
@@ -313,11 +323,9 @@ public class DataBase {
 																	// episode
 		String query = "select count(*) from Video where nomVideo='" + video.getNomVideo() + "' and groupeVideo = '"
 				+ video.getGroupeVideo() + "' and numEpisode =" + video.getNumepisode();
-		System.out.println(query);
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
 		res.next();
-		System.out.println(res.getInt(1));
 		if (res.getInt(1) == 0) {
 			return true;
 		} else {
@@ -339,10 +347,8 @@ public class DataBase {
 			query = "Delete From Video where idVideo =" + video.getId();
 			res = s.executeUpdate(query);
 			if (res == 1) {
-				System.out.println("okay");
 				return true;
 			} else {
-				System.out.println("pas ok");
 				return false;
 			}
 		}
@@ -425,7 +431,6 @@ public class DataBase {
 			query = "select min(idVideo) from video where nomVideo ='"+videos.get(i).getNomVideo()+"'";
 			res = s.executeQuery(query);
 			while(res.next()) {
-				System.out.println(res.getInt(1));
 				idvideos.add(res.getInt(1));
 			}
 		}
@@ -462,12 +467,72 @@ public class DataBase {
 		return res.getInt(1);
 	}
 	
+	public List<Video> locationsCouranteUser(Client c)throws SQLException{//retourne les locations actif d'un user
+		List<Video> videos = new ArrayList();
+		Video v;
+		String query = "select * from video where idVideo in (select idVideo from Location where idCLient = "+c.getId()+" and datefin >= CURRENT_DATE)order by idVideo";
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		while (res.next()) {
+			v = new Video(res.getInt(1), res.getString(2), res.getString(3), res.getInt(4), res.getString(5),
+					res.getInt(6), res.getDouble(7), res.getDouble(8));
+			videos.add(v);
+		}
+		
+		return videos;
+	}
+	public List<Video> vieilleLocationsUser(Client c)throws SQLException{//retourne les vieilles location d'un user
+		List<Video> videos = new ArrayList();
+		Video v;
+		String query = "select * from video where idVideo in (select idVideo from Location where idCLient = "+c.getId()+" and datefin < CURRENT_DATE) order by idVideo";
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		while (res.next()) {
+			v = new Video(res.getInt(1), res.getString(2), res.getString(3), res.getInt(4), res.getString(5),
+					res.getInt(6), res.getDouble(7), res.getDouble(8));
+			videos.add(v);
+		}
+		
+		return videos;
+	}
+	
+	public List<Video> achatsUser(Client c)throws SQLException{// retourne les achats d'un user
+		List<Video> videos = new ArrayList();
+		Video v;
+		String query = "select * from video where idVideo in (select idVideo from Achat where idCLient = "+c.getId()+")";
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		while (res.next()) {
+			v = new Video(res.getInt(1), res.getString(2), res.getString(3), res.getInt(4), res.getString(5),
+					res.getInt(6), res.getDouble(7), res.getDouble(8));
+			videos.add(v);
+		}
+		
+		return videos;
+	}
+	
+	public List<MotClef> motClefvideo(Video v)throws SQLException{//retourne la list des mots clefs d'un video
+		List<MotClef>mc =new ArrayList();
+		String query = " select idMotClef from MotClefVideo where idVideo = "+v.getId();
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		while(res.next()) {
+			MotClef m = new MotClef(res.getInt(1));
+			mc.add(m);
+		}
+		return mc;
+		
+	}
 	public static void main(String[] argv) throws ClassNotFoundException, SQLException {// permet de test fonction de la
 																						// bd
 		DataBase db = new DataBase();
-		Video v = new Video ("Black r","1",3);
-		v = db.retrouveridvianomnomgroupetnbepisode(v);
-		System.out.println(v.getId());
+		Video v = new Video (16,"Star Trek Discovery","1",1);
+		List<MotClef> mc = db.motClefvideo(v);
+		List<Video>videos =  db.suggestions(v, mc);
+		for (int i = 0; i<videos.size();i++) {
+			System.out.println(videos.get(i).getId()+"   "+videos.get(i).getNomVideo());
+		}
+		db.finalize();
 
 	}
 

@@ -31,6 +31,12 @@ public class Video {
 		this.prixAchat = prixAchat;
 		this.prixLocation = prixLocation;
 	}
+	public Video(int id,String nomVideo, String groupeVideo, int numepisode) {
+		this.id=id;
+		this.nomVideo = nomVideo;
+		this.groupeVideo = groupeVideo;
+		this.numepisode = numepisode;
+	}
 	public String getResume() {
 		return resume;
 	}
