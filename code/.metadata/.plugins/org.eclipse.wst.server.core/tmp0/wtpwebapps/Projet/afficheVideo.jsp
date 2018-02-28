@@ -1,5 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!doctype html>
-<html class="no-js" lang="">
+<html>
     <head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -10,9 +13,9 @@
 		<!-- favicon
 		============================================ -->
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="../ressources/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../ressources/css/affiche_video.css">
-
+        <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="resources/css/affiche_video.css">
+		  <link rel="stylesheet" href="resources/css/standard.css">
     </head>
 	<body class="bg">
     <h1 class="page-header"> Mon voisin Totoro </h1>
@@ -23,7 +26,7 @@
 					<div id="wrapper">
 						<div class="videoContainer">
 							<video id="myVideo" controls preload="auto"  >
-								<source src="../../Video/totoro.mp4" type="video/mp4" />
+								<source src="mp4" type="video/mp4" />
 							</video>
 							<div class="caption">Video Caption</div>
 							<div class="control">
@@ -47,8 +50,8 @@
     		<!-- video-section-end -->
      <div class="col-md-2" id="detailMovie" >
           <p id="name"> Titre : Mon voisin totoro</p>
-          <p id="realisateur">Réalisateurs : studio Ghibli</p>
-          <p>  Résumé :</p>
+          <p id="realisateur">Realisateurs : studio Ghibli</p>
+          <p>  Resume :</p>
           <p id="resume">
 
               c est le meilleur film du monde bla bla bla bla
@@ -58,10 +61,20 @@
               c est le meilleur film du monde bla bla bla bla
           </p>
       </div>
+      <div id="suggestion" class="">
+       <div class="container marketing">
 
+      <div class="col-sm-12">
+      	<c:forEach var="v" items="${videos}">
+      	  <div class="card card-1">
+          	<img class="card card-1" src="Affiche/${v.id}.jpg">
+          </div>
+		</c:forEach>
+      </div>
+      
+      
+      </div>
 
-
-
-        <script src="../ressources/js/affiche_video.js"></script>
+        <script src="resources/js/affiche_video.js"></script>
     </body>
 </html>

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -12,13 +13,16 @@
 
     <title>Netflox</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="../resources/css/standard.css" rel="stylesheet">
-    <link href="../resources/css/index.css" rel="stylesheet">
+    <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/css/standard.css" rel="stylesheet">
+    <link href="resources/css/index.css" rel="stylesheet">
   </head>
+  
+  <c:if test = "${echec_connection == true}">
+    <script>
+    	alert("Erreur : Utilisateur ou mot de passe inconnue !");
+    </script>
+  </c:if>
 
 <!-- NAVBAR
 ================================================== -->
@@ -31,12 +35,6 @@
         <nav class="navbar navbar-inverse" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
             <a class="navbar-brand" href="#">Netflox</a>
           </div>
 
@@ -64,12 +62,26 @@
                 </div>
                 </form>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <button id="signbtn" type="button" class="btn btn-primary btn-lg round"data-toggle="modal" data-target="#signModal">
-                  Sign in / Sign up
-                </button></li>
-            </ul>
+           
+       <!-- bouton de la navbar -->
+			
+               <ul class="nav navbar-nav"> 
+				    <c:if test="${!empty sessionScope.client}">
+					   <li> <a href="/Projet-TER/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
+					   
+					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
+					    <a href="/Projet-TER/Subscribe"button type="button" class="btn btn-primary">Premium</a>
+				   	   </c:if>
+				   	    <c:if test = "${sessionScope.status.categorie == 'administrateur'}">
+					   	 <a href="/Projet-TER/Administration" class="btn btn-primary">administration</a>
+				   	   </c:if>	
+					   <a type="button" class="btn btn-danger" href="/Projet-TER/Deconnection">Deconnection</a>	
+					</c:if>
+					<c:if test="${empty sessionScope.client}">
+						<button id="signbtn" type="button" class="btn btn-primary btn-lg round" data-toggle="modal" data-target="#signModal">Sign in / Sign up</button>
+				    </c:if>
+				</ul> 
+                
           </div><!-- /.navbar-collapse -->
         </nav>
 
@@ -88,45 +100,20 @@
       </ol>
       <div class="carousel-inner" role="listbox">
 
-        <c:forEach var="film" items="${page.content}">
-          <div class="item active">
-            <img class="first-slide" src="****IDAFFICHE****" alt="First slide">
-            <div class="container">
 
-              <div class="carousel-caption">
-                  <h2 id="#C_nom">${film.nom}</h2>
-                  <article id="#C_article">${film.description}</article>
-                <p><a class="btn btn-primary btn-lg round" href="infoVideo.html" role="button">Lire plus</a></p>
-              </div>
-            </div>
-          </div>
-        </c:forEach>
-
-
-
-
-
-
-        <div class="item active">
-          <img class="first-slide" src="../Affiche/1.jpg" alt="First slide">
+      	<c:forEach var="c" items="${carroussel}" varStatus="s">
+        <div class="item <c:if test = "${carsl_supp[s.index] == 'first'}"> <c:out value='active' /></c:if>">
+          <img class="${carsl_supp[s.index]}-slide" src="Affiche/${c.id}.jpg" alt="slide">
           <div class="container">
 
             <div class="carousel-caption">
-                <h2 id="#C_nom">Star Wars - Les Derniers Jedi </h2>
-                <article id="#C_article"> Synopsis : Les héros du Réveil de la force rejoignent les figures légendaires de la galaxie dans
-                  une aventure épique qui révèle des secrets ancestraux sur la Force et entraîne de surpren...</article>
-              <p><a class="btn btn-primary btn-lg round" href="infoVideo.html" role="button">Lire plus</a></p>
+                <h2>${c.nomVideo}</h2>
+                <article> Synopsis : ${c.resume}</article>
+              <p><a class="btn btn-primary btn-lg round" href="/Projet-TER/DetailVideo?id=${c.id}" role="button">Lire plus</a></p>
             </div>
           </div>
         </div>
-        <div class="item">
-          <img class="second-slide" src="image/harry-potter-affiche.jpg" alt="Second slide">
-          <div class="container">
-            <div class="carousel-caption">
-              <p><a class="btn btn-primary btn-lg round" href="infoVideo.html" role="button">Lire plus</a></p>
-            </div>
-          </div>
-        </div>
+		</c:forEach>
 
       </div>
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -142,21 +129,21 @@
 
 
   <!--  ================================================== -->
-    <!--Video contenaer -->
+    <!--Video contener -->
 
     <div class="container marketing">
 
       <div class="col-sm-12">
-        <c:forEach >
-          <div class="card card-1">
-            <img class="first-slide" src="Affiche"+i+".jpg">
+      	<c:forEach var="v" items="${videos}">
+      	  <div class="card card-1">
+          	<img class="card card-1" src="Affiche/${v.id}.jpg">
           </div>
-        </c:forEach>
+		</c:forEach>
       </div>
 
 
 
-
+<!----------------------------inscription connection--------------------------------------------------------->
       <div class="modal fade" id="signModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -186,31 +173,45 @@
 
                   <div class="cont_back_info">
                      <div class="cont_img_back_grey">
-                       <img src="image/image_Film.jpg" alt="" />
+                       <img src="resources/image/image_Film.jpg" alt="" />
                      </div>
                   </div>
 
                   <div class="cont_forms" >
                     <div class="cont_img_back_">
-                      <img src="image/image_Film.jpg" alt="" />
+                      <img src="resources/image/image_Film.jpg" alt="" />
                     </div>
 
                     <div class="cont_form_login">
                       <a href="#" onclick="hide_login_sign_up()" ><i class="material-icons">X</i></a>
                       <h2>LOGIN</h2>
-                      <input type="text" placeholder="Email" />
-                      <input type="password" placeholder="Password" />
-                      <button class="btn_login" onclick="change_login()">LOGIN</button>
+                      <form method="post" action="Connection">
+	                      <input  class="form-control input-sm chat-input" name="pseudo" type="text" placeholder="Pseudo" />
+	                      </br>
+	                      <input class="form-control input-sm chat-input" name="mdp" type="password" placeholder="Password" />
+	                        </br>
+	                      <button type="submit" class="btn_login">LOGIN</button>
+                      </form>
                     </div>
-
+<!-- verification si le client est co ( pas de bouton ou deco) -->
                     <div class="cont_form_sign_up">
-                      <a href="#" onclick="hide_login_sign_up()"><i class="material-icons">X</i></a>
+                      <a  onclick="hide_login_sign_up()"><i class="material-icons">X</i></a>
                       <h2>SIGN UP</h2>
-                      <input type="text" placeholder="Email" />
-                      <input type="text" placeholder="User" />
-                      <input type="password" placeholder="Password" />
-                      <input type="password" placeholder="Confirm Password" />
-                      <button class="btn_sign_up" onclick="change_sign_up()">SIGN UP</button>
+                      <form method="post" action="Inscription" >
+	                      <input class="form-control input-sm chat-input" name="nom" type="text" placeholder="First Name" />
+	                      </br>
+	                      <input class="form-control input-sm chat-input" name="prenom" type="text" placeholder="Last Name" />
+	                      </br>
+	                      <input class="form-control input-sm chat-input"  name="pseudo" type="text" placeholder="Nickname" />
+	                      </br>
+	                      <input class="form-control input-sm chat-input"  name="email" type="text" placeholder="Email" />
+	                      </br> 
+	                      <input class="form-control input-sm chat-input" name="mdp"type="password" placeholder="Password" />
+	                      </br>  
+	                      <input class="form-control input-sm chat-input" name="verimdp" type="password" placeholder="Confirm Password" />
+	                      </br>  
+	                      <button  type="submit" class="btn_sign_up">SIGN UP</button>
+                      </form>
                     </div>
 
                   </div>
@@ -238,7 +239,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../resources/bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../resources/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../resources/js/index.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+    <script src="resources/js/index.js"></script>
   </body>
 </html>

@@ -461,13 +461,58 @@ public class DataBase {
 		res.next();
 		return res.getInt(1);
 	}
+	public List<Video> locationsCouranteUser(Client c)throws SQLException{
+		List<Video> videos = new ArrayList();
+		Video v;
+		String query = "select * from video where idVideo in (select idVideo from Location where idCLient = "+c.getId()+" and datefin >= CURRENT_DATE)order by idVideo";
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		while (res.next()) {
+			v = new Video(res.getInt(1), res.getString(2), res.getString(3), res.getInt(4), res.getString(5),
+					res.getInt(6), res.getDouble(7), res.getDouble(8));
+			videos.add(v);
+		}
+		
+		return videos;
+	}
+	public List<Video> vieilleLocationsUser(Client c)throws SQLException{
+		List<Video> videos = new ArrayList();
+		Video v;
+		String query = "select * from video where idVideo in (select idVideo from Location where idCLient = "+c.getId()+" and datefin < CURRENT_DATE) order by idVideo";
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		while (res.next()) {
+			v = new Video(res.getInt(1), res.getString(2), res.getString(3), res.getInt(4), res.getString(5),
+					res.getInt(6), res.getDouble(7), res.getDouble(8));
+			videos.add(v);
+		}
+		
+		return videos;
+	}
+	
+	public List<Video> achatsUser(Client c)throws SQLException{
+		List<Video> videos = new ArrayList();
+		Video v;
+		String query = "select * from video where idVideo in (select idVideo from Achat where idCLient = "+c.getId()+")";
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		while (res.next()) {
+			v = new Video(res.getInt(1), res.getString(2), res.getString(3), res.getInt(4), res.getString(5),
+					res.getInt(6), res.getDouble(7), res.getDouble(8));
+			videos.add(v);
+		}
+		
+		return videos;
+	}
 	
 	public static void main(String[] argv) throws ClassNotFoundException, SQLException {// permet de test fonction de la
 																						// bd
 		DataBase db = new DataBase();
-		Video v = new Video ("Black r","1",3);
-		v = db.retrouveridvianomnomgroupetnbepisode(v);
-		System.out.println(v.getId());
+		Client c = new Client (1);
+		List<Video> videos = db.locationsCouranteUser(c);
+		for (int i = 0; i<videos.size();i++) {
+			System.out.println( videos.get(i).getNomVideo());
+		}
 
 	}
 
