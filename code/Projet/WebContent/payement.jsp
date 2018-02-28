@@ -21,10 +21,15 @@
 
 
   </head>
+
+
+
 <body>
   <div class="container">
 
-           <div class="col-xs-5 col-md-5" id="pos">
+            <div class="col-xs-5 col-md-5" id="pos">
+
+
             <!-- CREDIT CARD FORM STARTS HERE -->
             <div class="panel panel-default credit-card-box">
               <div class="panel-heading display-table" >
@@ -33,15 +38,8 @@
                   <div class="display-td" >
                     <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
                   </div>
-                   
                 </div>
-              
               </div>
-                </br>
-                	<div id="detail">
-        					 <h3> Type : </h3>
-        					 <h3> Montant : </h3>
-        			</div>
             <div class="panel-body">
                 <form role="form" id="payment-form">
                     <div class="row">
@@ -112,8 +110,7 @@
             <!-- CREDIT CARD FORM ENDS HERE -->
             </div>
         </div>
-       
- 
+  </div>
 
   	<!-- If you're using Stripe for payments -->
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>

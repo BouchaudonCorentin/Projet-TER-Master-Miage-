@@ -7,12 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Administration")
-
-public class AdministrationServlet extends HttpServlet {
+@WebServlet("/Subscribe")
+public class SubscribeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public  AdministrationServlet() {
+    public  SubscribeServlet () {
         super();
     }
 
@@ -29,11 +28,7 @@ public class AdministrationServlet extends HttpServlet {
 				request.getSession().setAttribute("dbi", dbi);
 			}
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/administration.jsp");
-			request.setAttribute("nbvideo", dbi.afficheVideos().size());
-			request.setAttribute("nbMembre", dbi.listpseudoclients().size());
-			request.setAttribute("nbPremium", dbi.listMembrepremium());
-			
+			RequestDispatcher rd = request.getRequestDispatcher("/subscribe.jsp");
 			rd.forward(request, response);
 			
 			
