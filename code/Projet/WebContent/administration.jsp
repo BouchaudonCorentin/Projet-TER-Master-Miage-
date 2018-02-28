@@ -75,7 +75,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>${nbvideo}</h3>
+              <h3>150</h3>
 
               <p>Videos</p>
             </div>
@@ -90,7 +90,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>${nbMembre}<sup style="font-size: 20px"></sup></h3>
+              <h3>53<sup style="font-size: 20px"></sup></h3>
 
               <p>Members</p>
             </div>
@@ -105,7 +105,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>${nbPremium}</h3>
+              <h3>44</h3>
 
               <p>Premiums</p>
             </div>
@@ -143,23 +143,19 @@
 		  <!-- Panel ajouter video -->
 							<div class="tab-pane fade in active" id="tab1default">
 								<div id="AddVideo">
-									<input type="text" name="a_nom" class="form-control input-sm chat-input" placeholder="nom" />
+									<input type="text" id="d_nom" class="form-control input-sm chat-input" placeholder="nom" />
 										</br> 
-										<input type="text" name="a_categorie" class="form-control input-sm chat-input"placeholder="catégorie" /> 
+										<input type="text" id="d_catégorie" class="form-control input-sm chat-input"placeholder="catégorie" /> 
 										</br> 
-										<input type="text" name="a_motclef" class="form-control input-sm chat-input"placeholder="mots clefs" /> 
+										<input type="text" id="d_motclef" class="form-control input-sm chat-input"placeholder="mots clefs" /> 
 										</br> 
-										<input type="text" name="a_resume" class="form-control input-sm chat-input" placeholder="résumé" />
-										</br>
-										<input type="text" name="a_ep" class="form-control input-sm chat-input" placeholder=" n° episode" />
-										</br>
-										<input type="text" name="a_louer" class="form-control input-sm chat-input" placeholder=" prix location" />
-										</br>
-										<input type="text" name="a_achat" class="form-control input-sm chat-input" placeholder=" prix achat" />
+										<input type="text" id="d_resumé" class="form-control input-sm chat-input" placeholder="résumé" />
 										</br>
 									<div class="wrapper">
-										<span class="group-btn"> <a href="/Projet-TER/AdministrationTraitement?action=Add_Video" id="add_video" class="btn btn-danger btn-md">ajouter<i class="fa fa-sign-in"></i></a>
-										</span>               
+										<span class="group-btn"> <a href="#"
+											class="btn btn-danger btn-md">ajouter<i
+												class="fa fa-sign-in"></i></a>
+										</span>
 									</div>
 								</div>
 
@@ -168,15 +164,15 @@
 							<div class="tab-pane fade" id="tab2default">
 								<div id="DeleteVideo">
 
-									<input type="text" name="d_titre_V" class="form-control input-sm chat-input" placeholder="titre" />
+									<input type="text" id="d_titre_V" class="form-control input-sm chat-input" placeholder="titre" />
 									</br>
-									<input type="text" name="d_episode_V"class="form-control input-sm chat-input" placeholder="numéro d'épisode" />
+									<input type="text" id="d_episode_V"class="form-control input-sm chat-input" placeholder="numéro d'épisode" />
 									</br>
-									<input type="text" name="d_cat_V"class="form-control input-sm chat-input" placeholder="catégorie" />
+									<input type="text" id="d_cat_V"class="form-control input-sm chat-input" placeholder="catégorie" />
 									</br>
 									<div class="wrapper">
 										<span class="group-btn"> 
-											<a href="/Projet-TER/AdministrationTraitement?action=Del_Video" class="btn btn-danger btn-md">supprimer <i class="fa fa-sign-in"></i></a>
+											<a href="#" class="btn btn-danger btn-md">supprimer <i class="fa fa-sign-in"></i></a>
 										</span>
 									</div>
 								</div>
@@ -185,10 +181,11 @@
 			<!-- Panel ajout client  -->				
 							<div class="tab-pane fade" id="tab3default">
 								<div id="AddClient">
-									<input type="text" name="a_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" />
-									</br> <input type="text" name="a_pw" class="form-control input-sm chat-input" placeholder="password" /> </br>
+									<input type="text" id="a_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" />
+									</br> <input type="text" id="a_pw" class="form-control input-sm chat-input" placeholder="password" /> </br>
 									<div class="wrapper">
-										<span class="group-btn"> <a href="/Projet-TER/Administration?action=Add_Client" class="btn btn-danger btn-md">ajouter<i class="fa fa-sign-in"></i></a>
+										<span class="group-btn"> <a href="#"
+											class="btn btn-danger btn-md">ajouter<i class="fa fa-sign-in"></i></a>
 										</span>
 									</div>
 								</div>
@@ -198,11 +195,14 @@
 			<!-- Panel Supprime client  -->
 							<div class="tab-pane fade" id="tab4default">
 								<div id="DeleteClient">
-									<input type="text" name="d_id" class="form-control input-sm chat-input" placeholder="id" />
-									</br> <input type="text" name="d_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" />
+									<input type="text" id="d_id"
+										class="form-control input-sm chat-input" placeholder="id" />
+									</br> <input type="text" id="d_pseudo"
+										class="form-control input-sm chat-input" placeholder="pseudo" />
 									</br>
 									<div class="wrapper">
-										<span class="group-btn"> <a href="/Projet-TER/AdministrationTraitement?action=Del_Client"class="btn btn-danger btn-md">Supprimer</a>
+										<span class="group-btn"> <a href="#"
+											class="btn btn-danger btn-md">Supprimer</a>
 										</span>
 									</div>
 								</div>
@@ -212,12 +212,17 @@
 								<div class="tab-pane fade" id="tab5default">
 									<div id="pdf">
 									  <h3> Télécharger la liste des films du site </h3>
-										  <a id="audit" href="/Projet-TER/AdministrationTraitement?action=Audit" class="btn btn-danger btn-md">Audit</a>
-											<form methode="POST">
-												<input type="text" name="day" class="form-control" placeholder="Day" />
-												<input type="text" name="month" class="form-control" placeholder="Month" />
-												<input type="text" name="year" class="form-control" placeholder="Year" />
-                         						<a id="Ca" href="/Projet-TER/AdministrationTraitement?action=CA" class="btn btn-danger btn-md">Chiffre d'affaire </a>
+										  <a id="audit" class="btn btn-danger btn-md">Audit</a>
+											<form action="">
+												<input type="text" id="date"
+														class="form-control" placeholder="Day" />
+												<input type="text" id="date"
+														class="form-control" placeholder="Month" />
+												<input type="text" id="date"
+														class="form-control" placeholder="Year" />
+											
+                         						<a id="Ca" class="btn btn-danger btn-md">Chiffre d'affaire </a>
+                   						  		
 											</form>
 										
 									</div>

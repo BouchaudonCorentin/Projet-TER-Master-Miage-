@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/Administration")
-
 public class AdministrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,10 +29,6 @@ public class AdministrationServlet extends HttpServlet {
 			}
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/administration.jsp");
-			request.setAttribute("nbvideo", dbi.afficheVideos().size());
-			request.setAttribute("nbMembre", dbi.listpseudoclients().size());
-			request.setAttribute("nbPremium", dbi.listMembrepremium());
-			
 			rd.forward(request, response);
 			
 			

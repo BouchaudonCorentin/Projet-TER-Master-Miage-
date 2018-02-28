@@ -93,9 +93,9 @@
         </div>
 
         <div id="btnscol">
-          <a class="btn pulse-button"  id="rent" href="/Projet-TER/Payement"></a>
-          <a class="btn pulse-button"  id="dwl" href="/Projet-TER/Payement""></a>
-          <a class="btn pulse-button"  id="Premium" href="/Projet-TER/Payement""></a>
+          <a class="btn pulse-button"  id="rent" href="payement/payement.html"></a>
+          <a class="btn pulse-button"  id="dwl" href="payement/payement.html"></a>
+          <a class="btn pulse-button"  id="Premium" href="payement/payement.html"></a>
         </div>
 
       <!-- FOOTER -->

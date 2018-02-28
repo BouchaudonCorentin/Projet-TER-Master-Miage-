@@ -67,15 +67,15 @@
 			
                <ul class="nav navbar-nav"> 
 				    <c:if test="${!empty sessionScope.client}">
-					   <li> <a href="/Projet-TER/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
+					   <li> <a href="/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
 					   
 					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
-					    <a href="/Projet-TER/Subscribe"button type="button" class="btn btn-primary">Premium</a>
+					    <a href="/Subscribe"><button type="button" class="btn btn-primary">Premium</button></a>
 				   	   </c:if>
 				   	    <c:if test = "${sessionScope.status.categorie == 'administrateur'}">
-					   	 <a href="/Projet-TER/Administration" class="btn btn-primary">administration</a>
+					   	 <a href="/Administration"><button type="button" class="btn btn-primary">administration</button></a>
 				   	   </c:if>	
-					   <a type="button" class="btn btn-danger" href="/Projet-TER/Deconnection">Deconnection</a>	
+					   <a><button type="button" class="btn btn-danger">Deconnection</button></a>	
 					</c:if>
 					<c:if test="${empty sessionScope.client}">
 						<button id="signbtn" type="button" class="btn btn-primary btn-lg round" data-toggle="modal" data-target="#signModal">Sign in / Sign up</button>
@@ -109,7 +109,7 @@
             <div class="carousel-caption">
                 <h2>${c.nomVideo}</h2>
                 <article> Synopsis : ${c.resume}</article>
-              <p><a class="btn btn-primary btn-lg round" href="/Projet-TER/DetailVideo?id=${c.id}" role="button">Lire plus</a></p>
+              <p><a class="btn btn-primary btn-lg round" href="/infoVideo?id=${c.id}" role="button">Lire plus</a></p>
             </div>
           </div>
         </div>
