@@ -50,6 +50,7 @@ public class HomeServlet extends HttpServlet {
 				request.getSession().setAttribute("status", dbi.categorieclient(client));
 				request.getSession().setAttribute("client", client); // Si le client donn� n'existe pas, le client retourn� est � null
 				if(client == null) request.setAttribute("echec_connection", true);
+				
 			}else if(uri.equals("/Projet-TER/Inscription")){
 				String nom = request.getParameter("nom");
 				String prenom = request.getParameter("prenom");
