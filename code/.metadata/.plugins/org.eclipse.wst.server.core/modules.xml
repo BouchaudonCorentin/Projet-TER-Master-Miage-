@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<modules>
-  <module moduleId="org.eclipse.jst.jee.server:ProjectTER" serverId="Tomcat v9.0 Server at localhost (5)"/>
-  <module moduleId="org.eclipse.jst.jee.server:ECS_TP08" serverId="Tomcat v9.0 Server at localhost (4)"/>
-</modules>
