@@ -29,6 +29,10 @@ public class PayementServlet extends HttpServlet {
 			}
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/payement.jsp");
+			
+			int id= Integer.parseInt(request.getParameter("id")); 
+			String type = request.getParameter("type"); 
+			System.out.println(type);
 			rd.forward(request, response);
 			
 			

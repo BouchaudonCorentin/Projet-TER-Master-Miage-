@@ -30,11 +30,11 @@
 }
 #dwl
 {
-    background-color:#fdca32;
-    background-image: url("../image/download2.png");
+    background-color:#ffff66;
+    background-image: url("../image/pay.png");
     box-shadow: 0 0 0 0 rgb(246,212,42);
     margin-left: 5%;
-
+    color : #fff; 
 
 }
 
@@ -51,9 +51,8 @@
 #Premium
 {
     background-color:#77b3d4;
-    background-image: url("../image/unlocked.png");
-    box-shadow: 0 0 0 0 rgb(135,206,235);
-
+    background-image: url("../image/play.png");
+    box-shadow: 0 0 0 0 rgb(205,92,92);
     margin-left: 5%;
 
 }
@@ -152,16 +151,15 @@ body, html {
 #text {
    color: #FFFF;
    margin-left: 45%;
-   margin-top: 5%;
-   font-size:18px;
-   width:40%;
-   margin-bottom: 5%;
+   font-size:15px;
+   width:60%;
+ 
 }
 
 #nom {
   color: #FFFF;
-  margin-bottom: 80px;
-  font-size: 30px;
+  margin-bottom:20px;
+  font-size: 25px;
   margin-left: 45%;
   margin-top: -50%;
 }

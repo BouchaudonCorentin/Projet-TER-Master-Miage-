@@ -65,12 +65,12 @@
            
        <!-- bouton de la navbar -->
 			
-               <ul class="nav navbar-nav"> 
+               <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
 					   <li> <a href="/Projet-TER/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
 					   
 					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
-					    <a href="/Projet-TER/Subscribe"button type="button" class="btn btn-primary">Premium</a>
+					    <a href="/Projet-TER/Subscribe" type="button" class="btn btn-primary">Premium</a>
 				   	   </c:if>
 				   	    <c:if test = "${sessionScope.status.categorie == 'administrateur'}">
 					   	 <a href="/Projet-TER/Administration" class="btn btn-primary">administration</a>
@@ -136,7 +136,9 @@
       <div class="col-sm-12">
       	<c:forEach var="v" items="${videos}">
       	  <div class="card card-1">
-          	<img class="card card-1" src="Affiche/${v.id}.jpg">
+      	 <!-- gerer connection ou non -->
+      	 	 <a href="/Projet-TER/DetailVideo?idVideo=${v.id}" id="p-film">${v.nomVideo} </a>
+          	<img id="image-card" src="Affiche/${v.id}.jpg">
           </div>
 		</c:forEach>
       </div>
