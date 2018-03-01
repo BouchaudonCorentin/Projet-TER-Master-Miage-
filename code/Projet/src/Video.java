@@ -7,8 +7,8 @@ public class Video {
 	private String resume;
 	private int numepisode;
 	private int nbvue;
+	private int nbddl;
 	private double prixAchat;
-
 	private double prixLocation;
 	
 	
@@ -20,17 +20,28 @@ public class Video {
 	}
 	
 	
-	public Video(String nomVideo, String groupeVideo, int numepisode, String resume, int nbvue, double prixAchat,
+	public Video(String nomVideo, String groupeVideo, int numepisode, String resume, int nbvue,int nbddl, double prixAchat,
 			double prixLocation) {
 
 		this.nomVideo = nomVideo;
 		this.groupeVideo = groupeVideo;
 		this.numepisode = numepisode;
 		this.nbvue = nbvue;
+		this.nbddl = nbddl;
 		this.resume=resume;
 		this.prixAchat = prixAchat;
 		this.prixLocation = prixLocation;
 	}
+	public int getNbddl() {
+		return nbddl;
+	}
+
+
+	public void setNbddl(int nbddl) {
+		this.nbddl = nbddl;
+	}
+
+
 	public Video(int id,String nomVideo, String groupeVideo, int numepisode) {
 		this.id=id;
 		this.nomVideo = nomVideo;
@@ -49,13 +60,14 @@ public class Video {
 	public void setNumepisode(int numepisode) {
 		this.numepisode = numepisode;
 	}
-	public Video(int id, String nomVideo, String groupeVideo, int numepisode, String resume, int nbvue,  double prixAchat,
+	public Video(int id, String nomVideo, String groupeVideo, int numepisode, String resume, int nbvue,int nbddl,  double prixAchat,
 			double prixLocation) {
 		this.id = id;
 		this.nomVideo = nomVideo;
 		this.groupeVideo = groupeVideo;
 		this.numepisode = numepisode;
 		this.nbvue = nbvue;
+		this.nbddl = nbddl;
 		this.resume=resume;
 		this.prixAchat = prixAchat;
 		this.prixLocation = prixLocation;

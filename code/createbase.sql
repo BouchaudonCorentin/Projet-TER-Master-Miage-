@@ -16,6 +16,7 @@ create table Video(
     numEpisode integer,
     resume varchar (1000),
 	nbvue integer not null check (nbvue>=0),
+	nbddl integer not null check (nbvue>=0),	
 	prixAchat real not null check (prixAchat > 0),
 	prixLocation real not null check (prixLocation > 0)
 );
