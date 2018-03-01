@@ -29,7 +29,19 @@ public class DetailVideoServlet extends HttpServlet {
 				request.getSession().setAttribute("dbi", dbi);
 			}
 			
+			
 			RequestDispatcher rd = request.getRequestDispatcher("/infoVideo.jsp");
+			//recherche film 
+			int id= Integer.parseInt(request.getParameter("idVideo")); 
+			System.out.println(id);
+			request.setAttribute("id",id);
+			Video v = dbi.serachVideoByID(id);
+			request.setAttribute("nom", v.getNomVideo());
+			request.setAttribute("ep", v.getNumepisode());
+			request.setAttribute("achat", (double)Math.round(v.getPrixAchat() * 1000) / 1000 );
+			request.setAttribute("louer",(double)Math.round(v.getPrixLocation() * 1000) / 1000 );
+			request.setAttribute("resume", v.getResume());
+			request.setAttribute("saison", v.getGroupeVideo());
 			rd.forward(request, response);
 			
 			

@@ -142,14 +142,17 @@
 						<div class="tab-content">
 		  <!-- Panel ajouter video -->
 							<div class="tab-pane fade in active" id="tab1default">
-								<div id="AddVideo">
-									<input type="text" name="a_nom" class="form-control input-sm chat-input" placeholder="nom" />
+								<div id="AddVideo">	
+									  <form method="post" action="/Projet-TER/AdministrationTraitement?action=Add_Video" >
+										<input type="text" name="a_nom" class="form-control input-sm chat-input" placeholder="nom" />
 										</br> 
-										<input type="text" name="a_categorie" class="form-control input-sm chat-input"placeholder="catégorie" /> 
+										<input type="text" name="a_categorie" class="form-control input-sm chat-input"placeholder="catégorie 1=documentaire 2=film 3=série" /> 
 										</br> 
 										<input type="text" name="a_motclef" class="form-control input-sm chat-input"placeholder="mots clefs" /> 
 										</br> 
 										<input type="text" name="a_resume" class="form-control input-sm chat-input" placeholder="résumé" />
+										</br>
+										<input type="text" name="a_saison" class="form-control input-sm chat-input" placeholder=" saison" />
 										</br>
 										<input type="text" name="a_ep" class="form-control input-sm chat-input" placeholder=" n° episode" />
 										</br>
@@ -157,10 +160,8 @@
 										</br>
 										<input type="text" name="a_achat" class="form-control input-sm chat-input" placeholder=" prix achat" />
 										</br>
-									<div class="wrapper">
-										<span class="group-btn"> <a href="/Projet-TER/AdministrationTraitement?action=Add_Video" id="add_video" class="btn btn-danger btn-md">ajouter<i class="fa fa-sign-in"></i></a>
-										</span>               
-									</div>
+				                      <button  type="submit" class="btn btn-danger btn-md">Ajouter</button>
+	                     			 </form>
 								</div>
 
 							</div>
@@ -172,7 +173,7 @@
 									</br>
 									<input type="text" name="d_episode_V"class="form-control input-sm chat-input" placeholder="numéro d'épisode" />
 									</br>
-									<input type="text" name="d_cat_V"class="form-control input-sm chat-input" placeholder="catégorie" />
+									<input type="text" name="d_saison"class="form-control input-sm chat-input" placeholder="saison" />
 									</br>
 									<div class="wrapper">
 										<span class="group-btn"> 

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -38,7 +38,7 @@
 		                   <span class="icon-bar"></span>
 		                   <span class="icon-bar"></span>
 		                 </button>
-		                 <a class="navbar-brand" href="/index">Netflox</a>
+		                 <a class="navbar-brand" href="/Projet-TER/Home">Netflox</a>
 		               </div>
 		
 		               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -48,9 +48,9 @@
 		                   <li class="dropdown">
 		                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
 		                     <ul class="dropdown-menu">
-		                       <li><a href="/recherche?Documentaire">Documentaires</a></li>
-		                       <li><a href="recherche?Film">Films</a></li>
-		                       <li><a href="recherche?serie">Séries</a></li>
+		                       <li><a href="Projet-TER/recherche?cat=Documentaire">Documentaires</a></li>
+		                       <li><a href="Projet-TER/recherche?cat=Film">Films</a></li>
+		                       <li><a href="Projet-TER/recherche?cat=serie">Séries</a></li>
 		                     </ul>
 		                   </li>
 		                 </ul>
@@ -76,10 +76,14 @@
 
 
         <div>
-          <img id="prezImg" src="Affiche/1.jpg">
-          <h2 id="nom">Star Wars - Les Derniers Jedi </h2>
-          <article id="text"> Synopsis : Les hÃ©ros du RÃ©veil de la force rejoignent les figures lÃ©gendaires de la galaxie dans
-            une aventure Ã©pique qui rÃ©vÃ¨le des secrets ancestraux sur la Force et entraÃ®ne de surpren...</article>
+          <img id="prezImg" src="Affiche/${id}.jpg">
+          <h2 id="nom"> <B>${nom}</B></h2>
+           <p id="text"><B>Prix location : ${louer}</B></p>
+           <p id="text"><B>Prix achat : ${achat}</B></p>
+          <p id="text"><B>Synopsis : ${resume}</B></p>
+           </br>
+          <p id="text"> <B>EPISODE : ${ep}</B></p>
+          <p id="text"><B>SAISON : ${saison}</B></p>
 
 
             <ul class="rate-area">
@@ -93,15 +97,20 @@
         </div>
 
         <div id="btnscol">
-          <a class="btn pulse-button"  id="rent" href="/Projet-TER/Payement"></a>
-          <a class="btn pulse-button"  id="dwl" href="/Projet-TER/Payement""></a>
-          <a class="btn pulse-button"  id="Premium" href="/Projet-TER/Payement""></a>
+        
+         <c:if test = "${sessionScope.status.categorie == 'inscrit'}" >
+           <a class="btn pulse-button"  id="rent" href="/Projet-TER/Payement?type=Loc&id=${id}"></a>
+          	<a class="btn pulse-button"  id="dwl" href="/Projet-TER/Payement?type=Achat&id=${id}"></a>
+           </c:if>
+           <c:if test ="${!(sessionScope.status.categorie == 'inscrit')}">
+        	<a class="btn pulse-button"  id="Premium" href="/Projet-TER/AfficheVideo"></a>
+         </c:if>
         </div>
 
       <!-- FOOTER -->
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a>Terms</a></p>
       </footer>
 
     </div><!--container -->
