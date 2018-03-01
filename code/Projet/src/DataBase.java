@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-//Classe réalisé par Corentin Bouchaudon
+//Classe rï¿½alisï¿½ par Corentin Bouchaudon
 public class DataBase {
 
 	private Connection conn;
@@ -20,7 +20,7 @@ public class DataBase {
 		Class.forName("org.postgresql.Driver");
 		conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cbouch3_a", "cbouch3_a", "cbouch3_a");// remettre
 																													// tp-postgres
-																													// à
+																													// ï¿½
 																													// la
 																													// fac
 	}
@@ -101,10 +101,10 @@ public class DataBase {
 		Statement s = conn.createStatement();
 		Video video;
 		Boolean ok = false;
-		ResultSet res = s.executeQuery("select idVideo,nomVideo,groupeVideo,numEpisode,resume, nbVue,prixAchat,prixLocation from Video where nomVideo ='"+v.getNomVideo()+"' and groupeVideo = '" +v.getGroupeVideo() + "' and numEpisode = "	+ (v.getNumepisode()+1));		
+		ResultSet res = s.executeQuery("select idVideo,nomVideo,groupeVideo,numEpisode,resume, nbVue,prixAchat,prixLocation from Video where nomVideo ='"+v.getNomVideo()+"' and groupeVideo = '" +v.getGroupeVideo() + "' and numEpisode = "	+ (v.getNumepisode()+1));
 		if(res.next()) {
 			video = new Video(res.getInt("idVideo"), res.getString("nomVideo"), res.getString("groupeVideo"),res.getInt("numEpisode"), res.getString("resume"), res.getInt("nbvue"), res.getDouble("prixAchat"),res.getDouble("prixLocation"));
-			videos.add(video);	
+			videos.add(video);
 			ok =true;
 		}
 		List<Video> videosautres = new ArrayList();
@@ -121,7 +121,7 @@ public class DataBase {
 				video = new Video(res.getInt("idVideo"), res.getString("nomVideo"), res.getString("groupeVideo"),
 						res.getInt("numEpisode"), res.getString("resume"), res.getInt("nbvue"), res.getDouble("prixAchat"),
 						res.getDouble("prixLocation"));
-				
+
 				videosautres.add(video);
 			}
 		}
@@ -137,7 +137,7 @@ public class DataBase {
 				System.out.println("la");
 				videos.add(videosautres.get(j));
 			}
-		
+
 		}
 		return videos;
 	}
@@ -248,7 +248,7 @@ public class DataBase {
 
 	}
 
-	public List<Client> listpseudoclients() throws SQLException {// retourne la totalité des pseudo
+	public List<Client> listpseudoclients() throws SQLException {// retourne la totalitï¿½ des pseudo
 		List<Client> clients = new ArrayList();
 		String query = "select pseudo from CLient";
 		Statement s = conn.createStatement();
@@ -272,7 +272,7 @@ public class DataBase {
 		return cate;
 	}
 
-	public double afficheCA(Date date) throws SQLException {// affiche le CA apres date passer en param 
+	public double afficheCA(Date date) throws SQLException {// affiche le CA apres date passer en param
 		///////////WARNING////////////
 		/////////// Pour avoir 2018 il faut passer en parametre 2018-1900
 		/////////// Pour avoir Fevrier il faut passer en parametre 02-1
@@ -333,7 +333,7 @@ public class DataBase {
 		}
 	}
 
-	public boolean suppVideo(Video video) throws SQLException {// supprime la video passer en paramètre
+	public boolean suppVideo(Video video) throws SQLException {// supprime la video passer en paramï¿½tre
 		String query = "Delete From CompoVideo where idVideo ='" + video.getId() + "'";
 		String query2 = "Delete From Location where idVideo ='" + video.getId() + "'";
 		String query3 = "Delete From Achat where idVideo ='" + video.getId() + "'";
@@ -398,8 +398,8 @@ public class DataBase {
 		}
 	}
 
-	public List<Video> rechercheVideoCate(CategorieVideo cate) throws SQLException {// retourne les films appartenant à
-																					// une certaine catégorie
+	public List<Video> rechercheVideoCate(CategorieVideo cate) throws SQLException {// retourne les films appartenant ï¿½
+																					// une certaine catï¿½gorie
 		List<Video> videos = new ArrayList();
 		Video v = new Video();
 		String query = "select v.idVideo, nomVideo,groupevideo,numepisode,resume,nbvue,prixAchat,prixLocation from Video v, CompoVideo cv where v.idVideo=cv.idVideo and cv.idCategorieVideo ="
@@ -456,8 +456,8 @@ public class DataBase {
 		}else {};//video pas dans bd
 		return v;
 	}
-	
-	
+
+
 	public int listMembrepremium()throws SQLException{
 		List<CategorieClient> list = new ArrayList();
 		String query = "select count(*) from CompoClient where idCategorieClient = 2";
@@ -466,7 +466,7 @@ public class DataBase {
 		res.next();
 		return res.getInt(1);
 	}
-	
+
 	public List<Video> locationsCouranteUser(Client c)throws SQLException{//retourne les locations actif d'un user
 		List<Video> videos = new ArrayList();
 		Video v;
@@ -478,7 +478,7 @@ public class DataBase {
 					res.getInt(6), res.getDouble(7), res.getDouble(8));
 			videos.add(v);
 		}
-		
+
 		return videos;
 	}
 	public List<Video> vieilleLocationsUser(Client c)throws SQLException{//retourne les vieilles location d'un user
@@ -492,10 +492,10 @@ public class DataBase {
 					res.getInt(6), res.getDouble(7), res.getDouble(8));
 			videos.add(v);
 		}
-		
+
 		return videos;
 	}
-	
+
 	public List<Video> achatsUser(Client c)throws SQLException{// retourne les achats d'un user
 		List<Video> videos = new ArrayList();
 		Video v;
@@ -507,10 +507,10 @@ public class DataBase {
 					res.getInt(6), res.getDouble(7), res.getDouble(8));
 			videos.add(v);
 		}
-		
+
 		return videos;
 	}
-	
+
 	public List<MotClef> motClefvideo(Video v)throws SQLException{//retourne la list des mots clefs d'un video
 		List<MotClef>mc =new ArrayList();
 		String query = " select idMotClef from MotClefVideo where idVideo = "+v.getId();
@@ -521,7 +521,21 @@ public class DataBase {
 			mc.add(m);
 		}
 		return mc;
-		
+
+	}
+
+	public Video serachVideoByID(int id)throws SQLException{
+		String query = "select * from Video where idVideo="+id;
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		Video v;
+		if(res.next()) {
+			v = new Video(res.getInt(1), res.getString(2), res.getString(3), res.getInt(4), res.getString(5),
+					res.getInt(6), res.getDouble(7), res.getDouble(8));
+		}else { v= new Video(); }
+
+		return v;
+
 	}
 	public static void main(String[] argv) throws ClassNotFoundException, SQLException {// permet de test fonction de la
 																						// bd
@@ -536,5 +550,5 @@ public class DataBase {
 
 	}
 
-	 
+
 }
