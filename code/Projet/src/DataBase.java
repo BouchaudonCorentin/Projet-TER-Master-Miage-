@@ -572,6 +572,16 @@ public class DataBase {
 
 	}
 	
+	public int IdBypseudo(String pseudo) throws SQLException {// verifie si pseudo disponible
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery("select idClient from Client where pseudo ='" + pseudo + "'");
+		if (res.next()) {
+			return res.getInt(1);
+		} else {
+			return -1;
+		}
+	}
+	
 	public boolean modifVideo(Video v)throws SQLException{//on peux pas modifier le nom, le groupe, le num d'episode à cause des
 														  // suggestions, on ne peux pas modifier nbvue et nbddl car ça serait 
 														  //de la fraude 
@@ -599,6 +609,9 @@ public class DataBase {
 			return false;
 		}
 	}
+	
+
+	
 	public static void main(String[] argv) throws ClassNotFoundException, SQLException {// permet de test fonction de la
 																						// bd
 		DataBase db = new DataBase();

@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,12 +52,12 @@ public class AdministrationTraitementServlet extends HttpServlet {
 				
 				double louer = Double.parseDouble(request.getParameter("a_louer"));
 				double achat = Double.parseDouble(request.getParameter("a_achat"));
-				Video v = new Video(nom,saison,ep,resume,0,achat,louer);
+				Video v = new Video(nom,saison,ep,resume,0,0,achat,louer);
 				v.setId((dbi.recupDernierID().getId()+1));
 				CategorieVideo c = new CategorieVideo(cat); 
 				dbi.ajoutVideo(v, c, mc);
-				 
-			   
+				request.setAttribute("ajout_video", !dbi.videoExiste(v));
+				
 			  }else if (action.equals("Del_Video")){
 				  String titre = request.getParameter("d_titre_V");
 				  int ep = Integer.parseInt(request.getParameter("d_episode_V")); 
@@ -66,6 +67,7 @@ public class AdministrationTraitementServlet extends HttpServlet {
 	
 						  Video vid = dbi.retrouveridvianomnomgroupetnbepisode(v); 
 						  dbi.suppVideo(vid);
+						  request.setAttribute("echec_suppressionVideo", false);
 						
 					 }else {
 						 request.setAttribute("echec_suppressionVideo", true);
@@ -81,17 +83,24 @@ public class AdministrationTraitementServlet extends HttpServlet {
 					Client client;
 					
 					if (dbi.verifpseudo(pseudo) == false){
-						//request.setAttribute("echec_inscription", true); // ï¿½ modifier pour nouvelle erreur dans JSP !!
-						System.out.println("pseudo deja utilisé"); 
+					request.setAttribute("echec_inscription", true); 
 					}else {
 						client = dbi.inscription(new Client(nom,prenom,pseudo,mdp,email));
-						System.out.println("id client" + client.getId()); 
+						request.setAttribute("echec_inscription", true); 
 					}
 					
 			    
 			  }else if (action.equals("Del_Client")) {
-				  
-				  
+				  String pseudo = request.getParameter("d_pseudo");
+				  int id= dbi.IdBypseudo(pseudo); 
+				  Client c = new Client();
+				  c.setId(id);
+				  dbi.suppClient(c);
+					if (dbi.verifpseudo(pseudo) == false){
+						request.setAttribute("echec_suppressionclient", false); 
+						}else {
+							request.setAttribute("echec_suppressionclient", true); 
+						}
 			    
 			  }else if (action.equals("Audit")) {
 			      
@@ -108,6 +117,9 @@ public class AdministrationTraitementServlet extends HttpServlet {
 		}
 	
 	}
+
+
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
