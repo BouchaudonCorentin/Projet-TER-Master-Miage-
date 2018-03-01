@@ -54,22 +54,44 @@ public class AdministrationTraitementServlet extends HttpServlet {
 				Video v = new Video(nom,saison,ep,resume,0,achat,louer);
 				v.setId((dbi.recupDernierID().getId()+1));
 				CategorieVideo c = new CategorieVideo(cat); 
-				request.setAttribute("Add_Video", dbi.ajoutVideo(v, c, mc));
+				dbi.ajoutVideo(v, c, mc);
 				 
 			   
 			  }else if (action.equals("Del_Video")){
 				  String titre = request.getParameter("d_titre_V");
-				  int ep = Integer.parseInt(request.getParameter("d_ep_V")); //liste a gerer 
+				  int ep = Integer.parseInt(request.getParameter("d_episode_V")); 
 				  String saison = request.getParameter("d_saison");
 				  Video v = new Video (titre,saison,ep);
-				  Video i= dbi.retrouveridvianomnomgroupetnbepisode(v); 
-				  System.out.println(i.getId());
-				  request.setAttribute("Del_Video", dbi. suppVideo(i));
-				 
-				  
+					 if(!dbi.videoExiste(v)) {
+	
+						  Video vid = dbi.retrouveridvianomnomgroupetnbepisode(v); 
+						  dbi.suppVideo(vid);
+						
+					 }else {
+						 request.setAttribute("echec_suppressionVideo", true);
+					 }
+				   
 			  }else if (action.equals("Add_Client")) {
+					String nom = request.getParameter("a_nom");
+					String prenom = request.getParameter("a_prenom");
+					String pseudo = request.getParameter("a_pseudo");
+					String mdp = request.getParameter("a_mdp");
+					String email = request.getParameter("a_email");
+					System.out.println(nom+","+pseudo); 
+					Client client;
+					
+					if (dbi.verifpseudo(pseudo) == false){
+						//request.setAttribute("echec_inscription", true); // ï¿½ modifier pour nouvelle erreur dans JSP !!
+						System.out.println("pseudo deja utilisé"); 
+					}else {
+						client = dbi.inscription(new Client(nom,prenom,pseudo,mdp,email));
+						System.out.println("id client" + client.getId()); 
+					}
+					
 			    
 			  }else if (action.equals("Del_Client")) {
+				  
+				  
 			    
 			  }else if (action.equals("Audit")) {
 			      

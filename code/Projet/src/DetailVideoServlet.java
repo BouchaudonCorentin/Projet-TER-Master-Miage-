@@ -33,7 +33,6 @@ public class DetailVideoServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/infoVideo.jsp");
 			//recherche film 
 			int id= Integer.parseInt(request.getParameter("idVideo")); 
-			System.out.println(id);
 			request.setAttribute("id",id);
 			Video v = dbi.serachVideoByID(id);
 			request.setAttribute("nom", v.getNomVideo());

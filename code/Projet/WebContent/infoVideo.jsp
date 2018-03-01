@@ -98,11 +98,11 @@
 
         <div id="btnscol">
         
-         <c:if test = "${sessionScope.status.categorie == 'inscrit'}" >
-           <a class="btn pulse-button"  id="rent" href="/Projet-TER/Payement?type=Loc&id=${id}"></a>
+         <c:if test = "${sessionScope.status.getCategorie() == 'inscrit'}" >
+           	<a class="btn pulse-button"  id="rent" href="/Projet-TER/Payement?type=Loc&id=${id}"></a>
           	<a class="btn pulse-button"  id="dwl" href="/Projet-TER/Payement?type=Achat&id=${id}"></a>
-           </c:if>
-           <c:if test ="${!(sessionScope.status.categorie == 'inscrit')}">
+         </c:if>
+         <c:if test ="${sessionScope.status.getCategorie() == 'premium'}">
         	<a class="btn pulse-button"  id="Premium" href="/Projet-TER/AfficheVideo"></a>
          </c:if>
         </div>

@@ -12,10 +12,12 @@
         <meta name="administration" content="">
 
           <title>Netflox</title>
-         <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+         	<link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
           <link href="resources/css/standard.css" rel="stylesheet">
           <link href="resources/css/administrateur.css" rel="stylesheet">
         </head>
+
+
       <body class="bg">
       
          <div class="navbar-wrapper">
@@ -132,7 +134,10 @@
 							<li><a href="#tab2default" data-toggle="tab">Supprimer video </a></li>
 							<li><a href="#tab3default" data-toggle="tab">Ajouter User</a></li>
 							<li><a href="#tab4default" data-toggle="tab">Supprimer User</a></li>
+							<li><a href="#tab6default" data-toggle="tab">Modifier Client</a></li>
+							<li><a href="#tab7default" data-toggle="tab">Modifier Film</a></li>
 							<li><a href="#tab5default" data-toggle="tab">PDF</a></li>
+							
 
 						</ul>
 					</div><!-- tabbed head panel end -->
@@ -160,7 +165,7 @@
 										</br>
 										<input type="text" name="a_achat" class="form-control input-sm chat-input" placeholder=" prix achat" />
 										</br>
-				                      <button  type="submit" class="btn btn-danger btn-md">Ajouter</button>
+				                      <button  type="submit"  class="btn btn-danger btn-md">Ajouter</button>
 	                     			 </form>
 								</div>
 
@@ -168,7 +173,7 @@
 			<!-- Panel Suppression video -->
 							<div class="tab-pane fade" id="tab2default">
 								<div id="DeleteVideo">
-
+								<form method="post" action="/Projet-TER/AdministrationTraitement?action=Del_Video">	
 									<input type="text" name="d_titre_V" class="form-control input-sm chat-input" placeholder="titre" />
 									</br>
 									<input type="text" name="d_episode_V"class="form-control input-sm chat-input" placeholder="numéro d'épisode" />
@@ -176,9 +181,8 @@
 									<input type="text" name="d_saison"class="form-control input-sm chat-input" placeholder="saison" />
 									</br>
 									<div class="wrapper">
-										<span class="group-btn"> 
-											<a href="/Projet-TER/AdministrationTraitement?action=Del_Video" class="btn btn-danger btn-md">supprimer <i class="fa fa-sign-in"></i></a>
-										</span>
+									<button  type="submit"  class="btn btn-danger btn-md">supprimer </button>
+									</form>
 									</div>
 								</div>
 							</div>
@@ -186,26 +190,31 @@
 			<!-- Panel ajout client  -->				
 							<div class="tab-pane fade" id="tab3default">
 								<div id="AddClient">
-									<input type="text" name="a_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" />
-									</br> <input type="text" name="a_pw" class="form-control input-sm chat-input" placeholder="password" /> </br>
-									<div class="wrapper">
-										<span class="group-btn"> <a href="/Projet-TER/Administration?action=Add_Client" class="btn btn-danger btn-md">ajouter<i class="fa fa-sign-in"></i></a>
-										</span>
+									<form method="post" action="/Projet-TER/AdministrationTraitement?action=Add_Client">
+										<input type="text" name="a_nom" class="form-control input-sm chat-input" placeholder="nom" />
+										</br> 
+										<input type="text" name="a_prenom" class="form-control input-sm chat-input" placeholder="prenom" />
+										</br> 
+										<input type="text" name="a_email" class="form-control input-sm chat-input" placeholder="email" />
+										</br> 
+										<input type="text" name="a_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" />
+										</br> 
+										<input type="text" name="a_mdp" class="form-control input-sm chat-input" placeholder="password" /> 
+										</br>
+										<button type="submit"  class="btn btn-danger btn-md">ajouter</button>
+									</form>
 									</div>
 								</div>
-
-
-							</div>
 			<!-- Panel Supprime client  -->
 							<div class="tab-pane fade" id="tab4default">
 								<div id="DeleteClient">
+								<form method="post" action="/Projet-TER/AdministrationTraitement?action=Del_Client">
 									<input type="text" name="d_id" class="form-control input-sm chat-input" placeholder="id" />
-									</br> <input type="text" name="d_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" />
+									</br> 
+									<input type="text" name="d_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" />
 									</br>
-									<div class="wrapper">
-										<span class="group-btn"> <a href="/Projet-TER/AdministrationTraitement?action=Del_Client"class="btn btn-danger btn-md">Supprimer</a>
-										</span>
-									</div>
+									<button type="submit" id="Ca"class="btn btn-danger btn-md">supprimer </button>
+									</form>
 								</div>
 							</div>
 							
@@ -213,31 +222,69 @@
 								<div class="tab-pane fade" id="tab5default">
 									<div id="pdf">
 									  <h3> Télécharger la liste des films du site </h3>
-										  <a id="audit" href="/Projet-TER/AdministrationTraitement?action=Audit" class="btn btn-danger btn-md">Audit</a>
-											<form methode="POST">
+										  <a  type="submit" id="audit" href="/Projet-TER/AdministrationTraitement?action=Audit" class="btn btn-danger btn-md">Audit</a>
+											<form method="post" action="/AdministrationTraitement?action=CA" >
 												<input type="text" name="day" class="form-control" placeholder="Day" />
 												<input type="text" name="month" class="form-control" placeholder="Month" />
 												<input type="text" name="year" class="form-control" placeholder="Year" />
-                         						<a id="Ca" href="/Projet-TER/AdministrationTraitement?action=CA" class="btn btn-danger btn-md">Chiffre d'affaire </a>
+                         						<button type="submit" id="Ca"class="btn btn-danger btn-md">Chiffre d'affaire </button>
 											</form>
 										
 									</div>
 								</div>
+								
+								
+	<!-- Panel modifier client  -->				
+							<div class="tab-pane fade" id="tab6default">
+								<div id="ModifierClient">
+									<form method="post" action="/Projet-TER/AdministrationTraitement?action=Mod_Client">
+									 <h3>Eléments de recherche</h3>
+										<input type="text" name="m_nom" class="form-control input-sm chat-input" placeholder="nom" />
+										</br> 
+										<input type="text" name="m_prenom" class="form-control input-sm chat-input" placeholder="prenom" />
+										</br> 
+										<h3>Eléments a modifier</h3>
+										<input type="text" name="m_email" class="form-control input-sm chat-input" placeholder="email" />
+										</br> 
+										<input type="text" name="m_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" />
+										</br> 
+										<input type="text" name="m_mdp" class="form-control input-sm chat-input" placeholder="password" /> 
+										</br>
+										<button type="submit"  class="btn btn-danger btn-md">Modifier</button>
+									</form>
+									</div>
+								</div>
+								
+								
+							<div class="tab-pane fade" id="tab7default">
+							<div id="ModifieVideo">
+								<form method="post" action="/Projet-TER/AdministrationTraitement?action=Mod_Video">	
+								  <h3>Eléments de recherche</h3>
+									<input type="text" name="m_resume" class="form-control input-sm chat-input" placeholder="nom " />
+									</br>
+									<input type="text" name="m_resume" class="form-control input-sm chat-input" placeholder="episode " />
+									</br>
+									<input type="text" name="m_resume" class="form-control input-sm chat-input" placeholder="saison " />
+									</br>
+									<h3>Eléments a modifier</h3>
+									<input type="text" name="m_resume" class="form-control input-sm chat-input" placeholder="resumé " />
+									</br>
+									<input type="text" name="m_location"class="form-control input-sm chat-input" placeholder="prix location " />
+									</br>
+									<input type="text" name="m_achat"class="form-control input-sm chat-input" placeholder="prix achat " />
+									</br>
+									<div class="wrapper">
+									<button  type="submit"  class="btn btn-danger btn-md">supprimer </button>
+									</form>
+								</div>
+								</div>
+							</div>
 						</div> <!-- fin tab-content-->
 					</div><!-- fin body panel -->
 				</div>
 			</div>
-					<span class="group-btn">
-                       
-                     </span>
                      
-                     	
-      	</div>
-      </div>
-      
-
-
-
+    
 
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
