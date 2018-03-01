@@ -229,7 +229,7 @@ public class DataBase {
 				} else {
 					query = "insert into ChiffreAffaire values (" + 1 + ",'CURRENT_DATE',100)";
 				}
-				int boobs = s.executeUpdate(query);
+				s.executeUpdate(query);
 			}
 		} catch (Exception e) {
 		}
@@ -249,7 +249,7 @@ public class DataBase {
 	}
 
 	public List<Client> listpseudoclients() throws SQLException {// retourne la totalité des pseudo
-		List<Client> clients = new ArrayList();
+		List<Client> clients = new ArrayList<Client>();
 		String query = "select pseudo from CLient";
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
@@ -261,7 +261,7 @@ public class DataBase {
 	}
 
 	public List<CategorieClient> liststatus() throws SQLException {// retourne les categorie de tout les user
-		List<CategorieClient> cate = new ArrayList();
+		List<CategorieClient> cate = new ArrayList<CategorieClient>();
 		String query = "select nomCategorieClient from CategorieClient cc,CompoClient ccl where cc.idCategorieClient = ccl.idCategorieClient";
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
@@ -400,7 +400,7 @@ public class DataBase {
 
 	public List<Video> rechercheVideoCate(CategorieVideo cate) throws SQLException {// retourne les films appartenant à
 																					// une certaine catégorie
-		List<Video> videos = new ArrayList();
+		List<Video> videos = new ArrayList<Video>();
 		Video v = new Video();
 		String query = "select v.idVideo, nomVideo,groupevideo,numepisode,resume,nbvue,prixAchat,prixLocation from Video v, CompoVideo cv where v.idVideo=cv.idVideo and cv.idCategorieVideo ="
 				+ cate.getId();
@@ -417,9 +417,9 @@ public class DataBase {
 
 	public List<Video> afficheVideosansDoublon() throws SQLException {// affiche les films/Documentaire/Serie(sans
 																		// doublon)
-		List<Video> videos = new ArrayList();
-		List<Video>videosreturn = new ArrayList();
-		List<Integer>idvideos = new ArrayList();
+		List<Video> videos = new ArrayList<Video>();
+		List<Video>videosreturn = new ArrayList<Video>();
+		List<Integer>idvideos = new ArrayList<Integer>();
 		Video v = new Video();
 		String query = "select Distinct(nomVideo) from Video";
 		Statement s = conn.createStatement();
@@ -459,7 +459,6 @@ public class DataBase {
 	
 	
 	public int listMembrepremium()throws SQLException{
-		List<CategorieClient> list = new ArrayList();
 		String query = "select count(*) from CompoClient where idCategorieClient = 2";
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
@@ -468,7 +467,7 @@ public class DataBase {
 	}
 	
 	public List<Video> locationsCouranteUser(Client c)throws SQLException{//retourne les locations actif d'un user
-		List<Video> videos = new ArrayList();
+		List<Video> videos = new ArrayList<Video>();
 		Video v;
 		String query = "select * from video where idVideo in (select idVideo from Location where idCLient = "+c.getId()+" and datefin >= CURRENT_DATE)order by idVideo";
 		Statement s = conn.createStatement();
@@ -482,7 +481,7 @@ public class DataBase {
 		return videos;
 	}
 	public List<Video> vieilleLocationsUser(Client c)throws SQLException{//retourne les vieilles location d'un user
-		List<Video> videos = new ArrayList();
+		List<Video> videos = new ArrayList<Video>();
 		Video v;
 		String query = "select * from video where idVideo in (select idVideo from Location where idCLient = "+c.getId()+" and datefin < CURRENT_DATE) order by idVideo";
 		Statement s = conn.createStatement();
@@ -497,7 +496,7 @@ public class DataBase {
 	}
 	
 	public List<Video> achatsUser(Client c)throws SQLException{// retourne les achats d'un user
-		List<Video> videos = new ArrayList();
+		List<Video> videos = new ArrayList<Video>();
 		Video v;
 		String query = "select * from video where idVideo in (select idVideo from Achat where idCLient = "+c.getId()+")";
 		Statement s = conn.createStatement();
@@ -512,7 +511,7 @@ public class DataBase {
 	}
 	
 	public List<MotClef> motClefvideo(Video v)throws SQLException{//retourne la list des mots clefs d'un video
-		List<MotClef>mc =new ArrayList();
+		List<MotClef>mc =new ArrayList<MotClef>();
 		String query = " select idMotClef from MotClefVideo where idVideo = "+v.getId();
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
