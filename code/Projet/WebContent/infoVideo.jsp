@@ -79,8 +79,8 @@
         <div>
           <img id="prezImg" src="Affiche/${id}.jpg">
           <h2 id="nom"> <B>${nom}</B></h2>
-           <p id="text"><B>Prix location : ${louer}</B></p>
-           <p id="text"><B>Prix achat : ${achat}</B></p>
+           <p id="text"><B>Prix location : ${p_louer}</B></p>
+           <p id="text"><B>Prix achat : ${p_achat}</B></p>
           <p id="text"><B>Synopsis : ${resume}</B></p>
            </br>
           <p id="text"> <B>EPISODE : ${ep}</B></p>
@@ -100,14 +100,21 @@
         <div id="btnscol">
         
          <c:if test = "${sessionScope.status.getCategorie() == 'inscrit'}" >
-         
-		         	<a class="btn pulse-button"  id="rent" href="/Projet-TER/Payement?type=Location&id=${id}"></a>
-          			<a class="btn pulse-button"  id="dwl" href="/Projet-TER/Payement?type=Achat&id=${id}"></a>
-          		
-          		
-         </c:if>
-         
-         
+         			
+			      <c:choose>
+			    	<c:when test = "${achat == true}">
+			       		<button class="btn btn-default btn-danger" type="submit">TELECHARGER</button>
+			    	</c:when>
+			    	<c:when test = "${louer == true}">
+			       		<button class="btn btn-default btn-danger" type="submit">REGARDER</button>
+			    	</c:when>
+			    	<c:otherwise>
+			       			<a class="btn pulse-button"  id="rent" href="/Projet-TER/Payement?type=Location&id=${id}"></a>
+			          		<a class="btn pulse-button"  id="dwl" href="/Projet-TER/Payement?type=Achat&id=${id}"></a>
+			   		 </c:otherwise>
+				</c:choose>
+         </c:if>			
+		         
          <c:if test ="${sessionScope.status.getCategorie() == 'premium'}">
         	<a class="btn pulse-button"  id="Premium" href="/Projet-TER/AfficheVideo?idvideo=${id}"></a>
          </c:if>
@@ -117,11 +124,7 @@
   
        
 
-      <!-- FOOTER -->
-      <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a>Terms</a></p>
-      </footer>
+     
 
     </div><!--container -->
 

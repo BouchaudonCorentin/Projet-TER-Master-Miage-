@@ -8,12 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-
     <title>Netflox</title>
-
     <link href="resources/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="resources/css/payement.css" rel="stylesheet">
    <!--   <link href="resources/js/payement.js" rel="stylesheet">-->
@@ -50,10 +45,8 @@
                             <div class="form-group">
                             <label for="cardNumber">CARD NUMBER</label>
                                 <div class="input-group">
-                                    <input class="form-control" name="cardNumber"placeholder="Valid Card Number"
-                            
-                                    />
-                                <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    <input class="form-control" name="cardNumber"placeholder="Valid Card Number"/>
+                       
                                 </div>
                             </div>
                         </div>
@@ -63,13 +56,13 @@
                       <div class="form-group">
                     <label> <span>EXPIRATION</span><span >EXP</span> DATE</label>
                       <input
-                           class="form-control" placeholder="MM / YY" required/>
+                           class="form-control" placeholder="MM / YY"/>
                       </div>
                   </div>
                   <div class="col-xs-5 col-md-5 pull-right">
                       <div class="form-group">
                         <label>CV CODE</label>
-                        <input  name="cardCVC" class="form-control" placeholder="CVC" required/>
+                        <input  name="cardCVC" class="form-control" placeholder="CVC" />
                       </div>
                   </div>
                 </div>
@@ -84,9 +77,9 @@
             <!-- CREDIT CARD FORM ENDS HERE -->
             </div>
         </div>
-  </div>
+  
 
   	<!-- If you're using Stripe for payments -->
-  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+ 
 </body>
 </html>

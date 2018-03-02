@@ -45,14 +45,18 @@ public class DetailVideoServlet extends HttpServlet {
 			Video v = dbi.searchVideoByID(id);
 			request.setAttribute("nom", v.getNomVideo());
 			request.setAttribute("ep", v.getNumepisode());
-			request.setAttribute("achat", (double)Math.round(v.getPrixAchat() * 1000) / 1000 );
-			request.setAttribute("louer",(double)Math.round(v.getPrixLocation() * 1000) / 1000 );
+			request.setAttribute("p_achat", (double)Math.round(v.getPrixAchat() * 1000) / 1000 );
+			request.setAttribute("p_louer",(double)Math.round(v.getPrixLocation() * 1000) / 1000 );
 			request.setAttribute("resume", v.getResume());
 			request.setAttribute("saison", v.getGroupeVideo());
 			//verifier client connecté
-			//Client c = (Client) request.getSession().getAttribute("client");
-			//request.setAttribute("loue", dbi.locationsCouranteUser(c));
-			//request.setAttribute("achat", false);
+			Client c = (Client) request.getSession().getAttribute("client");
+			if(c!=null) {
+				request.setAttribute("louer", dbi.isRent(c, v));
+				request.setAttribute("achat", dbi.isBuy(c, v));
+				System.out.println(dbi.isBuy(c, v));
+			}
+			
 			rd.forward(request, response);
 			
 			

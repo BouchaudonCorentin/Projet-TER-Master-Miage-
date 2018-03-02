@@ -52,7 +52,7 @@ public class HomeServlet extends HttpServlet {
 
 				String pseudo = request.getParameter("pseudo");
 				String mdp = request.getParameter("mdp");
-
+				
 				Client client = dbi.connection(new Client(pseudo, mdp));
 				if(client == null){
 					request.setAttribute("echec_connection", true);
