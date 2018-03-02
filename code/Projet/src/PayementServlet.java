@@ -42,21 +42,23 @@ public class PayementServlet extends HttpServlet {
 			String type = request.getParameter("type");
 			Video v = dbi.searchVideoByID(id);
 			Client c = (Client) request.getSession().getAttribute("client"); 
-			Boolean b=false; 
+			Boolean b = true;
 			
 		if(type.equals("Location")) {
 			request.setAttribute("prix",(double)Math.round(v.getPrixLocation() * 1000) / 1000 );
 			b=dbi.louer(c,v); 
+			
 		}else if(type.equals("Achat")) {
 			request.setAttribute("prix", (double)Math.round(v.getPrixAchat() * 1000) / 1000 );
-			b=dbi.acheter(c, v);
-			
+			b=dbi.acheter(c,v);
+			System.out.println("au equal " +b);
 		}
-		System.out.println(b);
+	
 		request.setAttribute("action_reussi",b);
 		request.setAttribute("type",type);
-		request.setAttribute("idvideo",id);
-		request.setAttribute("nom", v.getNomVideo());;
+		request.setAttribute("idVideo",id);
+		request.setAttribute("nom", v.getNomVideo());
+		System.out.println(id);
 		rd.forward(request, response);
 			
 			

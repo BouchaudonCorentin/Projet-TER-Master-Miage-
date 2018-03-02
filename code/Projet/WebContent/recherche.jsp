@@ -12,14 +12,15 @@
     <title>Netflox</title>
 
     <link href="resources/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="ressources/css/recherche.css" rel="stylesheet">
-    <link href="resources/js/recherche.js" rel="stylesheet">
+    <link href="ressources/css/recherche.css" rel="stylesheet">    
+    <link href="ressources/css/standard.css" rel="stylesheet">
+    <link href="ressources/css/index.css" rel="stylesheet">
 
 
 
   </head>
   <body class="bg">
-      <div class="navbar-wrapper">
+ <div class="navbar-wrapper">
       <div class="container">
 
         <nav class="navbar navbar-inverse" role="navigation">
@@ -31,42 +32,30 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Documentaires</a></li>
-                  <li><a href="#">Films</a></li>
-                  <li><a href="#">Séries</a></li>
-                </ul>
-              </li>
-            </ul>
-            <div class="col-sm-3 col-md-3">
-                <form class="navbar-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="q">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
-                </div>
-                </form>
-            </div>
-           
-       <!-- bouton de la navbar -->
-			
+              <li class="active"><a href="#">Contactez nous </a></li>
+   
                <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
-					   <li> <a href="/Projet-TER/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a> </li>	
-					   <a type="button" class="btn btn-danger" href="/Projet-TER/Deconnection">Deconnection</a>	
-					</c:if>
+					   <li> <a href="/Projet-TER/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
+				    </c:if>
 				</ul> 
-                
           </div><!-- /.navbar-collapse -->
         </nav>
 
       </div>
     </div>
+    <div class="container marketing">
+
+      <div class="col-sm-12">
+      	<c:forEach var="v" items="${videos}">
+      	  <div class="card card-1">
+      	 	 <a href="/Projet-TER/DetailVideo?idVideo=${v.id}" id="p-film">${v.nomVideo} </a>
+          	<img id="image-card" src="Affiche/${v.id}.jpg">
+          </div>
+		</c:forEach>
+      </div>
+     </div>
+
   
   </body>
 </html>

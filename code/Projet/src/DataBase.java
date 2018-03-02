@@ -64,7 +64,7 @@ public class DataBase {
 		ResultSet res = s.executeQuery("select max(idClient) from Client");//retourne l'ide max de client
 		if (res.next()) {//si il y a un resultat incremente l'id
 			client.setId(res.getInt(1) + 1);
-		} else {//sinon met l'id à 1
+		} else {//sinon met l'id ï¿½ 1
 			client.setId(1);
 		}
 		//insert le client dans la base  avec  ces infos
@@ -102,9 +102,9 @@ public class DataBase {
 		Statement s = conn.createStatement();
 		Video video;
 		Boolean ok = false;
-		//permet si c'est une série d'avoir l'episode suivant
+		//permet si c'est une sï¿½rie d'avoir l'episode suivant
 		ResultSet res = s.executeQuery("select idVideo,nomVideo,groupeVideo,numEpisode,resume, nbVue,nbddl,prixAchat,prixLocation from Video where nomVideo ='"+v.getNomVideo()+"' and groupeVideo = '" +v.getGroupeVideo() + "' and numEpisode = "	+ (v.getNumepisode()+1));
-		if(res.next()) {//on ajoute l'episode suivant à la liste s'il existe
+		if(res.next()) {//on ajoute l'episode suivant ï¿½ la liste s'il existe
 			video = new Video(res.getInt("idVideo"), res.getString("nomVideo"), res.getString("groupeVideo"),res.getInt("numEpisode"), res.getString("resume"), res.getInt("nbvue"),res.getInt("nbddl"), res.getDouble("prixAchat"),res.getDouble("prixLocation"));
 			videos.add(video);
 			ok =true;//permet de savoir ensuite si on a trouver l'episode suivant
@@ -262,7 +262,7 @@ public class DataBase {
 	}
 
 
-	public List<Client> listpseudoclients() throws SQLException {// retourne la totalité des pseudo
+	public List<Client> listpseudoclients() throws SQLException {// retourne la totalitï¿½ des pseudo
 		List<Client> clients = new ArrayList<Client>();
 		String query = "select pseudo from CLient";//retourne tout les pseudos de la BD
 		Statement s = conn.createStatement();
@@ -307,7 +307,7 @@ public class DataBase {
 				+ video.getNbvue() + ","+video.getNbddl()+"," + video.getPrixAchat() + "," + video.getPrixLocation() + ")";//creer une video
 		Statement s = conn.createStatement();
 		int res = s.executeUpdate(query);
-		if (res == 1) {//si la video a été inseré dans la BD
+		if (res == 1) {//si la video a ï¿½tï¿½ inserï¿½ dans la BD
 			query = "insert into CompoVideo values (" + video.getId() + "," + cate.getId() + ")";//on ajoute sa categorie
 			res = s.executeUpdate(query);
 			if (res == 1) {
@@ -438,12 +438,12 @@ public class DataBase {
 	}
 
 
-	public List<Video> rechercheVideoCate(CategorieVideo cate) throws SQLException {// retourne les films appartenant à
-																					// une certaine catégorie
+	public List<Video> rechercheVideoCate(CategorieVideo cate) throws SQLException {// retourne les films appartenant ï¿½
+																					// une certaine catï¿½gorie
 		List<Video> videos = new ArrayList<Video>();
 		Video v = new Video();
 		String query = "select v.idVideo, nomVideo,groupevideo,numepisode,resume,nbvue,nbddl,prixAchat,prixLocation from Video v, CompoVideo cv where v.idVideo=cv.idVideo and cv.idCategorieVideo ="
-				+ cate.getId();//retourne toute les videos qui corresponde à la categorie
+				+ cate.getId();//retourne toute les videos qui corresponde ï¿½ la categorie
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
 		while (res.next()) {
@@ -577,12 +577,12 @@ public class DataBase {
 
 	}
 	
-	public boolean modifVideo(Video v)throws SQLException{//on peux pas modifier le nom, le groupe, le num d'episode à cause des
-														  // suggestions, on ne peux pas modifier nbvue et nbddl car ça serait 
+	public boolean modifVideo(Video v)throws SQLException{//on peux pas modifier le nom, le groupe, le num d'episode ï¿½ cause des
+														  // suggestions, on ne peux pas modifier nbvue et nbddl car ï¿½a serait 
 														  //de la fraude 
 		
 		String query = " Update Video SET resume ='"+v.getResume()+"' and prixlocation = "+v.getPrixLocation()+" and prixachat ="+v.getPrixAchat()+
-				"where idVideo = "+v.getId();//modifie les paramètres modifiables de la video c'est à dire le resume et les prix
+				"where idVideo = "+v.getId();//modifie les paramï¿½tres modifiables de la video c'est ï¿½ dire le resume et les prix
 		Statement s = conn.createStatement();
 		int res = s.executeUpdate(query);
 		if (res == 1) {
@@ -595,7 +595,7 @@ public class DataBase {
 															//ou de nom
 		
 		String query = " Update Video SET pseudo ='"+c.getPseudo()+"' and mdp = "+c.getMdp()+" and email ="+c.getEmail()+
-				"where idClient = "+c.getId();//modifie les paramètres modifiable d'un  client on part du principe qu'il peux pas changer de nom et prenom
+				"where idClient = "+c.getId();//modifie les paramï¿½tres modifiable d'un  client on part du principe qu'il peux pas changer de nom et prenom
 		Statement s = conn.createStatement();
 		int res = s.executeUpdate(query);
 		if (res == 1) {
@@ -620,7 +620,7 @@ public class DataBase {
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
 		res.next();
-		if(res.getInt(1)==1) {
+		if(res.getInt(1)>=1) {
 			return true;
 		}else {
 			return false;
@@ -642,7 +642,7 @@ public class DataBase {
 	public static void main(String[] argv) throws ClassNotFoundException, SQLException {// permet de test fonction de la
 																						// bd
 		DataBase db = new DataBase();
-		Video v = new Video (100,"Star Trek Discovery","1",1,"Après un siècle de silence, les klingons refont surface. Déterminés à réunifier leur empire, ils déclarent la guerre à la Fédération des planètes unies. Officier en disgrâce de la Starfleet, Michael Burnham se retrouve au centre du conflit.",200,100, 1.99,3.99);
+		Video v = new Video (100,"Star Trek Discovery","1",1,"Aprï¿½s un siï¿½cle de silence, les klingons refont surface. Dï¿½terminï¿½s ï¿½ rï¿½unifier leur empire, ils dï¿½clarent la guerre ï¿½ la Fï¿½dï¿½ration des planï¿½tes unies. Officier en disgrï¿½ce de la Starfleet, Michael Burnham se retrouve au centre du conflit.",200,100, 1.99,3.99);
 		Client c = new Client(1);
 		db.louer(c, v);
 

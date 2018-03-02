@@ -39,7 +39,7 @@
                 
               </div>
             <div class="panel-body">
-                <form id="payment-form">
+                <form id="payment-form" method="post" action="/Projet-TER/DetailVideo?idVideo=${idVideo}">
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group">
@@ -68,7 +68,7 @@
                 </div>
                   <div class="row">
                     <div class="col-xs-12">
-                        <button href="/Projet-TER/AfficheVideo?idVideo=${idVideo}" class="btn btn-success btn-lg btn-block" type="submit">PAYER</button>
+                        <button class="btn btn-success btn-lg btn-block" type="submit">PAYER</button>
                     </div>
                   </div>
                 </form>
