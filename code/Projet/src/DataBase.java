@@ -304,7 +304,7 @@ public class DataBase {
 	public boolean ajoutVideo(Video video, CategorieVideo cate, List<MotClef> mc) throws SQLException {// avant	cette fonction appeler recupdernierid incrementer le res par 1 puis faire setID
 		String query = "insert into video values (" + video.getId() + ",'" + video.getNomVideo() + "','"
 				+ video.getGroupeVideo() + "'," + video.getNumepisode() + ",'" + video.getResume() + "',"
-				+ video.getNbvue() + "," + video.getPrixAchat() + "," + video.getPrixLocation() + ")";//creer une video
+				+ video.getNbvue() + ","+video.getNbddl()+"," + video.getPrixAchat() + "," + video.getPrixLocation() + ")";//creer une video
 		Statement s = conn.createStatement();
 		int res = s.executeUpdate(query);
 		if (res == 1) {//si la video a été inseré dans la BD
