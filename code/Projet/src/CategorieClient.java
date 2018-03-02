@@ -1,4 +1,12 @@
-
+/** This class contains the different CategorieClient we can find on the website
+ * like Client, or PremiumClient. We use the idcategorie, which is rely to the idcategorie of
+ * each Video
+ * 
+ * @param idcategorie, categorie
+ * 
+ * @author 
+ *
+ */
 public class CategorieClient {
 
 	private int idcategorie;

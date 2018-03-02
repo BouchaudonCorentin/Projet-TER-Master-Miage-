@@ -11,6 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = {"/Home", "/Connection", "/Inscription", "/Deconnection"})
+/** This class represent the control of the homepage of the website.
+ *  This is the principal page, which allow to control the different data when the client is connected/deconnected.
+ *  It allows to return on the different jsp page, like connection, location, details of Video...
+ * 
+ * @author xxx
+ *
+ */
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

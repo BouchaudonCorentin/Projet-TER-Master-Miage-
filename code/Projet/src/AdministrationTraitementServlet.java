@@ -11,6 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/AdministrationTraitement")
+/** This class is one of the control pattern. It allows to the administrator to control the data.
+ * He can delete a client, generate Audit, or give turnover of website.
+ * 
+ * @author xxx
+ *
+ */
 public class AdministrationTraitementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

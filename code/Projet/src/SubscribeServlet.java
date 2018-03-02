@@ -8,6 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/Subscribe")
+/** This class is one of the control pattern. 
+ * We use this class for the subscribe of client
+ * 
+ * @author xxx
+ *
+ */
 public class SubscribeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -21,14 +27,14 @@ public class SubscribeServlet extends HttpServlet {
 		
 		try {
 		
-			DataBase dbi = (DataBase) request.getSession().getAttribute("dbi");
+			DataBase dbi = (DataBase) request.getSession().getAttribute("dbi"); // Stock du modele de DB
 			
 			if (dbi == null) {
 				dbi = new DataBase();
 				request.getSession().setAttribute("dbi", dbi);
 			}
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/subscribe.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/subscribe.jsp"); //Permet de renviyer vers un lien spécifique la page jsp
 			rd.forward(request, response);
 			
 			

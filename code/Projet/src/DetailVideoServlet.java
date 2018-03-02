@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/DetailVideo")
+/** This class is one of the control pattern. It allow to the vue to displays all the information
+ * of the different films.
+ * 
+ * @author xxx
+ *
+ */
 public class DetailVideoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

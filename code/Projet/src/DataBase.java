@@ -12,6 +12,13 @@ import java.util.Date;
 import java.util.List;
 
 //Classe r�alis� par Corentin Bouchaudon
+/** This class is the model pattern of our project.
+ * It regroups all the function we need for the control
+ * and which data can be display on the vue.
+ * 
+ * @author xxx
+ *
+ */
 public class DataBase {
 
 	private Connection conn;

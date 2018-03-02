@@ -8,7 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/Administration")
-
+/** This class is one of the control class. It allows to the administrator to access to different data
+ * like number of client, number of Premium etc...
+ * 
+ * @author xxx
+ *
+ */
 public class AdministrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -8,6 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/Payement")
+/** This class is one of the control pattern. She send data and control the data send to the vue
+ * We use this class for the payement of the premium of the location of the film
+ * 
+ * @author lenor
+ *
+ */
 public class PayementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -21,7 +27,7 @@ public class PayementServlet extends HttpServlet {
 		
 		try {
 		
-			DataBase dbi = (DataBase) request.getSession().getAttribute("dbi");
+			DataBase dbi = (DataBase) request.getSession().getAttribute("dbi"); // Stock du modele de DB
 			
 			if (dbi == null) {
 				dbi = new DataBase();
@@ -30,7 +36,7 @@ public class PayementServlet extends HttpServlet {
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/payement.jsp");
 			
-			int id= Integer.parseInt(request.getParameter("id")); 
+			int id= Integer.parseInt(request.getParameter("id")); //Stock les parametres dans request 
 			String type = request.getParameter("type"); 
 			System.out.println(type);
 			rd.forward(request, response);
