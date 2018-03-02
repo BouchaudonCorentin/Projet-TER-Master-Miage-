@@ -604,6 +604,17 @@ public class DataBase {
 			return false;//sinon retourne faux
 		}
 	}
+	public int idByPseudo(String pseudo) throws SQLException{
+		String query = " select idClient from client where pseudo ='"+pseudo+"'";
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		if(res.next()) {
+			return res.getInt("idClient");
+		}else {
+			return 0;
+		}	
+		
+	}
 	public static void main(String[] argv) throws ClassNotFoundException, SQLException {// permet de test fonction de la
 																						// bd
 		DataBase db = new DataBase();
@@ -612,6 +623,7 @@ public class DataBase {
 		db.louer(c, v);
 
 	}
+
 
 
 }
