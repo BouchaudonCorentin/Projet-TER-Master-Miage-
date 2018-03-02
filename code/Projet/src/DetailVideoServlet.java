@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/DetailVideo")
-/** This class is one of the control pattern. It allow to the vue to displays all the information
- * of the different films. 
+/** This class allows to the vue to display the data of each video, like the name, price, resume…
  * As a connected user it allows to buy or rent the video 
  * and as a premium member there is an access to directly watch the video.
  * 

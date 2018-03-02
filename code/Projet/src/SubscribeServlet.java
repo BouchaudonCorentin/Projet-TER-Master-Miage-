@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/Subscribe")
-/** This class is one of the control pattern. 
- * We use this class for the subscribe of client
+/** This class allows to the client to subscribe, and enter data needed for a subscription. 
+ * This data are displayed on the page subscribe.
  * 
  * @author MMathilde Pechdimaldjian
  *

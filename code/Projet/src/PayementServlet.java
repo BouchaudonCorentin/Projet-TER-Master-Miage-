@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/Payement")
-/** This class is one of the control pattern. She send data and control the data send to the vue
- * We use this class for the payement of the premium of the location of the film
+/** This class allows to the client to pay for a subscribe or a location of video.
+ *  Then, this data can be display in the page Payement.
  * 
  * @author Mathilde Pechdimaldjian
  *

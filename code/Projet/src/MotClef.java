@@ -1,4 +1,8 @@
-
+/** This class allow to create keyword to add to the database
+ * 
+ * @author xxx
+ *
+ */
 public class MotClef {
 	private int id;
 	private String motClef;

@@ -12,8 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/AdministrationTraitement")
-/** This class is one of the control pattern. It allows to the administrator to control the data.
+/** This class allows to the administrator to change data in database
  * He can delete a client, generate Audit, or give turnover of website.
+ * Then, this data can be display in the page Administration.
  * 
  * @author Mathilde Pechdimaldjian
  *

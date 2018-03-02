@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/Administration")
-/** This class is one of the control class. It allows to the administrator to access to different data
- * like number of client, number of Premium etc...
+/** This class allows to the administrator to access data that the client can't have
+ * (number Client/Premium/Video) 
+ * Then, this data can be display in the page Administration.
  * 
  * @author Mathilde Pechdimaldjian
  *

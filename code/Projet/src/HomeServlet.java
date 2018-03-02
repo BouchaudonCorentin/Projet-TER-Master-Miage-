@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = {"/Home", "/Connection", "/Inscription", "/Deconnection"})
-/** This class represent the control of the homepage of the website.
- *  This is the principal page, which allow to control the different data when the client is connected/deconnected.
+/** This class represent the principal page, which allow to control the different data when the client is connected/disconnected. 
+ * The data access is different for each client can have access depend of his status
  *  It allows to return on the different jsp page, like  location, details of Video...
- * 
+ *  
  * @author Mathilde Pechdimaldjian
  *
  */

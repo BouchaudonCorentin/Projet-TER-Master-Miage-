@@ -1,6 +1,5 @@
-/** This class contains the different CategorieClient we can find on the website
- * like Client, or PremiumClient. We use the idcategorie, which is rely to the idcategorie of
- * each Video
+/** This class allow to create a CategorieCLient with a specific id.
+ * Then, the idcategorie is rely to a client, to explain what categorie the client is.	
  * 
  * @param idcategorie, categorie
  * 

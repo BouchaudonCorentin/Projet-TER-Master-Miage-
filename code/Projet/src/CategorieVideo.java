@@ -1,5 +1,5 @@
-/** This class represent the different CategorieVideo we can find on the website.
- * We use this class t odefine all the categorie, like film, serie, documentary etc...
+/** This class allow to create a CategorieVideo with a specific id.
+ *	Then, the idcategorie is rely to a video, to explain what categorie the video is
  * 
  * @param id, nomCategorieVideo
  * 
