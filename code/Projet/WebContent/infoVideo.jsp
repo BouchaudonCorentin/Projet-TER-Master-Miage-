@@ -100,16 +100,22 @@
         <div id="btnscol">
         
          <c:if test = "${sessionScope.status.getCategorie() == 'inscrit'}" >
-           	<a class="btn pulse-button"  id="rent" href="/Projet-TER/Payement?type=Location&id=${id}"></a>
-          	<a class="btn pulse-button"  id="dwl" href="/Projet-TER/Payement?type=Achat&id=${id}"></a>
+         
+		         	<a class="btn pulse-button"  id="rent" href="/Projet-TER/Payement?type=Location&id=${id}"></a>
+          			<a class="btn pulse-button"  id="dwl" href="/Projet-TER/Payement?type=Achat&id=${id}"></a>
+          		
+          		
          </c:if>
+         
+         
          <c:if test ="${sessionScope.status.getCategorie() == 'premium'}">
         	<a class="btn pulse-button"  id="Premium" href="/Projet-TER/AfficheVideo?idvideo=${id}"></a>
          </c:if>
          <c:if test ="${sessionScope.status.getCategorie() == 'administrateur'}">
         	<a class="btn pulse-button"  id="Premium" href="/Projet-TER/AfficheVideo?idvideo=${id}"></a>
          </c:if>
-        </div>
+  
+       
 
       <!-- FOOTER -->
       <footer>

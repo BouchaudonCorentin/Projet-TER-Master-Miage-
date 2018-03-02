@@ -101,7 +101,7 @@ public class AdministrationTraitementServlet extends HttpServlet {
 			  }else if (action.equals("Del_Client")) {
 				  String pseudo = request.getParameter("d_pseudo");
 				  if(!dbi.verifpseudo(pseudo)) {
-					  int id= dbi.IdBypseudo(pseudo); 
+					  int id= dbi.idByPseudo(pseudo); 
 					  Client c = new Client();
 					  c.setId(id);
 					  dbi.suppClient(c);

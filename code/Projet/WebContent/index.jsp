@@ -62,15 +62,44 @@
               <li class="active"><a href="#">Link</a></li>
               <li><a href="#">Link</a></li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catégorie <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Documentaires</a></li>
-                  <li><a href="#">Films</a></li>
-                  <li><a href="#">Séries</a></li>
+                  <li><a href="/Projet-TER/Recherche?cat=documentaires">Documentaires</a></li>
+                  <li><a href="/Projet-TER/Recherche?cat=films">Films</a></li>
+                  <li><a href="/Projet-TER/Recherche?cat=series">Séries</a></li>
+                </ul>
+              </li>
+               <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">MotClefs<b class="caret"></b></a>
+                <ul class="dropdown-menu" >
+                  <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="2"> Action</li>
+                  <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="5"> Animation</li>
+                  <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="1"> Aventure</li>
+                  <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="8"> Comédie</li>
+                  <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="9"> Drame</li>
+                  <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="6"> Fantastique</li>
+                  <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="4"> Enfant</li>
+                  <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="10"> Historique</li>
+                  <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="12"> Information</li>
+                  <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="7"> Policier</li>
+                  <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="3"> Science-fiction</li>
+                  <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="11"> Thiller</li>
+                  <li> <button  id="checkbox" type="submit" class="btn btn-default btn-danger">CHERCHER</button></li>
                 </ul>
               </li>
             </ul>
-            <div class="col-sm-3 col-md-3">
+           
+     
+         
+                  
+					
+					
+				
+            
+   
+            
+            
+      <!--       <div class="col-sm-3 col-md-3">
                 <form class="navbar-form" role="search">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search" name="q">
@@ -79,7 +108,7 @@
                     </div>
                 </div>
                 </form>
-            </div>
+            </div>--> 
            
        <!-- bouton de la navbar -->
 			
@@ -226,7 +255,7 @@
 	                      </br>
 	                      <input class="form-control input-sm chat-input"  name="email" type="text" placeholder="Email" required/>
 	                      </br> 
-	                      <input class="form-control input-sm chat-input" name="mdp"type="password" placeholder="Password" required/>
+	                      <input class="form-control input-sm chat-input" name="mdp" type="password" placeholder="Password" required/>
 	                      </br>  
 	                      <input class="form-control input-sm chat-input" name="verimdp" type="password" placeholder="Confirm Password" required />
 	                      </br>  

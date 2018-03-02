@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 @WebServlet("/Payement")
 /** This class allows to the client to pay for a subscribe or a location of video.
@@ -40,17 +41,21 @@ public class PayementServlet extends HttpServlet {
 			System.out.println(id); 
 			String type = request.getParameter("type");
 			Video v = dbi.searchVideoByID(id);
+			Client c = (Client) request.getSession().getAttribute("client"); 
+			Boolean b=false; 
 			
-			
-		
 		if(type.equals("Location")) {
 			request.setAttribute("prix",(double)Math.round(v.getPrixLocation() * 1000) / 1000 );
-			
+			b=dbi.louer(c,v); 
 		}else if(type.equals("Achat")) {
 			request.setAttribute("prix", (double)Math.round(v.getPrixAchat() * 1000) / 1000 );
+			b=dbi.acheter(c, v);
+			
 		}
+		System.out.println(b);
+		request.setAttribute("action_reussi",b);
 		request.setAttribute("type",type);
-		request.setAttribute("idfilm",id);
+		request.setAttribute("idvideo",id);
 		request.setAttribute("nom", v.getNomVideo());;
 		rd.forward(request, response);
 			

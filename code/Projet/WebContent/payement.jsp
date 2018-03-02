@@ -16,7 +16,7 @@
 
     <link href="resources/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="resources/css/payement.css" rel="stylesheet">
-    <link href="resources/js/payement.js" rel="stylesheet">
+   <!--   <link href="resources/js/payement.js" rel="stylesheet">-->
 
 
 
@@ -44,19 +44,14 @@
                 
               </div>
             <div class="panel-body">
-                <form action ="/Projet-TER/AfficheVideo?idFilm=${id}" role="form" id="payment-form">
+                <form id="payment-form">
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group">
                             <label for="cardNumber">CARD NUMBER</label>
                                 <div class="input-group">
-                                    <input
-                                    type="tel"
-                                    class="form-control"
-                                    name="cardNumber"
-                                    placeholder="Valid Card Number"
-                                    autocomplete="cc-number"
-                                    required autofocus
+                                    <input class="form-control" name="cardNumber"placeholder="Valid Card Number"
+                            
                                     />
                                 <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                                 </div>
@@ -66,29 +61,21 @@
                 <div class="row">
                   <div class="col-xs-7 col-md-7">
                       <div class="form-group">
-                      <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                    <label> <span>EXPIRATION</span><span >EXP</span> DATE</label>
                       <input
-                          type="tel" class="form-control" placeholder="MM / YY" required/>
+                           class="form-control" placeholder="MM / YY" required/>
                       </div>
                   </div>
                   <div class="col-xs-5 col-md-5 pull-right">
                       <div class="form-group">
-                        <label for="cardCVC">CV CODE</label>
-                        <input type="tel" name="cardCVC" class="form-control" placeholder="CVC" required/>
+                        <label>CV CODE</label>
+                        <input  name="cardCVC" class="form-control" placeholder="CVC" required/>
                       </div>
                   </div>
                 </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="form-group">
-                                <label for="couponCode">COUPON CODE</label>
-                                <input type="text" class="form-control" name="couponCode" required />
-                            </div>
-                        </div>
-                    </div>
                   <div class="row">
                     <div class="col-xs-12">
-                        <button class="btn btn-success btn-lg btn-block" type="submit">PAYER</button>
+                        <button href="/Projet-TER/AfficheVideo?idVideo=${idVideo}" class="btn btn-success btn-lg btn-block" type="submit">PAYER</button>
                     </div>
                   </div>
                 </form>

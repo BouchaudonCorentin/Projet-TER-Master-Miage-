@@ -33,7 +33,7 @@ public class AfficheVideoServlet extends HttpServlet {
 				dbi = new DataBase();
 				request.getSession().setAttribute("dbi", dbi);
 			}
-			
+			Client c = (Client) request.getSession().getAttribute("client"); 
 			RequestDispatcher rd = request.getRequestDispatcher("/afficheVideo.jsp");
 			int id= Integer.parseInt(request.getParameter("idvideo")); 
 			request.setAttribute("id",id);

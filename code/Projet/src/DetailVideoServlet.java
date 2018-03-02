@@ -39,6 +39,7 @@ public class DetailVideoServlet extends HttpServlet {
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/infoVideo.jsp");
 			//recherche film 
+			
 			int id= Integer.parseInt(request.getParameter("idVideo")); 
 			request.setAttribute("id",id);
 			Video v = dbi.searchVideoByID(id);
@@ -48,6 +49,10 @@ public class DetailVideoServlet extends HttpServlet {
 			request.setAttribute("louer",(double)Math.round(v.getPrixLocation() * 1000) / 1000 );
 			request.setAttribute("resume", v.getResume());
 			request.setAttribute("saison", v.getGroupeVideo());
+			//verifier client connecté
+			//Client c = (Client) request.getSession().getAttribute("client");
+			//request.setAttribute("loue", dbi.locationsCouranteUser(c));
+			//request.setAttribute("achat", false);
 			rd.forward(request, response);
 			
 			
