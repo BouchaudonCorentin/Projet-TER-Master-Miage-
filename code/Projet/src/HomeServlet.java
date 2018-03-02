@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/Home", "/Connection", "/Inscription", "/Deconnection"})
 /** This class represent the control of the homepage of the website.
  *  This is the principal page, which allow to control the different data when the client is connected/deconnected.
- *  It allows to return on the different jsp page, like connection, location, details of Video...
+ *  It allows to return on the different jsp page, like  location, details of Video...
  * 
- * @author xxx
+ * @author Mathilde Pechdimaldjian
  *
  */
 public class HomeServlet extends HttpServlet {
@@ -68,13 +68,14 @@ public class HomeServlet extends HttpServlet {
 				Client client = null;
 
 				if (dbi.verifpseudo(pseudo) == false){
-					//request.setAttribute("echec_inscription", true); // � modifier pour nouvelle erreur dans JSP !!
+					request.setAttribute("echec_inscription", true); 
 				}else {
 					client = dbi.inscription(new Client(nom,prenom,pseudo,mdp,email));
 				}
 				request.setAttribute("client", client);
 			}else if(uri.equals("/Projet-TER/Deconnection")){
 				request.getSession().removeAttribute("client");
+				
 			}
 
 

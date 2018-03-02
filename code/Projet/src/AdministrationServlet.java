@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /** This class is one of the control class. It allows to the administrator to access to different data
  * like number of client, number of Premium etc...
  * 
- * @author xxx
+ * @author Mathilde Pechdimaldjian
  *
  */
 public class AdministrationServlet extends HttpServlet {

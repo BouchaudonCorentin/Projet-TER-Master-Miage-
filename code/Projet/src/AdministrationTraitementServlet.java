@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 /** This class is one of the control pattern. It allows to the administrator to control the data.
  * He can delete a client, generate Audit, or give turnover of website.
  * 
- * @author xxx
+ * @author Mathilde Pechdimaldjian
  *
  */
 public class AdministrationTraitementServlet extends HttpServlet {
@@ -45,7 +46,7 @@ public class AdministrationTraitementServlet extends HttpServlet {
 				String motclef = request.getParameter("a_motclef"); //liste a gerer 
 				String resume = request.getParameter("a_resume");
 				ArrayList<MotClef> mc = new ArrayList<MotClef>();
-				int i = 1; // Attention partie non conforme à la tables mots clefs
+				int i = 1; // Attention partie non conforme ï¿½ la tables mots clefs
 				for (String item : motclef.split(",")) {
 				    mc.add(new MotClef(i,item));
 				    i++;
@@ -56,13 +57,14 @@ public class AdministrationTraitementServlet extends HttpServlet {
 				int cat = Integer.parseInt(request.getParameter("a_categorie"));
 				
 				double louer = Double.parseDouble(request.getParameter("a_louer"));
+				
 				double achat = Double.parseDouble(request.getParameter("a_achat"));
-				Video v = new Video(nom,saison,ep,resume,0,achat,louer);
+				Video v = new Video(nom,saison,ep,resume,0,0,achat,louer);
 				v.setId((dbi.recupDernierID().getId()+1));
 				CategorieVideo c = new CategorieVideo(cat); 
 				dbi.ajoutVideo(v, c, mc);
-				 
-			   
+				request.setAttribute("ajout_video", !dbi.videoExiste(v));
+				
 			  }else if (action.equals("Del_Video")){
 				  String titre = request.getParameter("d_titre_V");
 				  int ep = Integer.parseInt(request.getParameter("d_episode_V")); 
@@ -72,6 +74,7 @@ public class AdministrationTraitementServlet extends HttpServlet {
 	
 						  Video vid = dbi.retrouveridvianomnomgroupetnbepisode(v); 
 						  dbi.suppVideo(vid);
+						  request.setAttribute("echec_suppressionVideo", false);
 						
 					 }else {
 						 request.setAttribute("echec_suppressionVideo", true);
@@ -87,24 +90,36 @@ public class AdministrationTraitementServlet extends HttpServlet {
 					Client client;
 					
 					if (dbi.verifpseudo(pseudo) == false){
-						//request.setAttribute("echec_inscription", true); // ï¿½ modifier pour nouvelle erreur dans JSP !!
-						System.out.println("pseudo deja utilisé"); 
+					request.setAttribute("echec_inscription", true); 
 					}else {
 						client = dbi.inscription(new Client(nom,prenom,pseudo,mdp,email));
-						System.out.println("id client" + client.getId()); 
+						request.setAttribute("echec_inscription", false); 
 					}
 					
 			    
 			  }else if (action.equals("Del_Client")) {
-				  
-				  
+				  String pseudo = request.getParameter("d_pseudo");
+				  if(!dbi.verifpseudo(pseudo)) {
+					  int id= dbi.IdBypseudo(pseudo); 
+					  Client c = new Client();
+					  c.setId(id);
+					  dbi.suppClient(c);
+					  request.setAttribute("echec_suppressionclient",false); 
+				  }else {
+					  request.setAttribute("echec_suppressionclient",true); 
+				  }
+				
+
+
 			    
 			  }else if (action.equals("Audit")) {
 			      
 			  }else if (action.equals("CA")) {
 			    
 			  }
-			
+				request.setAttribute("nbvideo", dbi.afficheVideos().size());
+				request.setAttribute("nbMembre", dbi.listpseudoclients().size());
+				request.setAttribute("nbPremium", dbi.listMembrepremium());
 			rd.forward(request, response);
 			
 			
@@ -114,6 +129,9 @@ public class AdministrationTraitementServlet extends HttpServlet {
 		}
 	
 	}
+
+
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

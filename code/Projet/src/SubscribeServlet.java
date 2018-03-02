@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /** This class is one of the control pattern. 
  * We use this class for the subscribe of client
  * 
- * @author xxx
+ * @author MMathilde Pechdimaldjian
  *
  */
 public class SubscribeServlet extends HttpServlet {

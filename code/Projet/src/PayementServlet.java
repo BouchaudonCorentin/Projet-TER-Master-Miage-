@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /** This class is one of the control pattern. She send data and control the data send to the vue
  * We use this class for the payement of the premium of the location of the film
  * 
- * @author lenor
+ * @author Mathilde Pechdimaldjian
  *
  */
 public class PayementServlet extends HttpServlet {

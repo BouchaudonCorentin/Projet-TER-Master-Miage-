@@ -11,12 +11,9 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-//Classe rï¿½alisï¿½ par Corentin Bouchaudon
-/** This class is the model pattern of our project.
- * It regroups all the function we need for the control
- * and which data can be display on the vue.
+/** Explication 
  * 
- * @author xxx
+ * @author Corentin Bouchaudon
  *
  */
 public class DataBase {
@@ -266,7 +263,7 @@ public class DataBase {
 	}
 
 
-	public List<Client> listpseudoclients() throws SQLException {// retourne la totalité des pseudo
+	public List<Client> listpseudoclients() throws SQLException {// retourne la totalitï¿½ des pseudo
 		List<Client> clients = new ArrayList<Client>();
 		String query = "select pseudo from CLient";
 		Statement s = conn.createStatement();
@@ -440,8 +437,8 @@ public class DataBase {
 	}
 
 
-	public List<Video> rechercheVideoCate(CategorieVideo cate) throws SQLException {// retourne les films appartenant à
-																					// une certaine catégorie
+	public List<Video> rechercheVideoCate(CategorieVideo cate) throws SQLException {// retourne les films appartenant ï¿½
+																					// une certaine catï¿½gorie
 		List<Video> videos = new ArrayList<Video>();
 		Video v = new Video();
 		String query = "select v.idVideo, nomVideo,groupevideo,numepisode,resume,nbvue,nbddl,prixAchat,prixLocation from Video v, CompoVideo cv where v.idVideo=cv.idVideo and cv.idCategorieVideo ="
@@ -565,7 +562,7 @@ public class DataBase {
 
 	}
 
-	public Video serachVideoByID(int id)throws SQLException{
+	public Video searchVideoByID(int id)throws SQLException{// retourve une video par son id
 		String query = "select * from Video where idVideo="+id;
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
@@ -579,8 +576,18 @@ public class DataBase {
 
 	}
 	
-	public boolean modifVideo(Video v)throws SQLException{//on peux pas modifier le nom, le groupe, le num d'episode à cause des
-														  // suggestions, on ne peux pas modifier nbvue et nbddl car ça serait 
+	public int IdBypseudo(String pseudo) throws SQLException {// retourne l id en fonction du pseudo
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery("select idClient from Client where pseudo ='" + pseudo + "'");
+		if (res.next()) {
+			return res.getInt(1);
+		} else {
+			return -1;
+		}
+	}
+	
+	public boolean modifVideo(Video v)throws SQLException{//on peux pas modifier le nom, le groupe, le num d'episode ï¿½ cause des
+														  // suggestions, on ne peux pas modifier nbvue et nbddl car ï¿½a serait 
 														  //de la fraude 
 		
 		String query = " Update Video SET resume ='"+v.getResume()+"' and prixlocation = "+v.getPrixLocation()+" and prixachat ="+v.getPrixAchat()+
@@ -606,6 +613,9 @@ public class DataBase {
 			return false;
 		}
 	}
+	
+
+	
 	public static void main(String[] argv) throws ClassNotFoundException, SQLException {// permet de test fonction de la
 																						// bd
 		DataBase db = new DataBase();

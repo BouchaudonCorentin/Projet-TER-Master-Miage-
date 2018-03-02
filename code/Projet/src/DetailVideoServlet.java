@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/DetailVideo")
 /** This class is one of the control pattern. It allow to the vue to displays all the information
- * of the different films.
+ * of the different films. 
+ * As a connected user it allows to buy or rent the video 
+ * and as a premium member there is an access to directly watch the video.
  * 
- * @author xxx
+ * @author Mathilde Pechdimaldjian
  *
  */
 public class DetailVideoServlet extends HttpServlet {
@@ -40,7 +42,7 @@ public class DetailVideoServlet extends HttpServlet {
 			//recherche film 
 			int id= Integer.parseInt(request.getParameter("idVideo")); 
 			request.setAttribute("id",id);
-			Video v = dbi.serachVideoByID(id);
+			Video v = dbi.searchVideoByID(id);
 			request.setAttribute("nom", v.getNomVideo());
 			request.setAttribute("ep", v.getNumepisode());
 			request.setAttribute("achat", (double)Math.round(v.getPrixAchat() * 1000) / 1000 );
