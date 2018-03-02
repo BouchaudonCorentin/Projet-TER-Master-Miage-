@@ -563,7 +563,7 @@ public class DataBase {
 
 	}
 
-	public Video serachVideoByID(int id)throws SQLException{
+	public Video searchVideoByID(int id)throws SQLException{
 		String query = "select * from Video where idVideo="+id;//retourne les infos de la video
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
