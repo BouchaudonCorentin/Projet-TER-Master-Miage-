@@ -47,7 +47,7 @@ public class DataBase {
 			client.setId(res.getInt("idClient"));
 			client.setNom(res.getString("nomClient"));
 			client.setPrenon(res.getString("prenomClient"));
-		}
+		}else { client = null;}
 		return client;
 	}
 

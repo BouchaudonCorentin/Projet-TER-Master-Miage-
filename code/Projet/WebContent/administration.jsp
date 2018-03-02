@@ -67,20 +67,22 @@
 
   		</c:if>
 <!-- SuppressionClient -->
-		   <c:if test = "${echec_suppressionclient ==  false}">
-			 <div class="alert alert-success alert-dismissible">
-  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  	 	 	<strong>Success!</strong> Client supprimée.
-	 	 	</div>
-  		</c:if>
-  		
-  		 <c:if test = "${echec_suppressionClient == true}">
+		  
+  		 <c:if test = "${echec_suppressionclient == true}">
 			 <div class="alert alert-danger alert-dismissible">
    			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   	 	 	<strong>Echec!</strong> Client n'a pas pu être supprimée.
 	 	 	</div>
 
   		</c:if>
+  		
+  		 <c:if test = "${echec_suppressionclient ==  false}">
+			 <div class="alert alert-success alert-dismissible">
+  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Success!</strong> Client supprimée.
+	 	 	</div>
+  		</c:if>
+  		
 
 <!-- Modifier Client-->
 		   <c:if test = "${echec_suppressionVideo ==  false}">
@@ -134,52 +136,56 @@
   		
   		
 <!--HTML BODY-->   		
-      <body class="bg">
-      
-         <div class="navbar-wrapper">
-           <div class="container">
+       <body class="bg">
 
-             <nav class="navbar navbar-inverse" role="navigation">
-         
-               <div class="navbar-header">
-                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                   <span class="sr-only">Toggle navigation</span>
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-                 </button>
-                 <a class="navbar-brand" href="/index">Netflox</a>
-               </div>
+    <div class="navbar-wrapper">
+      <div class="container">
 
-               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                 <ul class="nav navbar-nav">
-                   <li class="active"><a href="#">Link</a></li>
-                   <li><a href="#">Link</a></li>
-                   <li class="dropdown">
-                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                     <ul class="dropdown-menu">
-                       <li><a href="/recherche?Documentaire">Documentaires</a></li>
-                       <li><a href="recherche?Film">Films</a></li>
-                       <li><a href="recherche?serie">Séries</a></li>
-                     </ul>
-                   </li>
-                 </ul>
-                 <div class="col-sm-3 col-md-3">
-                     <form class="navbar-form" role="search">
-                     <div class="input-group">
-                         <input type="text" class="form-control" placeholder="Search" name="q">
-                         <div class="input-group-btn">
-                             <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                         </div>
-                     </div>
-                     </form>
-                 </div>
-               </div><!-- /.navbar-collapse -->
-             </nav>
+        <nav class="navbar navbar-inverse" role="navigation">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/Projet-TER/Home">Netflox</a>
+          </div>
 
-           </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Documentaires</a></li>
+                  <li><a href="#">Films</a></li>
+                  <li><a href="#">Séries</a></li>
+                </ul>
+              </li>
+            </ul>
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+                </form>
+            </div>
+           
+       <!-- bouton de la navbar -->
+			
+               <ul class="nav navbar-nav navbar-right "> 
+				    <c:if test="${!empty sessionScope.client}">
+					   <li> <a href="/Projet-TER/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a> </li>	
+					   <a type="button" class="btn btn-danger" href="/Projet-TER/Deconnection">Deconnection</a>	
+					</c:if>
+				</ul> 
+                
+          </div><!-- /.navbar-collapse -->
+        </nav>
 
-         </div>
+      </div>
+    </div>
 
     <!-- administeur view-->
 

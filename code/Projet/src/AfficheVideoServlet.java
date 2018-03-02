@@ -34,8 +34,16 @@ public class AfficheVideoServlet extends HttpServlet {
 				request.getSession().setAttribute("dbi", dbi);
 			}
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/AfficheVideo.jsp");
-		
+			RequestDispatcher rd = request.getRequestDispatcher("/afficheVideo.jsp");
+			int id= Integer.parseInt(request.getParameter("idvideo")); 
+			request.setAttribute("id",id);
+			Video v = dbi.searchVideoByID(id);
+			request.setAttribute("nom", v.getNomVideo());
+			request.setAttribute("ep", v.getNumepisode());
+			request.setAttribute("resume", v.getResume());
+			request.setAttribute("saison", v.getGroupeVideo());
+			//CategorieMotClef mc = dbi.
+			//request.setAttribute("suggestion", dbi.suggestions(v, mc));
 			rd.forward(request, response);
 			
 			

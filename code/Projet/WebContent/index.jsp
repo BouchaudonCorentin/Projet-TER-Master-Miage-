@@ -18,15 +18,33 @@
     <link href="resources/css/index.css" rel="stylesheet">
   </head>
   
-  <c:if test = "${echec_connection == true}">
-    <script>
-    	alert("Erreur : Utilisateur ou mot de passe inconnue !");
-    </script>
-  </c:if>
+  		
+  		 <c:if test = "${echec_connection == true}">
+			 <div class="alert alert-danger alert-dismissible">
+   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Connection Impossible!</strong> Mot de passe ou pseudo incorrect.
+	 	 	</div>
+
+  		</c:if>
+  		 <c:if test = "${echec_inscription == true}">
+			 <div class="alert alert-danger alert-dismissible">
+   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Inscription impossible!</strong> Pseudo déja utilisé.
+	 	 	</div>
+
+  		</c:if>
+  		
+  		<c:if test = "${echec_password == true}">
+			 <div class="alert alert-danger alert-dismissible">
+   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Attention!</strong> La saisie de la verification du mot de passe est incorrect.
+	 	 	</div>
+
+  		</c:if>
 
 <!-- NAVBAR
 ================================================== -->
-  <body class="bg">
+   <body class="bg">
 
     <div class="navbar-wrapper">
       <div class="contain
@@ -188,9 +206,9 @@
                       <a href="#" onclick="hide_login_sign_up()" ><i class="material-icons">X</i></a>
                       <h2>LOGIN</h2>
                       <form method="post" action="Connection">
-	                      <input  class="form-control input-sm chat-input" name="pseudo" type="text" placeholder="Pseudo" />
+	                      <input  class="form-control input-sm chat-input" name="pseudo" type="text" placeholder="Pseudo" required />
 	                      </br>
-	                      <input class="form-control input-sm chat-input" name="mdp" type="password" placeholder="Password" />
+	                      <input class="form-control input-sm chat-input" name="mdp" type="password" placeholder="Password" required />
 	                        </br>
 	                      <button type="submit" class="btn_login">LOGIN</button>
                       </form>
@@ -200,17 +218,17 @@
                       <a  onclick="hide_login_sign_up()"><i class="material-icons">X</i></a>
                       <h2>SIGN UP</h2>
                       <form method="post" action="Inscription" >
-	                      <input class="form-control input-sm chat-input" name="nom" type="text" placeholder="First Name" />
+	                      <input class="form-control input-sm chat-input" name="nom" type="text" placeholder="First Name" required />
 	                      </br>
-	                      <input class="form-control input-sm chat-input" name="prenom" type="text" placeholder="Last Name" />
+	                      <input class="form-control input-sm chat-input" name="prenom" type="text" placeholder="Last Name" required/>
 	                      </br>
-	                      <input class="form-control input-sm chat-input"  name="pseudo" type="text" placeholder="Nickname" />
+	                      <input class="form-control input-sm chat-input"  name="pseudo" type="text" placeholder="Nickname" required />
 	                      </br>
-	                      <input class="form-control input-sm chat-input"  name="email" type="text" placeholder="Email" />
+	                      <input class="form-control input-sm chat-input"  name="email" type="text" placeholder="Email" required/>
 	                      </br> 
-	                      <input class="form-control input-sm chat-input" name="mdp"type="password" placeholder="Password" />
+	                      <input class="form-control input-sm chat-input" name="mdp"type="password" placeholder="Password" required/>
 	                      </br>  
-	                      <input class="form-control input-sm chat-input" name="verimdp" type="password" placeholder="Confirm Password" />
+	                      <input class="form-control input-sm chat-input" name="verimdp" type="password" placeholder="Confirm Password" required />
 	                      </br>  
 	                      <button  type="submit" class="btn_sign_up">SIGN UP</button>
                       </form>

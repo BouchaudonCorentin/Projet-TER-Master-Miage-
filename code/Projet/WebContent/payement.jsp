@@ -28,7 +28,8 @@
   <div class="container">
 
             <div class="col-xs-5 col-md-5" id="pos">
-
+			 <h3>${type} : ${nom} </h3>
+			 <h3>Prix: ${prix} </h3>
 
             <!-- CREDIT CARD FORM STARTS HERE -->
             <div class="panel panel-default credit-card-box">
@@ -39,9 +40,11 @@
                     <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
                   </div>
                 </div>
+               
+                
               </div>
             <div class="panel-body">
-                <form role="form" id="payment-form">
+                <form action ="/Projet-TER/AfficheVideo?idFilm=${id}" role="form" id="payment-form">
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group">
@@ -65,24 +68,13 @@
                       <div class="form-group">
                       <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
                       <input
-                          type="tel"
-                          class="form-control"
-                          name="cardExpiry"
-                          placeholder="MM / YY"
-                          autocomplete="cc-exp"
-                          required/>
+                          type="tel" class="form-control" placeholder="MM / YY" required/>
                       </div>
                   </div>
                   <div class="col-xs-5 col-md-5 pull-right">
                       <div class="form-group">
                         <label for="cardCVC">CV CODE</label>
-                        <input
-                          type="tel"
-                          class="form-control"
-                          name="cardCVC"
-                          placeholder="CVC"
-                          autocomplete="cc-csc"
-                          required/>
+                        <input type="tel" name="cardCVC" class="form-control" placeholder="CVC" required/>
                       </div>
                   </div>
                 </div>
@@ -90,18 +82,13 @@
                         <div class="col-xs-12">
                             <div class="form-group">
                                 <label for="couponCode">COUPON CODE</label>
-                                <input type="text" class="form-control" name="couponCode" />
+                                <input type="text" class="form-control" name="couponCode" required />
                             </div>
                         </div>
                     </div>
                   <div class="row">
                     <div class="col-xs-12">
-                        <button class="btn btn-success btn-lg btn-block" type="submit">BUY</button>
-                    </div>
-                  </div>
-                  <div class="row" style="display:none;">
-                    <div class="col-xs-12">
-                    <p class="payment-errors"></p>
+                        <button class="btn btn-success btn-lg btn-block" type="submit">PAYER</button>
                     </div>
                   </div>
                 </form>

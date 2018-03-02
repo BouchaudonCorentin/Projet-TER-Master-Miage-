@@ -54,27 +54,44 @@ public class HomeServlet extends HttpServlet {
 				String mdp = request.getParameter("mdp");
 
 				Client client = dbi.connection(new Client(pseudo, mdp));
-				request.getSession().setAttribute("status", dbi.categorieclient(client));
-				request.getSession().setAttribute("client", client); // Si le client donn� n'existe pas, le client retourn� est � null
-				if(client == null) request.setAttribute("echec_connection", true);
+				if(client == null){
+					request.setAttribute("echec_connection", true);
+				}else {
+					request.getSession().setAttribute("status", dbi.categorieclient(client));
+					request.getSession().setAttribute("client", client);
+					request.setAttribute("echec_connection", false);
+					
+				}
+			
 				
-			}else if(uri.equals("/Projet-TER/Inscription")){
+				
+			}else if(uri.equals("/Projet-TER/Inscription"))
+			{
 				String nom = request.getParameter("nom");
 				String prenom = request.getParameter("prenom");
 				String pseudo = request.getParameter("pseudo");
 				String mdp = request.getParameter("mdp");
+				String verifmdp = request.getParameter("verimdp");
 				String email = request.getParameter("email");
 
 				Client client = null;
-
-				if (dbi.verifpseudo(pseudo) == false){
-					request.setAttribute("echec_inscription", true); 
+				if(!mdp.equals(verifmdp)) {
+					request.setAttribute("echec_password", true);
 				}else {
-					client = dbi.inscription(new Client(nom,prenom,pseudo,mdp,email));
+					request.setAttribute("echec_password", false);
+					if (dbi.verifpseudo(pseudo) == false){
+						request.setAttribute("echec_inscription", true); 
+					}else {
+						client = dbi.inscription(new Client(nom,prenom,pseudo,mdp,email));
+						request.setAttribute("echec_inscription", false); 
+					}
+					request.setAttribute("client", client);
 				}
-				request.setAttribute("client", client);
+				
+				
 			}else if(uri.equals("/Projet-TER/Deconnection")){
-				request.getSession().removeAttribute("client");
+				//request.getSession().removeAttribute("client");
+				 request.getSession().invalidate();
 				
 			}
 

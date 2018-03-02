@@ -9,15 +9,44 @@
 		<title>Netflox</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
-		<!-- favicon
-		============================================ -->
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+        
         <link rel="stylesheet" href="resources/css/affiche_video.css">
-		  <link rel="stylesheet" href="resources/css/standard.css">
+		<link href="resources/css/standard.css" rel="stylesheet">
+ 		  
+		 
     </head>
 	<body class="bg">
+	
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse" role="navigation">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/Projet-TER/Home"">Netflox</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+       <!-- bouton de la navbar -->
+			
+               <ul class="nav navbar-nav navbar-right "> 
+				    <c:if test="${!empty sessionScope.client}">
+					   <li> <a href="/Projet-TER/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a> </li>	
+					   <a type="button" class="btn btn-danger" href="/Projet-TER/Deconnection">Deconnection</a>	
+					</c:if>
+				</ul> 
+                
+          </div><!-- /.navbar-collapse -->
+        </nav>
+
+      </div>
+    </div>
+	
+	
     <h1 class="page-header"> Mon voisin Totoro </h1>
 		<!-- video-section-start -->
 		<div class="displaytable">
@@ -61,10 +90,10 @@
               c est le meilleur film du monde bla bla bla bla
           </p>
       </div>
-      <div id="suggestion" class="">
-       <div class="container marketing">
-
-      <div class="col-sm-12">
+      
+   
+       <div id="suggestion">
+     	 <div class="col-sm-12">
       	<c:forEach var="v" items="${videos}">
       	  <div class="card card-1">
           	<img class="card card-1" src="Affiche/${v.id}.jpg">
@@ -74,6 +103,9 @@
       
       
       </div>
+      
+      
+      
 
         <script src="resources/js/affiche_video.js"></script>
     </body>

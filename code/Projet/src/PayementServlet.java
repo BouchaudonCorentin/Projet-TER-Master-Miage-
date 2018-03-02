@@ -27,8 +27,7 @@ public class PayementServlet extends HttpServlet {
 		
 		try {
 		
-			DataBase dbi = (DataBase) request.getSession().getAttribute("dbi"); // Stock du modele de DB
-			
+			DataBase dbi = (DataBase) request.getSession().getAttribute("dbi"); 
 			if (dbi == null) {
 				dbi = new DataBase();
 				request.getSession().setAttribute("dbi", dbi);
@@ -36,10 +35,24 @@ public class PayementServlet extends HttpServlet {
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/payement.jsp");
 			
-			int id= Integer.parseInt(request.getParameter("id")); //Stock les parametres dans request 
-			String type = request.getParameter("type"); 
-			System.out.println(type);
-			rd.forward(request, response);
+			
+			int id= Integer.parseInt(request.getParameter("id"));
+			System.out.println(id); 
+			String type = request.getParameter("type");
+			Video v = dbi.searchVideoByID(id);
+			
+			
+		
+		if(type.equals("Location")) {
+			request.setAttribute("prix",(double)Math.round(v.getPrixLocation() * 1000) / 1000 );
+			
+		}else if(type.equals("Achat")) {
+			request.setAttribute("prix", (double)Math.round(v.getPrixAchat() * 1000) / 1000 );
+		}
+		request.setAttribute("type",type);
+		request.setAttribute("idfilm",id);
+		request.setAttribute("nom", v.getNomVideo());;
+		rd.forward(request, response);
 			
 			
 		} catch (Exception e) {
