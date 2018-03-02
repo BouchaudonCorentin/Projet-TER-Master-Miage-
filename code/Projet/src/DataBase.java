@@ -615,6 +615,30 @@ public class DataBase {
 		}	
 		
 	}
+	public boolean isBuy(Client c, Video v)throws SQLException{
+		String query = " select count(*) from  Achat where idClient="+c.getId()+" and idVideo = "+v.getId();
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		res.next();
+		if(res.getInt(1)==1) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	public boolean isRent(Client c, Video v)throws SQLException{
+		String query = " select count(*) from  Location where idClient="+c.getId()+" and idVideo = "+v.getId()+" and dateFin >= CURRENT_DATE";
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		res.next();
+		if(res.getInt(1)==1) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
 	public static void main(String[] argv) throws ClassNotFoundException, SQLException {// permet de test fonction de la
 																						// bd
 		DataBase db = new DataBase();
