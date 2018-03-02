@@ -72,7 +72,6 @@
   		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   	 	 	<strong>Success!</strong> Client supprimée.
 	 	 	</div>
-
   		</c:if>
   		
   		 <c:if test = "${echec_suppressionClient == true}">

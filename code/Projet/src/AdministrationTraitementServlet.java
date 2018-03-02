@@ -51,6 +51,7 @@ public class AdministrationTraitementServlet extends HttpServlet {
 				int cat = Integer.parseInt(request.getParameter("a_categorie"));
 				
 				double louer = Double.parseDouble(request.getParameter("a_louer"));
+				
 				double achat = Double.parseDouble(request.getParameter("a_achat"));
 				Video v = new Video(nom,saison,ep,resume,0,0,achat,louer);
 				v.setId((dbi.recupDernierID().getId()+1));
@@ -86,28 +87,33 @@ public class AdministrationTraitementServlet extends HttpServlet {
 					request.setAttribute("echec_inscription", true); 
 					}else {
 						client = dbi.inscription(new Client(nom,prenom,pseudo,mdp,email));
-						request.setAttribute("echec_inscription", true); 
+						request.setAttribute("echec_inscription", false); 
 					}
 					
 			    
 			  }else if (action.equals("Del_Client")) {
 				  String pseudo = request.getParameter("d_pseudo");
-				  int id= dbi.IdBypseudo(pseudo); 
-				  Client c = new Client();
-				  c.setId(id);
-				  dbi.suppClient(c);
-					if (dbi.verifpseudo(pseudo) == false){
-						request.setAttribute("echec_suppressionclient", false); 
-						}else {
-							request.setAttribute("echec_suppressionclient", true); 
-						}
+				  if(!dbi.verifpseudo(pseudo)) {
+					  int id= dbi.IdBypseudo(pseudo); 
+					  Client c = new Client();
+					  c.setId(id);
+					  dbi.suppClient(c);
+					  request.setAttribute("echec_suppressionclient",false); 
+				  }else {
+					  request.setAttribute("echec_suppressionclient",true); 
+				  }
+				
+
+
 			    
 			  }else if (action.equals("Audit")) {
 			      
 			  }else if (action.equals("CA")) {
 			    
 			  }
-			
+				request.setAttribute("nbvideo", dbi.afficheVideos().size());
+				request.setAttribute("nbMembre", dbi.listpseudoclients().size());
+				request.setAttribute("nbPremium", dbi.listMembrepremium());
 			rd.forward(request, response);
 			
 			
