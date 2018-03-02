@@ -8,7 +8,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-       
+       <meta http-equiv="Refresh" content="30"> 
         <meta name="administration" content="">
 
           <title>Netflox</title>
@@ -16,8 +16,124 @@
           <link href="resources/css/standard.css" rel="stylesheet">
           <link href="resources/css/administrateur.css" rel="stylesheet">
         </head>
+  <!-- AjoutVideo -->
+      <!-- Les pop up gestion -->      
+       <c:if test = "${ajout_video ==  true}">
+			 <div class="alert alert-success alert-dismissible">
+  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Success!</strong> Video ajoutée.
+	 	 	</div>
 
+  		</c:if>
+  		
+  		 <c:if test = "${ajout_video ==  false}">
+			 <div class="alert alert-danger alert-dismissible">
+   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Echec!</strong> Video n'a pas pu être ajoutée.
+	 	 	</div>
 
+  		</c:if>
+<!-- SuppressionVideo -->
+		   <c:if test = "${echec_suppressionVideo ==  false}">
+			 <div class="alert alert-success alert-dismissible">
+  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Success!</strong> Video supprimée.
+	 	 	</div>
+
+  		</c:if>
+  		
+  		 <c:if test = "${echec_suppressionVideo == true}">
+			 <div class="alert alert-danger alert-dismissible">
+   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Echec!</strong> Video n'a pas pu être supprimée.
+	 	 	</div>
+
+  		</c:if>
+
+<!-- AjoutClient -->
+	   <c:if test = "${echec_inscription ==  false}">
+			 <div class="alert alert-success alert-dismissible">
+  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Success!</strong> Client ajouté.
+	 	 	</div>
+
+  		</c:if>
+  		
+  		 <c:if test = "${echec_inscription == true}">
+			 <div class="alert alert-danger alert-dismissible">
+   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Echec!</strong> Client n'a pas pu être ajouté.
+	 	 	</div>
+
+  		</c:if>
+<!-- SuppressionClient -->
+		   <c:if test = "${echec_suppressionclient ==  false}">
+			 <div class="alert alert-success alert-dismissible">
+  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Success!</strong> Client supprimée.
+	 	 	</div>
+  		</c:if>
+  		
+  		 <c:if test = "${echec_suppressionClient == true}">
+			 <div class="alert alert-danger alert-dismissible">
+   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Echec!</strong> Client n'a pas pu être supprimée.
+	 	 	</div>
+
+  		</c:if>
+
+<!-- Modifier Client-->
+		   <c:if test = "${echec_suppressionVideo ==  false}">
+			 <div class="alert alert-success alert-dismissible">
+  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Success!</strong> Video supprimée.
+	 	 	</div>
+
+  		</c:if>
+  		
+  		 <c:if test = "${echec_suppressionVideo == true}">
+			 <div class="alert alert-danger alert-dismissible">
+   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Echec!</strong> Vlein n'a pas pu être supprimée.
+	 	 	</div>
+
+  		</c:if>
+<!-- Modifier Video-->
+			<c:if test = "${echec_suppressionVideo ==  false}">
+			 <div class="alert alert-success alert-dismissible">
+  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Success!</strong> Video modifiée.
+	 	 	</div>
+
+  		</c:if>
+  		
+  		 <c:if test = "${echec_suppressionVideo == true}">
+			 <div class="alert alert-danger alert-dismissible">
+   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Echec!</strong> Video n'a pas pu être modifiée.
+	 	 	</div>
+
+  		</c:if>
+  		
+<!-- generer pdf-->  	
+		<c:if test = "${echec_suppressionVideo ==  false}">
+			 <div class="alert alert-success alert-dismissible">
+  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Success!</strong> Video supprimée.
+	 	 	</div>
+
+  		</c:if>
+  		
+  		 <c:if test = "${echec_suppressionVideo == true}">
+			 <div class="alert alert-danger alert-dismissible">
+   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  	 	 	<strong>Echec!</strong> Video n'a pas pu être supprimée.
+	 	 	</div>
+
+  		</c:if>
+  		
+  		
+<!--HTML BODY-->   		
       <body class="bg">
       
          <div class="navbar-wrapper">
@@ -149,23 +265,23 @@
 							<div class="tab-pane fade in active" id="tab1default">
 								<div id="AddVideo">	
 									  <form method="post" action="/Projet-TER/AdministrationTraitement?action=Add_Video" >
-										<input type="text" name="a_nom" class="form-control input-sm chat-input" placeholder="nom" />
+										<input type="text" name="a_nom" class="form-control input-sm chat-input" placeholder="nom" required/>
 										</br> 
-										<input type="text" name="a_categorie" class="form-control input-sm chat-input"placeholder="catégorie 1=documentaire 2=film 3=série" /> 
+										<input type="number" name="a_categorie" class="form-control input-sm chat-input"placeholder="catégorie 1=documentaire 2=film 3=série" required/> 
 										</br> 
-										<input type="text" name="a_motclef" class="form-control input-sm chat-input"placeholder="mots clefs" /> 
+										<input type="text" name="a_motclef" class="form-control input-sm chat-input"placeholder="mots clefs" required/> 
 										</br> 
-										<input type="text" name="a_resume" class="form-control input-sm chat-input" placeholder="résumé" />
+										<input type="text" name="a_resume" class="form-control input-sm chat-input" placeholder="résumé" required/>
 										</br>
-										<input type="text" name="a_saison" class="form-control input-sm chat-input" placeholder=" saison" />
+										<input type="text" name="a_saison" class="form-control input-sm chat-input" placeholder=" saison" required/>
 										</br>
-										<input type="text" name="a_ep" class="form-control input-sm chat-input" placeholder=" n° episode" />
+										<input type="number" name="a_ep" class="form-control input-sm chat-input" placeholder=" n° episode" required/>
 										</br>
-										<input type="text" name="a_louer" class="form-control input-sm chat-input" placeholder=" prix location" />
+										<input type="number" name="a_louer" class="form-control input-sm chat-input" placeholder=" prix location" required/>
 										</br>
-										<input type="text" name="a_achat" class="form-control input-sm chat-input" placeholder=" prix achat" />
+										<input type="number" name="a_achat" class="form-control input-sm chat-input" placeholder=" prix achat" required/>
 										</br>
-				                      <button  type="submit"  class="btn btn-danger btn-md">Ajouter</button>
+				                      <button  type="submit" class="btn btn-danger btn-md">Ajouter</button>
 	                     			 </form>
 								</div>
 
@@ -174,11 +290,11 @@
 							<div class="tab-pane fade" id="tab2default">
 								<div id="DeleteVideo">
 								<form method="post" action="/Projet-TER/AdministrationTraitement?action=Del_Video">	
-									<input type="text" name="d_titre_V" class="form-control input-sm chat-input" placeholder="titre" />
+									<input type="text" name="d_titre_V" class="form-control input-sm chat-input" placeholder="titre" required/>
 									</br>
-									<input type="text" name="d_episode_V"class="form-control input-sm chat-input" placeholder="numéro d'épisode" />
+									<input type="number" name="d_episode_V"class="form-control input-sm chat-input" placeholder="numéro d'épisode" required />
 									</br>
-									<input type="text" name="d_saison"class="form-control input-sm chat-input" placeholder="saison" />
+									<input type="number" name="d_saison"class="form-control input-sm chat-input" placeholder="saison" required/>
 									</br>
 									<div class="wrapper">
 									<button  type="submit"  class="btn btn-danger btn-md">supprimer </button>
@@ -191,15 +307,15 @@
 							<div class="tab-pane fade" id="tab3default">
 								<div id="AddClient">
 									<form method="post" action="/Projet-TER/AdministrationTraitement?action=Add_Client">
-										<input type="text" name="a_nom" class="form-control input-sm chat-input" placeholder="nom" />
+										<input type="text" name="a_nom" class="form-control input-sm chat-input" placeholder="nom" required />
 										</br> 
-										<input type="text" name="a_prenom" class="form-control input-sm chat-input" placeholder="prenom" />
+										<input type="text" name="a_prenom" class="form-control input-sm chat-input" placeholder="prenom" required />
 										</br> 
-										<input type="text" name="a_email" class="form-control input-sm chat-input" placeholder="email" />
+										<input type="text" name="a_email" class="form-control input-sm chat-input" placeholder="email" required />
 										</br> 
-										<input type="text" name="a_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" />
+										<input type="text" name="a_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" required/>
 										</br> 
-										<input type="text" name="a_mdp" class="form-control input-sm chat-input" placeholder="password" /> 
+										<input type="text" name="a_mdp" class="form-control input-sm chat-input" placeholder="password" required/> 
 										</br>
 										<button type="submit"  class="btn btn-danger btn-md">ajouter</button>
 									</form>
@@ -209,11 +325,9 @@
 							<div class="tab-pane fade" id="tab4default">
 								<div id="DeleteClient">
 								<form method="post" action="/Projet-TER/AdministrationTraitement?action=Del_Client">
-									<input type="text" name="d_id" class="form-control input-sm chat-input" placeholder="id" />
-									</br> 
-									<input type="text" name="d_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" />
+									<input type="text" name="d_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" required/>
 									</br>
-									<button type="submit" id="Ca"class="btn btn-danger btn-md">supprimer </button>
+									<button type="submit" id="Ca" class="btn btn-danger btn-md">supprimer </button>
 									</form>
 								</div>
 							</div>
@@ -221,15 +335,14 @@
 			<!-- Panel PDF -->
 								<div class="tab-pane fade" id="tab5default">
 									<div id="pdf">
-									  <h3> Télécharger la liste des films du site </h3>
-										  <a  type="submit" id="audit" href="/Projet-TER/AdministrationTraitement?action=Audit" class="btn btn-danger btn-md">Audit</a>
 											<form method="post" action="/AdministrationTraitement?action=CA" >
-												<input type="text" name="day" class="form-control" placeholder="Day" />
-												<input type="text" name="month" class="form-control" placeholder="Month" />
-												<input type="text" name="year" class="form-control" placeholder="Year" />
-                         						<button type="submit" id="Ca"class="btn btn-danger btn-md">Chiffre d'affaire </button>
+												<input type="number" name="day" class="form-control" placeholder="Day" required />
+												<input type="number" name="month" class="form-control" placeholder="Month" required/>
+												<input type="number" name="year" class="form-control" placeholder="Year" required/>
+                         						<button type="submit" id="Ca"class="btn btn-danger btn-md">AUDIT</button>
 											</form>
-										
+										<h3> Télécharger la liste des films du site </h3>
+										  <a  type="submit" id="audit" href="/Projet-TER/AdministrationTraitement?action=Audit" class="btn btn-danger btn-md">Liste pdf </a>
 									</div>
 								</div>
 								
@@ -239,16 +352,16 @@
 								<div id="ModifierClient">
 									<form method="post" action="/Projet-TER/AdministrationTraitement?action=Mod_Client">
 									 <h3>Eléments de recherche</h3>
-										<input type="text" name="m_nom" class="form-control input-sm chat-input" placeholder="nom" />
+										<input type="text" name="m_nom" class="form-control input-sm chat-input" placeholder="nom" required />
 										</br> 
-										<input type="text" name="m_prenom" class="form-control input-sm chat-input" placeholder="prenom" />
+										<input type="text" name="m_prenom" class="form-control input-sm chat-input" placeholder="prenom" required/>
 										</br> 
 										<h3>Eléments a modifier</h3>
-										<input type="text" name="m_email" class="form-control input-sm chat-input" placeholder="email" />
+										<input type="text" name="m_email" class="form-control input-sm chat-input" placeholder="email" required/>
 										</br> 
-										<input type="text" name="m_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" />
+										<input type="text" name="m_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" required/>
 										</br> 
-										<input type="text" name="m_mdp" class="form-control input-sm chat-input" placeholder="password" /> 
+										<input type="text" name="m_mdp" class="form-control input-sm chat-input" placeholder="password" required/> 
 										</br>
 										<button type="submit"  class="btn btn-danger btn-md">Modifier</button>
 									</form>
@@ -260,18 +373,18 @@
 							<div id="ModifieVideo">
 								<form method="post" action="/Projet-TER/AdministrationTraitement?action=Mod_Video">	
 								  <h3>Eléments de recherche</h3>
-									<input type="text" name="m_resume" class="form-control input-sm chat-input" placeholder="nom " />
+									<input type="text" name="m_resume" class="form-control input-sm chat-input" placeholder="nom " required/>
 									</br>
-									<input type="text" name="m_resume" class="form-control input-sm chat-input" placeholder="episode " />
+									<input type="number" name="m_resume" class="form-control input-sm chat-input" placeholder="episode " required/>
 									</br>
-									<input type="text" name="m_resume" class="form-control input-sm chat-input" placeholder="saison " />
+									<input type="number" name="m_resume" class="form-control input-sm chat-input" placeholder="saison " required/>
 									</br>
 									<h3>Eléments a modifier</h3>
-									<input type="text" name="m_resume" class="form-control input-sm chat-input" placeholder="resumé " />
+									<input type="text" name="m_resume" class="form-control input-sm chat-input" placeholder="resumé " required/>
 									</br>
-									<input type="text" name="m_location"class="form-control input-sm chat-input" placeholder="prix location " />
+									<input type="number" name="m_location"class="form-control input-sm chat-input" placeholder="prix location " required/>
 									</br>
-									<input type="text" name="m_achat"class="form-control input-sm chat-input" placeholder="prix achat " />
+									<input type="number" name="m_achat"class="form-control input-sm chat-input" placeholder="prix achat " required/>
 									</br>
 									<div class="wrapper">
 									<button  type="submit"  class="btn btn-danger btn-md">supprimer </button>
