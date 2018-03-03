@@ -1,4 +1,3 @@
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -37,7 +36,7 @@ public class DataBase {
 	public Client connection(Client client) throws SQLException {// connecte le client grace a pseudo et mdp
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery("select idClient, nomClient, prenomClient,email from Client where pseudo ='"
-				+ client.getPseudo() + "' and mdp = '" + client.getMdp() + "'");//retourne l'idee de la personne qu correspond au pseudo et l'id
+				+ client.getPseudo() + "' and mdp = '" + client.getMdp() + "' order by idClient");//retourne l'idee de la personne qu correspond au pseudo et l'id
 		if (res.next()) {//s'il existe renvoie les informations du client ainsi que son id
 			client.setEmail(res.getString("email"));
 			client.setId(res.getInt("idClient"));
@@ -118,7 +117,6 @@ public class DataBase {
 			}else {//sinon
 				query ="select * from Video where idVideo in (select distinct (idVideo) from MotClefVideo where idMotClef="+mc.get(i).getId()+")"+" and idVideo !="+v.getId();
 			}
-			System.out.println(query);
 			res = s.executeQuery(query);
 			while (res.next()) {//met tout les episodes qui ont des mots clefs en commun avec notre video / risque de doublon
 				video = new Video(res.getInt("idVideo"), res.getString("nomVideo"), res.getString("groupeVideo"),
@@ -134,11 +132,9 @@ public class DataBase {
 			for (int k=j;k<videosautres.size();k++) {
 				if(videosautres.get(j).getId()==videosautres.get(k).getId()) {
 					compteur ++;
-					System.out.println(videosautres.get(j).getNomVideo()+":"+compteur);
 				}
 			}
 			if (compteur==mc.size()) {//retourne que les videos qui ont les memes mots clef
-				System.out.println("la");
 				videos.add(videosautres.get(j));
 			}
 
@@ -165,7 +161,7 @@ public class DataBase {
 		ResultSet res;
 		Video video;
 		for (int i = 0; i < mc.size(); i++) {//permet de retourner chaque video qui possede un mot clef en commun risque de doublon
-			res = s.executeQuery(query + mc.get(i).getId() + ")");
+			res = s.executeQuery(query + mc.get(i).getId() + ")order by idVideo");
 			while (res.next()) {
 				video = new Video(res.getInt("idVideo"), res.getString("nomVideo"), res.getString("groupeVideo"),
 						res.getInt("numEpisode"), res.getString("resume"), res.getInt("nbvue"),res.getInt("nbddl"),
@@ -211,12 +207,12 @@ public class DataBase {
 		return v;
 
 	}
-	public Video incrementeddl(Video v) throws SQLException {// increment les vues sur la video
+	public Video incrementeddl(Video v) throws SQLException {// incremente les vues sur la video
 		String query = "Update Video Set nbddl = nbddl+1 where idVideo =" + v.getId();//incremente de 1 le nombre de telechargement de la video
 		Statement s = conn.createStatement();
 		int res = s.executeUpdate(query);
 		if (res == 1) {
-			v.setNbvue(v.getNbvue() + 1);
+			v.setNbddl(v.getNbddl() + 1);
 		}
 		return v;
 
@@ -264,11 +260,11 @@ public class DataBase {
 
 	public List<Client> listpseudoclients() throws SQLException {// retourne la totalit� des pseudo
 		List<Client> clients = new ArrayList<Client>();
-		String query = "select pseudo from CLient";//retourne tout les pseudos de la BD
+		String query = "select idClient, pseudo from Client order by idClient";//retourne tout les pseudos de la BD
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
 		while (res.next()) {
-			Client c = new Client(res.getString(1));
+			Client c = new Client(res.getString(2));
 			clients.add(c);
 		}
 		return clients;//retourne des clients ayant comme seul valeur leur pseudo
@@ -311,7 +307,7 @@ public class DataBase {
 			query = "insert into CompoVideo values (" + video.getId() + "," + cate.getId() + ")";//on ajoute sa categorie
 			res = s.executeUpdate(query);
 			if (res == 1) {
-				for (int i = 0; i < mc.size(); i++) {// pas encore tester cette partie la
+				for (int i = 0; i < mc.size(); i++) {
 					query = "insert into MotClefVideo values(" + video.getId() + "," + mc.get(i).getId() + ")";//on ajoute ses mots clefs
 					s.executeUpdate(query);
 				}
@@ -364,10 +360,10 @@ public class DataBase {
 	}
 
 	public boolean suppClient(Client client) throws SQLException {// supprime le client passer en parametre
-		String query = "Delete From CompoClient where idClient ='" + client.getId() + "'";//supprime la ligne dans compoCLient
-		String query2 = "Delete From Location where idClient ='" + client.getId() + "'";//supprime la ligne dans Location
-		String query3 = "Delete From Achat where idClient ='" + client.getId() + "'";//supprime la ligne dans Achat
-		String query4 = "Delete From Client where idClient ='" + client.getId() + "'";//supprime la ligne dans Client
+		String query = "Delete From CompoClient where idClient ="+ client.getId();//supprime la ligne dans compoCLient
+		String query2 = "Delete From Location where idClient =" + client.getId();//supprime la ligne dans Location
+		String query3 = "Delete From Achat where idClient =" + client.getId();//supprime la ligne dans Achat
+		String query4 = "Delete From Client where idClient =" + client.getId();//supprime la ligne dans Client
 		Statement s = conn.createStatement();
 		//manque de temps pur verifier si tout fonctionne bien
 		s.executeUpdate(query);
@@ -392,7 +388,7 @@ public class DataBase {
 			query = "select idCA from ChiffreAffaire where dateCA =CURRENT_DATE";//recupere id CA
 			ResultSet resbis = s.executeQuery(query);
 			if (resbis.next()) {//si ca existe
-				query = "Update ChiffreAffaire SET valeurCA = valeurCA+"+v.getPrixLocation();//augmente le CA d'aujourd'hui
+				query = "Update ChiffreAffaire SET valeurCA = valeurCA+"+v.getPrixLocation()+" where idCA ="+resbis.getInt(1);//augmente le CA d'aujourd'hui
 				s.executeUpdate(query);
 			} else {
 				query = "select max(idCA) from ChiffreAffaire";//retourne le plus grand CA
@@ -538,7 +534,7 @@ public class DataBase {
 	public List<Video> achatsUser(Client c)throws SQLException{// retourne les achats d'un user
 		List<Video> videos = new ArrayList<Video>();
 		Video v;
-		String query = "select * from video where idVideo in (select idVideo from Achat where idCLient = "+c.getId()+")";//retourne les achats du client
+		String query = "select * from video where idVideo in (select idVideo from Achat where idCLient = "+c.getId()+")order by idVideo";//retourne les achats du client
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
 		while (res.next()) {
@@ -581,8 +577,8 @@ public class DataBase {
 														  // suggestions, on ne peux pas modifier nbvue et nbddl car �a serait 
 														  //de la fraude 
 		
-		String query = " Update Video SET resume ='"+v.getResume()+"' and prixlocation = "+v.getPrixLocation()+" and prixachat ="+v.getPrixAchat()+
-				"where idVideo = "+v.getId();//modifie les param�tres modifiables de la video c'est � dire le resume et les prix
+		String query = " Update Video SET resume ='"+v.getResume()+"' , prixlocation = "+v.getPrixLocation()+" , prixachat ="+v.getPrixAchat()+
+				" where idVideo = "+v.getId();//modifie les param�tres modifiables de la video c'est � dire le resume et les prix
 		Statement s = conn.createStatement();
 		int res = s.executeUpdate(query);
 		if (res == 1) {
@@ -594,8 +590,8 @@ public class DataBase {
 	public boolean modifClient(Client c)throws SQLException{//on peux tout changer sauf prenom et nom car on ne change pas de prenom
 															//ou de nom
 		
-		String query = " Update Video SET pseudo ='"+c.getPseudo()+"' and mdp = "+c.getMdp()+" and email ="+c.getEmail()+
-				"where idClient = "+c.getId();//modifie les param�tres modifiable d'un  client on part du principe qu'il peux pas changer de nom et prenom
+		String query = " Update Client SET pseudo ='"+c.getPseudo()+"' , mdp = '"+c.getMdp()+"' , email ='"+c.getEmail()+
+				"' where idClient = "+c.getId();//modifie les param�tres modifiable d'un  client on part du principe qu'il peux pas changer de nom et prenom
 		Statement s = conn.createStatement();
 		int res = s.executeUpdate(query);
 		if (res == 1) {
@@ -632,6 +628,7 @@ public class DataBase {
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
 		res.next();
+		System.out.println(res.getInt(1));
 		if(res.getInt(1)==1) {
 			return true;
 		}else {
