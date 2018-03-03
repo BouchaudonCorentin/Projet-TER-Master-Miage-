@@ -639,15 +639,36 @@ public class DataBase {
 		}
 		
 	}
+	public List<Video> sontdansCategorie(List<Video> video , CategorieVideo cate)throws SQLException{
+		
+		String query = "Select count (*) from CompoVideo where idCategorieVideo = "+cate.getId()+ " and idVideo = ";
+		Statement s = conn.createStatement();
+		ResultSet res;
+		List<Video>videoreturn = new ArrayList<Video>();
+		for (int i =0; i<video.size();i++) {
+			res = s.executeQuery(query+video.get(i).getId());
+			res.next();
+			if (res.getInt(1)>=1) {
+				videoreturn.add(video.get(i));
+			}
+		}
+		return videoreturn;		
+	}
+	
 	public static void main(String[] argv) throws ClassNotFoundException, SQLException {// permet de test fonction de la
 																						// bd
 		DataBase db = new DataBase();
-		Video v = new Video (100,"Star Trek Discovery","1",1,"Apr�s un si�cle de silence, les klingons refont surface. D�termin�s � r�unifier leur empire, ils d�clarent la guerre � la F�d�ration des plan�tes unies. Officier en disgr�ce de la Starfleet, Michael Burnham se retrouve au centre du conflit.",200,100, 1.99,3.99);
-		Client c = new Client(1);
-		db.louer(c, v);
+		List<MotClef> mc =new ArrayList<MotClef>();
+		mc.add(new MotClef (12));
+		List<Video> v = db.rechercheVideoMC(mc);
+		for (int i = 0;i<v.size();i++) {
+			System.out.println(v.get(i).getNomVideo());
+		}
 
 	}
 
 
 
 }
+
+ 
