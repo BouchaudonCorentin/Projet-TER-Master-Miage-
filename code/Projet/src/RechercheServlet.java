@@ -45,11 +45,10 @@ public class RechercheServlet extends HttpServlet {
 				String[] checks =request.getParameterValues("check");
 				for (int i = 0; i < checks.length; i++) {
 				      mc.add(new MotClef(Integer.parseInt(checks[i])));
-				      System.out.println("verifie arg "+ checks[i]);
-				      System.out.println(mc.size());
 				    }
+
 				lv = dbi.rechercheVideoMC(mc);
-				System.out.println(lv.size());
+			
 			}else {
 				CategorieVideo cv = new CategorieVideo (Integer.parseInt(cat)); 
 				lv = dbi.rechercheVideoCate(cv);

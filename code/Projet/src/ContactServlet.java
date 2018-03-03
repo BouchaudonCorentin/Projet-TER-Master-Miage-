@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/CompteClient")
+@WebServlet("/Contact")
 /** 
  * 
  * @author MMathilde Pechdimaldjian
  *
  */
-public class CompteClientServlet extends HttpServlet {
+public class ContactServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public  CompteClientServlet () {
+    public  ContactServlet () {
         super();
     }
 
@@ -35,14 +35,8 @@ public class CompteClientServlet extends HttpServlet {
 				request.getSession().setAttribute("dbi", dbi);
 			}
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/compteClient.jsp"); 
-			Client c = (Client) request.getSession().getAttribute("client"); 
-			List<Video> a = dbi.achatsUser(c); 
-			List<Video> lc = dbi.locationsCouranteUser(c); 
-			List<Video> lf = dbi.vieilleLocationsUser(c);
-			request.setAttribute("a", a);
-			request.setAttribute("lc", lc);
-			request.setAttribute("lf", lf);
+			RequestDispatcher rd = request.getRequestDispatcher("/contact.jsp"); 
+		
 			rd.forward(request, response);
 			
 			

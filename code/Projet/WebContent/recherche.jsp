@@ -12,15 +12,15 @@
     <title>Netflox</title>
 
     <link href="resources/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="ressources/css/recherche.css" rel="stylesheet">    
-    <link href="ressources/css/standard.css" rel="stylesheet">
-    <link href="ressources/css/index.css" rel="stylesheet">
+    <link href="resources/css/recherche.css" rel="stylesheet">    
+    <link href="resources/css/standard.css" rel="stylesheet">
+    <link href="resources/css/index.css" rel="stylesheet">
 
 
 
   </head>
   <body class="bg">
- <div class="navbar-wrapper">
+	 <div class="navbar-wrapper">
       <div class="container">
 
         <nav class="navbar navbar-inverse" role="navigation">
@@ -33,6 +33,7 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Contactez nous </a></li>
+              </ul> 
    
                <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
@@ -49,7 +50,8 @@
       <div class="col-sm-12">
       	<c:forEach var="v" items="${videos}">
       	  <div class="card card-1">
-      	 	 <a href="/Projet-TER/DetailVideo?idVideo=${v.id}" id="p-film">${v.nomVideo} </a>
+      	 	 <a href="/Projet-TER/DetailVideo?idVideo=${v.id}" id="p-film"><b>${v.nomVideo}</b></a>	
+      	 	 			<c:if test = "${v.numepisode != 0}"><p style="padding-left:5%; color=#FFFF;">épisode n°${v.numepisode} </p></c:if>
           	<img id="image-card" src="Affiche/${v.id}.jpg">
           </div>
 		</c:forEach>

@@ -53,13 +53,13 @@
         <nav class="navbar navbar-inverse" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">Netflox</a>
+            <a class="navbar-brand" href="/Projet-TER/Home"">Netflox</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-             <li class="active"><a href="#">Contactez nous </a></li>
+             <li class="active"><a href="/Projet-TER/Contact">Contactez nous </a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catégorie <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -89,34 +89,12 @@
                 </ul>
               </li>
               
-            </ul>
-           
-     
-         
-                  
-					
-					
-				
-            
-   
-            
-            
-      <!--       <div class="col-sm-3 col-md-3">
-                <form class="navbar-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="q">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
-                </div>
-                </form>
-            </div>--> 
-           
+            </ul>		     
        <!-- bouton de la navbar -->
 			
                <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
-					   <li> <a href="/Projet-TER/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
+					   <li> <a href="/Projet-TER/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
 					   
 					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
 					    <a href="/Projet-TER/Subscribe" type="button" class="btn btn-primary">Premium</a>
@@ -207,7 +185,7 @@
                       <div class="col_md_login">
                         <div class="cont_ba_opcitiy">
                           <h2>LOGIN</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                         
                           <button class="btn_login" onclick="change_login()">LOGIN</button>
                         </div>
                       </div>
@@ -215,7 +193,7 @@
                       <div class="col_md_sign_up">
                         <div class="cont_ba_opcitiy">
                           <h2>SIGN UP</h2>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                          
                           <button class="btn_sign_up" onclick="change_sign_up()">SIGN UP</button>
                         </div>
                       </div>
