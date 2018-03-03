@@ -242,3 +242,10 @@ $(document).ready(function(){
 		return m+":"+s;
 	};
 });
+
+
+$(document).ready(function() {
+    $('#Carousel').carousel({
+        interval: 5000
+    })
+});

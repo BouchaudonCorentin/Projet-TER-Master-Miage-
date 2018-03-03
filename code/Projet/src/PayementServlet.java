@@ -51,14 +51,18 @@ public class PayementServlet extends HttpServlet {
 		}else if(type.equals("Achat")) {
 			request.setAttribute("prix", (double)Math.round(v.getPrixAchat() * 1000) / 1000 );
 			b=dbi.acheter(c,v);
-			System.out.println("au equal " +b);
+			
+			
+		}else if(type.equals("Premium")) {
+			dbi.becomePremium(c);
+			System.out.println(c.getNom());
+			
 		}
 	
 		request.setAttribute("action_reussi",b);
 		request.setAttribute("type",type);
 		request.setAttribute("idVideo",id);
 		request.setAttribute("nom", v.getNomVideo());
-		System.out.println(id);
 		rd.forward(request, response);
 			
 			

@@ -19,48 +19,35 @@
 ================================================== -->
   <body class="bg">
 
-<
-    <div class="navbar-wrapper">
+<div>
+  <div class="navbar-wrapper">
       <div class="container">
 
         <nav class="navbar navbar-inverse" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a class="navbar-brand" href="/Projet-TER/Home">Netflox</a>
+            <a class="navbar-brand" href="/Projet-TER/Home"">Netflox</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Documentaires</a></li>
-                  <li><a href="#">Films</a></li>
-                  <li><a href="#">Séries</a></li>
-                </ul>
-              </li>
-            </ul>
-            <div class="col-sm-3 col-md-3">
-                <form class="navbar-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="q">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
-                </div>
-                </form>
-            </div>
-           
-       <!-- bouton de la navbar -->
-			
+             <li class="active"><a href="/Projet-TER/Contact">Contactez nous </a></li>
                <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
-					   <li> <a href="/Projet-TER/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a> </li>	
+					   <li> <a href="/Projet-TER/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
+					   
+					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
+					    <a href="/Projet-TER/Subscribe" type="button" class="btn btn-primary">Premium</a>
+				   	   </c:if>
+				   	    <c:if test = "${sessionScope.status.categorie == 'administrateur'}">
+					   	 <a href="/Projet-TER/Administration" class="btn btn-primary">administration</a>
+				   	   </c:if>	
 					   <a type="button" class="btn btn-danger" href="/Projet-TER/Deconnection">Deconnection</a>	
 					</c:if>
+					<c:if test="${empty sessionScope.client}">
+						<button id="signbtn" type="button" class="btn btn-primary btn-lg round" data-toggle="modal" data-target="#signModal">Sign in / Sign up</button>
+				    </c:if>
 				</ul> 
                 
           </div><!-- /.navbar-collapse -->
@@ -68,8 +55,9 @@
 
       </div>
     </div>
+   
         <img id="logo" src="resources/image/logo_N.png" >
-	<button id="btn_sub" class="btn btn-danger btn-lg " onclick="">S'abonner</button>
+			<a id="btn_sub" class="btn btn-danger btn-lg" href="/Projet-TER/Payement?type=Premium&id=0">S'abonner</a>
        <div id="div">
             <img id="pay" src="resources/image/pay.png" >
             <p id ="texte">10€ par mois</p>

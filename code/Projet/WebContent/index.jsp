@@ -7,9 +7,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <title>Netflox</title>
 
@@ -136,7 +133,7 @@
             <div class="carousel-caption">
                 <h2>${c.nomVideo}</h2>
                 <article> Synopsis : ${c.resume}</article>
-              <p><a class="btn btn-primary btn-lg round" href="/Projet-TER/DetailVideo?id=${c.id}" role="button">Lire plus</a></p>
+              <p><a class="btn btn-primary btn-lg round" href="/Projet-TER/DetailVideo?idVideo=${c.id}" role="button">Lire plus</a></p>
             </div>
           </div>
         </div>

@@ -1,5 +1,7 @@
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,8 +44,10 @@ public class AfficheVideoServlet extends HttpServlet {
 			request.setAttribute("ep", v.getNumepisode());
 			request.setAttribute("resume", v.getResume());
 			request.setAttribute("saison", v.getGroupeVideo());
-			//CategorieMotClef mc = dbi.
-			//request.setAttribute("suggestion", dbi.suggestions(v, mc));
+			request.setAttribute("vues", v.getNbvue());
+			dbi.incrementevue(v); 
+			List<MotClef> mc = dbi.motClefvideo(v); 
+			request.setAttribute("suggestion", dbi.suggestions(v, mc));
 			rd.forward(request, response);
 			
 			

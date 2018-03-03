@@ -48,11 +48,12 @@ p{
     color: #FFFF;
     font-size: 20px;
     padding-left: 10%;
-    padding-top: 2%;
+   
 
 }
+
 #resume{
- font-size: 17px;
+ font-size: 15px;
  width: 80%;
  color:#FFFF;
 
@@ -66,7 +67,7 @@ p{
   border: 2px solid #1C1C1C;
   z-index: 6;
   width: 40%;
-  height: 400px;
+  height: 450px;
   opacity: 0.8;
 
 }
@@ -74,20 +75,19 @@ p{
 
 
 .card {
-  background: #ff9933;
+  background: #303030;
   border-radius: 2px;
   display: inline-block;
-  height: 15%;
+  height: 10%;
   margin: 2rem;
   position: relative;
-  width: 35%;
+  width: 25%;
   opacity : 0.8;
   
 }
  #image-card {
-  width: 45%;
-  height: 15%;
-  margin-left :25%; 
+  width: 25%;
+  height: 5%;
   margin-bottom : 5%; 
 
  }
@@ -104,5 +104,23 @@ p{
 
 #suggestion{
 	
+	margin-left:15%; 
+}
+#sug_p{
+	  color: #FFFF;
+    font-size: 15px;
+    display : inline;
+}
+#sug_a{
+	 color: #FFFF;
+    font-size: 18px;
+    padding-left: 5%;
+    padding-top: 2%;
+    display : inline; 
 	
+}
+#logo{
+	
+	  width: 10%;
+  		height: 5%;
 }

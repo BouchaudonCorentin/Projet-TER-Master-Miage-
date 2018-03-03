@@ -23,31 +23,15 @@
         <nav class="navbar navbar-inverse" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a class="navbar-brand" href="/Projet-TER/Home"">Netflox</a>
+           <a href="/Projet-TER/Home"><img id="logo" src="resources/image/logo_N.png"></a>
           </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-       <!-- bouton de la navbar -->
-			
-               <ul class="nav navbar-nav navbar-right "> 
-				    <c:if test="${!empty sessionScope.client}">
-					   <li> <a href="/Projet-TER/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a> </li>	
-					   <a type="button" class="btn btn-danger" href="/Projet-TER/Deconnection">Deconnection</a>	
-					</c:if>
-				</ul> 
-                
           </div><!-- /.navbar-collapse -->
         </nav>
 
       </div>
-    </div>
 	
 	
-    <h1 class="page-header"> Mon voisin Totoro </h1>
+    <h1 class="page-header"> ${nom} </h1>
 		<!-- video-section-start -->
 		<div class="displaytable">
 			<div class="displaytablecell">
@@ -78,25 +62,28 @@
 		</div>
     		<!-- video-section-end -->
      <div class="col-md-2" id="detailMovie" >
-          <p id="name"> Titre : Mon voisin totoro</p>
-          <p id="realisateur">Realisateurs : studio Ghibli</p>
+          <p id="name"> Titre : ${nom}</p>
+          <p id="realisateur">episode : ${ep}</p>
+          <p id="realisateur">vues : ${vues}</p>
           <p>  Resume :</p>
           <p id="resume">
-
-              c est le meilleur film du monde bla bla bla bla
-              c est le meilleur film du monde bla bla bla bla
-              c est le meilleur film du monde bla bla bla bla
-              c est le meilleur film du monde bla bla bla bla
-              c est le meilleur film du monde bla bla bla bla
+				${resume}
           </p>
       </div>
-      
-   
+      </br>
+       </br>
+   <h1> Suggestion de vidéos </h1>
+    </br>
        <div id="suggestion">
      	 <div class="col-sm-12">
-      	<c:forEach var="v" items="${videos}">
+     	 
+      	<c:forEach var="v" items="${suggestion}">
       	  <div class="card card-1">
+      	    <a id="sug_a" href="/Projet-TER/DetailVideo?idVideo=${v.id}" id="p-film">${v.nomVideo}</a>	
+      	 	 <c:if test = "${v.numepisode != 0}"><p id="sug_p">épisode n°${v.numepisode} </p></c:if>
+      	 	 </br>
           	<img class="card card-1" src="Affiche/${v.id}.jpg">
+        
           </div>
 		</c:forEach>
       </div>
