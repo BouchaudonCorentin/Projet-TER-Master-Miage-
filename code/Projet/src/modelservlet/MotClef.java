@@ -1,3 +1,5 @@
+package modelservlet;
+
 /** This class allow to create keyword to add to the database
  * 
  * @author xxx

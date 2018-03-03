@@ -1,7 +1,7 @@
+package modelservlet;
+
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,16 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Contact")
-/** 
+@WebServlet("/Subscribe")
+/** This class allows to the client to subscribe, and enter data needed for a subscription. 
+ * This data are displayed on the page subscribe.
  * 
  * @author MMathilde Pechdimaldjian
  *
  */
-public class ContactServlet extends HttpServlet {
+public class SubscribeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public  ContactServlet () {
+    public  SubscribeServlet () {
         super();
     }
 
@@ -28,17 +29,15 @@ public class ContactServlet extends HttpServlet {
 		
 		try {
 		
-			DataBase dbi = (DataBase) request.getSession().getAttribute("dbi"); 
+			DataBase dbi = (DataBase) request.getSession().getAttribute("dbi"); // Stock du modele de DB
 			
 			if (dbi == null) {
 				dbi = new DataBase();
 				request.getSession().setAttribute("dbi", dbi);
 			}
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/contact.jsp"); 
-		
+			RequestDispatcher rd = request.getRequestDispatcher("/subscribe.jsp"); //Permet de renviyer vers un lien spécifique la page jsp
 			rd.forward(request, response);
-			
 			
 			
 		} catch (Exception e) {

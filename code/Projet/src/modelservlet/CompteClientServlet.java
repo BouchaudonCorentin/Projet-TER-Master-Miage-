@@ -1,5 +1,9 @@
+package modelservlet;
+
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,17 +11,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Subscribe")
-/** This class allows to the client to subscribe, and enter data needed for a subscription. 
- * This data are displayed on the page subscribe.
+@WebServlet("/CompteClient")
+/** 
  * 
  * @author MMathilde Pechdimaldjian
  *
  */
-public class SubscribeServlet extends HttpServlet {
+public class CompteClientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public  SubscribeServlet () {
+    public  CompteClientServlet () {
         super();
     }
 
@@ -27,15 +30,23 @@ public class SubscribeServlet extends HttpServlet {
 		
 		try {
 		
-			DataBase dbi = (DataBase) request.getSession().getAttribute("dbi"); // Stock du modele de DB
+			DataBase dbi = (DataBase) request.getSession().getAttribute("dbi"); 
 			
 			if (dbi == null) {
 				dbi = new DataBase();
 				request.getSession().setAttribute("dbi", dbi);
 			}
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/subscribe.jsp"); //Permet de renviyer vers un lien spécifique la page jsp
+			RequestDispatcher rd = request.getRequestDispatcher("/compteClient.jsp"); 
+			Client c = (Client) request.getSession().getAttribute("client"); 
+			List<Video> a = dbi.achatsUser(c); 
+			List<Video> lc = dbi.locationsCouranteUser(c); 
+			List<Video> lf = dbi.vieilleLocationsUser(c);
+			request.setAttribute("a", a);
+			request.setAttribute("lc", lc);
+			request.setAttribute("lf", lf);
 			rd.forward(request, response);
+			
 			
 			
 		} catch (Exception e) {

@@ -1,3 +1,5 @@
+package modelservlet;
+
 /** This class allow to create a CategorieCLient with a specific id.
  * Then, the idcategorie is rely to a client, to explain what categorie the client is.	
  * 

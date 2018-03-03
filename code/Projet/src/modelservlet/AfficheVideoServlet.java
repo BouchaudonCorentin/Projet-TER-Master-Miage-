@@ -1,3 +1,5 @@
+package modelservlet;
+
 
 import java.io.IOException;
 import java.util.List;
@@ -9,16 +11,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/CompteClient")
-/** 
+@WebServlet("/AfficheVideo")
+/** This class allows to display a video in the page AfficheVideo
  * 
- * @author MMathilde Pechdimaldjian
+ * 
+ * @author Mathilde Pechdimaldjian
  *
  */
-public class CompteClientServlet extends HttpServlet {
+public class AfficheVideoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public  CompteClientServlet () {
+    public  AfficheVideoServlet() {
         super();
     }
 
@@ -28,23 +31,26 @@ public class CompteClientServlet extends HttpServlet {
 		
 		try {
 		
-			DataBase dbi = (DataBase) request.getSession().getAttribute("dbi"); 
+			DataBase dbi = (DataBase) request.getSession().getAttribute("dbi");
 			
 			if (dbi == null) {
 				dbi = new DataBase();
 				request.getSession().setAttribute("dbi", dbi);
 			}
-			
-			RequestDispatcher rd = request.getRequestDispatcher("/compteClient.jsp"); 
 			Client c = (Client) request.getSession().getAttribute("client"); 
-			List<Video> a = dbi.achatsUser(c); 
-			List<Video> lc = dbi.locationsCouranteUser(c); 
-			List<Video> lf = dbi.vieilleLocationsUser(c);
-			request.setAttribute("a", a);
-			request.setAttribute("lc", lc);
-			request.setAttribute("lf", lf);
+			RequestDispatcher rd = request.getRequestDispatcher("/afficheVideo.jsp");
+			int id= Integer.parseInt(request.getParameter("idvideo")); 
+			request.setAttribute("id",id);
+			Video v = dbi.searchVideoByID(id);
+			request.setAttribute("nom", v.getNomVideo());
+			request.setAttribute("ep", v.getNumepisode());
+			request.setAttribute("resume", v.getResume());
+			request.setAttribute("saison", v.getGroupeVideo());
+			request.setAttribute("vues", v.getNbvue());
+			dbi.incrementevue(v); 
+			List<MotClef> mc = dbi.motClefvideo(v); 
+			request.setAttribute("suggestion", dbi.suggestions(v, mc));
 			rd.forward(request, response);
-			
 			
 			
 		} catch (Exception e) {

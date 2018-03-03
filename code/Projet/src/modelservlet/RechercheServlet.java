@@ -1,5 +1,8 @@
+package modelservlet;
+
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,17 +12,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/AfficheVideo")
+@WebServlet("/Recherche")
 /** This class allows to display a video in the page AfficheVideo
  * 
  * 
  * @author Mathilde Pechdimaldjian
  *
  */
-public class AfficheVideoServlet extends HttpServlet {
+public class RechercheServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public  AfficheVideoServlet() {
+    public  RechercheServlet() {
         super();
     }
 
@@ -35,19 +38,25 @@ public class AfficheVideoServlet extends HttpServlet {
 				dbi = new DataBase();
 				request.getSession().setAttribute("dbi", dbi);
 			}
-			Client c = (Client) request.getSession().getAttribute("client"); 
-			RequestDispatcher rd = request.getRequestDispatcher("/afficheVideo.jsp");
-			int id= Integer.parseInt(request.getParameter("idvideo")); 
-			request.setAttribute("id",id);
-			Video v = dbi.searchVideoByID(id);
-			request.setAttribute("nom", v.getNomVideo());
-			request.setAttribute("ep", v.getNumepisode());
-			request.setAttribute("resume", v.getResume());
-			request.setAttribute("saison", v.getGroupeVideo());
-			request.setAttribute("vues", v.getNbvue());
-			dbi.incrementevue(v); 
-			List<MotClef> mc = dbi.motClefvideo(v); 
-			request.setAttribute("suggestion", dbi.suggestions(v, mc));
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/recherche.jsp");
+			String cat = request.getParameter("cat");
+			List<Video> lv; 
+			if(cat.equals("motsclefs")) {
+				ArrayList<MotClef> mc = new ArrayList<MotClef>() ;
+				String[] checks =request.getParameterValues("check");
+				for (int i = 0; i < checks.length; i++) {
+				      mc.add(new MotClef(Integer.parseInt(checks[i])));
+				    }
+
+				lv = dbi.rechercheVideoMC(mc);
+			
+			}else {
+				CategorieVideo cv = new CategorieVideo (Integer.parseInt(cat)); 
+				lv = dbi.rechercheVideoCate(cv);
+				
+			}
+			request.setAttribute("videos", lv);
 			rd.forward(request, response);
 			
 			
