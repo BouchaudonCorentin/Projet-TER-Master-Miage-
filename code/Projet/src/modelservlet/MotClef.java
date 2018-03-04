@@ -5,6 +5,7 @@ package modelservlet;
  * @author xxx
  *
  */
+//Created by Corentin Bouchaudon
 public class MotClef {
 	private int id;
 	private String motClef;

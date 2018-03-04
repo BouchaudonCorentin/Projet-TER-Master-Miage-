@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import modelservlet.CategorieClient;
-
+//Created by Corentin Bouchaudon
 public class CategorieClientTest {
 	CategorieClient cc;
 	@Before

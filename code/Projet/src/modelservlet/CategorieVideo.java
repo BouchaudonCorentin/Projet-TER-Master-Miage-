@@ -8,6 +8,7 @@ package modelservlet;
  * @author xxx
  *
  */
+//Created by Corentin Bouchaudon
 public class CategorieVideo {
 	private int id;
 	private String nomCategorieVideo;

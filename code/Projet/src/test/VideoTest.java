@@ -1,5 +1,5 @@
 package test;
-
+//Created by Corentin Bouchaudon
 import static org.junit.Assert.*;
 
 import org.junit.Before;

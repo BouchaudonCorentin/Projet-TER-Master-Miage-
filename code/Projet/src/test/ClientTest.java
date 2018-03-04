@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import modelservlet.Client;
-
+//Created by Corentin Bouchaudon
 class ClientTest {
 	Client c;
 	@BeforeEach

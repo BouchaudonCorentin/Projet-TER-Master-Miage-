@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import modelservlet.CategorieVideo;
-
+//Created by Corentin Bouchaudon
 public class CategorieVideoTest {
 	CategorieVideo cv;
 	@Before

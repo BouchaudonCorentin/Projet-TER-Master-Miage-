@@ -7,7 +7,7 @@ package modelservlet;
  * @author lenor
  *
  */
-
+//Created by Corentin Bouchaudon
 public class Client {
 	private int id;
 	private String nom;

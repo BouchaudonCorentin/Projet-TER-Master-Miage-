@@ -9,4 +9,5 @@
 <fullyQualifiedTypeName name="modelservlet.Video"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="modelservlet.CategorieVideo"/>
+<fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
 </qualifiedTypeNameHistroy>

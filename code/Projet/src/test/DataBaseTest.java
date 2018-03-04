@@ -1,5 +1,5 @@
 package test;
-
+//Created by Corentin Bouchaudon
 import static org.junit.Assert.*;
 
 import java.sql.SQLException;
@@ -264,6 +264,16 @@ public class DataBaseTest {
 		assertTrue(db.sontdansCategorie(videos, cv).get(0).getId()==1);
 		assertFalse(db.sontdansCategorie(videos, cv).get(1).getId()==68);
 		assertTrue(db.sontdansCategorie(videos, cv).get(1).getId()==3);
+	}
+	@Test 
+	public void testafficheordrecroissant()throws SQLException{
+		assertTrue(db.afficheVideoscroissant().get(0).getId()==1);
+	}
+	@Test
+	public void testinformationclientbypseudo()throws SQLException{
+		assertTrue(db.infobypseudo("Link91").getNom().equals("Lenormand"));
+		assertTrue(db.infobypseudo("Link91").getPrenon().equals("Brian"));
+		
 	}
 
 }
