@@ -63,7 +63,7 @@
   }
 
   .carousel-caption h2 {
-    margin-bottom: 15%;
+    margin-bottom: 5%;
     font-size: 21px;
 
 
@@ -526,3 +526,5 @@ input[type="checkbox"]:disabled + .label-text:before{
 	content: "\f0c8";
 	color: #ccc;
 }
+
+#resum

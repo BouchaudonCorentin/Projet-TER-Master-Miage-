@@ -49,10 +49,8 @@ public class AdministrationTraitementServlet extends HttpServlet {
 				String motclef = request.getParameter("a_motclef"); //liste a gerer 
 				String resume = request.getParameter("a_resume");
 				ArrayList<MotClef> mc = new ArrayList<MotClef>();
-				int i = 1; // Attention partie non conforme � la tables mots clefs
 				for (String item : motclef.split(",")) {
-				    mc.add(new MotClef(i,item));
-				    i++;
+				    mc.add(new MotClef(Integer.parseInt(item)));
 				}
 				//genere la liste de mots clefs 
 				int ep = Integer.parseInt(request.getParameter("a_ep"));
@@ -66,7 +64,7 @@ public class AdministrationTraitementServlet extends HttpServlet {
 				v.setId((dbi.recupDernierID().getId()+1));
 				CategorieVideo c = new CategorieVideo(cat); 
 				dbi.ajoutVideo(v, c, mc);
-				request.setAttribute("ajout_video", !dbi.videoExiste(v));
+				request.setAttribute("ajout_video", dbi.videoExiste(v));
 				
 			  }else if (action.equals("Del_Video")){
 				  String titre = request.getParameter("d_titre_V");
@@ -74,7 +72,6 @@ public class AdministrationTraitementServlet extends HttpServlet {
 				  String saison = request.getParameter("d_saison");
 				  Video v = new Video (titre,saison,ep);
 					 if(!dbi.videoExiste(v)) {
-	
 						  Video vid = dbi.retrouveridvianomnomgroupetnbepisode(v); 
 						  dbi.suppVideo(vid);
 						  request.setAttribute("echec_suppressionVideo", false);
@@ -89,7 +86,7 @@ public class AdministrationTraitementServlet extends HttpServlet {
 					String pseudo = request.getParameter("a_pseudo");
 					String mdp = request.getParameter("a_mdp");
 					String email = request.getParameter("a_email");
-					System.out.println(nom+","+pseudo); 
+					
 					Client client;
 					
 					if (dbi.verifpseudo(pseudo) == false){
@@ -114,7 +111,36 @@ public class AdministrationTraitementServlet extends HttpServlet {
 				
 
 
-			    
+			  }else if (action.equals("Mod_Client")) {
+				  //pour trouver
+				  String m_pseudo = request.getParameter("m_pseudo");
+				  //a changer
+				  String m_nom = request.getParameter("m_nom");
+				  String m_prenom = request.getParameter("m_prenom");
+				  String m_mdp = request.getParameter("m_mdp");
+				  String m_email = request.getParameter("m_email");
+				  int id= dbi.idByPseudo(m_pseudo);
+				  Client c = new Client(id,m_nom,m_prenom,m_pseudo,m_mdp,m_email);
+				  boolean res = dbi.modifClient(c);
+				  request.setAttribute("echec_modidierclient",!res); 
+				  System.out.println(c.getPseudo()+" "+c.getNom());
+				  
+			  }else if (action.equals("Mod_Film")) { 
+				  //pour trouver
+				  String m_titre = request.getParameter("m_titre");
+				  int m_ep =Integer.parseInt( request.getParameter("m_ep"));
+				  String m_saison = request.getParameter("m_saison");
+			      //a changer
+				  String m_resume = request.getParameter("m_resume");
+				  String m_location = request.getParameter("m_location");
+				  String m_achat = request.getParameter("m_location");
+				  Video v = new Video(m_titre,m_saison,m_ep);
+				  v.setResume(m_resume);
+				  v.setPrixAchat(Double.parseDouble(m_achat));
+				  v.setPrixLocation(Double.parseDouble(m_location));
+				  boolean resv = dbi.modifVideo(v); 
+				  request.setAttribute("echec_modidierVideo",!resv); 
+				  System.out.println(v.getPrixAchat());
 			  }else if (action.equals("Audit")) {
 			      
 			  }else if (action.equals("CA")) {

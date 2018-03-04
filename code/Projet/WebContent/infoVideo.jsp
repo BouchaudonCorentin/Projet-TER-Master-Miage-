@@ -36,7 +36,7 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-             <li class="active"><a href="/Projet-TER/Contact">Contactez nous </a></li>
+             <li class="active"><a href="/Projet-TER/Contact">Contactez nous </a></li></ul> 
                <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
 					   <li> <a href="/Projet-TER/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
@@ -70,6 +70,8 @@
            </br>
           <p id="text"> <B>EPISODE : ${ep}</B></p>
           <p id="text"><B>SAISON : ${saison}</B></p>
+            <p id="text"> <B>VUES : ${vue}</B></p>
+          <p id="text"><B>TELECHARGEMENT : ${dl}</B></p>
 
 
             <ul class="rate-area">

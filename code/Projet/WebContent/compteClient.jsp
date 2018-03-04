@@ -23,17 +23,17 @@
         <nav class="navbar navbar-inverse" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a class="navbar-brand" href="/Projet-TER/Home"">Netflox</a>
+            <a class="navbar-brand" href="/Projet-TER/Home">Netflox</a>
           </div>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
+          
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
              <li class="active"><a href="/Projet-TER/Contact">Contactez nous </a></li>
                <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
 					   <li> <a href="/Projet-TER/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
-					   
+					   </ul> 
 					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
 					    <a href="/Projet-TER/Subscribe" type="button" class="btn btn-primary">Premium</a>
 				   	   </c:if>

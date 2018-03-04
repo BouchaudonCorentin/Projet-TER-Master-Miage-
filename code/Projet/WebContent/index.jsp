@@ -50,7 +50,7 @@
         <nav class="navbar navbar-inverse" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a class="navbar-brand" href="/Projet-TER/Home"">Netflox</a>
+            <a class="navbar-brand" href="/Projet-TER/Home">Netflox</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -132,7 +132,7 @@
 
             <div class="carousel-caption">
                 <h2>${c.nomVideo}</h2>
-                <article> Synopsis : ${c.resume}</article>
+                <p style="font-size:12px;"> Synopsis : ${c.resume}</p>
               <p><a class="btn btn-primary btn-lg round" href="/Projet-TER/DetailVideo?idVideo=${c.id}" role="button">Lire plus</a></p>
             </div>
           </div>

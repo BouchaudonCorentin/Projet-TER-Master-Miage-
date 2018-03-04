@@ -51,7 +51,8 @@ public class DetailVideoServlet extends HttpServlet {
 			request.setAttribute("p_louer",(double)Math.round(v.getPrixLocation() * 1000) / 1000 );
 			request.setAttribute("resume", v.getResume());
 			request.setAttribute("saison", v.getGroupeVideo());
-			
+			request.setAttribute("vue", v.getNbvue());
+			request.setAttribute("dl", v.getNbddl());
 			Client c = (Client) request.getSession().getAttribute("client");
 			if(c!=null) {
 				request.setAttribute("louer", dbi.isRent(c,v));

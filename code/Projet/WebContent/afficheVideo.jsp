@@ -21,15 +21,14 @@
       <div class="container">
 
         <nav class="navbar navbar-inverse" role="navigation">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-           <a href="/Projet-TER/Home"><img id="logo" src="resources/image/logo_N.png"></a>
-          </div>
-          </div><!-- /.navbar-collapse -->
+	          <div class="navbar-header">
+	           <a href="/Projet-TER/Home"><img id="logo" src="resources/image/logo_N.png"></a>
+	          </div>
+	       
         </nav>
 
       </div>
-	
+	</div>
 	
     <h1 class="page-header"> ${nom} </h1>
 		<!-- video-section-start -->

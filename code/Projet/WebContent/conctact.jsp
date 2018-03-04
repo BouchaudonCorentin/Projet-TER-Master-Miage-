@@ -30,7 +30,7 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-             <li class="active"><a href="/Projet-TER/Contact">Contactez nous </a></li>
+             <li class="active"><a href="/Projet-TER/Contact">Contactez nous </a></li></ul> 
                <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
 					   <li> <a href="/Projet-TER/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
@@ -43,9 +43,6 @@
 				   	   </c:if>	
 					   <a type="button" class="btn btn-danger" href="/Projet-TER/Deconnection">Deconnection</a>	
 					</c:if>
-					<c:if test="${empty sessionScope.client}">
-						<button id="signbtn" type="button" class="btn btn-primary btn-lg round" data-toggle="modal" data-target="#signModal">Sign in / Sign up</button>
-				    </c:if>
 				</ul> 
                 
           </div><!-- /.navbar-collapse -->

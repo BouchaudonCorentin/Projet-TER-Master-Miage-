@@ -57,7 +57,7 @@ public class PayementServlet extends HttpServlet {
 			
 		}else if(type.equals("Premium")) {
 			dbi.becomePremium(c);
-			System.out.println(c.getNom());
+			request.setAttribute("prix",9.99); 
 			
 		}
 	

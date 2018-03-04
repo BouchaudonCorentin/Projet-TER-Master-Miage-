@@ -135,6 +135,40 @@
   		</c:if>
   		
   		
+ <!-- MODIFICATION -->
+	 		<c:if test = "${echec_modidierVideo ==  false}">
+				 <div class="alert alert-success alert-dismissible">
+	  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	  	 	 	<strong>Success!</strong> Video modifiée".
+		 	 	</div>
+	
+	  		</c:if>
+	  		
+	  		 <c:if test = "${echec_modidierVideo == true}">
+				 <div class="alert alert-danger alert-dismissible">
+	   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	  	 	 	<strong>Echec!</strong> Video n'a pas pu être modfiée.
+		 	 	</div>
+	
+	  		</c:if>
+	  		
+	  			<c:if test = "${echec_modidierClient ==  false}">
+				 <div class="alert alert-success alert-dismissible">
+	  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	  	 	 	<strong>Success!</strong> Client modifié".
+		 	 	</div>
+	
+	  		</c:if>
+	  		
+	  		 <c:if test = "${echec_modidierClient == true}">
+				 <div class="alert alert-danger alert-dismissible">
+	   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	  	 	 	<strong>Echec!</strong> Client n'a pas pu être modfié.
+		 	 	</div>
+	
+	  		</c:if>
+  
+  		
 <!--HTML BODY-->   		
        <body class="bg">
 
@@ -144,28 +178,19 @@
         <nav class="navbar navbar-inverse" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a class="navbar-brand" href="/Projet-TER/Home"">Netflox</a>
+            <a class="navbar-brand" href="/Projet-TER/Home">Netflox</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
              <li class="active"><a href="/Projet-TER/Contact">Contactez nous </a></li>
+             </ul> 
                <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
-					   <li> <a href="/Projet-TER/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
-					   
-					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
-					    <a href="/Projet-TER/Subscribe" type="button" class="btn btn-primary">Premium</a>
-				   	   </c:if>
-				   	    <c:if test = "${sessionScope.status.categorie == 'administrateur'}">
-					   	 <a href="/Projet-TER/Administration" class="btn btn-primary">administration</a>
-				   	   </c:if>	
-					   <a type="button" class="btn btn-danger" href="/Projet-TER/Deconnection">Deconnection</a>	
+					   <li> <a href="/Projet-TER/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li> 
 					</c:if>
-					<c:if test="${empty sessionScope.client}">
-						<button id="signbtn" type="button" class="btn btn-primary btn-lg round" data-toggle="modal" data-target="#signModal">Sign in / Sign up</button>
-				    </c:if>
+
 				</ul> 
                 
           </div><!-- /.navbar-collapse -->
@@ -175,20 +200,6 @@
     </div>
    
            
-       <!-- bouton de la navbar -->
-			
-               <ul class="nav navbar-nav navbar-right "> 
-				    <c:if test="${!empty sessionScope.client}">
-					   <li> <a href="/Projet-TER/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a> </li>	
-					   <a type="button" class="btn btn-danger" href="/Projet-TER/Deconnection">Deconnection</a>	
-					</c:if>
-				</ul> 
-                
-          </div><!-- /.navbar-collapse -->
-        </nav>
-
-      </div>
-    </div>
 
     <!-- administeur view-->
 
@@ -361,14 +372,14 @@
 								<div id="ModifierClient">
 									<form method="post" action="/Projet-TER/AdministrationTraitement?action=Mod_Client">
 									 <h3>Eléments de recherche</h3>
+									 	<input type="text" name="m_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" required/>
+										</br> 
+										<h3>Eléments a modifier</h3>
 										<input type="text" name="m_nom" class="form-control input-sm chat-input" placeholder="nom" required />
 										</br> 
 										<input type="text" name="m_prenom" class="form-control input-sm chat-input" placeholder="prenom" required/>
 										</br> 
-										<h3>Eléments a modifier</h3>
 										<input type="text" name="m_email" class="form-control input-sm chat-input" placeholder="email" required/>
-										</br> 
-										<input type="text" name="m_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" required/>
 										</br> 
 										<input type="text" name="m_mdp" class="form-control input-sm chat-input" placeholder="password" required/> 
 										</br>
@@ -382,11 +393,11 @@
 							<div id="ModifieVideo">
 								<form method="post" action="/Projet-TER/AdministrationTraitement?action=Mod_Video">	
 								  <h3>Eléments de recherche</h3>
-									<input type="text" name="m_resume" class="form-control input-sm chat-input" placeholder="nom " required/>
+									<input type="text" name="m_titre" class="form-control input-sm chat-input" placeholder="nom " required/>
 									</br>
-									<input type="number" name="m_resume" class="form-control input-sm chat-input" placeholder="episode " required/>
+									<input type="number" name="m_ep" class="form-control input-sm chat-input" placeholder="episode " required/>
 									</br>
-									<input type="number" name="m_resume" class="form-control input-sm chat-input" placeholder="saison " required/>
+									<input type="number" name="m_saison" class="form-control input-sm chat-input" placeholder="saison " required/>
 									</br>
 									<h3>Eléments a modifier</h3>
 									<input type="text" name="m_resume" class="form-control input-sm chat-input" placeholder="resumé " required/>
