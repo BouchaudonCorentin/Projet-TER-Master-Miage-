@@ -151,86 +151,119 @@ public class DataBaseTest {
 	@Test
 	public void testLouer() throws SQLException {
 		assertTrue(db.louer(new Client(1), new Video(87))==true);
-	}*/
+	}
 
 	@Test
 	public void testAcheter() throws SQLException {
 		assertTrue(db.louer(new Client(1), new Video(89))==true);
+	}*/
+
+	@Test
+	public void testRechercheVideoCate() throws SQLException {
+		CategorieVideo cv = new CategorieVideo(3);
+		assertTrue(db.rechercheVideoCate(cv).get(0).getId()==97);
+		assertFalse(db.rechercheVideoCate(cv).get(0).getId()==1);
+	}
+
+	@Test
+	public void testAfficheVideosansDoublon() throws SQLException {
+		assertTrue(db.afficheVideosansDoublon().get(17).getId()==39);
+		assertFalse(db.afficheVideosansDoublon().get(17).getId()==17);
+	}
+
+	@Test
+	public void testRetrouveridvianomnomgroupetnbepisode() throws SQLException {
+		assertTrue(db.retrouveridvianomnomgroupetnbepisode(new Video("Star Trek Discovery","1",10)).getId()==25);
+	}
+
+	@Test
+	public void testListMembrepremium() throws SQLException {
+		assertTrue(db.listMembrepremium()==1);
+		assertFalse(db.listMembrepremium()==100);
+	}
+
+	@Test
+	public void testLocationsCouranteUser() throws SQLException {
+		assertTrue(db.locationsCouranteUser(new Client(1)).get(0).getId()==31);
+		assertFalse(db.locationsCouranteUser(new Client(1)).get(0).getId()==16);
+	}
+
+	@Test
+	public void testVieilleLocationsUser() throws SQLException {
+		assertTrue(db.vieilleLocationsUser(new Client(1)).get(0).getId()==16);
+	}
+
+	@Test
+	public void testAchatsUser() throws SQLException {
+		assertTrue(db.achatsUser(new Client(1)).get(0).getId()==1);
+	}
+
+	@Test
+	public void testMotClefvideo() throws SQLException {
+		assertTrue(db.motClefvideo(new Video(1)).get(0).getId()==1 && db.motClefvideo(new Video(33333)).size()==0);
+		assertTrue(db.motClefvideo(new Video(1)).get(1).getId()==2);
+	}
+
+	@Test
+	public void testSearchVideoByID() throws SQLException {
+		assertTrue(db.searchVideoByID(1).getNomVideo().equals("Star Wars La Menace Fantome"));
+		System.out.println(db.searchVideoByID(66666).getNomVideo());
+		assertTrue(db.searchVideoByID(66666).getId()==0);
 	}
 
 	/*@Test
-	public void testRechercheVideoCate() {
-		fail("Not yet implemented");
+	public void testModifVideo() throws SQLException {
+		Video v = new Video(1,"Star Wars La Menace Fantome","",1,"Coucou.",666,100, 8.99,9.99);
+		db.modifVideo(v);
+		System.out.println(db.afficheVideos().get(0).getResume());
+		assertTrue(db.afficheVideosansDoublon().get(0).getResume().equals("Coucou."));
 	}
 
 	@Test
-	public void testAfficheVideosansDoublon() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testRetrouveridvianomnomgroupetnbepisode() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testListMembrepremium() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testLocationsCouranteUser() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testVieilleLocationsUser() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testAchatsUser() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testMotClefvideo() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSearchVideoByID() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testModifVideo() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testModifClient() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testIdByPseudo() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testIsBuy() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testIsRent() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSontdansCategorie() {
-		fail("Not yet implemented");
+	public void testModifClient() throws SQLException {
+		Client c1 = new Client("Link91","kikou91");
+		Client c2 = new Client(1,"Lenormand","Brian","Link92","whereisbrian","brian.lenormand@u-psud.fr");
+		assertTrue(db.modifClient(c2)==true);
+		assertFalse(db.connection(c1).getId()==1);
 	}*/
+
+	@Test
+	public void testIdByPseudo() throws SQLException {
+		assertTrue(db.idByPseudo("Link91")==1);
+		assertTrue(db.idByPseudo("Link92")==0);
+		
+	}
+
+	@Test
+	public void testIsBuy() throws SQLException {
+		Client c = new Client(1);
+		Video v1 = new Video(1);
+		Video v2 = new Video(35);
+		assertTrue(db.isBuy(c, v1)==true);
+		assertTrue(db.isBuy(c, v2)==false);
+		
+	}
+
+	@Test
+	public void testIsRent() throws SQLException {
+		Client c = new Client(1);
+		Video v1 = new Video(1);
+		Video v2 = new Video(49);
+		assertTrue(db.isRent(c, v1)==false);
+		assertTrue(db.isRent(c, v2)==true);
+	}
+
+	@Test
+	public void testSontdansCategorie() throws SQLException {
+		List<Video>videos = new ArrayList<Video>();
+		CategorieVideo cv = new CategorieVideo(1);
+		videos.add(new Video(1));
+		videos.add(new Video(68));
+		videos.add(new Video(3));
+		assertTrue(db.sontdansCategorie(videos, cv).size()==2);
+		assertTrue(db.sontdansCategorie(videos, cv).get(0).getId()==1);
+		assertFalse(db.sontdansCategorie(videos, cv).get(1).getId()==68);
+		assertTrue(db.sontdansCategorie(videos, cv).get(1).getId()==3);
+	}
 
 }
