@@ -46,6 +46,7 @@ public class HomeServlet extends HttpServlet {
 			if(uri.equals("/Projet/Connection")){
 
 				String pseudo = request.getParameter("pseudo");
+				System.out.println(pseudo);
 				String mdp = request.getParameter("mdp");
 				
 				Client client = dbi.connection(new Client(pseudo, mdp));

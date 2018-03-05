@@ -58,7 +58,7 @@ public class GeneratePDFAudit {
 	public static void main(String[] argv)
 			throws ClassNotFoundException, FileNotFoundException, SQLException, DocumentException {
 		GeneratePDFAudit audit = new GeneratePDFAudit();
-		Date date = new Date(118,01,28);
+		Date date = new Date(118,01,01);
 		audit.createAudit(date);
 	}
 

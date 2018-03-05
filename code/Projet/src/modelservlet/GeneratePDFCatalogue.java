@@ -13,7 +13,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 public class GeneratePDFCatalogue {
 	
-	public static final String RESULT = "WebContent/catalogue.pdf";
+	public static final String RESULT = "catalogue.pdf";
 	
 	
 	public GeneratePDFCatalogue() {};
@@ -23,7 +23,9 @@ public class GeneratePDFCatalogue {
 		DataBase db = new DataBase();
 		List<Video> videos = db.afficheVideoscroissant();
 		Document document = new Document();
+		System.out.println("ici");
 		PdfWriter.getInstance(document, new FileOutputStream(RESULT));
+		System.out.println("ici");
 		document.open();
 		document.add( new Paragraph("=============================Catalogue de Netflox============================="));
 		document.add( new Paragraph("Nom de la video = nom de la video"));
