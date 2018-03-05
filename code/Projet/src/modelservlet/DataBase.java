@@ -19,15 +19,22 @@ public class DataBase {
 
 	private Connection conn;
 
+	/**
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public DataBase() throws ClassNotFoundException, SQLException {// ouvre la connection vers la BD
 		Class.forName("org.postgresql.Driver");
-		conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cbouch3_a", "cbouch3_a", "cbouch3_a");// remettre
+		conn = DriverManager.getConnection("jdbc:postgresql://tp-postgres:5432/cbouch3_a", "cbouch3_a", "cbouch3_a");// remettre
 																													// tp-postgres
 																													// �
 																													// la
 																													// fac
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
 	@Override
 	protected void finalize() {
 		try {
@@ -37,6 +44,11 @@ public class DataBase {
 		}
 	}
 
+	/**
+	 * @param client
+	 * @return
+	 * @throws SQLException
+	 */
 	public Client connection(Client client) throws SQLException {// connecte le client grace a pseudo et mdp
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery("select idClient, nomClient, prenomClient,email from Client where pseudo ='"
@@ -53,6 +65,11 @@ public class DataBase {
 		return client;
 	}
 
+	/**
+	 * @param pseudo
+	 * @return
+	 * @throws SQLException
+	 */
 	public Boolean verifpseudo(String pseudo) throws SQLException {// verifie si pseudo disponible
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery("select count(idClient) from Client where pseudo ='" + pseudo + "'");// retourne
@@ -71,6 +88,11 @@ public class DataBase {
 		}
 	}
 
+	/**
+	 * @param client
+	 * @return
+	 * @throws SQLException
+	 */
 	public Client inscription(Client client) throws SQLException {// inscrit et connecte le client
 
 		Statement s = conn.createStatement();
@@ -92,6 +114,10 @@ public class DataBase {
 		return new Client();// retourne un client pour dire qu'il n'y a pas eu d'inscription
 	}
 
+	/**
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Video> afficheVideos() throws SQLException {// affiche les films du plus recent au plus ancien (dans la
 															// bd)
 		List<Video> videos = new ArrayList<>();
@@ -111,6 +137,12 @@ public class DataBase {
 		return videos;// retourne la liste de videos
 	}
 
+	/**
+	 * @param v
+	 * @param mc
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Video> suggestions(Video v, List<MotClef> mc) throws SQLException {//////////// a modifier pour plus de
 																					//////////// sugg
 		List<Video> videos = new ArrayList<Video>();
@@ -167,6 +199,10 @@ public class DataBase {
 		return videos;
 	}
 
+	/**
+	 * @return
+	 * @throws SQLException
+	 */
 	public Video recupDernierID() throws SQLException {// recupere l'id de la derniere video
 		String query = "SELECT max(idVideo) as idmax FROM Video";
 		Statement s = conn.createStatement();
@@ -177,6 +213,11 @@ public class DataBase {
 		return v;
 	}
 
+	/**
+	 * @param mc
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Video> rechercheVideoMC(List<MotClef> mc) throws SQLException {// retourne les videos qui correspondent
 																				// aux mots clefs
 		List<Video> videos = new ArrayList<Video>();
@@ -210,6 +251,10 @@ public class DataBase {
 		return videosreturn;
 	}
 
+	/**
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<MotClef> listMotClef() throws SQLException {// retourne les mots clef
 		String query = "select * from MotClef";// retourne tout les mots clef de la base
 		Statement s = conn.createStatement();
@@ -223,6 +268,11 @@ public class DataBase {
 		return motclefs;
 	}
 
+	/**
+	 * @param v
+	 * @return
+	 * @throws SQLException
+	 */
 	public Video incrementevue(Video v) throws SQLException {// increment les vues sur la video
 		String query = "Update Video Set nbvue = nbvue+1 where idVideo =" + v.getId();// incremente de 1 le nombre de
 																						// vue de la video
@@ -235,6 +285,11 @@ public class DataBase {
 
 	}
 
+	/**
+	 * @param v
+	 * @return
+	 * @throws SQLException
+	 */
 	public Video incrementeddl(Video v) throws SQLException {// incremente les vues sur la video
 		String query = "Update Video Set nbddl = nbddl+1 where idVideo =" + v.getId();// incremente de 1 le nombre de
 																						// telechargement de la video
@@ -247,6 +302,11 @@ public class DataBase {
 
 	}
 
+	/**
+	 * @param client
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public void becomePremium(Client client) throws SQLException, ClassNotFoundException {// transforme un inscrit en
 																							// premium
 		try {
@@ -279,6 +339,11 @@ public class DataBase {
 		}
 	}
 
+	/**
+	 * @param c
+	 * @return
+	 * @throws SQLException
+	 */
 	public CategorieClient categorieclient(Client c) throws SQLException { // retourn la categorie d'un client
 		CategorieClient cc = new CategorieClient();
 		String query = "select * from CategorieClient cc, CompoCLient ccl where cc.idCategorieClient= ccl.idCategorieClient and ccl.idClient ="
@@ -292,6 +357,10 @@ public class DataBase {
 
 	}
 
+	/**
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Client> listpseudoclients() throws SQLException {// retourne la totalit� des pseudo
 		List<Client> clients = new ArrayList<Client>();
 		String query = "select idClient, pseudo from Client order by idClient";// retourne tout les pseudos de la BD
@@ -304,6 +373,10 @@ public class DataBase {
 		return clients;// retourne des clients ayant comme seul valeur leur pseudo
 	}
 
+	/**
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<CategorieClient> liststatus() throws SQLException {// retourne les categorie de tout les user
 		List<CategorieClient> cate = new ArrayList<CategorieClient>();
 		String query = "select nomCategorieClient from CategorieClient cc,CompoClient ccl where cc.idCategorieClient = ccl.idCategorieClient";// retourne
@@ -322,6 +395,11 @@ public class DataBase {
 		return cate;// retourne un liste de categorie de client
 	}
 
+	/**
+	 * @param date
+	 * @return
+	 * @throws SQLException
+	 */
 	public double afficheCA(Date date) throws SQLException {// affiche le CA apres date passer en param
 		/////////// WARNING////////////
 		/////////// Pour avoir 2018 il faut passer en parametre 2018-1900
@@ -340,6 +418,13 @@ public class DataBase {
 		return ca;
 	}
 
+	/**
+	 * @param video
+	 * @param cate
+	 * @param mc
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean ajoutVideo(Video video, CategorieVideo cate, List<MotClef> mc) throws SQLException {// avant cette
 																										// fonction
 																										// appeler
@@ -377,6 +462,11 @@ public class DataBase {
 		}
 	}
 
+	/**
+	 * @param video
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean videoExiste(Video video) throws SQLException {// besoin de connaitre le nom le group et le num
 																	// episode
 		String query = "select count(*) from Video where nomVideo='" + video.getNomVideo() + "' and groupeVideo = '"
@@ -392,6 +482,11 @@ public class DataBase {
 		}
 	}
 
+	/**
+	 * @param video
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean suppVideo(Video video) throws SQLException {// supprime la video passer en param�tre
 		String query = "Delete From CompoVideo where idVideo ='" + video.getId() + "'";// supprime la video dans
 																						// compovideo
@@ -418,6 +513,11 @@ public class DataBase {
 
 	}
 
+	/**
+	 * @param client
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean suppClient(Client client) throws SQLException {// supprime le client passer en parametre
 		String query = "Delete From CompoClient where idClient =" + client.getId();// supprime la ligne dans compoCLient
 		String query2 = "Delete From Location where idClient =" + client.getId();// supprime la ligne dans Location
@@ -436,6 +536,12 @@ public class DataBase {
 		}
 	}
 
+	/**
+	 * @param c
+	 * @param v
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean louer(Client c, Video v) throws SQLException {// creer une location
 
 		String query = "insert into Location values (" + c.getId() + "," + v.getId()
@@ -467,6 +573,12 @@ public class DataBase {
 		}
 	}
 
+	/**
+	 * @param c
+	 * @param v
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean acheter(Client c, Video v) throws SQLException {// creer un Achat
 
 		String query = "insert into Achat values (" + c.getId() + "," + v.getId() + ")";// insertion de l'achat
@@ -495,6 +607,11 @@ public class DataBase {
 		}
 	}
 
+	/**
+	 * @param cate
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Video> rechercheVideoCate(CategorieVideo cate) throws SQLException {// retourne les films appartenant
 																					// �
 																					// une certaine cat�gorie
@@ -513,6 +630,10 @@ public class DataBase {
 
 	}
 
+	/**
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Video> afficheVideosansDoublon() throws SQLException {// affiche les films/Documentaire/Serie(sans
 																		// doublon)
 		List<Video> videos = new ArrayList<Video>();
@@ -552,6 +673,11 @@ public class DataBase {
 
 	}
 
+	/**
+	 * @param v
+	 * @return
+	 * @throws SQLException
+	 */
 	public Video retrouveridvianomnomgroupetnbepisode(Video v) throws SQLException {
 		String query = "select idVideo from Video where nomVideo ='" + v.getNomVideo() + "' and groupeVideo ='"
 				+ v.getGroupeVideo() + "' and numEpisode = " + v.getNumepisode();// recupere l'id de la video
@@ -565,6 +691,10 @@ public class DataBase {
 		return v;
 	}
 
+	/**
+	 * @return
+	 * @throws SQLException
+	 */
 	public int listMembrepremium() throws SQLException {
 		String query = "select count(*) from CompoClient where idCategorieClient = 2";// retourne le nombre de premium
 		Statement s = conn.createStatement();
@@ -573,6 +703,11 @@ public class DataBase {
 		return res.getInt(1);
 	}
 
+	/**
+	 * @param c
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Video> locationsCouranteUser(Client c) throws SQLException {// retourne les locations actif d'un user
 		List<Video> videos = new ArrayList<Video>();
 		Video v;
@@ -590,6 +725,11 @@ public class DataBase {
 		return videos;// retournent les videos actuellement louer
 	}
 
+	/**
+	 * @param c
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Video> vieilleLocationsUser(Client c) throws SQLException {// retourne les vieilles location d'un user
 		List<Video> videos = new ArrayList<Video>();
 		Video v;
@@ -607,6 +747,11 @@ public class DataBase {
 		return videos;// retourne les vieilles location
 	}
 
+	/**
+	 * @param c
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Video> achatsUser(Client c) throws SQLException {// retourne les achats d'un user
 		List<Video> videos = new ArrayList<Video>();
 		Video v;
@@ -623,6 +768,11 @@ public class DataBase {
 		return videos;
 	}
 
+	/**
+	 * @param v
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<MotClef> motClefvideo(Video v) throws SQLException {// retourne la list des mots clefs d'un video
 		List<MotClef> mc = new ArrayList<MotClef>();
 		String query = " select idMotClef from MotClefVideo where idVideo = " + v.getId();// retourne les mots clefs de
@@ -637,6 +787,11 @@ public class DataBase {
 
 	}
 
+	/**
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
 	public Video searchVideoByID(int id) throws SQLException {
 		String query = "select * from Video where idVideo=" + id;// retourne les infos de la video
 		Statement s = conn.createStatement();
@@ -653,6 +808,11 @@ public class DataBase {
 
 	}
 
+	/**
+	 * @param v
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean modifVideo(Video v) throws SQLException {// on peux pas modifier le nom, le groupe, le num d'episode
 															// � cause des
 															// suggestions, on ne peux pas modifier nbvue et nbddl car
@@ -673,6 +833,11 @@ public class DataBase {
 		}
 	}
 
+	/**
+	 * @param c
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean modifClient(Client c) throws SQLException {// on peux tout changer sauf prenom et nom car on ne
 																// change pas de prenom
 																// ou de nom
@@ -690,6 +855,11 @@ public class DataBase {
 		}
 	}
 
+	/**
+	 * @param pseudo
+	 * @return
+	 * @throws SQLException
+	 */
 	public int idByPseudo(String pseudo) throws SQLException {
 		String query = " select idClient from client where pseudo ='" + pseudo + "'";
 		Statement s = conn.createStatement();
@@ -702,6 +872,12 @@ public class DataBase {
 
 	}
 
+	/**
+	 * @param c
+	 * @param v
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean isBuy(Client c, Video v) throws SQLException {
 		String query = " select count(*) from  Achat where idClient=" + c.getId() + " and idVideo = " + v.getId();
 		Statement s = conn.createStatement();
@@ -715,6 +891,12 @@ public class DataBase {
 
 	}
 
+	/**
+	 * @param c
+	 * @param v
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean isRent(Client c, Video v) throws SQLException {
 		String query = " select count(*) from  Location where idClient=" + c.getId() + " and idVideo = " + v.getId()
 				+ " and dateFin >= CURRENT_DATE";
@@ -730,6 +912,12 @@ public class DataBase {
 
 	}
 
+	/**
+	 * @param video
+	 * @param cate
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Video> sontdansCategorie(List<Video> video, CategorieVideo cate) throws SQLException {
 
 		String query = "Select count (*) from CompoVideo where idCategorieVideo = " + cate.getId() + " and idVideo = ";
@@ -746,6 +934,10 @@ public class DataBase {
 		return videoreturn;
 	}
 
+	/**
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Video> afficheVideoscroissant() throws SQLException {// affiche les films dans l'ordre darriver dans la bd
 		List<Video> videos = new ArrayList<>();
 		Video video;
@@ -763,6 +955,11 @@ public class DataBase {
 
 		return videos;// retourne la liste de videos
 	}
+	/**
+	 * @param pseudo
+	 * @return
+	 * @throws SQLException
+	 */
 	public Client infobypseudo(String pseudo) throws SQLException {// affiche les films du plus recent au plus ancien (dans la
 		String query = "select nomClient,prenomCLient,email from client where pseudo ='"+pseudo+"'";
 		Statement s = conn.createStatement();
@@ -777,16 +974,5 @@ public class DataBase {
 		return c;
 	}
 
-	public static void main(String[] argv) throws ClassNotFoundException, SQLException {// permet de test fonction de la
-																						// bd
-		DataBase db = new DataBase();
-		List<MotClef> mc = new ArrayList<MotClef>();
-		mc.add(new MotClef(12));
-		List<Video> v = db.rechercheVideoMC(mc);
-		for (int i = 0; i < v.size(); i++) {
-			System.out.println(v.get(i).getNomVideo());
-		}
-
-	}
 
 }
