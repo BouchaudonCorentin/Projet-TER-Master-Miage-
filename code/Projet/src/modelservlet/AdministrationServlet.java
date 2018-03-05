@@ -10,10 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/Administration")
-/** This class allows to the administrator to access data that the client can't have
- * (number Client/Premium/Video) 
- * Then, this data can be display in the page Administration.
- * 
+/** Permet de recupere les informations sur le nombre de video , de membre 
+ * et de premium ainsi que d'afficher la page administration.jsp 
  * @author Mathilde Pechdimaldjian
  *
  */

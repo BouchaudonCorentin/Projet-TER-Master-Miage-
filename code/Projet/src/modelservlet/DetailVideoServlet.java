@@ -11,10 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/DetailVideo")
-/** This class allows to the vue to display the data of each video, like the name, price, resume…
- * As a connected user it allows to buy or rent the video 
- * and as a premium member there is an access to directly watch the video.
- * 
+/** 
+ *Affiche tous les dÃ©tails d'une video et permet d'acceder a la location achat et streaming 
  * @author Mathilde Pechdimaldjian
  *
  */

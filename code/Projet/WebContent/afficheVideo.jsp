@@ -1,3 +1,5 @@
+<!-- author  Mathilde Pechdimaldjian -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -38,7 +40,7 @@
 					<div id="wrapper">
 						<div class="videoContainer">
 							<video id="myVideo" controls preload="auto"  >
-								<source src="mp4" type="video/mp4" />
+								<source src="MKV" type="../Video*/La Chanson du Poireau .MKV" />
 							</video>
 							<div class="caption">Video Caption</div>
 							<div class="control">

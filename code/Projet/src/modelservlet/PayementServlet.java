@@ -11,8 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.websocket.Session;
 
 @WebServlet("/Payement")
-/** This class allows to the client to pay for a subscribe or a location of video.
- *  Then, this data can be display in the page Payement.
+/** 
  * 
  * @author Mathilde Pechdimaldjian
  *

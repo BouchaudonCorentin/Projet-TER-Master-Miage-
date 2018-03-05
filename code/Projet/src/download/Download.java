@@ -1,5 +1,7 @@
 package download;
-
+/**
+ * @author Brian Lenormand
+ */
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -81,7 +83,7 @@ public class Download extends HttpServlet {
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         
-         * Lecture du paramètre 'chemin' passé �  la servlet via la déclaration
+         * Lecture du paramètre 'chemin' passé �  la servlet via la déclaration
          * dans le web.xml
          
         String chemin = this.getServletConfig().getInitParameter( "chemin" );

@@ -14,10 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/AdministrationTraitement")
-/** This class allows to the administrator to change data in database
- * He can delete a client, generate Audit, or give turnover of website.
- * Then, this data can be display in the page Administration.
- * 
+/** 
+ * Permet de traiter les actions qu'un admnistrateur souhaite effectuer cmme suppression client ou modfication film 
  * @author Mathilde Pechdimaldjian
  *
  */

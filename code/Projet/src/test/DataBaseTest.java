@@ -1,5 +1,8 @@
 package test;
-//Created by Corentin Bouchaudon
+/**
+ * @author Corentin Bouchaudon
+ *
+ */
 import static org.junit.Assert.*;
 
 import java.sql.SQLException;
@@ -54,12 +57,12 @@ public class DataBaseTest {
 		mc.add(new MotClef(1));
 		mc.add(new MotClef(2));
 		mc.add(new MotClef(3));
-		assertTrue(db.suggestions(new Video(1,"Star Wars La Menace Fantome","",1,"Avant de devenir un célèbre chevalier Jedi, et bien avant de se révéler l âme la plus noire de la galaxie, Anakin Skywalker est un jeune esclave sur la planète Tatooine. La Force est déjà puissante en lui et il est un remarquable pilote de Podracer. Le maître Jedi Qui-Gon Jinn le découvre et entrevoit alors son immense potentiel.Pendant ce temps, l armée de droïdes de l insatiable Fédération du Commerce a envahi Naboo, une planète pacifique, dans le cadre d n plan secret des Sith visant à accroître leur pouvoir. Pour défendre la reine de Naboo, Amidala, les chevaliers Jedi vont devoir affronter le redoutable Seigneur Sith, Dark Maul.",666,100, 3.99,5.99),mc).get(0).getId()==2);
+		assertTrue(db.suggestions(new Video(1,"Star Wars La Menace Fantome","",1,"Avant de devenir un cï¿½lï¿½bre chevalier Jedi, et bien avant de se rï¿½vï¿½ler l ï¿½me la plus noire de la galaxie, Anakin Skywalker est un jeune esclave sur la planï¿½te Tatooine. La Force est dï¿½jï¿½ puissante en lui et il est un remarquable pilote de Podracer. Le maï¿½tre Jedi Qui-Gon Jinn le dï¿½couvre et entrevoit alors son immense potentiel.Pendant ce temps, l armï¿½e de droï¿½des de l insatiable Fï¿½dï¿½ration du Commerce a envahi Naboo, une planï¿½te pacifique, dans le cadre d n plan secret des Sith visant ï¿½ accroï¿½tre leur pouvoir. Pour dï¿½fendre la reine de Naboo, Amidala, les chevaliers Jedi vont devoir affronter le redoutable Seigneur Sith, Dark Maul.",666,100, 3.99,5.99),mc).get(0).getId()==2);
 		mc= new ArrayList();
 		mc.add(new MotClef(3));
 		mc.add(new MotClef(9));
 		mc.add(new MotClef(11));
-		assertTrue(db.suggestions(new Video(74,"Black Mirror","4",1,"Chaque épisode de cette anthologie montre la dépendance des hommes vis-à-vis de tout ce qui a un écran...",250,100, 2.99,3.99),mc).get(0).getId()==75);
+		assertTrue(db.suggestions(new Video(74,"Black Mirror","4",1,"Chaque ï¿½pisode de cette anthologie montre la dï¿½pendance des hommes vis-ï¿½-vis de tout ce qui a un ï¿½cran...",250,100, 2.99,3.99),mc).get(0).getId()==75);
 	}
 
 	@Test
@@ -84,12 +87,12 @@ public class DataBaseTest {
 
 	/*@Test
 	public void testIncrementevue() throws SQLException {
-		assertTrue(db.incrementevue(new Video(20,"Star Trek Discovery","1",5,"Après un siècle de silence, les klingons refont surface. Déterminés à réunifier leur empire, ils déclarent la guerre à la Fédération des planètes unies. Officier en disgrâce de la Starfleet, Michael Burnham se retrouve au centre du conflit.",200,100, 1.99,3.99)).getNbvue()==201);
+		assertTrue(db.incrementevue(new Video(20,"Star Trek Discovery","1",5,"Aprï¿½s un siï¿½cle de silence, les klingons refont surface. Dï¿½terminï¿½s ï¿½ rï¿½unifier leur empire, ils dï¿½clarent la guerre ï¿½ la Fï¿½dï¿½ration des planï¿½tes unies. Officier en disgrï¿½ce de la Starfleet, Michael Burnham se retrouve au centre du conflit.",200,100, 1.99,3.99)).getNbvue()==201);
 	}
 
 	@Test
 	public void testIncrementeddl() throws SQLException {
-		assertTrue(db.incrementeddl(new Video(20,"Star Trek Discovery","1",5,"Après un siècle de silence, les klingons refont surface. Déterminés à réunifier leur empire, ils déclarent la guerre à la Fédération des planètes unies. Officier en disgrâce de la Starfleet, Michael Burnham se retrouve au centre du conflit.",200,100, 1.99,3.99)).getNbddl()==101);
+		assertTrue(db.incrementeddl(new Video(20,"Star Trek Discovery","1",5,"Aprï¿½s un siï¿½cle de silence, les klingons refont surface. Dï¿½terminï¿½s ï¿½ rï¿½unifier leur empire, ils dï¿½clarent la guerre ï¿½ la Fï¿½dï¿½ration des planï¿½tes unies. Officier en disgrï¿½ce de la Starfleet, Michael Burnham se retrouve au centre du conflit.",200,100, 1.99,3.99)).getNbddl()==101);
 	}
 
 	@Test
@@ -121,7 +124,7 @@ public class DataBaseTest {
 
 	/*@Test
 	public void testAjoutVideo() throws SQLException {
-		Video video = new Video("L homme sur Mars","",0,"A première vue, Loretta est une femme polynésienne comme beaucoup d autres. Sa maison, les courses au magasin, le jardin, les chiens accaparent une partie de son temps. Mais une toute petite partie seulement, car vous la trouverez plus souvent une gaffe, des hameçons ou un couteau à la main, vêtue d un gros ciré et de bottes en caoutchouc plutôt que d un pareo et d escarpins, pataugeant dans l eau salé, le sang de poissons du large ou la glace pilée. Partons à la rencontre de Loretta, la seule femme polynésienne embarquée sur un palangrier et qui fait mentir la sacro-sainte règle de tout marin pêcheur : «Pas de femme à bord !»",100,100, 3.99,8.99);
+		Video video = new Video("L homme sur Mars","",0,"A premiï¿½re vue, Loretta est une femme polynï¿½sienne comme beaucoup d autres. Sa maison, les courses au magasin, le jardin, les chiens accaparent une partie de son temps. Mais une toute petite partie seulement, car vous la trouverez plus souvent une gaffe, des hameï¿½ons ou un couteau ï¿½ la main, vï¿½tue d un gros cirï¿½ et de bottes en caoutchouc plutï¿½t que d un pareo et d escarpins, pataugeant dans l eau salï¿½, le sang de poissons du large ou la glace pilï¿½e. Partons ï¿½ la rencontre de Loretta, la seule femme polynï¿½sienne embarquï¿½e sur un palangrier et qui fait mentir la sacro-sainte rï¿½gle de tout marin pï¿½cheur : ï¿½Pas de femme ï¿½ bord !ï¿½",100,100, 3.99,8.99);
 		List<MotClef>mc = new ArrayList<MotClef>();
 		mc.add(new MotClef(1));
 		assertTrue(db.ajoutVideo(video, new CategorieVideo(3) , mc)==true);

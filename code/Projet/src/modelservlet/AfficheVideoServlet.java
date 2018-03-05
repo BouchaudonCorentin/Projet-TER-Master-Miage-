@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/AfficheVideo")
-/** This class allows to display a video in the page AfficheVideo
+/** Permet d'afficher en "streaming" une video 
  * 
  * 
  * @author Mathilde Pechdimaldjian

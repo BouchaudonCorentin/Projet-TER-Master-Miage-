@@ -10,10 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/Subscribe")
-/** This class allows to the client to subscribe, and enter data needed for a subscription. 
- * This data are displayed on the page subscribe.
- * 
- * @author MMathilde Pechdimaldjian
+/**
+ * @author Mathilde Pechdimaldjian
  *
  */
 public class SubscribeServlet extends HttpServlet {
@@ -36,7 +34,7 @@ public class SubscribeServlet extends HttpServlet {
 				request.getSession().setAttribute("dbi", dbi);
 			}
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/subscribe.jsp"); //Permet de renviyer vers un lien spécifique la page jsp
+			RequestDispatcher rd = request.getRequestDispatcher("/subscribe.jsp"); //Permet de renviyer vers un lien spï¿½cifique la page jsp
 			rd.forward(request, response);
 			
 			

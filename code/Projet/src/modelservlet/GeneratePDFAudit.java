@@ -10,7 +10,9 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-//Created by Corentin Bouchaudon
+/**
+ * Created by Corentin Bouchaudon
+ */
 public class GeneratePDFAudit {
 
 	public static final String RESULT = "WebContent/audit.pdf";
@@ -32,7 +34,7 @@ public class GeneratePDFAudit {
 		document.add(new Paragraph("************************Informations Clients************************"));
 
 		for (int i = 0; i < clients.size(); i++) {
-			document.add(new Paragraph("=======================Client numéro " + (i + 1) + "======================="));
+			document.add(new Paragraph("=======================Client numï¿½ro " + (i + 1) + "======================="));
 			Client c = new Client(clients.get(i).getPseudo());
 			c = db.infobypseudo(c.getPseudo());
 			document.add(new Paragraph("Nom : " + c.getNom()));
@@ -44,7 +46,7 @@ public class GeneratePDFAudit {
 		document.add(new Paragraph("************************Informations sur Videos************************"));
 		List<Video> videos = db.afficheVideoscroissant();
 		for (int i = 0; i < videos.size(); i++) {
-			document.add(new Paragraph("=======================Video numéro " + (i + 1) + "======================="));
+			document.add(new Paragraph("=======================Video numï¿½ro " + (i + 1) + "======================="));
 			document.add(new Paragraph("Nom de la Video :" + videos.get(i).getNomVideo()));
 			document.add(new Paragraph("Nombre de Vue :" + videos.get(i).getNbvue()));
 			document.add(new Paragraph("Nombre de Telechargement :" + videos.get(i).getNbddl()));

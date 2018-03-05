@@ -1,11 +1,10 @@
 package modelservlet;
 
-/** This class define the Video, which allow to add retrieve data of the database.
- * We define different constructof of Video with different parameters.
+/** 
  * 
  * @param id, nomVideo, groupeVideo, resume, numepisode, nbvue, nbddl, prixAchat, prixLocation
  * 
- * @author xxx
+ * @author Corentin Bouchaudon
  *
  */
 //Created by Corentin Bouchaudon

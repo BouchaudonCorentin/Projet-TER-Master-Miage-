@@ -12,14 +12,16 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-//Created by Corentin Bouchaudon
+/**
+ * Created by Corentin Bouchaudon
+ */
 public class DataBase {
 
 	private Connection conn;
 
 	public DataBase() throws ClassNotFoundException, SQLException {// ouvre la connection vers la BD
 		Class.forName("org.postgresql.Driver");
-		conn = DriverManager.getConnection("jdbc:postgresql://tp-postgres:5432/cbouch3_a", "cbouch3_a", "cbouch3_a");// remettre
+		conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cbouch3_a", "cbouch3_a", "cbouch3_a");// remettre
 																													// tp-postgres
 																													// �
 																													// la

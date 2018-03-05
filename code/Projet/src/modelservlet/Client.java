@@ -1,10 +1,10 @@
 package modelservlet;
 
-/** This class represent the Client. We use this class to define which information we need to be connected.
+/**
  * 
  * @param id, nom, prenom, pseudo, mdp, email
  * 
- * @author lenor
+ * @author corentin Bouchaudon
  *
  */
 //Created by Corentin Bouchaudon

@@ -6,7 +6,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import modelservlet.CategorieVideo;
-//Created by Corentin Bouchaudon
+/**
+ * @author Corentin Bouchaudon
+ *
+ */
 public class CategorieVideoTest {
 	CategorieVideo cv;
 	@Before

@@ -1,3 +1,10 @@
+   <!-- 
+   # Permet d'envoyer au AdministrationTraitement les informations nécessaires pour effectuer des actions 
+   #et d'avoir en retour si cela à reussi ou non pour l'indiquer à l'utilisateur 
+   #  author  Mathilde Pechdimaldjian -->
+   
+   
+   
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 

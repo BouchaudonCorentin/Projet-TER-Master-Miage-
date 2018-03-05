@@ -1,5 +1,8 @@
 package test;
-//Created by Corentin Bouchaudon
+/**
+ * @author Corentin Bouchaudon
+ *
+ */
 import static org.junit.Assert.*;
 
 import org.junit.Before;
