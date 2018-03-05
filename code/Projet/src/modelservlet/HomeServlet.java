@@ -13,10 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = {"/Home", "/Connection", "/Inscription", "/Deconnection"})
-/** 
- * @author Mathilde Pechdimaldjian
- *
- */
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -47,7 +43,7 @@ public class HomeServlet extends HttpServlet {
 			request.setAttribute("carsl_supp", Arrays.asList("first", "second", "third"));
 			request.setAttribute("videos", lv);
 
-			if(uri.equals("/Projet-TER/Connection")){
+			if(uri.equals("/Projet/Connection")){
 
 				String pseudo = request.getParameter("pseudo");
 				String mdp = request.getParameter("mdp");
@@ -64,7 +60,7 @@ public class HomeServlet extends HttpServlet {
 			
 				
 				
-			}else if(uri.equals("/Projet-TER/Inscription"))
+			}else if(uri.equals("/Projet/Inscription"))
 			{
 				String nom = request.getParameter("nom");
 				String prenom = request.getParameter("prenom");
@@ -88,7 +84,7 @@ public class HomeServlet extends HttpServlet {
 				}
 				
 				
-			}else if(uri.equals("/Projet-TER/Deconnection")){
+			}else if(uri.equals("/Projet/Deconnection")){
 				//request.getSession().removeAttribute("client");
 				 request.getSession().invalidate();
 				
