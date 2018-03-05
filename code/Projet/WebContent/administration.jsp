@@ -363,7 +363,7 @@
 			<!-- Panel PDF -->
 								<div class="tab-pane fade" id="tab5default">
 									<div id="pdf">
-											<form method="post" action="/AdministrationTraitement?action=Audit" >
+											<form method="post" action="/Projet/AdministrationTraitement?action=Audit" >
 												<input type="number" name="day" class="form-control" placeholder="Day" required />
 												<input type="number" name="month" class="form-control" placeholder="Month" required/>
 												<input type="number" name="year" class="form-control" placeholder="Year" required/>

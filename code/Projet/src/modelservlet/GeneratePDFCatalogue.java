@@ -23,9 +23,7 @@ public class GeneratePDFCatalogue {
 		DataBase db = new DataBase();
 		List<Video> videos = db.afficheVideoscroissant();
 		Document document = new Document();
-		System.out.println("ici");
 		PdfWriter.getInstance(document, new FileOutputStream(RESULT));
-		System.out.println("ici");
 		document.open();
 		document.add( new Paragraph("=============================Catalogue de Netflox============================="));
 		document.add( new Paragraph("Nom de la video = nom de la video"));
@@ -33,7 +31,7 @@ public class GeneratePDFCatalogue {
 		document.add( new Paragraph("Numero de l'epside = 0 si n'a pas de suite ou n'est pas un ï¿½pisode d'un sï¿½rie"));
 		
 		for (int i =0; i<videos.size();i++) {
-			document.add(new Paragraph("=======================Video numï¿½ro "+(i+1)+"======================="));
+			document.add(new Paragraph("=======================Video numéro "+(i+1)+"======================="));
 			document.add(new Paragraph("Nom de la Video :"+ videos.get(i).getNomVideo()));
 		if(videos.get(i).getGroupeVideo()!="") {
 			document.add(new Paragraph("Saison :"+ videos.get(i).getGroupeVideo()));			
