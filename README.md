@@ -16,3 +16,7 @@ Mis en place de L'application:
 qui sont dans le fichier \Projet-TER-Master-Miage-\code\Projet\WebContent\WEB-INF\lib\...
 10)Ensuite, ouvrir la classe Database.java et à la ligne 28 modifier les deux cbouch3_a par vos login
 11)Lancer ensuite la classe HomeServlet.java à l'aide du server et Amusez-vous avec le site.
+
+
+Pour ce qui est le changelog il y en un dans rapport mais vous aurez une meilleur idée du travail sur 
+https://github.com/BouchaudonCorentin/Projet-TER-Master-Miage-/commits/master?before=21db5cdeba425be59139af7b3d28c2b99b9437e2+105
