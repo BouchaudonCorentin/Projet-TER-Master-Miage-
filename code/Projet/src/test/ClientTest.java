@@ -1,48 +1,58 @@
 package test;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import modelservlet.Client;
-//Created by Corentin Bouchaudon
-class ClientTest {
+
+public class ClientTest {
 	Client c;
-	@BeforeEach
+
+	@Before
 	void setUp() throws Exception {
-		c = new Client(1,"Lenormand","Brian","Link91","kikou91","brian.lenormand@u-psud.fr");
+		c = new Client(1, "Lenormand", "Brian", "Link91", "kikou91", "brian.lenormand@u-psud.fr");
 	}
 
 	@Test
 	void testClientStringString() {
-		assertTrue(new Client("lol","XD").getPseudo().equals("lol") && new Client("lol","XD").getMdp().equals("XD"));
+		assertTrue(new Client("lol", "XD").getPseudo().equals("lol") && new Client("lol", "XD").getMdp().equals("XD"));
 	}
 
 	@Test
 	void testClientInt() {
-		assertTrue(new Client(1).getId()==1);
+		assertTrue(new Client(1).getId() == 1);
 	}
 
 	@Test
 	void testClientIntStringStringStringStringString() {
-		assertTrue(new Client(1,"Lenormand","Brian","Link91","kikou91","brian.lenormand@u-psud.fr").getId()==1);
-		assertTrue(new Client(1,"Lenormand","Brian","Link91","kikou91","brian.lenormand@u-psud.fr").getPrenon().equals("Brian"));
-		assertTrue(new Client(1,"Lenormand","Brian","Link91","kikou91","brian.lenormand@u-psud.fr").getNom().equals("Lenormand"));
-		assertTrue(new Client(1,"Lenormand","Brian","Link91","kikou91","brian.lenormand@u-psud.fr").getPseudo().equals("Link91"));
-		assertTrue(new Client(1,"Lenormand","Brian","Link91","kikou91","brian.lenormand@u-psud.fr").getMdp().equals("kikou91"));
-		assertTrue(new Client(1,"Lenormand","Brian","Link91","kikou91","brian.lenormand@u-psud.fr").getEmail().equals("brian.lenormand@u-psud.fr"));
+		assertTrue(new Client(1, "Lenormand", "Brian", "Link91", "kikou91", "brian.lenormand@u-psud.fr").getId() == 1);
+		assertTrue(new Client(1, "Lenormand", "Brian", "Link91", "kikou91", "brian.lenormand@u-psud.fr").getPrenon()
+				.equals("Brian"));
+		assertTrue(new Client(1, "Lenormand", "Brian", "Link91", "kikou91", "brian.lenormand@u-psud.fr").getNom()
+				.equals("Lenormand"));
+		assertTrue(new Client(1, "Lenormand", "Brian", "Link91", "kikou91", "brian.lenormand@u-psud.fr").getPseudo()
+				.equals("Link91"));
+		assertTrue(new Client(1, "Lenormand", "Brian", "Link91", "kikou91", "brian.lenormand@u-psud.fr").getMdp()
+				.equals("kikou91"));
+		assertTrue(new Client(1, "Lenormand", "Brian", "Link91", "kikou91", "brian.lenormand@u-psud.fr").getEmail()
+				.equals("brian.lenormand@u-psud.fr"));
 	}
 
 	@Test
 	void testClientStringStringStringStringString() {
-		assertTrue(new Client("Lenormand","Brian","Link91","kikou91","brian.lenormand@u-psud.fr").getPrenon().equals("Brian"));
-		assertTrue(new Client("Lenormand","Brian","Link91","kikou91","brian.lenormand@u-psud.fr").getNom().equals("Lenormand"));
-		assertTrue(new Client("Lenormand","Brian","Link91","kikou91","brian.lenormand@u-psud.fr").getPseudo().equals("Link91"));
-		assertTrue(new Client("Lenormand","Brian","Link91","kikou91","brian.lenormand@u-psud.fr").getMdp().equals("kikou91"));
-		assertTrue(new Client("Lenormand","Brian","Link91","kikou91","brian.lenormand@u-psud.fr").getEmail().equals("brian.lenormand@u-psud.fr"));
-	
+		assertTrue(new Client("Lenormand", "Brian", "Link91", "kikou91", "brian.lenormand@u-psud.fr").getPrenon()
+				.equals("Brian"));
+		assertTrue(new Client("Lenormand", "Brian", "Link91", "kikou91", "brian.lenormand@u-psud.fr").getNom()
+				.equals("Lenormand"));
+		assertTrue(new Client("Lenormand", "Brian", "Link91", "kikou91", "brian.lenormand@u-psud.fr").getPseudo()
+				.equals("Link91"));
+		assertTrue(new Client("Lenormand", "Brian", "Link91", "kikou91", "brian.lenormand@u-psud.fr").getMdp()
+				.equals("kikou91"));
+		assertTrue(new Client("Lenormand", "Brian", "Link91", "kikou91", "brian.lenormand@u-psud.fr").getEmail()
+				.equals("brian.lenormand@u-psud.fr"));
+
 	}
 
 	@Test
@@ -52,13 +62,13 @@ class ClientTest {
 
 	@Test
 	void testGetId() {
-		assertTrue(c.getId()==1);
+		assertTrue(c.getId() == 1);
 	}
 
 	@Test
 	void testSetId() {
 		c.setId(2);
-		assertTrue(c.getId()==2);
+		assertTrue(c.getId() == 2);
 	}
 
 	@Test
@@ -81,7 +91,7 @@ class ClientTest {
 	void testSetPrenon() {
 		c.setPrenon("Louis");
 		assertTrue(c.getPrenon().equals("Louis"));
-		
+
 	}
 
 	@Test
@@ -116,5 +126,4 @@ class ClientTest {
 		c.setEmail("a.b@gmail.com");
 		assertTrue(c.getEmail().equals("a.b@gmail.com"));
 	}
-
 }
