@@ -23,8 +23,9 @@
           <link href="resources/css/standard.css" rel="stylesheet">
           <link href="resources/css/administrateur.css" rel="stylesheet">
         </head>
+<!-- Les pop up gestion -->
   <!-- AjoutVideo -->
-      <!-- Les pop up gestion -->      
+            
        <c:if test = "${ajout_video ==  true}">
 			 <div class="alert alert-success alert-dismissible">
   		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -185,17 +186,17 @@
         <nav class="navbar navbar-inverse" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a class="navbar-brand" href="/Projet-TER/Home">Netflox</a>
+            <a class="navbar-brand" href="/Projet/Home">Netflox</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-             <li class="active"><a href="/Projet-TER/Contact">Contactez nous </a></li>
+             <li class="active"><a href="/Projet/Contact">Contactez nous </a></li>
              </ul> 
                <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
-					   <li> <a href="/Projet-TER/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li> 
+					   <li> <a href="/Projet/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li> 
 					</c:if>
 
 				</ul> 
@@ -266,7 +267,7 @@
       <!-- Main row-->
 
       <div class="container">
-
+<!-- Panel des fonctions  -->
           <div class="row">
           	<div class="col-md-12">
 				<div class="panel with-nav-tabs" id="fct">
@@ -291,7 +292,7 @@
 		  <!-- Panel ajouter video -->
 							<div class="tab-pane fade in active" id="tab1default">
 								<div id="AddVideo">	
-									  <form method="post" action="/Projet-TER/AdministrationTraitement?action=Add_Video" >
+									  <form method="post" action="/Projet/AdministrationTraitement?action=Add_Video" >
 										<input type="text" name="a_nom" class="form-control input-sm chat-input" placeholder="nom" required/>
 										</br> 
 										<input type="number" name="a_categorie" class="form-control input-sm chat-input"placeholder="catégorie 1=documentaire 2=film 3=série" required/> 
@@ -316,7 +317,7 @@
 			<!-- Panel Suppression video -->
 							<div class="tab-pane fade" id="tab2default">
 								<div id="DeleteVideo">
-								<form method="post" action="/Projet-TER/AdministrationTraitement?action=Del_Video">	
+								<form method="post" action="/Projet/AdministrationTraitement?action=Del_Video">	
 									<input type="text" name="d_titre_V" class="form-control input-sm chat-input" placeholder="titre" required/>
 									</br>
 									<input type="number" name="d_episode_V"class="form-control input-sm chat-input" placeholder="numéro d'épisode" required />
@@ -333,7 +334,7 @@
 			<!-- Panel ajout client  -->				
 							<div class="tab-pane fade" id="tab3default">
 								<div id="AddClient">
-									<form method="post" action="/Projet-TER/AdministrationTraitement?action=Add_Client">
+									<form method="post" action="/Projet/AdministrationTraitement?action=Add_Client">
 										<input type="text" name="a_nom" class="form-control input-sm chat-input" placeholder="nom" required />
 										</br> 
 										<input type="text" name="a_prenom" class="form-control input-sm chat-input" placeholder="prenom" required />
@@ -351,7 +352,7 @@
 			<!-- Panel Supprime client  -->
 							<div class="tab-pane fade" id="tab4default">
 								<div id="DeleteClient">
-								<form method="post" action="/Projet-TER/AdministrationTraitement?action=Del_Client">
+								<form method="post" action="/Projet/AdministrationTraitement?action=Del_Client">
 									<input type="text" name="d_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" required/>
 									</br>
 									<button type="submit" id="Ca" class="btn btn-danger btn-md">supprimer </button>
@@ -362,14 +363,14 @@
 			<!-- Panel PDF -->
 								<div class="tab-pane fade" id="tab5default">
 									<div id="pdf">
-											<form method="post" action="/AdministrationTraitement?action=CA" >
+											<form method="post" action="/AdministrationTraitement?action=Audit" >
 												<input type="number" name="day" class="form-control" placeholder="Day" required />
 												<input type="number" name="month" class="form-control" placeholder="Month" required/>
 												<input type="number" name="year" class="form-control" placeholder="Year" required/>
                          						<button type="submit" id="Ca"class="btn btn-danger btn-md">AUDIT</button>
 											</form>
 										<h3> Télécharger la liste des films du site </h3>
-										  <a  type="submit" id="audit" href="/Projet-TER/AdministrationTraitement?action=Audit" class="btn btn-danger btn-md">Liste pdf </a>
+										  <a  type="submit" id="audit" href="/Projet/AdministrationTraitement?action=CA" class="btn btn-danger btn-md">Liste pdf </a>
 									</div>
 								</div>
 								
@@ -377,7 +378,7 @@
 	<!-- Panel modifier client  -->				
 							<div class="tab-pane fade" id="tab6default">
 								<div id="ModifierClient">
-									<form method="post" action="/Projet-TER/AdministrationTraitement?action=Mod_Client">
+									<form method="post" action="/Projet/AdministrationTraitement?action=Mod_Client">
 									 <h3>Eléments de recherche</h3>
 									 	<input type="text" name="m_pseudo" class="form-control input-sm chat-input" placeholder="pseudo" required/>
 										</br> 
@@ -398,7 +399,7 @@
 								
 							<div class="tab-pane fade" id="tab7default">
 							<div id="ModifieVideo">
-								<form method="post" action="/Projet-TER/AdministrationTraitement?action=Mod_Video">	
+								<form method="post" action="/Projet/AdministrationTraitement?action=Mod_Video">	
 								  <h3>Eléments de recherche</h3>
 									<input type="text" name="m_titre" class="form-control input-sm chat-input" placeholder="nom " required/>
 									</br>

@@ -51,25 +51,25 @@
         <nav class="navbar navbar-inverse" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a class="navbar-brand" href="/Projet-TER/Home">Netflox</a>
+            <a class="navbar-brand" href="/Projet/Home">Netflox</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-             <li class="active"><a href="/Projet-TER/Contact">Contactez nous </a></li>
+             <li class="active"><a href="/Projet/Contact">Contactez nous </a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catégorie <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/Projet-TER/Recherche?cat=3">Documentaires</a></li>
-                  <li><a href="/Projet-TER/Recherche?cat=1">Films</a></li>
-                  <li><a href="/Projet-TER/Recherche?cat=2">Séries</a></li>
+                  <li><a href="/Projet/Recherche?cat=3">Documentaires</a></li>
+                  <li><a href="/Projet/Recherche?cat=1">Films</a></li>
+                  <li><a href="/Projet/Recherche?cat=2">Séries</a></li>
                 </ul>
               </li>
                <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">MotClefs<b class="caret"></b></a>
                 <ul class="dropdown-menu" >
-                <form action="/Projet-TER/Recherche?cat=motsclefs" method="post">
+                <form action="/Projet/Recherche?cat=motsclefs" method="post">
                   <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="2"> Action</li>
                   <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="5"> Animation</li>
                   <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="1"> Aventure</li>
@@ -92,15 +92,15 @@
 			
                <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
-					   <li> <a href="/Projet-TER/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
+					   <li> <a href="/Projet/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
 					   
 					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
-					    <a href="/Projet-TER/Subscribe" type="button" class="btn btn-primary">Premium</a>
+					    <a href="/Projet/Subscribe" type="button" class="btn btn-primary">Premium</a>
 				   	   </c:if>
 				   	    <c:if test = "${sessionScope.status.categorie == 'administrateur'}">
-					   	 <a href="/Projet-TER/Administration" class="btn btn-primary">administration</a>
+					   	 <a href="/Projet/Administration" class="btn btn-primary">administration</a>
 				   	   </c:if>	
-					   <a type="button" class="btn btn-danger" href="/Projet-TER/Deconnection">Deconnection</a>	
+					   <a type="button" class="btn btn-danger" href="/Projet/Deconnection">Deconnection</a>	
 					</c:if>
 					<c:if test="${empty sessionScope.client}">
 						<button id="signbtn" type="button" class="btn btn-primary btn-lg round" data-toggle="modal" data-target="#signModal">Sign in / Sign up</button>
@@ -134,7 +134,7 @@
             <div class="carousel-caption">
                 <h2>${c.nomVideo}</h2>
                 <p style="font-size:12px;"> Synopsis : ${c.resume}</p>
-              <p><a class="btn btn-primary btn-lg round" href="/Projet-TER/DetailVideo?idVideo=${c.id}" role="button">Lire plus</a></p>
+              <p><a class="btn btn-primary btn-lg round" href="/Projet/DetailVideo?idVideo=${c.id}" role="button">Lire plus</a></p>
             </div>
           </div>
         </div>
@@ -154,14 +154,14 @@
 
 
   <!--  ================================================== -->
-    <!--Video contener -->
+    <!--Video container -->
 
     <div class="container marketing">
 
       <div class="col-sm-12">
       	<c:forEach var="v" items="${videos}">
       	  <div class="card card-1">
-      	 	 <a href="/Projet-TER/DetailVideo?idVideo=${v.id}" id="p-film">${v.nomVideo} </a>
+      	 	 <a href="/Projet/DetailVideo?idVideo=${v.id}" id="p-film">${v.nomVideo} </a>
           	<img id="image-card" src="Affiche/${v.id}.jpg">
           </div>
 		</c:forEach>

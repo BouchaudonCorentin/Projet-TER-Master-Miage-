@@ -40,7 +40,7 @@
                 
               </div>
             <div class="panel-body">
-                <form id="payment-form" method="post" action="/Projet-TER/DetailVideo?idVideo=${idVideo}">
+                <form id="payment-form" method="post" action="/Projet/DetailVideo?idVideo=${idVideo}">
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group">

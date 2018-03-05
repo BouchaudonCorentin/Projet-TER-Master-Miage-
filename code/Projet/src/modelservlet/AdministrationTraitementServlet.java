@@ -3,6 +3,7 @@ package modelservlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -140,8 +141,16 @@ public class AdministrationTraitementServlet extends HttpServlet {
 				  request.setAttribute("echec_modidierVideo",!resv); 
 				  System.out.println(v.getPrixAchat());
 			  }else if (action.equals("Audit")) {
+				  int year =Integer.parseInt( request.getParameter("year"));
+				  int month =Integer.parseInt( request.getParameter("month"));
+				  int day =Integer.parseInt( request.getParameter("day"));
+				  Date d = new Date(year-1900,month-1,day); 
+			      GeneratePDFAudit  audit = new GeneratePDFAudit();
+			      audit.createAudit(d);
 			      
 			  }else if (action.equals("CA")) {
+				  GeneratePDFCatalogue  cat = new GeneratePDFCatalogue();
+			      cat.createCatalogue();
 			    
 			  }
 				request.setAttribute("nbvideo", dbi.afficheVideos().size());

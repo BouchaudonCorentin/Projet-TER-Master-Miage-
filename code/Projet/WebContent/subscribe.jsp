@@ -27,22 +27,22 @@
         <nav class="navbar navbar-inverse" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a class="navbar-brand" href="/Projet-TER/Home">Netflox</a>
+            <a class="navbar-brand" href="/Projet/Home">Netflox</a>
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-             <li class="active"><a href="/Projet-TER/Contact">Contactez nous </a></li></ul> 
+             <li class="active"><a href="/Projet/Contact">Contactez nous </a></li></ul> 
                <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
-					   <li> <a href="/Projet-TER/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
+					   <li> <a href="/Projet/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
 					   
 					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
-					    <a href="/Projet-TER/Subscribe" type="button" class="btn btn-primary">Premium</a>
+					    <a href="/Projet/Subscribe" type="button" class="btn btn-primary">Premium</a>
 				   	   </c:if>
 				   	    <c:if test = "${sessionScope.status.categorie == 'administrateur'}">
-					   	 <a href="/Projet-TER/Administration" class="btn btn-primary">administration</a>
+					   	 <a href="/Projet/Administration" class="btn btn-primary">administration</a>
 				   	   </c:if>	
-					   <a type="button" class="btn btn-danger" href="/Projet-TER/Deconnection">Deconnection</a>	
+					   <a type="button" class="btn btn-danger" href="/Projet/Deconnection">Deconnection</a>	
 					</c:if>
 					<c:if test="${empty sessionScope.client}">
 						<button id="signbtn" type="button" class="btn btn-primary btn-lg round" data-toggle="modal" data-target="#signModal">Sign in / Sign up</button>
@@ -56,7 +56,7 @@
     </div>
    
         <img id="logo" src="resources/image/logo_N.png" >
-			<a id="btn_sub" class="btn btn-danger btn-lg" href="/Projet-TER/Payement?type=Premium&id=0">S'abonner</a>
+			<a id="btn_sub" class="btn btn-danger btn-lg" href="/Projet/Payement?type=Premium&id=0">S'abonner</a>
        <div id="div">
             <img id="pay" src="resources/image/pay.png" >
             <p id ="texte">10€ par mois</p>
