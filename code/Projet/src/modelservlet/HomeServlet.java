@@ -69,6 +69,7 @@ public class HomeServlet extends HttpServlet {
 				String mdp = request.getParameter("mdp");
 				String verifmdp = request.getParameter("verimdp");
 				String email = request.getParameter("email");
+				String parrain = request.getParameter("parrain");
 
 				Client client = null;
 				if(!mdp.equals(verifmdp)) {
@@ -78,8 +79,10 @@ public class HomeServlet extends HttpServlet {
 					if (dbi.verifpseudo(pseudo) == false){
 						request.setAttribute("echec_inscription", true); 
 					}else {
-						client = dbi.inscription(new Client(nom,prenom,pseudo,mdp,email));
-						request.setAttribute("echec_inscription", false); 
+						if(dbi.verifparrain(parrain) == true){
+							client = dbi.inscription(new Client(nom,prenom,pseudo,mdp,email));
+							request.setAttribute("echec_inscription", false); 
+						}
 					}
 					request.setAttribute("client", client);
 				}

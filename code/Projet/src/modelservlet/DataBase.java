@@ -87,6 +87,11 @@ public class DataBase {
 			return true;// sinon retourne vrai
 		}
 	}
+	
+	/* Regarde si le parrain n'a qu'un neveu et que le parrain existe */
+	public Boolean verifparrain(String parrain) throws SQLException { 
+		
+	}
 
 	/**
 	 * @param client
