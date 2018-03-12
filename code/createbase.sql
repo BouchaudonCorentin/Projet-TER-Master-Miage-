@@ -23,7 +23,8 @@ create table Video(
 
 create table CategorieClient (
 	idCategorieClient integer primary key,
-	nomCategorieClient varchar(20)	not null
+	nomCategorieClient varchar(20)	not null,
+    finPremium date
 );
 
 create table CategorieVideo(
@@ -71,3 +72,9 @@ create table ChiffreAffaire(
 	PRIMARY KEY (idCA,dateCA)
 );
 
+create table Parrain(
+    idParrain integer,
+    idNeveu integer,
+    nbpoints integer,
+    nbvideo interger 
+);
