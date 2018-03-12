@@ -35,14 +35,11 @@
     <h1 class="page-header"> ${nom} </h1>
 		<!-- video-section-start -->
 		<div class="displaytable">
-			<div class="displaytablecell">
+	
 				<div class="video-area">
 					<div id="wrapper">
-						<div class="videoContainer">
-							<video id="myVideo" controls preload="auto"  >
-								<source src="MKV" type="../Video*/La Chanson du Poireau .MKV" />
-							</video>
-							<div class="caption">Video Caption</div>
+								<iframe width="560" height="315" src="https://www.youtube.com/embed/ZGsq_oAJRu4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen controls preload="auto"></iframe>
+						
 							<div class="control">
 								<div class="btmControl">
 									<div class="btnPlay btn" title="Play/Pause video"><span class="icon-play"></span></div>
@@ -56,11 +53,10 @@
 									<div class="btnFS btn" title="Switch to full screen"><span class="icon-fullscreen"></span></div>
 								</div>
 							</div>
-						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+	
     		<!-- video-section-end -->
      <div class="col-md-2" id="detailMovie" >
           <p id="name"> Titre : ${nom}</p>

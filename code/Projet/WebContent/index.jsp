@@ -93,7 +93,7 @@
                <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
 					   <li> <a href="/Projet/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
-					   
+					   <li> <a>Vous avez ${sessionScope.client.pseudo} point(s) !</a> </li>
 					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
 					    <a href="/Projet/Subscribe" type="button" class="btn btn-primary">Premium</a>
 				   	   </c:if>
@@ -235,7 +235,9 @@
 	                      <input class="form-control input-sm chat-input" name="mdp" type="password" placeholder="Password" required/>
 	                      </br>  
 	                      <input class="form-control input-sm chat-input" name="verimdp" type="password" placeholder="Confirm Password" required />
-	                      </br>  
+	                      </br>
+	                       <input class="form-control input-sm chat-input" name="parrain" type="text" placeholder="Pseudo parrain"/>
+	                       
 	                      <button  type="submit" class="btn_sign_up">SIGN UP</button>
                       </form>
                     </div>

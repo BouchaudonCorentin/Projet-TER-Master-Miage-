@@ -35,7 +35,7 @@
                <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
 					   <li> <a href="/Projet/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
-					   
+						<li> <a>Vous avez ${sessionScope.client.pseudo} point(s) !</a> </li>
 					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
 					    <a href="/Projet/Subscribe" type="button" class="btn btn-primary">Premium</a>
 				   	   </c:if>

@@ -29,12 +29,10 @@
 
           
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-             <li class="active"><a href="/Projet/Contact">Contactez nous </a></li>
-               <ul class="nav navbar-nav navbar-right "> 
+           <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
 					   <li> <a href="/Projet/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
-					   </ul> 
+					   <li> Vous avez ${sessionScope.client.pseudo} point(s) </li>
 					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
 					    <a href="/Projet/Subscribe" type="button" class="btn btn-primary">Premium</a>
 				   	   </c:if>
@@ -66,6 +64,7 @@
 								<li class="active"><a href="#tab1default" data-toggle="tab">Achats</a></li>
 								<li><a href="#tab2default" data-toggle="tab">Locations actives </a></li>
 								<li><a href="#tab3default" data-toggle="tab">Locations terminées</a></li>
+								<li><a href="#tab4default" data-toggle="tab">Option premium</a></li>
 							
 								
 	
@@ -94,6 +93,11 @@
 								<c:forEach var="v" items="${lf}">
       	 						 <li><a href="/Projet/DetailVideo?idVideo=${v.id}" id="p-film">${v.nomVideo} </a></li>
 								</c:forEach>
+								</ul>
+								</div>
+								<div class="tab-pane fade" id="tab4default">
+								<ul>
+									
 								</ul>
 								</div>
 								
