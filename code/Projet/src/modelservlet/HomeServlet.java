@@ -69,6 +69,7 @@ public class HomeServlet extends HttpServlet {
 				String mdp = request.getParameter("mdp");
 				String verifmdp = request.getParameter("verimdp");
 				String email = request.getParameter("email");
+				String parrain = request.getParameter("parrain");
 
 				Client client = null;
 				if(!mdp.equals(verifmdp)) {
