@@ -37,7 +37,7 @@ public class ContactServlet extends HttpServlet {
 				request.getSession().setAttribute("dbi", dbi);
 			}
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/Contact.jsp"); 
+			RequestDispatcher rd = request.getRequestDispatcher("/contact.jsp"); 
 		
 			rd.forward(request, response);
 			
