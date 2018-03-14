@@ -25,7 +25,7 @@ public class DataBase {
 	 */
 	public DataBase() throws ClassNotFoundException, SQLException {// ouvre la connection vers la BD
 		Class.forName("org.postgresql.Driver");
-		conn = DriverManager.getConnection("jdbc:postgresql://tp-postgres:5432/cbouch3_a", "cbouch3_a", "cbouch3_a");// remettre
+		conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cbouch3_a", "cbouch3_a", "cbouch3_a");// remettre
 																													// tp-postgres
 																													// �
 																													// la
@@ -61,6 +61,13 @@ public class DataBase {
 			client.setId(res.getInt("idClient"));
 			client.setNom(res.getString("nomClient"));
 			client.setPrenon(res.getString("prenomClient"));
+			String query ="select ccl.idClient from CategorieClient cc, compoClieny ccl where ccl.idClient ="+client.getId()+" and cc.idCategorieClient = ccl.idCategorieClient and finPremium<Current_Date";
+			res =s.executeQuery(query);
+			res.next();
+			if(res.getInt(1)==client.getId()) {
+				query = "Update CompoCLient Set idCategorie = 1 where idClient="+client.getId();
+				s.executeUpdate(query);
+			}
 		} // sinon ne change rien
 		return client;
 	}
@@ -87,11 +94,7 @@ public class DataBase {
 			return true;// sinon retourne vrai
 		}
 	}
-	
-	/* Regarde si le parrain n'a qu'un neveu et que le parrain existe */
-	public Boolean verifparrain(String parrain) throws SQLException { 
-		
-	}
+
 
 	/**
 	 * @param client
@@ -977,6 +980,45 @@ public class DataBase {
 			c.setPrenon(res.getString(2));
 		}
 		return c;
+	}
+	
+	
+	/* Regarde si le parrain n'a pas de neveu et que le parrain existe */
+	public Boolean isParrain(int idparrain) throws SQLException { //tu peux recuperer l'id avec idbypseudo
+		String query = " select count(*) from parrain where idparrain = "+idparrain;
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		if(res.next()) {
+			if(res.getInt(1)==0) {
+				return false;
+			}else {
+				return true;
+			}
+		}else {
+			return true;
+		}
+		
+	}
+	/* Regarde si le parrain n'a pas de neveu et que le parrain existe */
+	public Boolean isNeveu(int idneveu) throws SQLException { //tu peux recuperer l'id avec idbypseudo
+		String query = " select count(*) from parrain where idneveu = "+idneveu;
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		if(res.next()) {
+			if(res.getInt(1)==0) {
+				return false;
+			}else {
+				return true;
+			}
+		}else {
+			return true;
+		}
+		
+	}
+	public void becomeNeveu(int idParrain, int idNeveu) throws SQLException {
+		String query = " insert into parrain values("+idParrain+", "+idNeveu+",0,0)";
+		Statement s = conn.createStatement();
+		s.executeUpdate(query);
 	}
 
 

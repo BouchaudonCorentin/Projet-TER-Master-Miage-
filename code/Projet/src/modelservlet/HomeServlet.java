@@ -79,9 +79,16 @@ public class HomeServlet extends HttpServlet {
 					if (dbi.verifpseudo(pseudo) == false){
 						request.setAttribute("echec_inscription", true); 
 					}else {
-						if(dbi.verifparrain(parrain) == true){
-							client = dbi.inscription(new Client(nom,prenom,pseudo,mdp,email));
-							request.setAttribute("echec_inscription", false); 
+						int idparrain = dbi.idByPseudo(parrain);
+						if(idparrain != 0){
+							if(dbi.isParrain(idparrain)) {
+								//gerer echec
+							}else {
+								client = dbi.inscription(new Client(nom,prenom,pseudo,mdp,email));
+								request.setAttribute("echec_inscription", false); 
+							}
+						}else {
+							//gerer echec
 						}
 					}
 					request.setAttribute("client", client);
