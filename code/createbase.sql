@@ -76,5 +76,5 @@ create table Parrain(
     idParrain integer,
     idNeveu integer,
     nbpoints integer,
-    nbvideo interger 
+    nbvideo integer 
 );

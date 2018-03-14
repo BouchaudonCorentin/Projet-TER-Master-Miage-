@@ -8,9 +8,9 @@ insert into CategorieClient values (1,'inscrit');
 insert into CategorieClient values (2,'premium');
 insert into CategorieClient values (3,'administrateur');
 
-insert into CompoClient values (1,1);
-insert into CompoClient values (2,2);
-insert into CompoClient values (3,3);
+insert into CompoClient values (1,1,null);
+insert into CompoClient values (2,2,'2018-04-03');
+insert into CompoClient values (3,3,null);
 
 
 insert into CategorieVideo values( 1,'Film');

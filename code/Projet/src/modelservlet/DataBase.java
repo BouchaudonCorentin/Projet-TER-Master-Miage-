@@ -61,13 +61,13 @@ public class DataBase {
 			client.setId(res.getInt("idClient"));
 			client.setNom(res.getString("nomClient"));
 			client.setPrenon(res.getString("prenomClient"));
-			String query ="select ccl.idClient from CategorieClient cc, compoClient ccl where ccl.idClient ="+client.getId()+" and cc.idCategorieClient = ccl.idCategorieClient and finPremium<Current_Date";
-			res =s.executeQuery(query);
-			res.next();
-			if(res.getInt(1)==client.getId()) {
-				query = "Update CompoCLient Set idCategorie = 1 where idClient="+client.getId();
-				s.executeUpdate(query);
-			}
+			//String query ="select ccl.idClient from CategorieClient cc, compoClient ccl where ccl.idClient ="+client.getId()+" and cc.idCategorieClient = ccl.idCategorieClient and finPremium<Current_Date";
+			//res =s.executeQuery(query);
+			//res.next();
+			//if(res.getInt(1)==client.getId()) {
+				//query = "Update CompoCLient Set idCategorie = 1 where idClient="+client.getId();
+				//s.executeUpdate(query);
+			//}
 		} // sinon ne change rien
 		return client;
 	}
