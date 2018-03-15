@@ -49,12 +49,18 @@ public class HomeServlet extends HttpServlet {
 				System.out.println(pseudo);
 				String mdp = request.getParameter("mdp");
 				
+				
+				
 				Client client = dbi.connection(new Client(pseudo, mdp));
 				if(client == null){
 					request.setAttribute("echec_connection", true);
 				}else {
 					request.getSession().setAttribute("status", dbi.categorieclient(client));
 					request.getSession().setAttribute("client", client);
+					request.getSession().setAttribute("parrain", dbi.)
+					//int idparrain = dbi.idByPseudo(parrain);
+					// Ajout des points à afficher 
+					//request.getSession().setAttribute("nb_points", client);
 					request.setAttribute("echec_connection", false);
 					
 				}
@@ -83,12 +89,17 @@ public class HomeServlet extends HttpServlet {
 						if(idparrain != 0){
 							if(dbi.isParrain(idparrain)) {
 								//gerer echec
+								request.setAttribute("already_parrain", true); 
 							}else {
 								client = dbi.inscription(new Client(nom,prenom,pseudo,mdp,email));
+								// dbi.becomeNeveu(idparrain, client.getId)
 								request.setAttribute("echec_inscription", false); 
+								request.setAttribute("already_parrain", false);
 							}
 						}else {
 							//gerer echec
+							// Ce n'est pas redondant ?
+							
 						}
 					}
 					request.setAttribute("client", client);
