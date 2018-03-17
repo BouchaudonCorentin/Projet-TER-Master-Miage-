@@ -1,5 +1,5 @@
 --create by Bouchaudon Corentin
-drop table if exists ChiffreAffaire,Achat,Location,MotClefVideo,MotClef, CompoVideo,CompoClient,CategorieVideo,CategorieClient, Video,Client CASCADE;
+drop table if exists Parrain,ChiffreAffaire,Achat,Location,MotClefVideo,MotClef, CompoVideo,CompoClient,CategorieVideo,CategorieClient, Video,Client CASCADE;
 create table Client (
 	idClient integer Primary Key,
 	nomCLient varchar(50) not null,
@@ -23,8 +23,7 @@ create table Video(
 
 create table CategorieClient (
 	idCategorieClient integer primary key,
-	nomCategorieClient varchar(20)	not null,
-    finPremium date
+	nomCategorieClient varchar(20)	not null
 );
 
 create table CategorieVideo(
@@ -35,6 +34,7 @@ create table CategorieVideo(
 create table CompoClient (
 	idClient integer references Client,
 	idCategorieClient integer references CategorieClient,
+	finPremium date,
 	PRIMARY KEY (idClient,idCategorieClient)
 );
 

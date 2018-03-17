@@ -3,6 +3,15 @@
 Insert into Client values (1,'Lenormand','Brian','Link91','kikou91','brian.lenormand@u-psud.fr');
 Insert into Client values (2,'Pechdimaldjian','Mathilde','Totoro','123456789','mathilde.pechdimaldjian@u-psud.fr');
 Insert into Client values (3,'Bouchaudon','Corentin','Kevindu93','djudjull','corentin.bouchaudon@u-psud.fr');
+Insert into Client values (4,'a','a','a','a','a@a.fr');
+Insert into Client values (5,'b','b','b','b','b@b.fr');
+Insert into Client values (6,'c','c','c','c','c@c.fr');
+Insert into Client values (7,'d','d','d','d','d@d.fr');
+Insert into Client values (8,'e','e','e','e','e@e.fr');
+Insert into Client values (9,'f','f','f','f','f@f.fr');
+Insert into Client values (10,'g','g','g','g','g@g.fr');
+Insert into Client values (11,'h','h','h','h','h@h.fr');
+Insert into Client values (12,'i','i','i','i','i@i.fr');
 
 insert into CategorieClient values (1,'inscrit');
 insert into CategorieClient values (2,'premium');
@@ -11,6 +20,21 @@ insert into CategorieClient values (3,'administrateur');
 insert into CompoClient values (1,1,null);
 insert into CompoClient values (2,2,'2018-04-03');
 insert into CompoClient values (3,3,null);
+insert into CompoClient values (4,1,null);
+insert into CompoClient values (5,1,null);
+insert into CompoClient values (6,1,null);
+insert into CompoClient values (7,1,null);
+insert into CompoClient values (8,1,null);
+insert into CompoClient values (9,1,null);
+insert into CompoClient values (10,1,null);
+insert into CompoClient values (11,1,null);
+insert into CompoClient values (12,1,null);
+
+insert into Parrain values (1,2,26,2);
+insert into Parrain values (2,4,49,4);
+insert into Parrain values (6,9,35,3);
+insert into Parrain values (9,10,22,2);
+
 
 
 insert into CategorieVideo values( 1,'Film');
