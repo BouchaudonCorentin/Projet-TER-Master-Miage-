@@ -983,7 +983,7 @@ public class DataBase {
 	}
 	
 	
-	/* Regarde si le parrain n'a pas de neveu et que le parrain existe */
+	/* Retourne vrai s'il est parrain*/
 	public Boolean isParrain(int idparrain) throws SQLException { //tu peux recuperer l'id avec idbypseudo
 		String query = " select count(*) from parrain where idparrain = "+idparrain;
 		Statement s = conn.createStatement();
@@ -995,11 +995,11 @@ public class DataBase {
 				return true;
 			}
 		}else {
-			return true;
+			return false;
 		}
 		
 	}
-	/* Regarde si le parrain n'a pas de neveu et que le parrain existe */
+	/* retourne vrai si il est neveu */
 	public Boolean isNeveu(int idneveu) throws SQLException { //tu peux recuperer l'id avec idbypseudo
 		String query = " select count(*) from parrain where idneveu = "+idneveu;
 		Statement s = conn.createStatement();
@@ -1011,14 +1011,78 @@ public class DataBase {
 				return true;
 			}
 		}else {
-			return true;
+			return false;
 		}
 		
 	}
-	public void becomeNeveu(int idParrain, int idNeveu) throws SQLException {
+	public Client getParrain(int idNeveu)throws SQLException{
+		String query = "select idClient,nomClient,prenomClient,pseudo,email from Client where idClient in (select idParrain from parrain where idNeveu ="+idNeveu+")";
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		Client c= new Client();
+		if (res.next()){
+			c.setId(res.getInt(1));
+			c.setNom(res.getString(2));
+			c.setPrenon(res.getString(3));
+			c.setPseudo(res.getString(4));
+			c.setEmail(res.getString(5));
+		}
+		return c;
+	}
+	
+	public void becomeNeveu(int idParrain, int idNeveu) throws SQLException {//utiliser uniquement si parrain n'a pas deja de neveau
 		String query = " insert into parrain values("+idParrain+", "+idNeveu+",0,0)";
 		Statement s = conn.createStatement();
 		s.executeUpdate(query);
+	}
+	
+	public void ajoutPoint(int idClient)throws SQLException{
+		String query = "Update Parrain set nbPoint =nbPoint+1 where idNeveu ="+idClient;
+		Statement s = conn.createStatement();
+		s.executeUpdate(query);
+		
+		query = "select idParrain from parrain where idNeveu ="+idClient;
+		ResultSet res = s.executeQuery(query);
+		res.next();
+		int idParrain=res.getInt(1);
+		
+		query = "select nbPoint from parrain where idNeveu ="+idClient;
+		res = s.executeQuery(query);
+		
+		res.next();
+		if (res.getInt(1)%50 == 0){
+			query ="Update Parrain set nbPoint = 0 ,nbVideo = nbVideo+1  where idNeveu ="+idClient;
+			s.executeUpdate(query);
+			query="select finPremium from compoClient where idClient ="+idParrain;
+			res = s.executeQuery(query);
+			res.next();
+			if(res.getDate(1)==null){
+				query = " Update CompoClient set idCategorieClient = 2, finPremium = Current_Date + 30 where idClient="+idParrain;
+				s.executeUpdate(query);
+			}else{
+				query = " Update CompoClient set idCategorieClient = 2, finPremium = finPremium + 30 where idClient="+idParrain;
+				s.executeUpdate(query);
+			}
+		}else if(res.getInt(1)%10==0){
+			query ="Update Parrain set nbVideo = nbVideo +1 where idNeveu ="+idClient;
+			s.executeUpdate(query);
+		}
+		
+	}
+	public int nbPoint(int idClient)throws SQLException{//verifier si c'est un parrain avant
+		String query ="select nbPoint from Parrain where idParrain ="+idClient; 
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		res.next();
+		return res.getInt(1);	
+	}
+	
+	public int nbVideo(int idClient)throws SQLException{//verifier si c'est un parrain avant
+		String query ="select nbVideo from Parrain where idParrain ="+idClient; 
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		res.next();
+		return res.getInt(1);	
 	}
 
 
