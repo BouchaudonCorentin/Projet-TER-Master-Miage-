@@ -575,6 +575,10 @@ public class DataBase {
 				}
 				s.executeUpdate(query);
 			}
+			if(v.getPrixLocation()==0){
+				query = " Update Parrain set nbVideo =nbVideo -1 where idParrain ="+c.getId();
+				s.executeUpdate(query);
+			}
 			return true;// si ok retourne true
 		} else {
 			return false;// sinon retourne faux
