@@ -1084,6 +1084,14 @@ public class DataBase {
 		res.next();
 		return res.getInt(1);	
 	}
+	
+	public Date  dateFinPremium(int idClient)throws SQLException{
+		String query ="select finPremium from CompoClient where idClient ="+idClient;
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		res.next();
+		return res.getDate(1);
+	}
 
 
 }
