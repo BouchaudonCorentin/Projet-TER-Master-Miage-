@@ -43,6 +43,10 @@ public class HomeServlet extends HttpServlet {
 			request.setAttribute("carsl_supp", Arrays.asList("first", "second", "third"));
 			request.setAttribute("videos", lv);
 
+			
+			
+			
+			
 			if(uri.equals("/Projet/Connection")){
 
 				String pseudo = request.getParameter("pseudo");
@@ -57,7 +61,17 @@ public class HomeServlet extends HttpServlet {
 				}else {
 					request.getSession().setAttribute("status", dbi.categorieclient(client));
 					request.getSession().setAttribute("client", client);
-					request.getSession().setAttribute("parrain", dbi.)
+						if(dbi.isNeveu(client.getId())==true)
+						{
+							Client idparrain= dbi.getParrain(client.getId());
+							request.getSession().setAttribute("parrain",idparrain.getId());
+							
+						}else if(dbi.isParrain(client.getId())==true)
+						{
+							request.getSession().setAttribut()
+						}
+					
+					//request.getSession().setAttribute("parrain", dbi.); 
 					//int idparrain = dbi.idByPseudo(parrain);
 					// Ajout des points à afficher 
 					//request.getSession().setAttribute("nb_points", client);
@@ -85,29 +99,41 @@ public class HomeServlet extends HttpServlet {
 					if (dbi.verifpseudo(pseudo) == false){
 						request.setAttribute("echec_inscription", true); 
 					}else {
-						int idparrain = dbi.idByPseudo(parrain);
+						client = dbi.inscription(new Client(nom,prenom,pseudo,mdp,email));
+						request.setAttribute("echec_inscription", false); 
+					//Verification Parrain 
+								if(dbi.verifpseudo(parrain)==false) {
+									request.setAttribute("echec_parrain", false);
+									int idParrain = dbi.idByPseudo(parrain);
+									dbi.becomeNeveu(idParrain, client.getId());
+								}else {
+									request.setAttribute("echec_parrain", true);
+								}
+								
+								
+				/*		int idparrain = dbi.idByPseudo(parrain);
 						if(idparrain != 0){
 							if(dbi.isParrain(idparrain)) {
-								//gerer echec
+						
 								request.setAttribute("already_parrain", true); 
 							}else {
-								client = dbi.inscription(new Client(nom,prenom,pseudo,mdp,email));
+								
 								// dbi.becomeNeveu(idparrain, client.getId)
-								request.setAttribute("echec_inscription", false); 
+								
 								request.setAttribute("already_parrain", false);
 							}
 						}else {
 							//gerer echec
 							// Ce n'est pas redondant ?
 							
-						}
+						}*/
 					}
 					request.setAttribute("client", client);
 				}
 				
 				
 			}else if(uri.equals("/Projet/Deconnection")){
-				//request.getSession().removeAttribute("client");
+				
 				 request.getSession().invalidate();
 				
 			}
