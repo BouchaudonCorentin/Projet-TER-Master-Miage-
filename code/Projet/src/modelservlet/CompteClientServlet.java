@@ -45,6 +45,12 @@ public class CompteClientServlet extends HttpServlet {
 			request.setAttribute("a", a);
 			request.setAttribute("lc", lc);
 			request.setAttribute("lf", lf);
+			if(dbi.isParrain(c.getId())==true)
+			{
+				Parrain p =dbi.getInfoParrain(c.getId()); 
+				request.setAttribute("neveuNom",dbi.pseudoById(p.getIdNeveu()));
+				System.out.println(dbi.pseudoById(p.getIdNeveu()));
+			}
 			rd.forward(request, response);
 			
 			

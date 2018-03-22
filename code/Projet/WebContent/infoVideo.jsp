@@ -94,11 +94,12 @@
 			       		<button class="btn btn-default btn-danger" type="submit">TELECHARGER</button>
 			    	</c:when>
 			    	<c:when test = "${louer == true}">
-			       		<button class="btn btn-default btn-danger" type="submit">REGARDER</button>
+			       		<a href="/Projet/AfficheVideo?idvideo=${id}" class="btn btn-default btn-danger" type="submit">REGARDER</a>
 			    	</c:when>
 			    	<c:otherwise>
 			       			<a class="btn pulse-button"  id="rent" href="/Projet/Payement?type=Location&id=${id}"></a>
 			          		<a class="btn pulse-button"  id="dwl" href="/Projet/Payement?type=Achat&id=${id}"></a>
+			          		<a class="btn pulse-button"  id="parrain" href="/Projet/Payement?type=Parrain&id=${id}"></a>
 			   		 </c:otherwise>
 				</c:choose>
          </c:if>			

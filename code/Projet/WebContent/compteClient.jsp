@@ -32,7 +32,9 @@
            <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
 					   <li> <a href="/Projet/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
-					   <li> Vous avez ${sessionScope.client.pseudo} point(s) </li>
+					   		 <c:if test="${!empty sessionScope.parrain}">
+						  	 	<li> <a href="/Projet/CompteClient">Vous avez ${sessionScope.parrain.nbpoints} point(s) de parrainage !</a> </li>
+						  	 </c:if>
 					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
 					    <a href="/Projet/Subscribe" type="button" class="btn btn-primary">Premium</a>
 				   	   </c:if>
@@ -64,7 +66,8 @@
 								<li class="active"><a href="#tab1default" data-toggle="tab">Achats</a></li>
 								<li><a href="#tab2default" data-toggle="tab">Locations actives </a></li>
 								<li><a href="#tab3default" data-toggle="tab">Locations terminées</a></li>
-								<li><a href="#tab4default" data-toggle="tab">Option premium</a></li>
+								<li><a href="#tab4default" data-toggle="tab">Parrainage</a></li>
+								
 							
 								
 	
@@ -97,7 +100,14 @@
 								</div>
 								<div class="tab-pane fade" id="tab4default">
 								<ul>
-									
+									<c:if test="${!empty sessionScope.parrain}">
+						  	 			<li>Vous etes le parrain de <B>${neveuNom}</B> ! </li>
+						  	 			<li>Vous avez <B>${sessionScope.parrain.nbpoints}</B> point(s) de parrainage ! </li>
+						  	 			<li>Vous pouvez louer <B>${sessionScope.parrain.nbvideo}</B> vidéo(s) gratuitement ! </li>
+						  	 		</c:if>
+						  	 		<c:if test="${empty sessionScope.parrain}">
+						  	 			Devenez parrain et obtenez de nombres avantages
+						  	 		</c:if>
 								</ul>
 								</div>
 								

@@ -50,7 +50,7 @@ public class HomeServlet extends HttpServlet {
 			if(uri.equals("/Projet/Connection")){
 
 				String pseudo = request.getParameter("pseudo");
-				System.out.println(pseudo);
+			
 				String mdp = request.getParameter("mdp");
 				
 				
@@ -59,16 +59,14 @@ public class HomeServlet extends HttpServlet {
 				if(client == null){
 					request.setAttribute("echec_connection", true);
 				}else {
-					request.getSession().setAttribute("status", dbi.categorieclient(client));
+					
+					request.getSession().setAttribute("status", dbi.categorieclient(client)); 
 					request.getSession().setAttribute("client", client);
-						if(dbi.isNeveu(client.getId())==true)
+						if(dbi.isParrain(client.getId())==true)
 						{
-							Client idparrain= dbi.getParrain(client.getId());
-							request.getSession().setAttribute("parrain",idparrain.getId());
+							Parrain p =dbi.getInfoParrain(client.getId()); 
+							request.getSession().setAttribute("parrain",p);
 							
-						}else if(dbi.isParrain(client.getId())==true)
-						{
-							request.getSession().setAttribut()
 						}
 					
 					//request.getSession().setAttribute("parrain", dbi.); 

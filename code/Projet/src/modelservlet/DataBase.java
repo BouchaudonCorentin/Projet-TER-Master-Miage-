@@ -354,11 +354,14 @@ public class DataBase {
 	 */
 	public CategorieClient categorieclient(Client c) throws SQLException { // retourn la categorie d'un client
 		CategorieClient cc = new CategorieClient();
-		String query = "select * from CategorieClient cc, CompoCLient ccl where cc.idCategorieClient= ccl.idCategorieClient and ccl.idClient ="
+		String query = "select cc.idCategorieCLient, nomCategorieClient from CategorieClient cc, CompoCLient ccl where cc.idCategorieClient= ccl.idCategorieClient and ccl.idClient ="
 				+ c.getId();// retourne la cate du client
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
+		//System.out.println("TEST BDD");
 		res.next();
+		//System.out.println("categorie"+ res.getString(2));
+		//System.out.println("id"+ res.getInt(1));
 		cc.setCategorie(res.getString(2));
 		cc.setIdcategorie(res.getInt(1));
 		return cc;
@@ -883,6 +886,22 @@ public class DataBase {
 		}
 
 	}
+	/**
+	 * @param id
+	 * @return pseudo
+	 * @throws SQLException
+	 */
+	public String pseudoById(int id) throws SQLException {
+		String query = " select pseudo from client where idClient ='" + id + "'";
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);
+		if (res.next()) {
+			return res.getString(1);
+		} else {
+			return null;
+		}
+
+	}
 
 	/**
 	 * @param c
@@ -1041,7 +1060,7 @@ public class DataBase {
 	}
 	
 	public void ajoutPoint(int idClient)throws SQLException{
-		String query = "Update Parrain set nbPoint =nbPoint+1 where idNeveu ="+idClient;
+		String query = "Update Parrain set nbPoints =nbPoints+1 where idNeveu ="+idClient;
 		Statement s = conn.createStatement();
 		s.executeUpdate(query);
 		
@@ -1050,12 +1069,12 @@ public class DataBase {
 		res.next();
 		int idParrain=res.getInt(1);
 		
-		query = "select nbPoint from parrain where idNeveu ="+idClient;
+		query = "select nbPoints from parrain where idNeveu ="+idClient;
 		res = s.executeQuery(query);
 		
 		res.next();
 		if (res.getInt(1)%50 == 0){
-			query ="Update Parrain set nbPoint = 0 ,nbVideo = nbVideo+1  where idNeveu ="+idClient;
+			query ="Update Parrain set nbPoints = 0 ,nbVideo = nbVideo+1  where idNeveu ="+idClient;
 			s.executeUpdate(query);
 			query="select finPremium from compoClient where idClient ="+idParrain;
 			res = s.executeQuery(query);
@@ -1074,7 +1093,7 @@ public class DataBase {
 		
 	}
 	public int nbPoint(int idClient)throws SQLException{//verifier si c'est un parrain avant
-		String query ="select nbPoint from Parrain where idParrain ="+idClient; 
+		String query ="select nbPoints from Parrain where idParrain ="+idClient; 
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
 		res.next();
@@ -1095,6 +1114,31 @@ public class DataBase {
 		ResultSet res = s.executeQuery(query);
 		res.next();
 		return res.getDate(1);
+	}
+	
+
+
+	public String getIdNeveu(int idParrain)throws SQLException {
+			String query =" select pseudo from Client where idClient in (select idNeveu from parrain where idParrain = "+idParrain+")";
+			Statement s = conn.createStatement();
+			ResultSet res = s.executeQuery(query);		
+			res.next();
+			return (res.getString(1));
+		}
+	
+	public Parrain getInfoParrain(int idClient)throws SQLException {
+		String query =" select idNeveu,nbPoints, nbvideo from parrain where idParrain = "+idClient;
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(query);	
+		Parrain p = new Parrain();
+		if(res.next()) {
+			p.setIdNeveu(res.getInt(1));
+			p.setNbpoints(res.getInt(2));
+			p.setNbvideo(res.getInt(3));
+		}
+		
+		return p;
+		
 	}
 
 
