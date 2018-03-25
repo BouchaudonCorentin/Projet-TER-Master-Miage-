@@ -51,8 +51,12 @@ public class CompteClientServlet extends HttpServlet {
 				request.setAttribute("neveuNom",dbi.pseudoById(p.getIdNeveu()));
 			
 			}
-		    
-			System.out.println("date de fin "+dbi.dateFinPremium(c.getId()));
+			if(dbi.categorieclient(c).getCategorie().equals("premium") )
+			{
+				request.setAttribute("dateFin",dbi.dateFinPremium(c.getId()));
+			
+			}
+	
 			rd.forward(request, response);
 			
 			

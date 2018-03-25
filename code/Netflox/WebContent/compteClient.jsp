@@ -102,7 +102,7 @@
 													  Devenez premium et obtenez de nombres avantages
 												 </c:if>
 												 <c:if test = "${sessionScope.status.categorie == 'premium'}">
-													   <p> Votre option PREMIUM est jusqu'a <B>${ dateFin}</B> </p>
+													   <p> Votre option PREMIUM est jusqu'a <B>${dateFin}</B> </p>
 												 </c:if>
 						                    <c:if test="${empty sessionScope.parrain}">
 						                      
