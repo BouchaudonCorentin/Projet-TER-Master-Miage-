@@ -1,13 +1,11 @@
 package modelservlet;
 
+import com.itextpdf.text.*;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.sql.SQLException;
 import java.util.List;
-
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 /** 
  * Created by Corentin Bouchaudon

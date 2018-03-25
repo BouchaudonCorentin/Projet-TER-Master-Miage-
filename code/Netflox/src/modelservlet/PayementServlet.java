@@ -2,13 +2,13 @@ package modelservlet;
 
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 @WebServlet("/Payement")
 /** 
@@ -48,17 +48,29 @@ public class PayementServlet extends HttpServlet {
 		if(type.equals("Location")) {
 			request.setAttribute("prix",(double)Math.round(v.getPrixLocation() * 1000) / 1000 );
 			b=dbi.louer(c,v); 
+			if(dbi.isNeveu(c.getId())) {
+				dbi.ajoutPoint(c.getId());
+			}
 			
 		}else if(type.equals("Achat")) {
 			request.setAttribute("prix", (double)Math.round(v.getPrixAchat() * 1000) / 1000 );
 			b=dbi.acheter(c,v);
-			
+			if(dbi.isNeveu(c.getId())) {
+				dbi.ajoutPoint(c.getId());
+			}
 			
 		}else if(type.equals("Premium")) {
 			dbi.becomePremium(c);
 			request.setAttribute("prix",9.99); 
+			request.getSession().invalidate();
+			
+		}else if(type.equals("Parrain")) {
+			v.setPrixLocation(0.0);
+			b=dbi.louer(c,v); 
+			request.setAttribute("prix",0.00); 
 			
 		}
+	
 	
 		request.setAttribute("action_reussi",b);
 		request.setAttribute("type",type);

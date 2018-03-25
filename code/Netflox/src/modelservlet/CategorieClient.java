@@ -10,16 +10,13 @@ import java.util.Date;
  */
 public class CategorieClient {
 
+	public void setFinPremium(Date finPremium) {
+		this.finPremium = finPremium;
+	}
 	private int idcategorie;
 	private String categorie;
 	private Date finPremium;
 	
-	public Date getFinPremium() {
-		return finPremium;
-	}
-	public void setFinPremium(Date finPremium) {
-		this.finPremium = finPremium;
-	}
 	public CategorieClient(String categorie) {
 		this.categorie = categorie;
 	}
@@ -44,6 +41,12 @@ public class CategorieClient {
 	}
 	public void setCategorie(String categorie) {
 		this.categorie = categorie;
+	}
+	public Date getFinPremium() {
+		return finPremium;
+	}
+	public void setCategorie(Date finPremium) {
+		this.finPremium = finPremium;
 	}
 	
 }
