@@ -27,7 +27,7 @@
         <nav class="navbar navbar-inverse" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a class="navbar-brand" href="/Projet/Home">Netflox</a>
+            <a class="navbar-brand" href="/Netflox/Home">Netflox</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -38,7 +38,7 @@
    
                <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
-					   <li> <a href="/Projet/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
+					   <li> <a href="/Netflox/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
 					   <li> <a>Vous avez ${sessionScope.client.pseudo} point(s) !</a> </li>
 				    </c:if>
 				</ul> 
@@ -52,7 +52,7 @@
       <div class="col-sm-12">
       	<c:forEach var="v" items="${videos}">
       	  <div class="card card-1">
-      	 	 <a href="/Projet/DetailVideo?idVideo=${v.id}" id="p-film"><b>${v.nomVideo}</b></a>	
+      	 	 <a href="/Netflox/DetailVideo?idVideo=${v.id}" id="p-film"><b>${v.nomVideo}</b></a>	
       	 	 			<c:if test = "${v.numepisode != 0}"><p style="padding-left:5%; color=#FFFF;">épisode n°${v.numepisode} </p></c:if>
           	<img id="image-card" src="Affiche/${v.id}.jpg">
           </div>

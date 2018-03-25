@@ -59,25 +59,25 @@
         <nav class="navbar navbar-inverse" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a class="navbar-brand" href="/Projet/Home">Netflox</a>
+            <a class="navbar-brand" href="/Netflox/Home">Netflox</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-             <li class="active"><a href="/Projet/Contact">Contactez nous </a></li>
+             <li class="active"><a href="/Netflox/Contact">Contactez nous </a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catégorie <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/Projet/Recherche?cat=3">Documentaires</a></li>
-                  <li><a href="/Projet/Recherche?cat=1">Films</a></li>
-                  <li><a href="/Projet/Recherche?cat=2">Séries</a></li>
+                  <li><a href="/Netflox/Recherche?cat=3">Documentaires</a></li>
+                  <li><a href="/Netflox/Recherche?cat=1">Films</a></li>
+                  <li><a href="/Netflox/Recherche?cat=2">Séries</a></li>
                 </ul>
               </li>
                <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">MotClefs<b class="caret"></b></a>
                 <ul class="dropdown-menu" >
-                <form action="/Projet/Recherche?cat=motsclefs" method="post">
+                <form action="/Netflox/Recherche?cat=motsclefs" method="post">
                   <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="2"> Action</li>
                   <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="5"> Animation</li>
                   <li id="checkbox" class="form-check"><input type="checkbox" name="check" value="1"> Aventure</li>
@@ -100,15 +100,15 @@
 			
                <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
-					   <li> <a href="/Projet/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
+					   <li> <a href="/Netflox/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
 					   <li> <a>Vous avez ${sessionScope.client.pseudo} point(s) !</a> </li>
 					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
-					    <a href="/Projet/Subscribe" type="button" class="btn btn-primary">Premium</a>
+					    <a href="/Netflox/Subscribe" type="button" class="btn btn-primary">Premium</a>
 				   	   </c:if>
 				   	    <c:if test = "${sessionScope.status.categorie == 'administrateur'}">
-					   	 <a href="/Projet/Administration" class="btn btn-primary">administration</a>
+					   	 <a href="/Netflox/Administration" class="btn btn-primary">administration</a>
 				   	   </c:if>	
-					   <a type="button" class="btn btn-danger" href="/Projet/Deconnection">Deconnection</a>	
+					   <a type="button" class="btn btn-danger" href="/Netflox/Deconnection">Deconnection</a>	
 					</c:if>
 					<c:if test="${empty sessionScope.client}">
 						<button id="signbtn" type="button" class="btn btn-primary btn-lg round" data-toggle="modal" data-target="#signModal">Sign in / Sign up</button>
@@ -142,7 +142,7 @@
             <div class="carousel-caption">
                 <h2>${c.nomVideo}</h2>
                 <p style="font-size:12px;"> Synopsis : ${c.resume}</p>
-              <p><a class="btn btn-primary btn-lg round" href="/Projet/DetailVideo?idVideo=${c.id}" role="button">Lire plus</a></p>
+              <p><a class="btn btn-primary btn-lg round" href="/Netflox/DetailVideo?idVideo=${c.id}" role="button">Lire plus</a></p>
             </div>
           </div>
         </div>
@@ -169,7 +169,7 @@
       <div class="col-sm-12">
       	<c:forEach var="v" items="${videos}">
       	  <div class="card card-1">
-      	 	 <a href="/Projet/DetailVideo?idVideo=${v.id}" id="p-film">${v.nomVideo} </a>
+      	 	 <a href="/Netflox/DetailVideo?idVideo=${v.id}" id="p-film">${v.nomVideo} </a>
           	<img id="image-card" src="Affiche/${v.id}.jpg">
           </div>
 		</c:forEach>

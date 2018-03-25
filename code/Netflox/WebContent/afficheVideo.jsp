@@ -24,7 +24,7 @@
 
         <nav class="navbar navbar-inverse" role="navigation">
 	          <div class="navbar-header">
-	           <a href="/Projet/Home"><img id="logo" src="resources/image/logo_N.png"></a>
+	           <a href="/Netflox/Home"><img id="logo" src="resources/image/logo_N.png"></a>
 	          </div>
 	       
         </nav>
@@ -76,7 +76,7 @@
      	 
       	<c:forEach var="v" items="${suggestion}">
       	  <div class="card card-1">
-      	    <a id="sug_a" href="/Projet/DetailVideo?idVideo=${v.id}" id="p-film">${v.nomVideo}</a>	
+      	    <a id="sug_a" href="/Netflox/DetailVideo?idVideo=${v.id}" id="p-film">${v.nomVideo}</a>	
       	 	 <c:if test = "${v.numepisode != 0}"><p id="sug_p">épisode n°${v.numepisode} </p></c:if>
       	 	 </br>
           	<img class="card card-1" src="Affiche/${v.id}.jpg">

@@ -25,24 +25,24 @@
         <nav class="navbar navbar-inverse" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a class="navbar-brand" href="/Projet/Home">Netflox</a>
+            <a class="navbar-brand" href="/Netflox/Home">Netflox</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-             <li class="active"><a href="/Projet/Contact">Contactez nous </a></li></ul> 
+             <li class="active"><a href="/Netflox/Contact">Contactez nous </a></li></ul> 
                <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
-					   <li> <a href="/Projet/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
+					   <li> <a href="/Netflox/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
 						<li> <a>Vous avez ${sessionScope.client.pseudo} point(s) !</a> </li>
 					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
-					    <a href="/Projet/Subscribe" type="button" class="btn btn-primary">Premium</a>
+					    <a href="/Netflox/Subscribe" type="button" class="btn btn-primary">Premium</a>
 				   	   </c:if>
 				   	    <c:if test = "${sessionScope.status.categorie == 'administrateur'}">
-					   	 <a href="/Projet/Administration" class="btn btn-primary">administration</a>
+					   	 <a href="/Netflox/Administration" class="btn btn-primary">administration</a>
 				   	   </c:if>	
-					   <a type="button" class="btn btn-danger" href="/Projet/Deconnection">Deconnection</a>	
+					   <a type="button" class="btn btn-danger" href="/Netflox/Deconnection">Deconnection</a>	
 					</c:if>
 				</ul> 
                 

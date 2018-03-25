@@ -24,22 +24,22 @@
         <nav class="navbar navbar-inverse" role="navigation">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a class="navbar-brand" href="/Projet/Home">Netflox</a>
+            <a class="navbar-brand" href="/Netflox/Home">Netflox</a>
           </div>
 
           
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
            <ul class="nav navbar-nav navbar-right "> 
 				    <c:if test="${!empty sessionScope.client}">
-					   <li> <a href="/Projet/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
+					   <li> <a href="/Netflox/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
 					   <li> Vous avez ${sessionScope.client.pseudo} point(s) </li>
 					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
-					    <a href="/Projet/Subscribe" type="button" class="btn btn-primary">Premium</a>
+					    <a href="/Netflox/Subscribe" type="button" class="btn btn-primary">Premium</a>
 				   	   </c:if>
 				   	    <c:if test = "${sessionScope.status.categorie == 'administrateur'}">
-					   	 <a href="/Projet/Administration" class="btn btn-primary">administration</a>
+					   	 <a href="/Netflox/Administration" class="btn btn-primary">administration</a>
 				   	   </c:if>	
-					   <a type="button" class="btn btn-danger" href="/Projet/Deconnection">Deconnection</a>	
+					   <a type="button" class="btn btn-danger" href="/Netflox/Deconnection">Deconnection</a>	
 					</c:if>
 					<c:if test="${empty sessionScope.client}">
 						<button id="signbtn" type="button" class="btn btn-primary btn-lg round" data-toggle="modal" data-target="#signModal">Sign in / Sign up</button>
@@ -77,21 +77,21 @@
 								<div class="tab-pane fade in active" id="tab1default">
 								<ul>
 								<c:forEach var="v" items="${a}">
-      	 						 <li><a href="/Projet/DetailVideo?idVideo=${v.id}" id="p-film">${v.nomVideo} </a></li>
+      	 						 <li><a href="/Netflox/DetailVideo?idVideo=${v.id}" id="p-film">${v.nomVideo} </a></li>
 								</c:forEach>
 								</ul>
 								</div>
 								<div class="tab-pane fade" id="tab2default">
 								<ul>
 								<c:forEach var="v" items="${lc}">
-      	 						 <li><a href="/Projet/DetailVideo?idVideo=${v.id}" id="p-film">${v.nomVideo} </a></li>
+      	 						 <li><a href="/Netflox/DetailVideo?idVideo=${v.id}" id="p-film">${v.nomVideo} </a></li>
 								</c:forEach>
 								</ul>
 								</div>
 								<div class="tab-pane fade" id="tab3default">
 								<ul>
 								<c:forEach var="v" items="${lf}">
-      	 						 <li><a href="/Projet/DetailVideo?idVideo=${v.id}" id="p-film">${v.nomVideo} </a></li>
+      	 						 <li><a href="/Netflox/DetailVideo?idVideo=${v.id}" id="p-film">${v.nomVideo} </a></li>
 								</c:forEach>
 								</ul>
 								</div>
