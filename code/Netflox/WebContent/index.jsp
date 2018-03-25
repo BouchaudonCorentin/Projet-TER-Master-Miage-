@@ -15,8 +15,8 @@
     <link href="resources/css/standard.css" rel="stylesheet">
     <link href="resources/css/index.css" rel="stylesheet">
   </head>
-  
-  		
+
+
   		 <c:if test = "${echec_connection == true}">
 			 <div class="alert alert-danger alert-dismissible">
    			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -31,7 +31,7 @@
 	 	 	</div>
 
   		</c:if>
-  		
+
   		<c:if test = "${echec_password == true}">
 			 <div class="alert alert-danger alert-dismissible">
    			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -39,7 +39,7 @@
 	 	 	</div>
 
   		</c:if>
-  		
+
   		 <c:if test = "${echec_parrain == true}">
 			 <div class="alert alert-danger alert-dismissible">
    			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -94,27 +94,29 @@
        				</form>
                 </ul>
               </li>
-              
-            </ul>		     
+
+            </ul>
        <!-- bouton de la navbar -->
-			
-               <ul class="nav navbar-nav navbar-right "> 
+
+               <ul class="nav navbar-nav navbar-right ">
 				    <c:if test="${!empty sessionScope.client}">
 					   <li> <a href="/Netflox/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
-					   <li> <a>Vous avez ${sessionScope.client.pseudo} point(s) !</a> </li>
+                 <c:if test="${!empty sessionScope.parrain}">
+                   <li> <a href="/Netflox/CompteClient">Vous avez ${sessionScope.parrain.nbpoints} point(s) de parrainage !</a> </li>
+                </c:if>
 					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
 					    <a href="/Netflox/Subscribe" type="button" class="btn btn-primary">Premium</a>
 				   	   </c:if>
 				   	    <c:if test = "${sessionScope.status.categorie == 'administrateur'}">
 					   	 <a href="/Netflox/Administration" class="btn btn-primary">administration</a>
-				   	   </c:if>	
-					   <a type="button" class="btn btn-danger" href="/Netflox/Deconnection">Deconnection</a>	
+				   	   </c:if>
+					   <a type="button" class="btn btn-danger" href="/Netflox/Deconnection">Deconnection</a>
 					</c:if>
 					<c:if test="${empty sessionScope.client}">
 						<button id="signbtn" type="button" class="btn btn-primary btn-lg round" data-toggle="modal" data-target="#signModal">Sign in / Sign up</button>
 				    </c:if>
-				</ul> 
-                
+				</ul>
+
           </div><!-- /.navbar-collapse -->
         </nav>
 
@@ -191,7 +193,7 @@
                       <div class="col_md_login">
                         <div class="cont_ba_opcitiy">
                           <h2>LOGIN</h2>
-                         
+
                           <button class="btn_login" onclick="change_login()">LOGIN</button>
                         </div>
                       </div>
@@ -199,7 +201,7 @@
                       <div class="col_md_sign_up">
                         <div class="cont_ba_opcitiy">
                           <h2>SIGN UP</h2>
-                          
+
                           <button class="btn_sign_up" onclick="change_sign_up()">SIGN UP</button>
                         </div>
                       </div>
@@ -239,13 +241,13 @@
 	                      <input class="form-control input-sm chat-input"  name="pseudo" type="text" placeholder="Nickname" required />
 	                      </br>
 	                      <input class="form-control input-sm chat-input"  name="email" type="text" placeholder="Email" required/>
-	                      </br> 
+	                      </br>
 	                      <input class="form-control input-sm chat-input" name="mdp" type="password" placeholder="Password" required/>
-	                      </br>  
+	                      </br>
 	                      <input class="form-control input-sm chat-input" name="verimdp" type="password" placeholder="Confirm Password" required />
 	                      </br>
 	                       <input class="form-control input-sm chat-input" name="parrain" type="text" placeholder="Pseudo parrain"/>
-	                       
+
 	                      <button  type="submit" class="btn_sign_up">SIGN UP</button>
                       </form>
                     </div>

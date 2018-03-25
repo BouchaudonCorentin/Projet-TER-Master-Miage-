@@ -14,8 +14,8 @@
     <link href="resources/css/standard.css" rel="stylesheet">
       <link href="resources/css/administrateur.css" rel="stylesheet">
   	</head>
-  
-  
+
+
     <body class="bg">
 
 	 <div class="navbar-wrapper">
@@ -27,9 +27,9 @@
             <a class="navbar-brand" href="/Netflox/Home">Netflox</a>
           </div>
 
-          
+
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-           <ul class="nav navbar-nav navbar-right "> 
+           <ul class="nav navbar-nav navbar-right ">
 				    <c:if test="${!empty sessionScope.client}">
 					   <li> <a href="/Netflox/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
 					   <li> Vous avez ${sessionScope.client.pseudo} point(s) </li>
@@ -38,39 +38,37 @@
 				   	   </c:if>
 				   	    <c:if test = "${sessionScope.status.categorie == 'administrateur'}">
 					   	 <a href="/Netflox/Administration" class="btn btn-primary">administration</a>
-				   	   </c:if>	
-					   <a type="button" class="btn btn-danger" href="/Netflox/Deconnection">Deconnection</a>	
+				   	   </c:if>
+					   <a type="button" class="btn btn-danger" href="/Netflox/Deconnection">Deconnection</a>
 					</c:if>
 					<c:if test="${empty sessionScope.client}">
 						<button id="signbtn" type="button" class="btn btn-primary btn-lg round" data-toggle="modal" data-target="#signModal">Sign in / Sign up</button>
 				    </c:if>
-				</ul> 
-                
+				</ul>
+
           </div><!-- /.navbar-collapse -->
         </nav>
 
       </div>
     </div>
-   
-	
+
+
 	      <div class="container">
-	
+
 	          <div class="row">
 	          	<div class="col-md-12">
 					<div class="panel with-nav-tabs" id="fct">
 	<!-- tabbed head panel start -->
 						<div class="panel-heading">
 							<ul class="nav nav-tabs">
-								<li class="active"><a href="#tab1default" data-toggle="tab">Achats</a></li>
+                <li class="active"><a href="#tab1default" data-toggle="tab">Achats</a></li>
 								<li><a href="#tab2default" data-toggle="tab">Locations actives </a></li>
 								<li><a href="#tab3default" data-toggle="tab">Locations terminées</a></li>
-								<li><a href="#tab4default" data-toggle="tab">Option premium</a></li>
-							
-								
-	
+								<li><a href="#tab4default" data-toggle="tab">Parrainage</a></li>
+
 							</ul>
 						</div><!-- tabbed head panel end -->
-						
+
 	<!-- tabbed body panel start -->
 						<div class="panel-body">
 							<div class="tab-content">
@@ -97,23 +95,28 @@
 								</div>
 								<div class="tab-pane fade" id="tab4default">
 								<ul>
-									
+                    <c:if test="${!empty sessionScope.parrain}">
+                      <li>Vous etes le parrain de <B>${neveuNom}</B> ! </li>
+                      <li>Vous avez <B>${sessionScope.parrain.nbpoints}</B> point(s) de parrainage ! </li>
+                      <li>Vous pouvez louer <B>${sessionScope.parrain.nbvideo}</B> vidéo(s) gratuitement ! </li>
+                    </c:if>
+                    <c:if test="${empty sessionScope.parrain}">
+                      Devenez parrain et obtenez de nombres avantages
+                    </c:if>
 								</ul>
 								</div>
-								
+
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-	
+
 		</div>
-		
+
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <script>window.jQuery || document.write('<script src="../resources/bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
       <script src="resources/bootstrap/js/bootstrap.min.js"></script>
       <script src="resources/js/administration.js"></script>
 	</body>
 </html>
-	
-      

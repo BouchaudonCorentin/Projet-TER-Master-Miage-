@@ -69,10 +69,7 @@ public class HomeServlet extends HttpServlet {
 							
 						}
 						
-					//request.getSession().setAttribute("parrain", dbi.); 
-					//int idparrain = dbi.idByPseudo(parrain);
-					// Ajout des points à afficher 
-					//request.getSession().setAttribute("nb_points", client);
+			
 					request.setAttribute("echec_connection", false);
 					
 				}
@@ -98,7 +95,7 @@ public class HomeServlet extends HttpServlet {
 						request.setAttribute("echec_inscription", true); 
 					}else {
 						client = dbi.inscription(new Client(nom,prenom,pseudo,mdp,email));
-						request.setAttribute("echec_inscription", false); 
+						request.setAttribute("echec_inscription", false);
 					//Verification Parrain 
 								if(dbi.verifpseudo(parrain)==false) {
 									request.setAttribute("echec_parrain", false);
@@ -108,23 +105,7 @@ public class HomeServlet extends HttpServlet {
 									request.setAttribute("echec_parrain", true);
 								}
 								
-								
-				/*		int idparrain = dbi.idByPseudo(parrain);
-						if(idparrain != 0){
-							if(dbi.isParrain(idparrain)) {
-						
-								request.setAttribute("already_parrain", true); 
-							}else {
-								
-								// dbi.becomeNeveu(idparrain, client.getId)
-								
-								request.setAttribute("already_parrain", false);
-							}
-						}else {
-							//gerer echec
-							// Ce n'est pas redondant ?
-							
-						}*/
+			
 					}
 					request.setAttribute("client", client);
 				}
