@@ -1,0 +1,17 @@
+body{
+	width:70%;
+	height:90%;
+	margin-left:15%; 
+}
+
+
+#contact{
+	background:#333333;
+	color:#f4f4f4;
+	padding-bottom:80px;
+	
+}
+
+textarea.form-control{
+    height:100px;
+}

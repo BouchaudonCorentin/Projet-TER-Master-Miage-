@@ -1,0 +1,179 @@
+
+
+.pulse-button {
+ position: relative;
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background-size:cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  animation: pulse 3.25s infinite cubic-bezier(0.66, 0, 0, 1);
+
+}
+.pulse-button:hover
+{
+  -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
+}
+
+#btnscol {
+
+ padding-top: 10%;
+ margin-bottom: 40%;
+ margin-left: 100px;
+
+
+}
+#dwl
+{
+    background-color:#ffff66;
+    background-image: url("../image/pay.png");
+    box-shadow: 0 0 0 0 rgb(246,212,42);
+    margin-left: 5%;
+    color : #fff; 
+
+}
+
+
+#rent
+{
+    background-color:#cd3a3a;
+    background-image: url("../image/video.png");
+    box-shadow: 0 0 0 0  rgb(205,92,92);
+    margin-left: 5%;
+
+}
+
+#Premium
+{
+    background-color:#77b3d4;
+    background-image: url("../image/play.png");
+    box-shadow: 0 0 0 0 rgb(205,92,92);
+    margin-left: 5%;
+
+}
+
+
+@-webkit-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@-moz-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@-ms-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+
+
+
+/*rate star */
+
+
+
+.rate-area {
+    float:left;
+    border-style: none;
+    margin-bottom:15%;
+    margin-left:5%;
+    width:55%;
+}
+
+.rate-area:not(:checked) > input {
+    position:relative;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rate-area:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:250%;
+    line-height:1.2;
+    color:lightgrey;
+    text-shadow:1px 1px #bbb;
+}
+
+.rate-area:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rate-area > input:checked ~ label {
+    color: gold;
+    text-shadow:1px 1px #c60;
+    font-size:250% !important;
+}
+
+.rate-area:not(:checked) > label:hover,
+.rate-area:not(:checked) > label:hover ~ label {
+    color: gold;
+
+}
+
+.rate-area > input:checked + label:hover,
+.rate-area > input:checked + label:hover ~ label,
+.rate-area > input:checked ~ label:hover,
+.rate-area > input:checked ~ label:hover ~ label,
+.rate-area > label:hover ~ input:checked ~ label {
+    color: gold;
+    text-shadow: 1px 1px goldenrod;
+
+}
+
+.rate-area > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
+
+
+
+/*******************************************/
+
+
+body, html {
+   height: 100%;
+}
+
+.bg {
+   background-image: url("../image/fond3.jpg");
+   height: 100%;
+   background-position: center;
+   background-repeat:repeat;
+   background-size: cover;
+}
+
+
+
+#text {
+   color: #FFFF;
+   margin-left: 45%;
+   font-size:15px;
+   width:60%;
+ 
+}
+
+#nom {
+  color: #FFFF;
+  margin-bottom:20px;
+  font-size: 25px;
+  margin-left: 45%;
+  margin-top: -50%;
+}
+
+
+#prezImg {
+  margin-top: 10%;
+  margin-right: 60%;
+  width: 35%;
+}
+
+
+
+
+#scroll{
+  overflow:scroll;
+}
