@@ -318,7 +318,7 @@ public class DataBase {
 	public void becomePremium(Client client) throws SQLException, ClassNotFoundException {// transforme un inscrit en
 																							// premium
 		try {
-			String query = "UPDATE CompoClient SET idCategorieClient = 2 WHERE idClient =" + client.getId();// update la
+			String query = "UPDATE CompoClient SET idCategorieClient = 2, finPremium = CURRENT_DATE+30 WHERE idClient =" + client.getId();// update la
 																											// categorie
 																											// du client
 			Statement s = conn.createStatement();
