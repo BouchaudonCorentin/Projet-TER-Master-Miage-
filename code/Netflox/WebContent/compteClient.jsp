@@ -96,8 +96,7 @@
 								</ul>
 								</div>
 								<div class="tab-pane fade" id="tab4default">
-									 <h3>Eléments de recherche</h3>
-											
+									 <h3>PREMIUM</h3>
 						                   		<c:if test = "${sessionScope.status.categorie != 'premium'}">
 													  Devenez premium et obtenez de nombres avantages
 												 </c:if>
@@ -108,7 +107,7 @@
 						                      
 						                    </c:if>
 										</br>	
-								 <h3 >Eléments de recherche</h3>
+								 <h3 >PARRAINAGE</h3>
 									 <c:if test="${!empty sessionScope.parrain}">
 						                     <p> Vous etes le parrain de <B>${neveuNom}</B> !</p> 
 						                 	 <p>Vous avez <B>${sessionScope.parrain.nbpoints}</B> point(s) de parrainage ! </p>

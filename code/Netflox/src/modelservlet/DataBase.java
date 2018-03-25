@@ -65,7 +65,7 @@ public class DataBase {
 			res =s.executeQuery(query);
 			if(res.next()) {
 				if(res.getInt(1)==client.getId()) {
-					query = "Update CompoCLient Set idCategorie = 1, finPremium='' where idClient="+client.getId();
+					query = "Update CompoCLient Set idcategorieclient = 1, finPremium=null where idClient="+client.getId();
 					s.executeUpdate(query);
 				}
 			}

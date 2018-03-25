@@ -28,7 +28,7 @@ insert into CompoClient values (8,1,null);
 insert into CompoClient values (9,1,null);
 insert into CompoClient values (10,1,null);
 insert into CompoClient values (11,1,null);
-insert into CompoClient values (12,1,null);
+insert into CompoClient values (12,2,'2018-02-02');
 
 insert into Parrain values (1,2,26,2);
 insert into Parrain values (2,4,49,4);
@@ -587,9 +587,3 @@ insert into ChiffreAffaire values(1,'2018-02-08',174.7);
 insert into ChiffreAffaire values(2,'2018-02-27',123.92);
 insert into ChiffreAffaire values(3,'2018-02-28',29.9);
 insert into ChiffreAffaire values(4,'2018-03-01',35.88);
-
-
-
-
-
-
