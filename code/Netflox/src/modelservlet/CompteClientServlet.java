@@ -2,6 +2,8 @@ package modelservlet;
 
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -53,7 +55,11 @@ public class CompteClientServlet extends HttpServlet {
 			}
 			if(dbi.categorieclient(c).getCategorie().equals("premium") )
 			{
-				request.setAttribute("dateFin",dbi.dateFinPremium(c.getId()));
+				
+				SimpleDateFormat formDate = new SimpleDateFormat("dd/MM/yyyy");
+				
+				String dateString = formDate.format(dbi.dateFinPremium(c.getId()) );
+				request.setAttribute("dateFin",dateString);
 			
 			}
 	
