@@ -1,3 +1,7 @@
+package modelservlet;
+
+import java.util.Date;
+
 /** 
  * @param idcategorie, categorie
  * 
@@ -12,6 +16,9 @@ public class CategorieClient {
 	
 	public CategorieClient(String categorie) {
 		this.categorie = categorie;
+	}
+	public void setFinPremium(Date finPremium) {
+		this.finPremium = finPremium;
 	}
 	public CategorieClient(int idcategorie, String categorie) {
 		this.idcategorie = idcategorie;
@@ -35,7 +42,7 @@ public class CategorieClient {
 	public void setCategorie(String categorie) {
 		this.categorie = categorie;
 	}
-	public String getFinPremium() {
+	public Date getFinPremium() {
 		return finPremium;
 	}
 	public void setCategorie(Date finPremium) {
