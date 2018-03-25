@@ -9829,3 +9829,9 @@ Caused by: org.xml.sax.SAXParseException; lineNumber: 13; columnNumber: 2; Le co
 
 !ENTRY org.eclipse.wst.server.discovery 1 0 2018-03-25 14:25:23.296
 !MESSAGE already installed: org.eclipse.jst.server.generic.jonas4
+
+!ENTRY org.eclipse.jface.text 2 0 2018-03-25 14:47:46.188
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2018-03-25 14:47:46.188
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'

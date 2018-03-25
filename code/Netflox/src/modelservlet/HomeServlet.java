@@ -47,7 +47,7 @@ public class HomeServlet extends HttpServlet {
 			
 			
 			
-			if(uri.equals("/Projet/Connection")){
+			if(uri.equals("/Netflox/Connection")){
 
 				String pseudo = request.getParameter("pseudo");
 			
@@ -68,7 +68,7 @@ public class HomeServlet extends HttpServlet {
 							request.getSession().setAttribute("parrain",p);
 							
 						}
-					
+						
 					//request.getSession().setAttribute("parrain", dbi.); 
 					//int idparrain = dbi.idByPseudo(parrain);
 					// Ajout des points à afficher 
@@ -79,7 +79,7 @@ public class HomeServlet extends HttpServlet {
 			
 				
 				
-			}else if(uri.equals("/Projet/Inscription"))
+			}else if(uri.equals("/Netflox/Inscription"))
 			{
 				String nom = request.getParameter("nom");
 				String prenom = request.getParameter("prenom");
@@ -130,7 +130,7 @@ public class HomeServlet extends HttpServlet {
 				}
 				
 				
-			}else if(uri.equals("/Projet/Deconnection")){
+			}else if(uri.equals("/Netflox/Deconnection")){
 				
 				 request.getSession().invalidate();
 				

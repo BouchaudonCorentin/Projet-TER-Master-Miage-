@@ -354,7 +354,7 @@ public class DataBase {
 	 */
 	public CategorieClient categorieclient(Client c) throws SQLException { // retourn la categorie d'un client
 		CategorieClient cc = new CategorieClient();
-		String query = "select * from CategorieClient cc, CompoCLient ccl where cc.idCategorieClient= ccl.idCategorieClient and ccl.idClient ="
+		String query = "select cc.idcategorieClient, cc.nomCategorieClient, ccl.finPremium from CategorieClient cc, CompoCLient ccl where cc.idCategorieClient= ccl.idCategorieClient and ccl.idClient ="
 				+ c.getId();// retourne la cate du client
 		Statement s = conn.createStatement();
 		ResultSet res = s.executeQuery(query);
