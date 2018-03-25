@@ -96,11 +96,12 @@
 			       		<button class="btn btn-default btn-danger" type="submit">TELECHARGER</button>
 			    	</c:when>
 			    	<c:when test = "${louer == true}">
-			       		<button class="btn btn-default btn-danger" type="submit">REGARDER</button>
+			       		<a href="/Netflox/AfficheVideo?idvideo=${id}" class="btn btn-default btn-danger" type="submit">REGARDER</a>
 			    	</c:when>
 			    	<c:otherwise>
 			       			<a class="btn pulse-button"  id="rent" href="/Netflox/Payement?type=Location&id=${id}"></a>
 			          		<a class="btn pulse-button"  id="dwl" href="/Netflox/Payement?type=Achat&id=${id}"></a>
+			          		<a class="btn pulse-button"  id="parrain" href="/Netflox/AfficheVideo?idvideo=${id}"></a>
 			   		 </c:otherwise>
 				</c:choose>
          </c:if>

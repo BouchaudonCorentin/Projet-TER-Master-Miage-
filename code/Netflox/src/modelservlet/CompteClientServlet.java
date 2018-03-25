@@ -49,8 +49,10 @@ public class CompteClientServlet extends HttpServlet {
 			{
 				Parrain p =dbi.getInfoParrain(c.getId()); 
 				request.setAttribute("neveuNom",dbi.pseudoById(p.getIdNeveu()));
-				System.out.println(dbi.pseudoById(p.getIdNeveu()));
+			
 			}
+		    
+			System.out.println("date de fin "+dbi.dateFinPremium(c.getId()));
 			rd.forward(request, response);
 			
 			

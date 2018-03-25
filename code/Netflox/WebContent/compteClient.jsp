@@ -12,7 +12,7 @@
 
     <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="resources/css/standard.css" rel="stylesheet">
-      <link href="resources/css/administrateur.css" rel="stylesheet">
+      
   	</head>
 
 
@@ -32,7 +32,9 @@
            <ul class="nav navbar-nav navbar-right ">
 				    <c:if test="${!empty sessionScope.client}">
 					   <li> <a href="/Netflox/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
-					   <li> Vous avez ${sessionScope.client.pseudo} point(s) </li>
+					   		  <c:if test="${!empty sessionScope.parrain}">
+			                   <li> <a href="/Netflox/CompteClient">Vous avez ${sessionScope.parrain.nbpoints} point(s) de parrainage !</a> </li>
+			                </c:if>
 					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
 					    <a href="/Netflox/Subscribe" type="button" class="btn btn-primary">Premium</a>
 				   	   </c:if>
@@ -64,7 +66,7 @@
                 <li class="active"><a href="#tab1default" data-toggle="tab">Achats</a></li>
 								<li><a href="#tab2default" data-toggle="tab">Locations actives </a></li>
 								<li><a href="#tab3default" data-toggle="tab">Locations terminées</a></li>
-								<li><a href="#tab4default" data-toggle="tab">Parrainage</a></li>
+								<li><a href="#tab4default" data-toggle="tab">Options</a></li>
 
 							</ul>
 						</div><!-- tabbed head panel end -->
@@ -94,16 +96,29 @@
 								</ul>
 								</div>
 								<div class="tab-pane fade" id="tab4default">
-								<ul>
-                    <c:if test="${!empty sessionScope.parrain}">
-                      <li>Vous etes le parrain de <B>${neveuNom}</B> ! </li>
-                      <li>Vous avez <B>${sessionScope.parrain.nbpoints}</B> point(s) de parrainage ! </li>
-                      <li>Vous pouvez louer <B>${sessionScope.parrain.nbvideo}</B> vidéo(s) gratuitement ! </li>
-                    </c:if>
-                    <c:if test="${empty sessionScope.parrain}">
-                      Devenez parrain et obtenez de nombres avantages
-                    </c:if>
-								</ul>
+									 <h3>Eléments de recherche</h3>
+											
+						                   		<c:if test = "${sessionScope.status.categorie != 'premium'}">
+													  Devenez premium et obtenez de nombres avantages
+												 </c:if>
+												 <c:if test = "${sessionScope.status.categorie == 'premium'}">
+													   <p> Votre option PREMIUM est jusqu'a <B>${ dateFin}</B> </p>
+												 </c:if>
+						                    <c:if test="${empty sessionScope.parrain}">
+						                      
+						                    </c:if>
+										</br>	
+								 <h3 >Eléments de recherche</h3>
+									 <c:if test="${!empty sessionScope.parrain}">
+						                     <p> Vous etes le parrain de <B>${neveuNom}</B> !</p> 
+						                 	 <p>Vous avez <B>${sessionScope.parrain.nbpoints}</B> point(s) de parrainage ! </p>
+						                     <p> Vous pouvez louer <B>${sessionScope.parrain.nbvideo}</B> vidéo(s) gratuitement !</p>
+						                    </c:if>
+						                    <c:if test="${empty sessionScope.parrain}">
+						                      Devenez parrain et obtenez de nombres avantages
+						                    </c:if>
+				                   		 </br>
+				                   	
 								</div>
 
 							</div>

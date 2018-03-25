@@ -31,17 +31,26 @@
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Contactez nous </a></li>
-              </ul> 
-   
-               <ul class="nav navbar-nav navbar-right "> 
+             <li class="active"><a href="/Netflox/Contact">Contactez nous </a></li></ul>
+               <ul class="nav navbar-nav navbar-right ">
 				    <c:if test="${!empty sessionScope.client}">
-					   <li> <a href="/Netflox/monCompte">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
-					   <li> <a>Vous avez ${sessionScope.client.pseudo} point(s) !</a> </li>
-				    </c:if>
-				</ul> 
+					   <li> <a href="/Netflox/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
+                 <c:if test="${!empty sessionScope.parrain}">
+                   <li> <a href="/Netflox/CompteClient">Vous avez ${sessionScope.parrain.nbpoints} point(s) de parrainage !</a> </li>
+                </c:if>
+					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
+					    <a href="/Netflox/Subscribe" type="button" class="btn btn-primary">Premium</a>
+				   	   </c:if>
+				   	    <c:if test = "${sessionScope.status.categorie == 'administrateur'}">
+					   	 <a href="/Netflox/Administration" class="btn btn-primary">administration</a>
+				   	   </c:if>
+					   <a type="button" class="btn btn-danger" href="/Netflox/Deconnection">Deconnection</a>
+					</c:if>
+
+				</ul>
+
           </div><!-- /.navbar-collapse -->
         </nav>
 

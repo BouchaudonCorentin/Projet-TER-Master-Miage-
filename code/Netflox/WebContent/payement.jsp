@@ -40,7 +40,7 @@
                 
               </div>
             <div class="panel-body">
-                <form id="payment-form" method="post" action="/Netflox/DetailVideo?idVideo=${idVideo}">
+                <form id="payment-form" method="post" action="/Netflox/Home">
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group">

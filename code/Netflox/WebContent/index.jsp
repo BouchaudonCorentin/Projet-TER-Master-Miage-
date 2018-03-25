@@ -101,9 +101,9 @@
                <ul class="nav navbar-nav navbar-right ">
 				    <c:if test="${!empty sessionScope.client}">
 					   <li> <a href="/Netflox/CompteClient">Bienvenue ${sessionScope.client.pseudo} !</a> </li>
-                 <c:if test="${!empty sessionScope.parrain}">
-                   <li> <a href="/Netflox/CompteClient">Vous avez ${sessionScope.parrain.nbpoints} point(s) de parrainage !</a> </li>
-                </c:if>
+			                 <c:if test="${!empty sessionScope.parrain}">
+			                   <li> <a href="/Netflox/CompteClient">Vous avez ${sessionScope.parrain.nbpoints} point(s) de parrainage !</a> </li>
+			                </c:if>
 					   <c:if test = "${sessionScope.status.categorie == 'inscrit'}">
 					    <a href="/Netflox/Subscribe" type="button" class="btn btn-primary">Premium</a>
 				   	   </c:if>
