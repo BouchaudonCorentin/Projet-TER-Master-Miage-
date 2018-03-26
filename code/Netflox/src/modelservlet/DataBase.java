@@ -1005,6 +1005,11 @@ public class DataBase {
 	
 	
 	/* Retourne vrai s'il est parrain*/
+	/**
+	 * @param idparrain
+	 * @return
+	 * @throws SQLException
+	 */
 	public Boolean isParrain(int idparrain) throws SQLException { //tu peux recuperer l'id avec idbypseudo
 		String query = " select count(*) from parrain where idparrain = "+idparrain;
 		Statement s = conn.createStatement();
@@ -1021,6 +1026,11 @@ public class DataBase {
 		
 	}
 	/* retourne vrai si il est neveu */
+	/**
+	 * @param idneveu
+	 * @return
+	 * @throws SQLException
+	 */
 	public Boolean isNeveu(int idneveu) throws SQLException { //tu peux recuperer l'id avec idbypseudo
 		String query = " select count(*) from parrain where idneveu = "+idneveu;
 		Statement s = conn.createStatement();
@@ -1036,6 +1046,11 @@ public class DataBase {
 		}
 		
 	}
+	/**
+	 * @param idNeveu
+	 * @return
+	 * @throws SQLException
+	 */
 	public Client getParrain(int idNeveu)throws SQLException{
 		String query = "select idClient,nomClient,prenomClient,pseudo,email from Client where idClient in (select idParrain from parrain where idNeveu ="+idNeveu+")";
 		Statement s = conn.createStatement();
@@ -1051,12 +1066,21 @@ public class DataBase {
 		return c;
 	}
 	
+	/**
+	 * @param idParrain
+	 * @param idNeveu
+	 * @throws SQLException
+	 */
 	public void becomeNeveu(int idParrain, int idNeveu) throws SQLException {//utiliser uniquement si parrain n'a pas deja de neveau
 		String query = " insert into parrain values("+idParrain+", "+idNeveu+",0,0)";
 		Statement s = conn.createStatement();
 		s.executeUpdate(query);
 	}
 	
+	/**
+	 * @param idClient
+	 * @throws SQLException
+	 */
 	public void ajoutPoint(int idClient)throws SQLException{
 		String query = "Update Parrain set nbPoints =nbPoints+1 where idNeveu ="+idClient;
 		Statement s = conn.createStatement();
@@ -1090,6 +1114,11 @@ public class DataBase {
 		}
 		
 	}
+	/**
+	 * @param idClient
+	 * @return
+	 * @throws SQLException
+	 */
 	public int nbPoint(int idClient)throws SQLException{//verifier si c'est un parrain avant
 		String query ="select nbPoints from Parrain where idParrain ="+idClient; 
 		Statement s = conn.createStatement();
@@ -1098,6 +1127,11 @@ public class DataBase {
 		return res.getInt(1);	
 	}
 	
+	/**
+	 * @param idClient
+	 * @return
+	 * @throws SQLException
+	 */
 	public int nbVideo(int idClient)throws SQLException{//verifier si c'est un parrain avant
 		String query ="select nbVideo from Parrain where idParrain ="+idClient; 
 		Statement s = conn.createStatement();
@@ -1106,6 +1140,11 @@ public class DataBase {
 		return res.getInt(1);	
 	}
 	
+	/**
+	 * @param idClient
+	 * @return
+	 * @throws SQLException
+	 */
 	public Date  dateFinPremium(int idClient)throws SQLException{
 		String query ="select finPremium from CompoClient where idClient ="+idClient;
 		Statement s = conn.createStatement();
@@ -1116,6 +1155,11 @@ public class DataBase {
 	
 
 
+	/**
+	 * @param idParrain
+	 * @return
+	 * @throws SQLException
+	 */
 	public String getIdNeveu(int idParrain)throws SQLException {
 			String query =" select pseudo from Client where idClient in (select idNeveu from parrain where idParrain = "+idParrain+")";
 			Statement s = conn.createStatement();
@@ -1124,6 +1168,11 @@ public class DataBase {
 			return (res.getString(1));
 		}
 	
+	/**
+	 * @param idClient
+	 * @return
+	 * @throws SQLException
+	 */
 	public Parrain getInfoParrain(int idClient)throws SQLException {
 		String query =" select idNeveu,nbPoints, nbvideo from parrain where idParrain = "+idClient;
 		Statement s = conn.createStatement();

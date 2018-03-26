@@ -20,6 +20,13 @@ public class GeneratePDFAudit {
 	public GeneratePDFAudit() {
 	};
 
+	/**
+	 * @param date
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws DocumentException
+	 * @throws FileNotFoundException
+	 */
 	public void createAudit(Date date) throws ClassNotFoundException, SQLException, DocumentException, FileNotFoundException {
 
 		DataBase db = new DataBase();
@@ -34,7 +41,7 @@ public class GeneratePDFAudit {
 		document.add(new Paragraph("************************Informations Clients************************"));
 
 		for (int i = 0; i < clients.size(); i++) {
-			document.add(new Paragraph("=======================Client numéro " + (i + 1) + "======================="));
+			document.add(new Paragraph("=======================Client numï¿½ro " + (i + 1) + "======================="));
 			Client c = new Client(clients.get(i).getPseudo());
 			c = db.infobypseudo(c.getPseudo());
 			document.add(new Paragraph("Nom : " + c.getNom()));
@@ -46,7 +53,7 @@ public class GeneratePDFAudit {
 		document.add(new Paragraph("************************Informations sur Videos************************"));
 		List<Video> videos = db.afficheVideoscroissant();
 		for (int i = 0; i < videos.size(); i++) {
-			document.add(new Paragraph("=======================Video numéro " + (i + 1) + "======================="));
+			document.add(new Paragraph("=======================Video numï¿½ro " + (i + 1) + "======================="));
 			document.add(new Paragraph("Nom de la Video :" + videos.get(i).getNomVideo()));
 			document.add(new Paragraph("Nombre de Vue :" + videos.get(i).getNbvue()));
 			document.add(new Paragraph("Nombre de Telechargement :" + videos.get(i).getNbddl()));
@@ -55,6 +62,13 @@ public class GeneratePDFAudit {
 		document.close();
 	}
 
+	/**
+	 * @param argv
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 * @throws SQLException
+	 * @throws DocumentException
+	 */
 	public static void main(String[] argv)
 			throws ClassNotFoundException, FileNotFoundException, SQLException, DocumentException {
 		GeneratePDFAudit audit = new GeneratePDFAudit();

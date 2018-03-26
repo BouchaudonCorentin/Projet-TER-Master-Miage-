@@ -18,6 +18,12 @@ public class GeneratePDFCatalogue {
 	
 	public GeneratePDFCatalogue() {};
 	
+	/**
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws DocumentException
+	 * @throws FileNotFoundException
+	 */
 	public void createCatalogue() throws ClassNotFoundException, SQLException, DocumentException, FileNotFoundException {
 		
 		DataBase db = new DataBase();
@@ -31,7 +37,7 @@ public class GeneratePDFCatalogue {
 		document.add( new Paragraph("Numero de l'epside = 0 si n'a pas de suite ou n'est pas un ï¿½pisode d'un sï¿½rie"));
 		
 		for (int i =0; i<videos.size();i++) {
-			document.add(new Paragraph("=======================Video numéro "+(i+1)+"======================="));
+			document.add(new Paragraph("=======================Video numï¿½ro "+(i+1)+"======================="));
 			document.add(new Paragraph("Nom de la Video :"+ videos.get(i).getNomVideo()));
 		if(videos.get(i).getGroupeVideo()!="") {
 			document.add(new Paragraph("Saison :"+ videos.get(i).getGroupeVideo()));			
@@ -42,6 +48,13 @@ public class GeneratePDFCatalogue {
 		document.close();
 	}
 	
+	/**
+	 * @param argv
+	 * @throws ClassNotFoundException
+	 * @throws FileNotFoundException
+	 * @throws SQLException
+	 * @throws DocumentException
+	 */
 	public static void main(String[] argv) throws ClassNotFoundException, FileNotFoundException, SQLException, DocumentException {
 		GeneratePDFCatalogue cata = new GeneratePDFCatalogue();
 		cata.createCatalogue();
