@@ -110,8 +110,8 @@
 								 <h3 >PARRAINAGE</h3>
 									 <c:if test="${!empty sessionScope.parrain}">
 						                     <p> Vous etes le parrain de <B>${neveuNom}</B> !</p> 
-						                 	 <p>Vous avez <B>${sessionScope.parrain.nbpoints}</B> point(s) de parrainage ! </p>
-						                     <p> Vous pouvez louer <B>${sessionScope.parrain.nbvideo}</B> vidéo(s) gratuitement !</p>
+						                 	 <p>Vous avez <B>${parrain.nbpoints}</B> point(s) de parrainage ! </p>
+						                     <p> Vous pouvez louer <B>${parrain.nbvideo}</B> vidéo(s) gratuitement !</p>
 						                    </c:if>
 						                    <c:if test="${empty sessionScope.parrain}">
 						                      Devenez parrain et obtenez de nombres avantages
