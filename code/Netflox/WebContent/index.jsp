@@ -43,7 +43,7 @@
   		 <c:if test = "${echec_parrain == true}">
 			 <div class="alert alert-danger alert-dismissible">
    			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  	 	 	<strong>Parrainage impossible</strong> Verifiez que le nom est correct.
+  	 	 	<strong>Parrainage impossible</strong> Verifiez que le nom est correct ou déjà utilisé.
 	 	 	</div>
 
   		</c:if>

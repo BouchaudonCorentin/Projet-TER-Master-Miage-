@@ -56,7 +56,7 @@ public class HomeServlet extends HttpServlet {
 				
 				
 				Client client = dbi.connection(new Client(pseudo, mdp));
-				if(client == null){
+				if(client.getId()==0){
 					request.setAttribute("echec_connection", true);
 				}else {
 					
@@ -97,7 +97,8 @@ public class HomeServlet extends HttpServlet {
 						client = dbi.inscription(new Client(nom,prenom,pseudo,mdp,email));
 						request.setAttribute("echec_inscription", false);
 					//Verification Parrain 
-								if(dbi.verifpseudo(parrain)==false) {
+						System.out.println(dbi.isParrain(dbi.idByPseudo(parrain)));
+								if(dbi.verifpseudo(parrain)==false && dbi.isParrain(dbi.idByPseudo(parrain))==false) {
 									request.setAttribute("echec_parrain", false);
 									int idParrain = dbi.idByPseudo(parrain);
 									dbi.becomeNeveu(idParrain, client.getId());

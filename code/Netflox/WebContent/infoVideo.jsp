@@ -98,11 +98,15 @@
 			    	<c:when test = "${louer == true}">
 			       		<a href="/Netflox/AfficheVideo?idvideo=${id}" class="btn btn-default btn-danger" type="submit">REGARDER</a>
 			    	</c:when>
+			    	
 			    	<c:otherwise>
 			       			<a class="btn pulse-button"  id="rent" href="/Netflox/Payement?type=Location&id=${id}"></a>
 			          		<a class="btn pulse-button"  id="dwl" href="/Netflox/Payement?type=Achat&id=${id}"></a>
-			          		<a class="btn pulse-button"  id="parrain" href="/Netflox/Payement?type=Parrain&id=${id}"></a>
+			          		 <c:if test = "${parrain.nbvideo>0}">
+						       		<a class="btn pulse-button"  id="parrain" href="/Netflox/Payement?type=Parrain&id=${id}"></a>
+						    	</c:if>
 			   		 </c:otherwise>
+			   		
 				</c:choose>
          </c:if>
 
