@@ -101,7 +101,7 @@
 			    	<c:otherwise>
 			       			<a class="btn pulse-button"  id="rent" href="/Netflox/Payement?type=Location&id=${id}"></a>
 			          		<a class="btn pulse-button"  id="dwl" href="/Netflox/Payement?type=Achat&id=${id}"></a>
-			          		<a class="btn pulse-button"  id="parrain" href="/Netflox/AfficheVideo?idvideo=${id}"></a>
+			          		<a class="btn pulse-button"  id="parrain" href="/Netflox/Payement?type=Parrain&id=${id}"></a>
 			   		 </c:otherwise>
 				</c:choose>
          </c:if>

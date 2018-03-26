@@ -58,6 +58,7 @@ public class DetailVideoServlet extends HttpServlet {
 				
 			}
 			
+			
 			rd.forward(request, response);
 			
 			

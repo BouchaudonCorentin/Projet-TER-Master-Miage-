@@ -64,6 +64,13 @@ public class PayementServlet extends HttpServlet {
 			request.setAttribute("prix",9.99);
 			request.getSession().invalidate();
 
+		}else if(type.equals("Parrain")) {
+				v.setPrixLocation(0.0);
+				b=dbi.louer(c,v); 
+				request.setAttribute("prix",0.00); 
+			 			
+			 			
+			 
 		}
 
 
