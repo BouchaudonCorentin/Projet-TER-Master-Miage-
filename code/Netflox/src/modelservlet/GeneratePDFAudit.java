@@ -41,7 +41,7 @@ public class GeneratePDFAudit {
 		document.add(new Paragraph("************************Informations Clients************************"));
 
 		for (int i = 0; i < clients.size(); i++) {
-			document.add(new Paragraph("=======================Client num�ro " + (i + 1) + "======================="));
+			document.add(new Paragraph("=======================Client numero " + (i + 1) + "======================="));
 			Client c = new Client(clients.get(i).getPseudo());
 			c = db.infobypseudo(c.getPseudo());
 			document.add(new Paragraph("Nom : " + c.getNom()));
@@ -53,7 +53,7 @@ public class GeneratePDFAudit {
 		document.add(new Paragraph("************************Informations sur Videos************************"));
 		List<Video> videos = db.afficheVideoscroissant();
 		for (int i = 0; i < videos.size(); i++) {
-			document.add(new Paragraph("=======================Video num�ro " + (i + 1) + "======================="));
+			document.add(new Paragraph("=======================Video numero " + (i + 1) + "======================="));
 			document.add(new Paragraph("Nom de la Video :" + videos.get(i).getNomVideo()));
 			document.add(new Paragraph("Nombre de Vue :" + videos.get(i).getNbvue()));
 			document.add(new Paragraph("Nombre de Telechargement :" + videos.get(i).getNbddl()));

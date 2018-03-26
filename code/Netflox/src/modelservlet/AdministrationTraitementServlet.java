@@ -69,11 +69,11 @@ public class AdministrationTraitementServlet extends HttpServlet {
 				  String titre = request.getParameter("d_titre_V");
 				  if(request.getParameter("d_episode_V")!=null){
 					  int ep = Integer.parseInt(request.getParameter("d_episode_V")); 
-					  System.out.println("Administration nbepisode "+ep);
+					  
 					  String saison = request.getParameter("d_saison");
 				  
 					  Video v = new Video (titre,saison,ep);
-					  System.out.println("Administration videoExiste "+dbi.videoExiste(v));
+					 
 					  if(dbi.videoExiste(v)) {
 						  	Video vid = dbi.retrouveridvianomnomgroupetnbepisode(v); 
 						  	System.out.println("id video sup "+vid.getId());
@@ -110,9 +110,9 @@ public class AdministrationTraitementServlet extends HttpServlet {
 						  Client c = new Client();
 						  c.setId(id);
 						  dbi.suppClient(c);
-						  request.setAttribute("echec_suppressionclient",false); 
+						  request.setAttribute("echec_suppressionClient",false); 
 					  }else {
-						  request.setAttribute("echec_suppressionclient",true); 
+						  request.setAttribute("echec_suppressionClient",true); 
 					  }				
 
 				  }
@@ -127,8 +127,8 @@ public class AdministrationTraitementServlet extends HttpServlet {
 				  int id= dbi.idByPseudo(m_pseudo);
 				  Client c = new Client(id,m_nom,m_prenom,m_pseudo,m_mdp,m_email);
 				  boolean res = dbi.modifClient(c);
-				  request.setAttribute("echec_modidierclient",!res); 
-				  System.out.println(c.getPseudo()+" "+c.getNom());
+				  request.setAttribute("echec_modifierClient",!res); 
+				  System.out.println(!res);
 				  
 			  }else if (action.equals("Mod_Film")) { 
 				  //pour trouver
@@ -144,8 +144,8 @@ public class AdministrationTraitementServlet extends HttpServlet {
 				  v.setPrixAchat(Double.parseDouble(m_achat));
 				  v.setPrixLocation(Double.parseDouble(m_location));
 				  boolean resv = dbi.modifVideo(v); 
-				  request.setAttribute("echec_modidierVideo",!resv); 
-				  System.out.println(v.getPrixAchat());
+				  request.setAttribute("echec_modifierVideo",!resv); 
+				
 			  }else if (action.equals("Audit")) {
 				  int year =Integer.parseInt( request.getParameter("year"));
 				  int month =Integer.parseInt( request.getParameter("month"));

@@ -15,7 +15,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-       <meta http-equiv="Refresh" content="3000"> 
+       
         <meta name="administration" content="">
 
           <title>Netflox</title>
@@ -90,61 +90,11 @@
   	 	 	<strong>Success!</strong> Client supprimée.
 	 	 	</div>
   		</c:if>
-  		
+ 
 
-<!-- Modifier Client-->
-		   <c:if test = "${echec_suppressionVideo ==  false}">
-			 <div class="alert alert-success alert-dismissible">
-  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  	 	 	<strong>Success!</strong> Video supprimée.
-	 	 	</div>
-
-  		</c:if>
   		
-  		 <c:if test = "${echec_suppressionVideo == true}">
-			 <div class="alert alert-danger alert-dismissible">
-   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  	 	 	<strong>Echec!</strong> Vlein n'a pas pu être supprimée.
-	 	 	</div>
-
-  		</c:if>
-<!-- Modifier Video-->
-			<c:if test = "${echec_suppressionVideo ==  false}">
-			 <div class="alert alert-success alert-dismissible">
-  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  	 	 	<strong>Success!</strong> Video modifiée.
-	 	 	</div>
-
-  		</c:if>
-  		
-  		 <c:if test = "${echec_suppressionVideo == true}">
-			 <div class="alert alert-danger alert-dismissible">
-   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  	 	 	<strong>Echec!</strong> Video n'a pas pu être modifiée.
-	 	 	</div>
-
-  		</c:if>
-  		
-<!-- generer pdf-->  	
-		<c:if test = "${echec_suppressionVideo ==  false}">
-			 <div class="alert alert-success alert-dismissible">
-  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  	 	 	<strong>Success!</strong> Video supprimée.
-	 	 	</div>
-
-  		</c:if>
-  		
-  		 <c:if test = "${echec_suppressionVideo == true}">
-			 <div class="alert alert-danger alert-dismissible">
-   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  	 	 	<strong>Echec!</strong> Video n'a pas pu être supprimée.
-	 	 	</div>
-
-  		</c:if>
-  		
-  		
- <!-- MODIFICATION -->
-	 		<c:if test = "${echec_modidierVideo ==  false}">
+ <!-- MODIFICATION VIDEO-->
+	 		<c:if test = "${echec_modifierVideo ==  false}">
 				 <div class="alert alert-success alert-dismissible">
 	  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 	  	 	 	<strong>Success!</strong> Video modifiée".
@@ -152,7 +102,7 @@
 	
 	  		</c:if>
 	  		
-	  		 <c:if test = "${echec_modidierVideo == true}">
+	  		 <c:if test = "${echec_modifierVideo == true}">
 				 <div class="alert alert-danger alert-dismissible">
 	   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 	  	 	 	<strong>Echec!</strong> Video n'a pas pu être modfiée.
@@ -160,15 +110,16 @@
 	
 	  		</c:if>
 	  		
-	  			<c:if test = "${echec_modidierClient ==  false}">
+	  <!-- MODIFICATION CLIENT-->
+	  			<c:if test = "${echec_modifierClient ==  false}">
 				 <div class="alert alert-success alert-dismissible">
 	  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-	  	 	 	<strong>Success!</strong> Client modifié".
+	  	 	 	<strong>Success!</strong> Client modifié.
 		 	 	</div>
 	
 	  		</c:if>
 	  		
-	  		 <c:if test = "${echec_modidierClient == true}">
+	  		 <c:if test = "${echec_modifierClient == true}">
 				 <div class="alert alert-danger alert-dismissible">
 	   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 	  	 	 	<strong>Echec!</strong> Client n'a pas pu être modfié.

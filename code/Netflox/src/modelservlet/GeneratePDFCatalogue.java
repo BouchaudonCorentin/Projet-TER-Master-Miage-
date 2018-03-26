@@ -33,11 +33,11 @@ public class GeneratePDFCatalogue {
 		document.open();
 		document.add( new Paragraph("=============================Catalogue de Netflox============================="));
 		document.add( new Paragraph("Nom de la video = nom de la video"));
-		document.add( new Paragraph("Saison = Different de null si c'est une s�rie"));
-		document.add( new Paragraph("Numero de l'epside = 0 si n'a pas de suite ou n'est pas un �pisode d'un s�rie"));
+		document.add( new Paragraph("Saison = Different de null si c'est une serie"));
+		document.add( new Paragraph("Numero de l'epside = 0 si n'a pas de suite ou n'est pas un episode d'un serie"));
 		
 		for (int i =0; i<videos.size();i++) {
-			document.add(new Paragraph("=======================Video num�ro "+(i+1)+"======================="));
+			document.add(new Paragraph("=======================Video numero "+(i+1)+"======================="));
 			document.add(new Paragraph("Nom de la Video :"+ videos.get(i).getNomVideo()));
 		if(videos.get(i).getGroupeVideo()!="") {
 			document.add(new Paragraph("Saison :"+ videos.get(i).getGroupeVideo()));			
