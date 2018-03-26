@@ -55,15 +55,15 @@ public class DetailVideoServlet extends HttpServlet {
 			if(c!=null) {
 				request.setAttribute("louer", dbi.isRent(c,v));
 				request.setAttribute("achat", dbi.isBuy(c,v));
+				if(dbi.isParrain(c.getId())==true)
+				{
+				Parrain p =dbi.getInfoParrain(c.getId());
+				request.setAttribute("parrain",p);
+				
+				}
 				
 			}
-			if(dbi.isParrain(c.getId())==true)
-			{
-			Parrain p =dbi.getInfoParrain(c.getId());
-			request.setAttribute("parrain",p);
-			
-			}
-			
+		
 		} catch (Exception e) {
 			throw new ServletException (e);
 		

@@ -70,7 +70,7 @@ public class AdministrationTraitementServlet extends HttpServlet {
 				  int ep = Integer.parseInt(request.getParameter("d_episode_V")); 
 				  String saison = request.getParameter("d_saison");
 				  Video v = new Video (titre,saison,ep);
-					 if(!dbi.videoExiste(v)) {
+					 if(dbi.videoExiste(v)) {
 						  Video vid = dbi.retrouveridvianomnomgroupetnbepisode(v); 
 						  dbi.suppVideo(vid);
 						  request.setAttribute("echec_suppressionVideo", false);
