@@ -67,23 +67,24 @@ public class AdministrationTraitementServlet extends HttpServlet {
 				
 			  }else if (action.equals("Del_Video")){
 				  String titre = request.getParameter("d_titre_V");
-				  int ep = Integer.parseInt(request.getParameter("d_episode_V")); 
-				  System.out.println("Administration nbepisode "+ep);
-				  String saison = request.getParameter("d_saison");
+				  if(request.getParameter("d_episode_V")!=null){
+					  int ep = Integer.parseInt(request.getParameter("d_episode_V")); 
+					  System.out.println("Administration nbepisode "+ep);
+					  String saison = request.getParameter("d_saison");
 				  
-				  Video v = new Video (titre,saison,ep);
-				  System.out.println("Administration videoExiste "+dbi.videoExiste(v));
-					 if(dbi.videoExiste(v)) {
-						  Video vid = dbi.retrouveridvianomnomgroupetnbepisode(v); 
-						  System.out.println("id video sup "+vid.getId());
-						  dbi.suppVideo(vid);
+					  Video v = new Video (titre,saison,ep);
+					  System.out.println("Administration videoExiste "+dbi.videoExiste(v));
+					  if(dbi.videoExiste(v)) {
+						  	Video vid = dbi.retrouveridvianomnomgroupetnbepisode(v); 
+						  	System.out.println("id video sup "+vid.getId());
+						  	dbi.suppVideo(vid);
 						  
-						  request.setAttribute("echec_suppressionVideo", false);
+						  	request.setAttribute("echec_suppressionVideo", false);
 						
 					 }else {
 						 request.setAttribute("echec_suppressionVideo", true);
 					 }
-				   
+				  }
 			  }else if (action.equals("Add_Client")) {
 					String nom = request.getParameter("a_nom");
 					String prenom = request.getParameter("a_prenom");
@@ -102,19 +103,19 @@ public class AdministrationTraitementServlet extends HttpServlet {
 					
 			    
 			  }else if (action.equals("Del_Client")) {
-				  String pseudo = request.getParameter("d_pseudo");
-				  if(!dbi.verifpseudo(pseudo)) {
-					  int id= dbi.idByPseudo(pseudo); 
-					  Client c = new Client();
-					  c.setId(id);
-					  dbi.suppClient(c);
-					  request.setAttribute("echec_suppressionclient",false); 
-				  }else {
-					  request.setAttribute("echec_suppressionclient",true); 
+				  if(request.getParameter("d_pseudo")!=null){
+					  String pseudo = request.getParameter("d_pseudo");
+					  if(!dbi.verifpseudo(pseudo)) {
+						  int id= dbi.idByPseudo(pseudo); 
+						  Client c = new Client();
+						  c.setId(id);
+						  dbi.suppClient(c);
+						  request.setAttribute("echec_suppressionclient",false); 
+					  }else {
+						  request.setAttribute("echec_suppressionclient",true); 
+					  }				
+
 				  }
-				
-
-
 			  }else if (action.equals("Mod_Client")) {
 				  //pour trouver
 				  String m_pseudo = request.getParameter("m_pseudo");
