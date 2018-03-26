@@ -1187,6 +1187,28 @@ public class DataBase {
 		return p;
 		
 	}
+	
+	public Boolean suppressionParrainNeveu(int idParrain)throws SQLException{
+		String query = "Delete From Parrain where idParrain ="+idParrain;// supprime la video dans
+		Statement s = conn.createStatement();
+		int res = s.executeUpdate(query);
+		if (res==1){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public Boolean reinitialisaVideoGratuite(int idParrain)throws SQLException{
+		String query = "Update Parrain Set nbvideo = 0 where idParrain ="+idParrain;
+		Statement s = conn.createStatement();
+		int res = s.executeUpdate(query);
+		if (res==1){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
 
 }
