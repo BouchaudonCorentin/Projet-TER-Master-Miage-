@@ -109,8 +109,7 @@
 		 	 	</div>
 	
 	  		</c:if>
-	  		
-	  <!-- MODIFICATION CLIENT-->
+	 <!-- MODIFICATION CLIENT-->
 	  			<c:if test = "${echec_modifierClient ==  false}">
 				 <div class="alert alert-success alert-dismissible">
 	  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -126,6 +125,44 @@
 		 	 	</div>
 	
 	  		</c:if>
+	  		
+	 <!-- MODIFICATION PARRAIN-->
+	  			<c:if test = "${echec_Parrain_r ==  true}">
+				 <div class="alert alert-success alert-dismissible">
+	  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	  	 	 	<strong>PARRAIN</strong> Nombre de vidéo réinitialisé.
+		 	 	</div>
+	
+	  		</c:if>
+	  		
+	  		 <c:if test = "${echec_Parrain_r == false}">
+				 <div class="alert alert-danger alert-dismissible">
+	   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	  	 	 	<strong>Echec!</strong>Nombre de vidéo non réinitialisé.
+		 	 	</div>
+	
+	  		</c:if>
+	  		
+	  		
+	  		<c:if test = "${echec_Parrain_s ==  true}">
+				 <div class="alert alert-success alert-dismissible">
+	  		 	 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	  	 	 	<strong>PARRAIN</strong> Lien entre le neveu supprimé .
+		 	 	</div>
+	
+	  		</c:if>
+	  		
+	  		 <c:if test = "${echec_Parrain_s == false}">
+				 <div class="alert alert-danger alert-dismissible">
+	   			 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	  	 	 	<strong>Echec!</strong>Lien entre le neveu non supprimé.
+		 	 	</div>
+	
+	  		</c:if>
+	  		 		
+	  		
+	  		
+	  		
   
   		
 <!--HTML BODY-->   		
@@ -243,7 +280,8 @@
 							<li><a href="#tab4default" data-toggle="tab">Supprimer User</a></li>
 							<li><a href="#tab6default" data-toggle="tab">Modifier Client</a></li>
 							<li><a href="#tab7default" data-toggle="tab">Modifier Film</a></li>
-							<li><a href="#tab5default" data-toggle="tab">PDF</a></li>
+							<li><a href="#tab5default" data-toggle="tab">Parrain</a></li>
+							<li><a href="#tab8default" data-toggle="tab">PDF</a></li>
 							
 
 						</ul>
@@ -324,7 +362,7 @@
 							</div>
 							
 			<!-- Panel PDF -->
-								<div class="tab-pane fade" id="tab5default">
+								<div class="tab-pane fade" id="tab8default">
 									<div id="pdf">
 											<form method="post" action="/Netflox/AdministrationTraitement?action=Audit" >
 												<input type="number" name="day" class="form-control" placeholder="Day" required />
@@ -377,7 +415,26 @@
 									</br>
 									<input type="number" name="m_achat"class="form-control input-sm chat-input" placeholder="prix achat " required/>
 									</br>
-									<div class="wrapper">
+									<button  type="submit"  class="btn btn-danger btn-md">supprimer </button>
+									</form>
+								</div>
+								</div>
+									
+								<div class="tab-pane fade" id="tab5default">
+								<div id="ModifieVideo">
+								<form method="post" action="/Netflox/AdministrationTraitement?action=Parrain_Renit">	
+								  <h3>Réinitiliser le nombre de vidéo gratuite </h3>
+									<input type="text" name="p_pseudo" class="form-control input-sm chat-input" placeholder="pseudo " required/>
+									</br>
+									<input type="number" name="p_nbVideo" class="form-control input-sm chat-input" placeholder="nombre de video  " required/>
+									</br>
+									<button  type="submit"  class="btn btn-danger btn-md">Renitialiser </button>
+									</form>
+									
+									<form method="post" action="/Netflox/AdministrationTraitement?action=Parrain_supp">	
+								 	 <h3>Supprimer le lien avec le neveu</h3>
+									<input type="text" name="p_pseudo" class="form-control input-sm chat-input" placeholder="pseudo " required/>
+									</br>
 									<button  type="submit"  class="btn btn-danger btn-md">supprimer </button>
 									</form>
 								</div>

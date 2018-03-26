@@ -158,7 +158,23 @@ public class AdministrationTraitementServlet extends HttpServlet {
 				  GeneratePDFCatalogue  cat = new GeneratePDFCatalogue();
 			      cat.createCatalogue();
 			    
-			  }
+			  }else if (action.equals("Parrain_Renit")) {
+					String p_pseudo = request.getParameter("p_pseudo");
+					int p_nbVideo =Integer.parseInt(request.getParameter("p_nbVideo"));
+					int id = dbi.idByPseudo(p_pseudo); 
+					boolean res= dbi.reinitialiseVideoGratuite(id,p_nbVideo); 
+					request.setAttribute("echec_Parrain_r",res);
+					
+					
+			  	}else if (action.equals("Parrain_supp")) {
+					String p_pseudo = request.getParameter("p_pseudo");
+					int id = dbi.idByPseudo(p_pseudo); 
+					 boolean res= dbi.suppressionParrainNeveu(id); 
+				    request.setAttribute("echec_Parrain_s",res);
+			  	}
+			  
+			  
+			  
 				request.setAttribute("nbvideo", dbi.afficheVideos().size());
 				request.setAttribute("nbMembre", dbi.listpseudoclients().size());
 				request.setAttribute("nbPremium", dbi.listMembrepremium());
