@@ -68,11 +68,16 @@ public class AdministrationTraitementServlet extends HttpServlet {
 			  }else if (action.equals("Del_Video")){
 				  String titre = request.getParameter("d_titre_V");
 				  int ep = Integer.parseInt(request.getParameter("d_episode_V")); 
+				  System.out.println("Administration nbepisode "+ep);
 				  String saison = request.getParameter("d_saison");
+				  
 				  Video v = new Video (titre,saison,ep);
+				  System.out.println("Administration videoExiste "+dbi.videoExiste(v));
 					 if(dbi.videoExiste(v)) {
 						  Video vid = dbi.retrouveridvianomnomgroupetnbepisode(v); 
+						  System.out.println("id video sup "+vid.getId());
 						  dbi.suppVideo(vid);
+						  
 						  request.setAttribute("echec_suppressionVideo", false);
 						
 					 }else {

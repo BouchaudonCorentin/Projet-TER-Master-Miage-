@@ -41,6 +41,7 @@ public class DetailVideoServlet extends HttpServlet {
 			//recherche film 
 			
 			int id= Integer.parseInt(request.getParameter("idVideo")); 
+			
 			request.setAttribute("id",id);
 			Video v = dbi.searchVideoByID(id);
 			request.setAttribute("nom", v.getNomVideo());
@@ -63,7 +64,7 @@ public class DetailVideoServlet extends HttpServlet {
 				}
 				
 			}
-		
+			rd.forward(request, response);
 		} catch (Exception e) {
 			throw new ServletException (e);
 		
