@@ -15,7 +15,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-       <meta http-equiv="Refresh" content="30"> 
+       <meta http-equiv="Refresh" content="3000"> 
         <meta name="administration" content="">
 
           <title>Netflox</title>
